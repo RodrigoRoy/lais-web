@@ -1,2 +1,2 @@
 # lais-web
-Página del Laboratorio Audiovisual de Investigación Social
+Página del Laboratorio Audiovisual de Investigación Social (LAIS)
