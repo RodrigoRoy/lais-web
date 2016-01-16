@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)http://localhost:1994/#carousel-example-generic -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+		<meta charset="utf-8">
+ 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>LAIS-Web</title>
+
+		<!-- Custom Bootstrap CSS -->
+		<link href="./LAIS-Web_files/bootstrap.min.css" rel="stylesheet">
+		<link href="./LAIS-Web_files/bootstrap.css" rel="stylesheet">
+
+	    <!-- Custom CSS -->
+	    <link href="./LAIS-Web_files/parallax.css" rel="stylesheet">
+	    <link href="./LAIS-Web_files/index.css" rel="stylesheet">
+	    <link rel="stylesheet" type="text/css" href="./LAIS-Web_files/inicio.css">
+
+	    <!-- Custom Fonts -->
+	    <link href="./LAIS-Web_files/font-awesome.min.css" rel="stylesheet" type="text/css">
+	    <link href="./LAIS-Web_files/css" rel="stylesheet" type="text/css">
+	    <link href="./LAIS-Web_files/css(1)" rel="stylesheet" type="text/css">
+	    <link href="./LAIS-Web_files/css(2)" rel="stylesheet" type="text/css">
+	    <link href="./LAIS-Web_files/css(3)" rel="stylesheet" type="text/css">
+
+	    <!-- Establece la base ruta de la aplicación(elimina el # como base predeterminada) -->
+	    <!--<base href="/">--><base href=".">
+
+	<style type="text/css"></style><script type="text/javascript" src="chrome-extension://bfbmjmiodbnnpllbbbfblcplfjjepjdn/js/injected.js"></script></head>
+	<body ng-app="laisApp" id="page-top" class="index ng-scope" data-pinterest-extension-installed="cr1.39.1">
+	    <!-- Secciones de navegación -->
+	    <nav class="navbar navbar-default navbar-fixed-top">
+	        <div class="container">
+	            <!-- Brand and toggle get grouped for better mobile display -->
+	            <div class="navbar-header page-scroll">
+	                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	                    <span class="sr-only">Toggle navigation</span>
+	                    <span class="icon-bar"></span>
+	                    <span class="icon-bar"></span>
+	                    <span class="icon-bar"></span>
+	                </button>
+	                <a class="navbar-brand page-scroll" href="http://localhost:1994/#page-top">LAIS</a>
+	            </div>
+
+	            <!-- Collect the nav links, forms, and other content for toggling -->
+	            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	                <ul class="nav navbar-nav navbar-right">
+	                    <li class="hidden">
+	                        <a href="http://localhost:1994/#page-top"></a>
+	                    </li>
+	                    <li>
+	                        <a class="page-scroll" href="http://localhost:1994/#page-top">Inicio</a>
+	                    </li>
+	                    <li>
+	                        <a class="page-scroll" href="">Historia</a>
+	                    </li>
+	                    <li>
+	                        <a class="page-scroll" href="">Publicaciones</a>
+	                    </li>
+	                    <li>
+	                        <a class="page-scroll" href="">Recursos en Línea</a>
+	                    </li>
+                    	<li class="dropdown">
+	                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Eventos <span class="caret"></span></a>
+	                        <ul class="dropdown-menu">
+	                        	<li>
+	                        		<a id="seclabel" href="">Académicos</a>
+	                        	</li>
+	                        	<li>
+	                        		<a id="seclabel" href="">Docencia</a>
+	                        	</li>
+	                        </ul>
+	                    </li>
+	                    <li class="dropdown">
+	                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Acervos <span class="caret"></span></a>
+	                        <ul class="dropdown-menu">
+	                        	<li>
+	                        		<a id="seclabel" href="">Audiovisual</a>
+	                        	</li>
+	                        	<li>
+	                        		<a id="seclabel" href="">Fotografico</a>
+	                        	</li>
+	                        </ul>
+	                    </li>
+	                </ul>
+	            </div>
+	            <!-- /.navbar-collapse -->
+	        </div>
+	        <!-- /.container-fluid -->
+	    </nav>
+
+
+    	<!-- Contenido Dinamico de Angular -->
+        <!-- ngView:  --><div ng-view="" class="ng-scope"><!-- Header -->
+<header class="ng-scope">
+    <center>
+        <div class="slideEventos">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                <li data-target="carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="carousel-example-generic" data-slide-to="1" class=""></li>
+                <li data-target="carousel-example-generic" data-slide-to="2" class=""></li>
+                </ol>
+
+                <!-- Lista de Slides -->
+                <div class="carousel-inner" role="listbox">
+                    <!-- Primer Slide -->
+                    <div class="item active">
+                      <img src="./LAIS-Web_files/slideuno.jpg" alt="">
+                      <div class="carousel-caption">
+                        Texto Uno
+                      </div>
+                    </div>
+                    
+                    <!-- Segundo Slide -->
+                    <div class="item">
+                      <img src="./LAIS-Web_files/slidedos.jpg" alt="">
+                      <div class="carousel-caption">
+                        Texto Dos
+                      </div>
+                    </div>
+                
+                    <!-- Tercer Slide -->
+                    <div class="item">
+                      <img src="./LAIS-Web_files/slidetres.jpg" alt="">
+                      <div class="carousel-caption">
+                        Texto Tres
+                      </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="./LAIS-Web_files/LAIS-Web.html" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="./LAIS-Web_files/LAIS-Web.html" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+                </a>
+            </div>
+            <!--<a href="#historia" class="page-scroll btn btn-xl">Màs</a>-->
+        </div>
+    </center>
+</header>
+
+<!-- Services Section -->
+<section id="historia" class="ng-scope">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Historia</h2>
+                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="service-heading">E-Commerce</h4>
+                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+            </div>
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="service-heading">Responsive Design</h4>
+                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+            </div>
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4 class="service-heading">Web Security</h4>
+                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+            </div>
+        </div>
+    </div>
+</section></div>
+
+        <!-- Angular Libraries --> 
+    	<script src="./LAIS-Web_files/angular.min.js"></script>
+    	<script src="./LAIS-Web_files/angular-route.min.js"></script>
+	    <script src="./LAIS-Web_files/angular-messages.min.js"></script>
+	    <script src="./LAIS-Web_files/angular-cookies.min.js"></script>
+	    <script src="./LAIS-Web_files/angular-animate.min.js"></script>
+	    <script src="./LAIS-Web_files/angular-sanitize.min.js"></script>
+    
+        <!-- JS Libraries-->
+	    <script src="./LAIS-Web_files/jquery.min.js"></script>
+	    <script src="./LAIS-Web_files/bootstrap.min.js"></script>
+    	
+    	<!-- Angular's JS -->
+    	<script src="./LAIS-Web_files/appRoutes.js"></script>
+    	<script src="./LAIS-Web_files/app.js"></script>
+    	
+    
+
+<div id="window-resizer-tooltip" style="display: block;"><a href="http://localhost:1994/#" title="Edit settings"></a><span class="tooltipTitle">Window size: </span><span class="tooltipWidth" id="winWidth">1280</span> x <span class="tooltipHeight" id="winHeight">800</span><br><span class="tooltipTitle">Viewport size: </span><span class="tooltipWidth" id="vpWidth">1280</span> x <span class="tooltipHeight" id="vpHeight">661</span></div><span style="height: 20px; width: 40px; position: absolute; opacity: 1; z-index: 8675309; display: block; cursor: pointer; border: none; top: 137px; left: 263px; background-image: url(&quot;data:image/png;base64,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&quot;); background-color: transparent; background-size: 40px 20px;"></span></body></html>
