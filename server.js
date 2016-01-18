@@ -58,6 +58,9 @@ app.use('/api/lugares', lugares); // usar el API desde la ruta "/api/lugares"
 // REGISTRAR LAS DEMÁS RUTAS
 
 // require('./app/routes')(app); // pasar a la aplicación las demás rutas a utilizar
+app.get('*', function(req, res) {
+    res.sendfile('./public/angular/views/index.html'); // cargar el archivo public/index.html
+});
 
 // INICIAR APP =============================================
 app.listen(port);
