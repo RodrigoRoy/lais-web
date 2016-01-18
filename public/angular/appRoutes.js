@@ -5,7 +5,7 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 	$routeProvider
 		// HOME
 		.when('/', {
-			templateUrl: 'inicio.html'
+			templateUrl: 'angular/views/pages/inicio.html'
 		})
 
 		// RUTAS INVÁLIDAS (no descritas previamente)
