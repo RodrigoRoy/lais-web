@@ -1,8 +1,19 @@
 body{
-	background-color: black;
+	background-color: green;
 }
 
 /*Secciones de las etiquestas de los dropdowns menu*/
 #seclabel{
 	color: black;
+}
+
+#imgUser{
+	vertical-align: middle;
+    margin-top: -6px;
+}
+
+#caretUser{
+	color: white;
+	margin-top: 22px;
+    margin-left: -9px;
 }

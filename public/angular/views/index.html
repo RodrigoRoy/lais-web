@@ -25,7 +25,7 @@
 	    <base href="/">
 
 	</head>
-	<body ng-app="laisApp" class="">
+	<body ng-app="laisApp">
 	    <!-- Secciones de navegación -->
 	    <nav class="navbar navbar-default navbar-fixed-top">
 	        <div class="container">
@@ -37,26 +37,23 @@
 	                    <span class="icon-bar"></span>
 	                    <span class="icon-bar"></span>
 	                </button>
-	                <a class="navbar-brand page-scroll" href="">LAIS</a>
+	                <a class="navbar-brand page-scroll" href="#inicio">LAIS</a>
 	            </div>
 
 	            <!-- Collect the nav links, forms, and other content for toggling -->
 	            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	                <ul class="nav navbar-nav navbar-right">
-	                    <li class="hidden">
-	                        <a href="#inicio"></a>
-	                    </li>
-	                    <li>
+	                    <li class="active">
 	                        <a class="page-scroll" href="#inicio">Inicio</a>
 	                    </li>
 	                    <li>
 	                        <a class="page-scroll" href="#historia">Historia</a>
 	                    </li>
 	                    <li>
-	                        <a class="page-scroll" href="">Publicaciones</a>
+	                        <a class="page-scroll" href="">Recursos en Línea</a>
 	                    </li>
 	                    <li>
-	                        <a href="">Recursos en Línea</a>
+	                        <a href="">Publicaciones</a>
 	                    </li>
                     	<li class="dropdown">
 	                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Eventos <span class="caret"></span></a>
@@ -77,6 +74,20 @@
 	                        	</li>
 	                        	<li>
 	                        		<a id="seclabel" href="">Fotografico</a>
+	                        	</li>
+	                        </ul>
+	                    </li>
+	                    <li>
+	                    	<a class="navbar-brand dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+						        <img class="img-responsive img-rounded" id="imgUser" alt="Brand" width="30" height="30" src="imgs/Icons/user4.png">
+						    </a>
+						    <span id="caretUser" class="caret"></span>
+	                    	<ul class="dropdown-menu">
+	                        	<li>
+	                        		<a id="seclabel" href="">Hoa1</a>
+	                        	</li>
+	                        	<li>
+	                        		<a id="seclabel" href="">Hola2</a>
 	                        	</li>
 	                        </ul>
 	                    </li>
