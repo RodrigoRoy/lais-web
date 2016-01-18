@@ -111,18 +111,16 @@ router.route('/:usuario_id')
             if(err)
                 res.send(err);
             
+            // Actualizar todos los campos no-vacios
             if(req.body.username)
                 usuario.username = req.body.username;
             if(req.body.password)
                 usuario.password = req.body.password;
-            if(req.body.create === 'true')
-                usuario.crud.create = req.body.create === 'true';
-            if(req.body.read === 'true')
-                usuario.crud.read = req.body.read === 'true';
-            if(req.body.update === 'true')
-                usuario.crud.update = req.body.update === 'true';
-            if(req.body.delete === 'true')
-                usuario.crud.delete = req.body.delete === 'true';
+            if(req.body.email)
+                usuario.email = req.body.email;
+            if(req.body.permisos)
+                usuario.permisos = req.body.permisos;
+            
 
             usuario.save(function(err){
                 if(err)

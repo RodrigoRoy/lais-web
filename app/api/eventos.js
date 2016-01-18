@@ -15,6 +15,7 @@ DELETE http://localhost:8080/api/eventos/1234567890
 var express = require('express');
 var router = express.Router(); // para modularizar las rutas
 var Evento = require('../models/evento'); // Modelo de la colección "Eventos"
+var Lugar = require('../models/lugar');
 
 // Función a realizar siempre que se utilize esta API
 router.use(function(req, res, next){
@@ -26,7 +27,9 @@ router.use(function(req, res, next){
 router.route('/')
 	// Obtener todos los eventos
 	.get(function(req, res){
-        Evento.find(function(err, evento){
+        Evento.find() // encontrar todos
+        .populate('lugar') // poblar la referencia a "lugar"
+        .exec(function(err, evento){
             if(err)
                 res.send(err);
             res.json(evento);
@@ -51,8 +54,6 @@ router.route('/')
 	    	evento.horario = req.body.horario;
 	    if(req.body.horarioFin)
 	    	evento.horarioFin = req.body.horarioFin;
-	    if(req.body.todoElDia === 'true')
-	    	evento.todoElDia = req.body.todoElDia === 'true';
 	    if(req.body.tipo)
 	    	evento.tipo = req.body.tipo;
 	    // Se espera que las imagenes se representen como una lista de nombres de archivo separados por comas
@@ -60,9 +61,8 @@ router.route('/')
 	    	evento.imagen = req.body.imagen.split(/\s*,\s*/); // REGEXP elimina posibles espacios en blanco entre nombres y comas
 	    if(req.body.realizador)
 	    	evento.realizador = req.body.realizador.split(/\s*,\s*/);
-	    // "lugar" debería ser una colección aparte??
-	    // if(req.body.lugar)
-	    // 	evento.lugar = req.body.lugar; // id del lugar
+	    if(req.body.lugar)
+	     	evento.lugar = req.body.lugar; // id del lugar
 	    evento.fechaCreacion = new Date(); // fecha de creación auto-actualizada
 
         evento.save(function(err){
@@ -70,6 +70,69 @@ router.route('/')
                 res.send(err);
             res.json({message: 'Evento creado'});
         })
+    })
+
+// En peticiones con un ID
+router.route('/:evento_id')
+	// Obtener un evento particular (mediante el ID)
+    .get(function(req, res){
+        Evento.findById(req.params.evento_id)
+        .populate('lugar')
+        .exec(function(err, evento){
+            if(err)
+                res.send(err);
+            res.json(evento);
+        })
+    })
+
+    // Actualizar un evento en particular (mediante el ID)
+    .put(function(req, res){
+        Evento.findById(req.params.evento_id, function(err, evento){
+            if(err)
+                res.send(err);
+            
+            if(req.body.titulo)
+	        	evento.titulo = req.body.titulo;
+	        if(req.body.descripcion)
+	        	evento.descripcion = req.body.descripcion;
+	        if(req.body.contenidoHTML)
+	        	evento.contenidoHTML = req.body.contenidoHTML;
+		    if(req.body.fecha)
+		    	evento.fecha = req.body.fecha;
+		    if(req.body.fechaFin)
+		    	evento.fechaFin = req.body.fechaFin;
+		    if(req.body.horario)
+		    	evento.horario = req.body.horario;
+		    if(req.body.horarioFin)
+		    	evento.horarioFin = req.body.horarioFin;
+		    if(req.body.tipo)
+		    	evento.tipo = req.body.tipo;
+		    // Se espera que las imagenes se representen como una lista de nombres de archivo separados por comas
+		    if(req.body.imagen)
+		    	evento.imagen = req.body.imagen.split(/\s*,\s*/); // REGEXP elimina posibles espacios en blanco entre nombres y comas
+		    if(req.body.realizador)
+		    	evento.realizador = req.body.realizador.split(/\s*,\s*/);
+		    if(req.body.lugar)
+		     	evento.lugar = req.body.lugar; // id del lugar
+		    evento.fechaCreacion = new Date(); // fecha de creación auto-actualizada
+
+            evento.save(function(err){
+                if(err)
+                    res.send(err);
+                res.json({message: 'Evento actualizado'});
+            });
+        });
+    })
+
+    // Eliminar un evento en particular (mediante el ID)
+    .delete(function(req, res){
+        Evento.remove({
+            _id: req.params.evento_id
+        }, function(err, evento){
+            if(err)
+                res.send(err);
+            res.json({message: 'Evento borrado exitosamente'});
+        });
     })
 
 module.exports = router; // Exponer el API para ser utilizado en server.js

@@ -80,7 +80,7 @@ router.route('/:lugar_id')
 
     // Actualizar un lugar en particular (mediante el ID)
     .put(function(req, res){
-        Lugar.findById(req.params.usuario_id, function(err, lugar){
+        Lugar.findById(req.params.lugar_id, function(err, lugar){
             if(err)
                 res.send(err);
             
@@ -115,15 +115,15 @@ router.route('/:lugar_id')
         })
     })
 
-    // // Eliminar un lugar en particular (mediante el ID)
-    // .delete(function(req, res){
-    //     Lugar.remove({
-    //         _id: req.params.usuario_id
-    //     }, function(err, lugar){
-    //         if(err)
-    //             res.send(err);
-    //         res.json({message: 'Lugar borrado exitosamente'});
-    //     });
-    // })
+    // Eliminar un lugar en particular (mediante el ID)
+    .delete(function(req, res){
+        Lugar.remove({
+            _id: req.params.lugar_id
+        }, function(err, lugar){
+            if(err)
+                res.send(err);
+            res.json({message: 'Lugar borrado exitosamente'});
+        });
+    })
 
 module.exports = router; // Exponer el API para ser utilizado en server.js
