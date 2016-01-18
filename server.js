@@ -49,8 +49,11 @@ app.use('/api/', autentificacion); // usar el API desde la ruta "/api/authentica
 var usuarios = require('./app/api/usuarios'); // API para Usuarios de la base de datos
 app.use('/api/usuarios', usuarios); // usar el API desde la ruta "/api/usuarios"
 
-// var eventos = require('./app/eventos_api'); // API para Eventos de la base de datos
-// app.use('/api/eventos', eventos); // usar el API desde la ruta "/api/eventos"
+var eventos = require('./app/api/eventos'); // API para Eventos de la base de datos
+app.use('/api/eventos', eventos); // usar el API desde la ruta "/api/eventos"
+
+var lugares = require('./app/api/lugares'); // API para Lugares de la base de datos
+app.use('/api/lugares', lugares); // usar el API desde la ruta "/api/lugares"
 
 // REGISTRAR LAS DEMÁS RUTAS
 

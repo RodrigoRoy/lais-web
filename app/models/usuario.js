@@ -11,14 +11,14 @@ var bcrypt = require('bcrypt-nodejs')
 // nombre de usuario, permisos y contraseña.
 var UsuarioSchema = new Schema({
     username: {type: String, minlength: 3, trim: true, required: true, index: {unique: true}},
-    //permiso: {type: Number, min: 0, max: 4, default: 0},
-    crud: {
-    	create: {type: Boolean, default: false},
-    	read: {type: Boolean, default: true},
-    	update: {type: Boolean, default: false},
-    	delete: {type: Boolean, default: false}
-    },
-    password: {type: String, minlength: 3, required: true, select: false}
+    password: {type: String, required: true, select: false}, // select: false evita exponer el password durante consultas
+    email: {type: String},
+    permisos: {type: Number, min: 0, max: 15, default: 8},
+    // Los permisos se asignan de acuerdo al valor en binario de las operaciones CRUD (CREATE, READ, UPDATE, DELETE):
+    // Ejemplo con usuario con permisos con agregar (CREATE) y editar (UPDATE):
+    //   1 0 1 0 (binario) = 10 (decimal)
+    //   C R U D
+    // Por lo tanto, sus permisos se asignan al número 10
 });
 
 
