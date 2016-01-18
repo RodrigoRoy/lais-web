@@ -2,5 +2,5 @@
 dependencias, servicios(factory) y controladores*/
 
 
-angular.module("laisApp",["ngRoute","ngMessages","ngCookies","ngAnimate","ngSanitize","viewsRoutes"]);
+angular.module("laisApp",["ngRoute","ngMessages","ngCookies","ngAnimate","ngSanitize","ui.bootstrap","viewsRoutes"]);
 
