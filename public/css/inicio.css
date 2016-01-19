@@ -1,3 +1,10 @@
+
+/*controla la separación del margin-top con la sección del carusel con respecto del navbar*/
 .inicio{
 	margin-top:-40px;
+}
+
+/*Controla el tamaño del carusel de eventos*/
+.tamCarusel{
+	width: 73%;
 }

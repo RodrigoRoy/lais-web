@@ -8,9 +8,9 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 			templateUrl: 'angular/views/pages/inicio.html'
 		})
 
-		.when('/eventos'){
+		.when('/eventos',{
 			templateUrl: 'angular/views/pages/eventosGral.html'
-		}
+		})
 
 		// RUTAS INVÁLIDAS (no descritas previamente)
 		.otherwise({
