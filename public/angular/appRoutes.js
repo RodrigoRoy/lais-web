@@ -12,7 +12,7 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 			templateUrl: 'angular/views/pages/eventosGral.html'
 		})
 
-		.when('/nuevo', {
+		.when('/eventos/nuevo', {
 			templateUrl: 'angular/views/pages/formularioEvento.html',
 			controller: 'EventoFormController'
 		})
