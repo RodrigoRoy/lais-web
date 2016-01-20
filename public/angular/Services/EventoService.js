@@ -27,6 +27,11 @@ angular.module('EventoService', []).factory('Evento', ['$http', function($http){
 		//Elimina el evento con su respectivo eventoID
 		delete: function(eventoID){
 			return $http.delete('/api/eventos/' + eventoID);
+		},
+
+		//Obtiene los n numeros eventos más recientes
+		news: function(){
+			return http.get('/api/eventos/news');
 		}
 	}
 }]);
