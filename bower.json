@@ -13,6 +13,7 @@
     "animate.css": "animate-css#~3.4.0",
     "textAngular": "~1.4.6",
     "angular-sanitize": "~1.4.8",
-    "angular-bootstrap": "~1.0.3"
+    "angular-bootstrap": "~1.0.3",
+    "angular-i18n": "~1.4.8"
   }
 }
