@@ -1,3 +1,5 @@
+//Controlador que maneja la página de Inicio
+
 angular.module('EventoSlideCtrl',[]).controller('EventoSlideController', function ($scope) {
 	$scope.myInterval = 5000;
   	$scope.noWrapSlides = false;
