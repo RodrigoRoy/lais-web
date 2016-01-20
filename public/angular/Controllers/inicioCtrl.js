@@ -7,6 +7,7 @@ angular.module('EventoSlideCtrl',[]).controller('EventoSlideController', functio
 
 	slides.push({
 		urlImage: 'imgs/slideuno.jpg',
+		titulo: "titulo uno",
 		texto: 'Primera Imagen',
 		id: currIndex++
 	});
