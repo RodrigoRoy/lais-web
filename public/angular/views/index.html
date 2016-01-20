@@ -28,7 +28,7 @@
 	    
 
 	</head>
-	<body ng-app="laisApp">
+	<body ng-app="laisApp" ng-controller="IndexRutasController">
 	    <div class="container">
 	    <!-- Secciones de navegación -->
 	    <nav class="navbar navbar-default navbar-fixed-top">
@@ -41,28 +41,28 @@
 	                    <span class="icon-bar"></span>
 	                    <span class="icon-bar"></span>
 	                </button>
-	                <a class="navbar-brand page-scroll" href="#inicio">LAIS</a>
+	                <a class="navbar-brand page-scroll" ng-href="#inicio">LAIS</a>
 	            </div>
 
 	            <!-- Collect the nav links, forms, and other content for toggling -->
 	            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	                <ul class="nav navbar-nav navbar-right">
 	                    <li class="active">
-	                        <a class="page-scroll" href="#inicio">Inicio</a>
+	                        <a id="inicioLink" class="page-scroll" ng-href="#inicio">Inicio</a>
 	                    </li>
 	                    <li>
-	                        <a class="page-scroll" href="#historia">Historia</a>
+	                        <a id="historiaLink" class="page-scroll" ng-href="#historia">Historia</a>
 	                    </li>
 	                    <li>
-	                        <a class="page-scroll" href="#recursosLinea">Recursos en Línea</a>
+	                        <a id="recursosLink" class="page-scroll" ng-href="#recursosLinea">Recursos en Línea</a>
 	                    </li>
-	                    <li>
+	                    <li ng-click="">
 	                        <a href="">Publicaciones</a>
 	                    </li>
                     	<li class="dropdown">
 	                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Eventos <span class="caret"></span></a>
 	                        <ul class="dropdown-menu">
-	                        	<li>
+	                        	<li ng-click="clickEventos()">
 	                        		<a id="seclabel" href="/eventos">Todos</a>
 	                        	</li>
 	                        	<li>
@@ -107,10 +107,7 @@
 	            <!-- /.navbar-collapse -->
 	        </div>
 	        <!-- /.container-fluid -->
-
-
 	    </nav>
-
 
     	<!-- Contenido Dinamico de Angular -->
         <div ng-view></div>
@@ -144,12 +141,12 @@
     	<script type="text/javascript" src="angular/Services/EventoService.js"></script>
     	
     	<!--Angular Controllers  & JS's-->
+    	<script type="text/javascript" src="angular/Controllers/indexCtrl.js"></script>
     	<script type="text/javascript" src="angular/Controllers/eventosGralCtrl.js"></script>
     	<script type="text/javascript" src="angular/Controllers/inicioCtrl.js"></script>
     	<script src="angular/Controllers/formularioEvento.js"></script>
     	<script src="angular/appRoutes.js"></script>
     	<script src="angular/app.js"></script>
-    	
     </body>
 
 </html>
