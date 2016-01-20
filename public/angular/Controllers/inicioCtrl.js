@@ -1,6 +1,6 @@
 //Controlador que maneja la página de Inicio
 
-angular.module('EventoSlideCtrl',[]).controller('EventoSlideController', function ($scope) {
+angular.module('EventoSlideCtrl',[]).controller('EventoSlideController', function ($scope, Evento) {
 	$scope.myInterval = 5000;
   	$scope.noWrapSlides = false;
 	var slides = $scope.slides = [];
