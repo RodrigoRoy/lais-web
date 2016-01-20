@@ -8,7 +8,7 @@
 
 		<!-- Establece la base ruta de la aplicación(elimina el # como base predeterminada) -->
 	    <base href="/">
-		
+
 		<!-- Custom Bootstrap CSS -->
 		<link href="libs/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
 
@@ -29,9 +29,10 @@
 
 	</head>
 	<body ng-app="laisApp">
+	    <div class="container">
 	    <!-- Secciones de navegación -->
 	    <nav class="navbar navbar-default navbar-fixed-top">
-	        <div class="container">
+	        
 	            <!-- Brand and toggle get grouped for better mobile display -->
 	            <div class="navbar-header page-scroll">
 	                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -53,7 +54,7 @@
 	                        <a class="page-scroll" href="#historia">Historia</a>
 	                    </li>
 	                    <li>
-	                        <a class="page-scroll" href="">Recursos en Línea</a>
+	                        <a class="page-scroll" href="#recursosLinea">Recursos en Línea</a>
 	                    </li>
 	                    <li>
 	                        <a href="">Publicaciones</a>
@@ -84,13 +85,17 @@
 	                        </ul>
 	                    </li>
 	                    <li>
-	                    	<a class="navbar-brand dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
-						        <img class="img-responsive img-rounded" id="imgUser" alt="Brand" width="30" height="30" src="imgs/Icons/user4.png">
+	                    	
+	                    	<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+						    	<span id="imgUser" class="fa-stack fa-lg">
+								  	<i class="fa fa-square-o fa-stack-2x"></i>
+									<i class="fa fa-user fa-stack-1x"></i>
+								</span>
 						    </a>
-						    <span id="caretUser" class="caret"></span>
+						    
 	                    	<ul class="dropdown-menu">
 	                        	<li>
-	                        		<a id="seclabel" href="">Hoa1</a>
+	                        		<a id="seclabel" href="">Hol1</a>
 	                        	</li>
 	                        	<li>
 	                        		<a id="seclabel" href="">Hola2</a>
@@ -138,8 +143,9 @@
     	<!--Angular Services -->
     	<script type="text/javascript" src="angular/Services/eventoService.js"></script>
     	
-    	<!--Angular Controllers 
-    	<script type="text/javascript" src="angular/Controllers/eventoGralCtrl.js"></script>-->
+    	<!--Angular Controllers -->
+    	<script type="text/javascript" src="angular/Controllers/eventoGralCtrl.js"></script>
+    	<script type="text/javascript" src="angular/Controllers/inicioCtrl.js"></script>
     	
 
     	<!-- Angular's JS -->

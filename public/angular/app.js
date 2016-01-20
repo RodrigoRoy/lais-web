@@ -12,6 +12,7 @@ angular.module('laisApp', [
 	'ui.bootstrap', // Componentes Bootstrap
 	//'textAngular' // 3rd party WYSWYG HTML text editor
 
-	'EventoFormCtrl'
+	'EventoFormCtrl',
+	'EventoSlideCtrl' //Manejo del carusel(slide)
 ]);
 
