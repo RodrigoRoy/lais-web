@@ -13,6 +13,8 @@ angular.module('laisApp', [
 	//'textAngular' // 3rd party WYSWYG HTML text editor
 
 	'EventoFormCtrl',
-	'EventoSlideCtrl' //Manejo del carusel(slide)
+	'EventoSlideCtrl', //Manejo del carusel(slide)
+	'EventosCtrl', //Carga toda la informacion de la Base de datos de los eventos
+	'EventoService' //Servicio que administra las llamadas a la base de datos de eventos
 ]);
 

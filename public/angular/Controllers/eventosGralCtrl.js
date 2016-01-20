@@ -7,6 +7,7 @@ angular.module('EventosCtrl', []).controller('EventosController', function ($sco
 		.then(function(res){ 
 			$scope.eventos = res.data;
 			console.log($scope.eventos);
+			console.log($scope.eventos[0].titulo)
 		}, function(res){ 
 			alert('Error de Conexión con la Base de Datos');
 		});
