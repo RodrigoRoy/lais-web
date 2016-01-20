@@ -1,0 +1,84 @@
+{
+	"titulo": "Lorem ipsum",
+	"descripcion": "Dolor sit amet, consectetur adipiscing elit.",
+	"contenidoHTML": "Mauris tincidunt urna eget massa sollicitudin, sed tempus diam porta.",
+	"tipo": "academico",
+	"imagen": ["slideuno.jpg"],
+	"realizador": ["Tellus Sed Ligula"],
+	"lugar": "2"
+}
+{
+	"titulo": "Integer egestas arcu ac molestie consectetur.",
+	"descripcion": "Integer egestas arcu ac molestie consectetur.",
+	"contenidoHTML": "Praesent tempus dui a est imperdiet, posuere fringilla sem lacinia.Nunc non dui pretium enim cursus consequat.",
+	"tipo": "docencia",
+	"imagen": ["slidedos.jpg"],
+	"realizador": ["Praesent Accumsan"],
+	"lugar": "3"
+}
+{
+	"titulo": "Orci sit amet dolor molestie, eu porttitor dolor semper.",
+	"descripcion": "Ut cursus sem sit amet lorem iaculis cursus.",
+	"contenidoHTML": "Etiam tincidunt ex porta ullamcorper aliquam. Ut cursus sem sit amet lorem iaculis cursus. Nullam ullamcorper est vel tempor imperdiet.",
+	"tipo": "academico docencia",
+	"imagen": ["slidetres.jpg"],
+	"lugar": "4"
+}
+{
+	"titulo": "Quisque cursus arcu quis.",
+	"descripcion": "Donec vel tellus a urna placerat luctus nec et lectus.",
+	"contenidoHTML": "Cras vel lacus in purus semper egestas eget non purus.",
+	"tipo": "academico",
+	"imagen": ["slideuno.jpg"],
+	"realizador": ["Integer Vel Velit"],
+	"lugar": "5"
+}
+{
+	"titulo": "Sed eu lorem in urna venenatis",
+	"descripcion": "Mauris sed ante ut ipsum consequat molestie.",
+	"contenidoHTML": "Vestibulum dignissim justo eget nisi faucibus ultrices. Vivamus ultricies tellus id lacus posuere imperdiet. Morbi pulvinar urna eu ex feugiat consectetur. Mauris imperdiet metus in dui condimentum, sed dictum diam consequat.",
+	"tipo": "academico",
+	"imagen": ["slidedos.jpg"],
+	"realizador": ["Dignissim Accumsan"],
+	"lugar": "6"
+}
+{
+	"titulo": "Morbi id mauris",
+	"descripcion": "Nunc lacinia sem sed urna lobortis condimentum rhoncus a sem.",
+	"contenidoHTML": "Sed sit amet ante nec nunc luctus faucibus. In varius leo viverra metus porttitor venenatis.",
+	"tipo": "docencia",
+	"imagen": ["slidetres.jpg"]
+}
+{
+	"titulo": "Duis semper turpis sed diam scelerisque, eget tincidunt massa ultrices.",
+	"descripcion": "Curabitur lobortis ante eget pharetra imperdiet.",
+	"contenidoHTML": "Vivamus et nisl a nibh condimentum mollis.",
+	"tipo": "docencia",
+	"imagen": ["slideuno.jpg"],
+	"lugar": "7"
+}
+{
+	"titulo": "Nam faucibus leo vel leo posuere",
+	"descripcion": "Ut mollis ex in libero semper porttitor. Pellentesque molestie lectus eu dui semper vehicula eget ut nisi.",
+	"contenidoHTML": "Duis in tellus sed ligula pretium ultricies. Integer egestas arcu ac molestie consectetur. Praesent tempus dui a est imperdiet, posuere fringilla sem lacinia.",
+	"tipo": "academico",
+	"imagen": ["slidedos.jpg"],
+	"lugar": "8"
+}
+{
+	"titulo": "Nunc non dui pretium enim cursus consequat.",
+	"descripcion": "Praesent accumsan orci sit amet dolor molestie, eu porttitor dolor semper.",
+	"contenidoHTML": "Etiam tincidunt ex porta ullamcorper aliquam. Ut cursus sem sit amet lorem iaculis cursus. Nullam ullamcorper est vel tempor imperdiet.",
+	"tipo": "docencia",
+	"imagen": ["slidetres.jpg"],
+	"lugar": "2"
+}
+{
+	"titulo": "Quisque cursus arcu quis tincidunt pellentesque.",
+	"descripcion": "Donec vel tellus a urna placerat luctus nec et lectus. Cras vel lacus in purus semper egestas eget non purus.",
+	"contenidoHTML": "Mauris sed ante ut ipsum consequat molestie. Vestibulum dignissim justo eget nisi faucibus ultrices. Vivamus ultricies tellus id lacus posuere imperdiet. Morbi pulvinar urna eu ex feugiat consectetur. Mauris imperdiet metus in dui condimentum, sed dictum diam consequat.",
+	"tipo": "academico",
+	"imagen": ["slideuno.jpg"],
+	"realizador": ["Risus Dignissim"],
+	"lugar": "3"
+}

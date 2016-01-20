@@ -8,6 +8,7 @@ var Schema = mongoose.Schema; // "Modelo" de la colección
 
 // Definición del esquema "Lugares":
 var LugarSchema = new Schema({
+	_id: Number,
 	nombre: {type: String, trim: true, required: true, unique: true},
 	direccion: {
 		calle: String,
@@ -15,7 +16,6 @@ var LugarSchema = new Schema({
 		numeroInterior: String,
 		colonia: String,
 		ciudad: String,
-		// municipio? : String,
 		estado: String,
 		cp: String,
 		pais: String

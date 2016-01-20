@@ -11,8 +11,8 @@ var tipos = 'academico docencia'.split(' '); // Para los tipos de evento
 // Definición del esquema "Evento", incluyendo nombre del campo y el tipo de dato (key: value_type)
 var EventoSchema = new Schema({
 	titulo : {type: String, required: true},
-    contenidoHTML: {type: String, required: true},
     descripcion: String,
+    contenidoHTML: {type: String, required: true},
     tipo: {type: String, enum: tipos},
     
     fecha: {type: Date},
@@ -23,7 +23,8 @@ var EventoSchema = new Schema({
     imagen: [{type: String}],
     realizador: [{type: String}],
     
-    lugar: {type: mongoose.Schema.Types.ObjectId, ref: 'Lugares'},
+    //lugar: {type: mongoose.Schema.Types.ObjectId, ref: 'Lugares'},
+    lugar: {type: Number, ref: 'Lugares'},
     fechaCreacion: {type: Date, default: Date.now}
 });
 

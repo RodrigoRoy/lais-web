@@ -1,0 +1,108 @@
+{
+	"_id": "1",
+	"nombre": "Casa de Rodrigo",
+	"direccion": {
+		"calle": "San Francisco",
+		"numero": "15",
+		"numeroInterior": "E7 D401",
+		"colonia": "El Santuario",
+		"ciudad": "Ciudad de México",
+		"estado": "Distrito Federal",
+		"cp": "09820",
+		"pais": "México"
+	},
+	"telefono": ["41734248"],
+	"contacto": "Rodrigo Colín"
+}
+{
+	"_id": "2",
+	"nombre": "Instituto Mora Plaza",
+	"direccion": {
+		"calle": "Plaza Valentín Gómez Farías",
+		"numero": "12",
+		"colonia": "San Juan Mixcoac",
+		"estado": "D.F.",
+		"cp": "03730",
+		"pais": "México"
+	},
+	"telefono": ["5598-3777"]
+}
+{
+	"_id": "3",
+	"nombre": "Cineteca Nacional",
+	"direccion": {
+		"calle": "Av. México Coyoacán",
+		"numero": "389",
+		"colonia": "Xoco",
+		"ciudad": "Benito Juárez",
+		"estado": "D.F.",
+		"cp": "03330",
+		"pais": "México"
+	},
+	"telefono": ["+52 (55)4155 1200", "4155 1190"]
+}
+{
+	"_id": "4",
+	"nombre": "Instituto Mora Madrid",
+	"direccion": {
+		"calle": "Madrid",
+		"numero": "82",
+		"colonia": "Del Carmen",
+		"ciudad": "Coyoacán",
+		"estado": "D.F.",
+		"cp": "04100",
+		"pais": "México"
+	},
+	"telefono": ["5554 8946", "5598 3777"]
+}
+{
+	"_id": "5",
+	"nombre": "Instituto Mora Búfalo",
+	"direccion": {
+		"calle": "Búfalo",
+		"numero": "172",
+		"colonia": "Del Valle",
+		"estado": "D.F.",
+		"cp": "03100",
+		"pais": "México"
+	},
+	"telefono": ["5524 3654", "5598 3777"]
+}
+{
+	"_id": "6",
+	"nombre": "Instituto Mora Poussin",
+	"direccion": {
+		"calle": "Poussin",
+		"numero": "45",
+		"colonia": "Mixcoac",
+		"estado": "D.F.",
+		"cp": "03730",
+		"pais": "México"
+	}
+}
+{
+	"_id": "7",
+	"nombre": "Palacio de Bellas Artes",
+	"direccion": {
+		"calle": "Av. Juárez Esq. Eje Central",
+		"colonia": "Centro Histórico",
+		"estado": "D.F.",
+		"pais": "México"
+	},
+	"telefono": ["5512-2593"]
+}
+{
+	"_id": "8",
+	"nombre": "Museo Universitario de Arte Contemporáneo",
+	"direccion": {
+		"calle": "Insurgentes Sur",
+		"numero": "3000",
+		"colonia": "Centro Cultural Universitario",
+		"ciudad": "Coyoacán",
+		"estado": "Ciudad de México",
+		"cp": "04510",
+		"pais": "México"
+	},
+	"telefono": ["+52 (55) 5622 6972"],
+	"contacto": "informes@muac.unam.mx"
+}
