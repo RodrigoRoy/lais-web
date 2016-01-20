@@ -1,4 +1,4 @@
-/*
+ /*
 API para manejo de la base de datos con la colección de "Lugares"
 Permite obtener datos en formato JSON mediante verbos HTTP (GET, POST, PUT, DELETE)
 
