@@ -23,6 +23,20 @@ router.use(function(req, res, next){
     next(); // Pasar el control de las rutas a la siguiente coincidencia
 });
 
+// Obtener los últimos 4 eventos creados
+router.route('/news')
+    .get(function(req, res){
+        Evento.find() // encontrar todos
+        .sort({fechaCreacion: 'desc'})
+        .limit(4)
+        .select('titulo descripcion imagenPrincipal')
+        .exec(function(err, eventos){
+            if(err)
+                res.send(err);
+            res.json(eventos);
+        })
+    })
+
 // En peticiones a la raiz del API
 router.route('/')
 	// Obtener todos los eventos
@@ -56,6 +70,8 @@ router.route('/')
 	    	evento.horarioFin = req.body.horarioFin;
 	    if(req.body.tipo)
 	    	evento.tipo = req.body.tipo;
+        if(req.body.imagenPrincipal)
+            evento.imagenPrincipal = req.body.imagenPrincipal;
 	    // Se espera que las imagenes se representen como una lista de nombres de archivo separados por comas
 	    if(req.body.imagen)
 	    	evento.imagen = req.body.imagen.split(/\s*,\s*/); // REGEXP elimina posibles espacios en blanco entre nombres y comas
@@ -107,6 +123,8 @@ router.route('/:evento_id')
 		    	evento.horarioFin = req.body.horarioFin;
 		    if(req.body.tipo)
 		    	evento.tipo = req.body.tipo;
+            if(req.body.imagenPrincipal)
+                evento.imagenPrincipal = req.body.imagenPrincipal;
 		    // Se espera que las imagenes se representen como una lista de nombres de archivo separados por comas
 		    if(req.body.imagen)
 		    	evento.imagen = req.body.imagen.split(/\s*,\s*/); // REGEXP elimina posibles espacios en blanco entre nombres y comas

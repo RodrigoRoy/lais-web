@@ -20,6 +20,7 @@ var EventoSchema = new Schema({
     horario: {type: Date},
     horarioFin: {type: Date},
 
+    imagenPrincipal: {type: String},
     imagen: [{type: String}],
     realizador: [{type: String}],
     
