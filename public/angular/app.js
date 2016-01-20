@@ -9,6 +9,7 @@ angular.module('laisApp', [
 
 	'viewsRoutes', // Rutas y controladores
 	
+	'ngFileUpload', // upload files
 	'ui.bootstrap', // Componentes Bootstrap
 	//'textAngular' // 3rd party WYSWYG HTML text editor
 

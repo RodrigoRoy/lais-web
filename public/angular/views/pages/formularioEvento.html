@@ -68,6 +68,14 @@
             <button class="btn btn-default" ng-click="add()"><i class="fa fa-user-plus"></i></button>
         </div>
 
+        <!-- IMAGEN -->
+        <!-- <label class="control-label">Imagen</label>
+        <div class="button" ngf-select="upload($file)">Upload on file select</div>
+        <img ngf-thumbnail="file || '/thumb.jpg'"> -->
+        
+        <!-- <input type="file" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="2MB"> -->
+        <!-- <img height="128" ng-show="file[0] != null" ngf-src="file[0]" ngf-accept="'image/*'" class="thumb"> -->
+
         <button type="submit" class="btn btn-primary" ng-disabled="eventoForm.$invalid" ng-click="enviar()" ng-show="!eventoID">Agregar evento</button>
         <button type="submit" class="btn btn-primary" ng-disabled="eventoForm.$invalid" ng-click="editar()" ng-show="eventoID">Editar evento</button>
     </form>
