@@ -1,8 +1,9 @@
 <div class="container" id="inicio"> 
+    
     <!-- Seccion de carrusel/inicio -->
-    <section>
+    <section id="secCarrusel">
         <center>
-            <div ng-controller="EventoSlideController">
+            <div id="carrusel" ng-controller="EventoSlideController">
                 <uib-carousel interval="myInterval" no-wrap="noWrapSlides">
                   <uib-slide ng-repeat="slide in slides" active="slide.active" index="slide.id">
                     <img ng-src="{{slide.urlImage}}" style="margin:auto;">
