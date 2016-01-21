@@ -2,14 +2,17 @@
 
 <div class="container" id="secEventos" ng-controller="EventosController">
 	<div class="row">
+		
 		<div class="col-sm-6 col-md-4" ng-repeat="evento in eventos">
-			<div class="thumbnail" style="height: 400px">
-		  		<img src="imgs/{{evento.imagenPrincial}}" alt="imagen-{{evento.titulo}}">
-	  			<div class="caption">
-	    			<h3>{{evento.titulo}}</h3>
-	    			<p>{{evento.descripcion}}</p>
-	  			</div>
-			</div>
+			<a href="/eventos/{{evento._id}}">
+				<div class="thumbnail" style="height: 400px">
+			  		<img src="imgs/{{evento.imagenPrincial}}" alt="imagen-{{evento.titulo}}">
+		  			<div class="caption">
+		    			<h3>{{evento.titulo}}</h3>
+		    			<p>{{evento.descripcion}}</p>
+		  			</div>
+				</div>
+			</a>
 		</div>
 	</div>
 </div>

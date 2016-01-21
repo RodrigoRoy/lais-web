@@ -17,6 +17,7 @@
 	    <link rel="stylesheet" type="text/css" href="css/index.css">
 	    <link rel="stylesheet" type="text/css" href="css/inicio.css">
 	    <link rel="stylesheet" type="text/css" href="css/eventosGral.css">
+	    <link rel="stylesheet" type="text/css" href="css/evento.css">
 
 	    <!-- Custom Fonts -->
 	    <link href="libs/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
@@ -48,8 +49,8 @@
 		                    <li class="active">
 		                    	<!-- $scope.isIndex se actualiza en cada cambio de URL. El atributo ng-clock evita que se carguen ambas opciones
 		                    	de manera prematura, debido a que 'scroll parallax' no funcion utilizando ng-if -->
-		                        <a id="inicioLink" class="page-scroll" ng-href="#inicio" ng-show="isIndex" ng-cloak>Inicio</a>
-		                        <a id="inicioLink" class="page-scroll" href="index.html#inicio" ng-hide="isIndex" ng-cloak>Inicio</a>
+		                        <a id="inicioLink" class="page-scroll active" ng-href="#inicio" ng-show="isIndex" ng-cloak>Inicio</a>
+		                        <a id="inicioLink" class="page-scroll active" href="index.html#inicio" ng-hide="isIndex" ng-cloak>Inicio</a>
 		                    </li>
 		                    <li>
 		                    	<a id="historiaLink" class="page-scroll" ng-href="#historia" ng-show="isIndex" ng-cloak>Historia</a>
@@ -148,6 +149,7 @@
     	<script src="angular/Services/EventoService.js"></script>
     	
     	<!--Angular Controllers  & JS's-->
+    	<script src="angular/Controllers/eventoCtrl.js"></script>
     	<script src="angular/Controllers/indexCtrl.js"></script>
     	<script src="angular/Controllers/eventosGralCtrl.js"></script>
     	<script src="angular/Controllers/inicioCtrl.js"></script>

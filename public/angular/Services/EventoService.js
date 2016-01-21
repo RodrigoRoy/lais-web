@@ -29,7 +29,7 @@ angular.module('EventoService', []).factory('Evento', ['$http', function($http){
 			return $http.delete('/api/eventos/' + eventoID);
 		},
 
-		//Obtiene los n numeros eventos más recientes
+		//Obtiene los 4 eventos más recientes
 		news: function(){
 			return http.get('/api/eventos/news');
 		}
