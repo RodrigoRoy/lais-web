@@ -2,7 +2,7 @@
 
 angular.module('laisApp', [
 	'ngRoute', // Front end router
-	'ngMessages', // Manejor de validación  en formularios
+	'ngMessages', // Manejador de validación en formularios
 	'ngCookies', // Manejo de cookies en el navegador
 	'ngAnimate', // Animaciones CSS (keyframes prefabricados)
 	'ngSanitize', // Mostrar HTML de manera segura
@@ -11,9 +11,9 @@ angular.module('laisApp', [
 	
 	'ngFileUpload', // upload files
 	'ui.bootstrap', // Componentes Bootstrap
-	//'textAngular' // 3rd party WYSWYG HTML text editor
+	'textAngular', // 3rd party WYSWYG HTML text editor
 
-	'EventoFormCtrl',
+	'EventoFormCtrl', // Formulario para eventos
 	'IndexCtrl', // Checa cambios en la URL
 	'EventoSlideCtrl', //Manejo del carusel(slide)
 	'EventosCtrl', //Carga toda la informacion de la Base de datos de los eventos

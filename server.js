@@ -41,6 +41,23 @@ app.use(function(req, res, next){
 // log de todas las peticiones (request) en consola
 app.use(morgan('dev'));
 
+// ***** TESTING UPLOADS *****
+// TODO: colocar en un archivo aparte
+var fs = require('fs'); // File system utility
+var multipart = require('connect-multiparty'); // connect middleware (upload handler)
+var multipartMiddleware = multipart({uploadDir: './public/imgs/eventos' }); // definir ruta para archivos
+app.post('/api/upload', multipartMiddleware, function(req, res){ // refinir ruta para HTTP POST
+	//console.log("  req.body", req.body); // Datos adicionales enviados
+	console.log("Información del archivo")
+	console.log(req.files);
+	fs.rename(req.files.file.path, 'public/imgs/eventos/' + req.files.file.name, function (err){ // renombrar archivo (usa el nombre original)
+		if(err)
+			throw err;
+		res.json({"status": "OK"}); // responder al cliente 
+	});
+});
+// ***** END TESTING UPLOADS *****
+
 // RUTAS PARA EL API
 
 var autentificacion = require('./app/api/authentication'); // API para autentificación

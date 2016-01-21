@@ -1,3 +1,7 @@
+/*
+    Controlador del formulario para eventos.
+*/
+
 angular.module('EventoFormCtrl', []).controller('EventoFormController', function ($scope, Upload) {
     
     $scope.fecha = null; //new Date();
@@ -13,26 +17,26 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
     };
     $scope.roundTime();
 
-    $scope.realizadores = [{name: ""}];
+    $scope.maxLengthRealizadores = 10;
+    $scope.realizadores = [{nombre: ""}]; // Arreglo de "personas" (objetos con propiedad 'name')
     $scope.add = function(){
-        //if(($scope.realizadores[$scope.realizadores.length - 1].name !== "") && ($scope.realizadores.length < 3))
-        if($scope.realizadores.length < 3)
+        if(($scope.realizadores[$scope.realizadores.length - 1].nombre !== "") && ($scope.realizadores.length < $scope.maxLengthRealizadores))
             $scope.realizadores.push({
-                name: ""
+                nombre: ""
             });
     };
 
-    // $scope.upload = function (file) {
-    //     Upload.upload({
-    //         url: 'upload/url',
-    //         data: {file: file, 'username': $scope.username}
-    //     }).then(function (resp) {
-    //         console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-    //     }, function (resp) {
-    //         console.log('Error status: ' + resp.status);
-    //     }, function (evt) {
-    //         var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-    //         console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-    //     });
-    // };
+    $scope.upload = function(file){
+        Upload.upload({
+            url: 'api/upload',
+            data: {file: file, 'username': 'Roy'}
+        }).then(function (resp) {
+            console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
+        }, function (resp) {
+            console.log('Error status: ' + resp.status);
+        }, function (evt) {
+            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+        });
+    };
 });
