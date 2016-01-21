@@ -17,6 +17,7 @@ angular.module('laisApp', [
 	'IndexCtrl', // Checa cambios en la URL
 	'EventoSlideCtrl', //Manejo del carusel(slide)
 	'EventosCtrl', //Carga toda la informacion de la Base de datos de los eventos
+	'EventoCtrl', //Carga la informacion de un evento en particular
 	'EventoService' //Servicio que administra las llamadas a la base de datos de eventos
 
 ]);
