@@ -1,3 +1,18 @@
+body{
+}
+
 #eventoContenedor{
 	margin-top: 10%;
+	width: 80%;
+	height: 300px;
+}
+
+#imagenJum{
+	background-size: 100%;
+	background-image: url("../imgs/slidedos.jpg");
+	background-repeat: repeat-y;
+}
+
+h1{
+	color: white;
 }

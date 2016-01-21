@@ -7,8 +7,8 @@ angular.module('EventoCtrl',[]).controller('EventoController', function ($scope,
 		.then(function(res){
 			$scope.titulo = res.data.titulo;
 			$scope.descripcion = res.data.descripcion;
-			$scope.imagenPrincipal = res.data.imagenPrincipal;
+			$scope.imagenPrincipal = res.data.imagenPrincial;
 			$scope.contenidoHTML = res.data.contenidoHTML;
-			console.log(res); 
+			console.log($scope.imagenPrincipal); 
 		})
 })
