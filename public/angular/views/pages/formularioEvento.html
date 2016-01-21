@@ -28,11 +28,11 @@
         </div>
 
         <!-- INFORMACIÓN COMPLETA DEL EVENTO (HTML) -->
-        <!-- <div class="form-group" ng-class="{'has-error': eventoForm.contenidoHTML.$dirty && eventoForm.contenidoHTML.$invalid}">
-          <label class="control-label" for="contenidoHTML">Información</label>
+        <div class="form-group" ng-class="{'has-error': eventoForm.contenidoHTML.$dirty && eventoForm.contenidoHTML.$invalid}">
+          <label class="control-label" for="contenidoHTML">Contenido</label>
           <div text-angular ng-model="contenidoHTML" ta-text-editor-class="form-control" ta-html-editor-class="form-control" id="contenidoHTML" required></div>
           <div ng-messages="eventoForm.contenidoHTML.$error" ng-show="eventoForm.contenidoHTML.$dirty && eventoForm.contenidoHTML.$invalid"><div ng-messages-include="error-messages"></div></div>
-        </div> -->
+        </div>
 
         <!-- TIPO DE EVENTO -->
         <div class="form-group" ng-class="{'has-error': eventoForm.tipo.$dirty && eventoForm.tipo.$invalid}">
@@ -65,13 +65,14 @@
         <div class="form-group">
             <label class="control-label" for="realizador">Realizador(es)</label>
             <input type="text" class="form-control" ng-repeat="realizador in realizadores" ng-model="realizador.nombre">
-            <button class="btn btn-default" ng-click="add()"><i class="fa fa-user-plus"></i></button>
+            <button class="btn btn-default" ng-click="add()" ng-disabled="realizadores[realizadores.length-1].nombre === ''" ng-show="realizadores.length < maxLengthRealizadores"><i class="fa fa-user-plus"></i></button>
         </div>
 
         <!-- IMAGEN -->
-        <!-- <label class="control-label">Imagen</label>
-        <div class="button" ngf-select="upload($file)">Upload on file select</div>
-        <img ngf-thumbnail="file || '/thumb.jpg'"> -->
+        <div class="form-group">
+            <label class="control-label" for="imagenPrincipal">Imagen</label>
+            <div class="button" ngf-select="upload(file)" id="imagenPrincipal" style="border: 5px dashed #F5F5F5; width: 170px; text-align: center; padding: 50px 10px;">Click para agregar imagen</div>
+        </div>
         
         <!-- <input type="file" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="2MB"> -->
         <!-- <img height="128" ng-show="file[0] != null" ngf-src="file[0]" ngf-accept="'image/*'" class="thumb"> -->
