@@ -9,6 +9,16 @@ angular.module('EventoCtrl',[]).controller('EventoController', function ($scope,
 			$scope.descripcion = res.data.descripcion;
 			$scope.imagenPrincipal = res.data.imagenPrincial;
 			$scope.contenidoHTML = res.data.contenidoHTML;
-			console.log($scope.imagenPrincipal); 
+			$scope.tipo = res.data.tipo;
+			$scope.lugar = res.data.lugar;
+			
+			var text = ""
+			for	(index = 0; index < res.data.realizador.length; index++) {
+    			text += " " + res.data.realizador[index];
+    			//console.log(text);
+			}
+
+			$scope.realizador = text;	
+			console.log($scope.realizador); 		
 		})
 })
