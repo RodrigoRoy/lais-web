@@ -50,11 +50,11 @@ app.post('/api/upload', multipartMiddleware, function(req, res){ // refinir ruta
 	console.log("  req.body", req.body); // Datos adicionales enviados
 	console.log("Información del archivo")
 	console.log(req.files);
-	// fs.rename(req.files.file.path, 'public/imgs/eventos/' + req.files.file.name, function (err){ // renombrar archivo (usa el nombre original)
-	// 	if(err)
-	// 		throw err;
-	// 	res.json({"status": "OK"}); // responder al cliente 
-	// });
+	fs.rename(req.files.file.path, 'public/imgs/eventos/' + req.files.file.name, function (err){ // renombrar archivo (usa el nombre original)
+		if(err)
+			throw err;
+		res.json({"status": "OK"}); // responder al cliente 
+	});
 });
 // ***** END TESTING UPLOADS *****
 
