@@ -11,12 +11,18 @@
 		<hr id="separadorInicio">
 		<p>{{contenidoHTML}}</p>
 		<hr>
-		<h4>Lugar: </h4>
-		<p>{{lugar}}</p>
+		<h3>Dirección: </h3>
+		<p><strong>Lugar:</strong> {{lugar.nombre}}</p>
+		<p><strong>Calle:</strong> {{lugar.direccion.calle}}</p>
+		<p><strong>Número:</strong> {{lugar.direccion.numero}}</p>
+		<p><strong>Colonia:</strong> {{lugar.direccion.colonia}}</p>
+		<p><strong>Estado:</strong> {{lugar.direccion.estado}}</p>
+		<p><strong>País:</strong> {{lugar.direccion.pais}}</p>
+		<p><strong>CP:</strong> {{lugar.direccion.cp}}</p>
 		<hr>
-		<h4>Tipo: </h4>
+		<h3>Tipo: </h3>
 		<p>{{tipo}}</p>
-		<h4></h4>
-
+		<hr>
+		<p><i class="fa fa-phone-square"></i>  {{tels}}</p>
 	</div>
 </div>

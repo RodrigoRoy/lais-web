@@ -1,4 +1,9 @@
 
+/*Cambiar el background de la seccion de historia*/
+#historia{
+	background-color: white;
+}
+
 /*controla la separación del margin-top con la sección del carusel con respecto del navbar*/
 #secCarrusel{
 	margin-top:-3%;
@@ -6,5 +11,12 @@
 
 /*Controla el tamaño del carusel de eventos*/
 #carrusel{
-	width: 79%;
+	width: 72%;
+}
+
+/* Controla el tamaño de las imagenes de recursos en linea(metadoc, huellas de luz,..)*/
+.imagen{
+	width: 250px;
+	height: 250px;
+	display: inline-block;
 }
