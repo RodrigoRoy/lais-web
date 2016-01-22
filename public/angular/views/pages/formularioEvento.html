@@ -71,13 +71,17 @@
         <!-- IMAGEN -->
         <div class="form-group">
             <label class="control-label" for="imagenPrincipal">Imagen</label>
-            <div class="button" ngf-select="upload(file)" id="imagenPrincipal" style="border: 5px dashed #F5F5F5; width: 170px; text-align: center; padding: 50px 10px;">Click para agregar imagen</div>
+            <!-- Detalles del componente: https://github.com/danialfarid/ng-file-upload -->
+            <div ngf-select ngf-drop ng-model="imagenPrincipal" name="imagenPrincipal" id="imagenPrincipal" ngf-capture="'camera'" ngf-accept="'image/*'" ngf-pattern="'image/*'" style="border: 5px dashed #F5F5F5; width: 170px; text-align: center; padding: 50px 10px;">Selecciona o arrastra imagen</div>
+            <!--Previsualización de imagen-->
+            <img ngf-src="imagenPrincipal" ngf-resize="{height: 120, quality: 0.9}">
+            <button class="btn btn-default" ng-click="submit()" ng-show="imagenPrincipal"><i class="fa fa-upload"></i></button>
         </div>
         
-        <!-- <input type="file" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="2MB"> -->
-        <!-- <img height="128" ng-show="file[0] != null" ngf-src="file[0]" ngf-accept="'image/*'" class="thumb"> -->
-
-        <button type="submit" class="btn btn-primary" ng-disabled="eventoForm.$invalid" ng-click="enviar()" ng-show="!eventoID">Agregar evento</button>
-        <button type="submit" class="btn btn-primary" ng-disabled="eventoForm.$invalid" ng-click="editar()" ng-show="eventoID">Editar evento</button>
+        <button type="submit" class="btn btn-primary" ng-disabled="eventoForm.$invalid" ng-click="enviar()" ng-cloak>Agregar evento</button>
+        
+        <!-- Al implementar cookies se puede reutilizar la página para crear y editar un evento existente! (uso de eventoID): -->
+        <!-- <button type="submit" class="btn btn-primary" ng-disabled="eventoForm.$invalid" ng-click="enviar()" ng-show="!eventoID" ng-cloak>Agregar evento</button>
+        <button type="submit" class="btn btn-primary" ng-disabled="eventoForm.$invalid" ng-click="editar()" ng-show="eventoID" ng-cloak>Editar evento</button> -->
     </form>
 </div>

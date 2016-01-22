@@ -26,10 +26,18 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
             });
     };
 
+    // Llamada para realizar la subida al servidor de la imagen (al dar clic en un botón de envio)
+    $scope.submit = function(){
+        if ($scope.imagenPrincipal){
+            $scope.upload($scope.imagenPrincipal);
+        }
+    };
+
+    // Función que realmente sube al servidor la imagen (al dar clic en "submit" o inmediatamente después de seleccionar imagen)
     $scope.upload = function(file){
         Upload.upload({
-            url: 'api/upload',
-            data: {file: file, 'username': 'Roy'}
+            url: 'api/upload', // Ruta de Node (usando POST) para el manejo del almacenamiento de la imagen
+            data: {file: file} // Se pueden incluir datos adicionales (ej. {file: file, 'username': 'Roy'})
         }).then(function (resp) {
             console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
         }, function (resp) {
