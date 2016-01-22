@@ -12,14 +12,14 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 			templateUrl: 'angular/views/pages/eventosGral.html'
 		})
 
-		.when('/eventos/:id',{
-			templateUrl: 'angular/views/pages/evento.html',
-			controller: 'EventoController'
-		})
-
 		.when('/eventos/nuevo', {
 			templateUrl: 'angular/views/pages/formularioEvento.html',
 			controller: 'EventoFormController'
+		})
+
+		.when('/eventos/:id',{
+			templateUrl: 'angular/views/pages/evento.html',
+			controller: 'EventoController'
 		})
 
 		// RUTAS INVÁLIDAS (no descritas previamente)

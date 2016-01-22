@@ -25,7 +25,7 @@ var EventoSchema = new Schema({
     realizador: [{type: String}],
     
     //lugar: {type: mongoose.Schema.Types.ObjectId, ref: 'Lugares'},
-    lugar: {type: Number, ref: 'Lugares'},
+    lugar: {type: String, ref: 'Lugares'},
     fechaCreacion: {type: Date, default: Date.now}
 });
 

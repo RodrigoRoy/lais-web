@@ -47,14 +47,14 @@ var fs = require('fs'); // File system utility
 var multipart = require('connect-multiparty'); // connect middleware (upload handler)
 var multipartMiddleware = multipart({uploadDir: './public/imgs/eventos' }); // definir ruta para archivos
 app.post('/api/upload', multipartMiddleware, function(req, res){ // refinir ruta para HTTP POST
-	//console.log("  req.body", req.body); // Datos adicionales enviados
+	console.log("  req.body", req.body); // Datos adicionales enviados
 	console.log("Información del archivo")
 	console.log(req.files);
-	fs.rename(req.files.file.path, 'public/imgs/eventos/' + req.files.file.name, function (err){ // renombrar archivo (usa el nombre original)
-		if(err)
-			throw err;
-		res.json({"status": "OK"}); // responder al cliente 
-	});
+	// fs.rename(req.files.file.path, 'public/imgs/eventos/' + req.files.file.name, function (err){ // renombrar archivo (usa el nombre original)
+	// 	if(err)
+	// 		throw err;
+	// 	res.json({"status": "OK"}); // responder al cliente 
+	// });
 });
 // ***** END TESTING UPLOADS *****
 
@@ -66,11 +66,11 @@ app.use('/api/', autentificacion); // usar el API desde la ruta "/api/authentica
 var usuarios = require('./app/api/usuarios'); // API para Usuarios de la base de datos
 app.use('/api/usuarios', usuarios); // usar el API desde la ruta "/api/usuarios"
 
-var eventos = require('./app/api/eventos'); // API para Eventos de la base de datos
-app.use('/api/eventos', eventos); // usar el API desde la ruta "/api/eventos"
-
 var lugares = require('./app/api/lugares'); // API para Lugares de la base de datos
 app.use('/api/lugares', lugares); // usar el API desde la ruta "/api/lugares"
+
+var eventos = require('./app/api/eventos'); // API para Eventos de la base de datos
+app.use('/api/eventos', eventos); // usar el API desde la ruta "/api/eventos"
 
 // REGISTRAR LAS DEMÁS RUTAS
 
