@@ -6,10 +6,10 @@
             <div id="carrusel" ng-controller="EventoSlideController">
                 <uib-carousel interval="myInterval" no-wrap="noWrapSlides">
                   <uib-slide ng-repeat="slide in slides" active="slide.active" index="slide.id">
-                    <img ng-src="{{slide.urlImage}}" style="margin:auto;">
+                    <img ng-src="imgs/{{slide.imagenPrincipal}}" style="margin:auto;">
                     <div class="carousel-caption">
-                      <h4>Slide {{slide.id}}</h4>
-                      <p>{{slide.text}}</p>
+                      <h4>{{slide.titulo}}</h4>
+                      <p>{{slide.descripcion}}</p>
                     </div>
                   </uib-slide>
                 </uib-carousel>

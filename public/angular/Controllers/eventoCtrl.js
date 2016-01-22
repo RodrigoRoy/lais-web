@@ -7,7 +7,7 @@ angular.module('EventoCtrl',[]).controller('EventoController', function ($scope,
 		.then(function(res){
 			$scope.titulo = res.data.titulo;
 			$scope.descripcion = res.data.descripcion;
-			$scope.imagenPrincipal = res.data.imagenPrincial;
+			$scope.imagenPrincipal = res.data.imagenPrincipal;
 			$scope.contenidoHTML = res.data.contenidoHTML;
 			$scope.tipo = res.data.tipo;
 			$scope.lugar = res.data.lugar;
@@ -19,6 +19,6 @@ angular.module('EventoCtrl',[]).controller('EventoController', function ($scope,
 			}
 
 			$scope.realizador = text;	
-			console.log($scope.realizador); 		
+			//console.log($scope.realizador); 		
 		})
 })

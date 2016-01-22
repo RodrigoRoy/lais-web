@@ -31,7 +31,7 @@ angular.module('EventoService', []).factory('Evento', ['$http', function($http){
 
 		//Obtiene los 4 eventos más recientes
 		news: function(){
-			return http.get('/api/eventos/news');
+			return $http.get('/api/eventos/news');
 		}
 	}
 }]);
