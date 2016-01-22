@@ -18,11 +18,20 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
     $scope.roundTime();
 
     $scope.maxLengthRealizadores = 10;
-    $scope.realizadores = [{nombre: ""}]; // Arreglo de "personas" (objetos con propiedad 'name')
+    $scope.realizadores = [{nombre: ""}]; // Arreglo de "personas" (objetos con propiedad 'nombre')
     $scope.add = function(){
         if(($scope.realizadores[$scope.realizadores.length - 1].nombre !== "") && ($scope.realizadores.length < $scope.maxLengthRealizadores))
             $scope.realizadores.push({
                 nombre: ""
+            });
+    };
+
+    $scope.maxLengthTelefonos = 3;
+    $scope.telefonos = [{numero: ""}]; // Arreglo de "telefonos" (objetos con propiedad 'numero')
+    $scope.addPhone = function(){
+        if(($scope.telefonos[$scope.telefonos.length - 1].numero !== "") && ($scope.telefonos.length < $scope.maxLengthTelefonos))
+            $scope.telefonos.push({
+                numero: ""
             });
     };
 

@@ -23,14 +23,14 @@
         <!-- DESCRIPCION DEL EVENTO -->
         <div class="form-group" ng-class="{'has-error': eventoForm.descripcion.$dirty && eventoForm.descripcion.$invalid}">
             <label class="control-label" for="descripcion">Descripción</label>
-            <textarea class="form-control" rows="2" name="descripcion" id="descripcion" ng-model="descripcion" ng-maxlength="250" ng-trim></textarea>
+            <textarea class="form-control" rows="2" name="descripcion" id="descripcion" placeholder="Breve descripción del evento" ng-model="descripcion" ng-maxlength="250" ng-trim></textarea>
             <div ng-messages="eventoForm.descripcion.$error" ng-show="eventoForm.descripcion.$dirty && eventoForm.descripcion.$invalid"><div ng-messages-include="error-messages"></div></div>
         </div>
 
         <!-- INFORMACIÓN COMPLETA DEL EVENTO (HTML) -->
         <div class="form-group" ng-class="{'has-error': eventoForm.contenidoHTML.$dirty && eventoForm.contenidoHTML.$invalid}">
           <label class="control-label" for="contenidoHTML">Contenido</label>
-          <div text-angular ng-model="contenidoHTML" ta-text-editor-class="form-control" ta-html-editor-class="form-control" id="contenidoHTML" required></div>
+          <div text-angular ng-model="contenidoHTML" ta-text-editor-class="form-control" ta-html-editor-class="form-control" id="contenidoHTML" placeholder="Información completa sobre el evento" required></div>
           <div ng-messages="eventoForm.contenidoHTML.$error" ng-show="eventoForm.contenidoHTML.$dirty && eventoForm.contenidoHTML.$invalid"><div ng-messages-include="error-messages"></div></div>
         </div>
 
@@ -84,4 +84,88 @@
         <!-- <button type="submit" class="btn btn-primary" ng-disabled="eventoForm.$invalid" ng-click="enviar()" ng-show="!eventoID" ng-cloak>Agregar evento</button>
         <button type="submit" class="btn btn-primary" ng-disabled="eventoForm.$invalid" ng-click="editar()" ng-show="eventoID" ng-cloak>Editar evento</button> -->
     </form>
+
+    <!-- DIRECCIÓN (Lugar) -->
+    <form name="lugarForm" id="lugarForm" role="form" novalidate class="form-inline">
+        <h3>Dirección</h3>
+
+        <!-- Nombre -->
+        <div class="form-group" ng-class="{'has-error': lugarForm.nombre.$dirty && lugarForm.nombre.$invalid}">
+            <label class="control-label" for="nombre">Nombre del lugar</label>
+            <input class="form-control" type="text" name="nombre" id="nombre" ng-model="nombre" ng-maxlength="150" ng-trim>
+            <div ng-messages="lugarForm.nombre.$error" ng-show="lugarForm.nombre.$dirty && lugarForm.nombre.$invalid"><div ng-messages-include="error-messages"></div></div>
+        </div>
+
+        <!-- Calle -->
+        <div class="form-group" ng-class="{'has-error': lugarForm.calle.$dirty && lugarForm.calle.$invalid}">
+            <label class="control-label" for="calle">Calle</label>
+            <input class="form-control" type="text" name="calle" id="calle" ng-model="calle">
+            <div ng-messages="lugarForm.calle.$error" ng-show="lugarForm.calle.$dirty && lugarForm.calle.$invalid"><div ng-messages-include="error-messages"></div></div>
+        </div>
+
+        <!-- Número -->
+        <div class="form-group" ng-class="{'has-error': lugarForm.numero.$dirty && lugarForm.numero.$invalid}">
+            <label class="control-label" for="numero">Número</label>
+            <input class="form-control" type="text" name="numero" id="numero" ng-model="numero">
+            <div ng-messages="lugarForm.numero.$error" ng-show="lugarForm.numero.$dirty && lugarForm.numero.$invalid"><div ng-messages-include="error-messages"></div></div>
+        </div>
+
+        <!-- Número interior -->
+        <div class="form-group" ng-class="{'has-error': lugarForm.numeroInterior.$dirty && lugarForm.numeroInterior.$invalid}">
+            <label class="control-label" for="numeroInterior">Número interior</label>
+            <input class="form-control" type="text" name="numeroInterior" id="numeroInterior" ng-model="numeroInterior">
+            <div ng-messages="lugarForm.numeroInterior.$error" ng-show="lugarForm.numeroInterior.$dirty && lugarForm.numeroInterior.$invalid"><div ng-messages-include="error-messages"></div></div>
+        </div>
+
+        <!-- Colonia -->
+        <div class="form-group" ng-class="{'has-error': lugarForm.colonia.$dirty && lugarForm.colonia.$invalid}">
+            <label class="control-label" for="colonia">Colonia</label>
+            <input class="form-control" type="text" name="colonia" id="colonia" ng-model="colonia">
+            <div ng-messages="lugarForm.colonia.$error" ng-show="lugarForm.colonia.$dirty && lugarForm.colonia.$invalid"><div ng-messages-include="error-messages"></div></div>
+        </div>
+
+        <!-- Ciudad -->
+        <div class="form-group" ng-class="{'has-error': lugarForm.ciudad.$dirty && lugarForm.ciudad.$invalid}">
+            <label class="control-label" for="ciudad">Ciudad</label>
+            <input class="form-control" type="text" name="ciudad" id="ciudad" ng-model="ciudad">
+            <div ng-messages="lugarForm.ciudad.$error" ng-show="lugarForm.ciudad.$dirty && lugarForm.ciudad.$invalid"><div ng-messages-include="error-messages"></div></div>
+        </div>
+
+        <!-- Estado -->
+        <div class="form-group" ng-class="{'has-error': lugarForm.estado.$dirty && lugarForm.estado.$invalid}">
+            <label class="control-label" for="estado">Estado</label>
+            <input class="form-control" type="text" name="estado" id="estado" ng-model="estado">
+            <div ng-messages="lugarForm.estado.$error" ng-show="lugarForm.estado.$dirty && lugarForm.estado.$invalid"><div ng-messages-include="error-messages"></div></div>
+        </div>
+
+        <!-- Código postal -->
+        <div class="form-group" ng-class="{'has-error': lugarForm.cp.$dirty && lugarForm.cp.$invalid}">
+            <label class="control-label" for="cp">Código postal</label>
+            <input class="form-control" type="text" name="cp" id="cp" ng-model="cp">
+            <div ng-messages="lugarForm.cp.$error" ng-show="lugarForm.cp.$dirty && lugarForm.cp.$invalid"><div ng-messages-include="error-messages"></div></div>
+        </div>
+
+        <!-- País -->
+        <div class="form-group" ng-class="{'has-error': lugarForm.pais.$dirty && lugarForm.pais.$invalid}">
+            <label class="control-label" for="pais">País</label>
+            <input class="form-control" type="text" name="pais" id="pais" ng-model="pais" placeholder="México">
+            <div ng-messages="lugarForm.pais.$error" ng-show="lugarForm.pais.$dirty && lugarForm.pais.$invalid"><div ng-messages-include="error-messages"></div></div>
+        </div>
+
+        <!-- Teléfono(s) -->
+        <div class="form-group">
+            <label class="control-label" for="telefono">Teléfono(s)</label>
+            <input type="text" class="form-control" ng-repeat="telefono in telefonos" ng-model="telefono.numero">
+            <button class="btn btn-default" ng-click="addPhone()" ng-disabled="telefonos[telefonos.length-1].numero === ''" ng-show="telefonos.length < maxLengthTelefonos"><i class="fa fa-phone"></i></button>
+        </div>
+
+        <!-- Contacto -->
+        <div class="form-group" ng-class="{'has-error': lugarForm.contacto.$dirty && lugarForm.contacto.$invalid}">
+            <label class="control-label" for="contacto">Contacto</label>
+            <input class="form-control" type="text" name="contacto" id="contacto" ng-model="contacto" placeholder="Persona y/o email">
+            <div ng-messages="lugarForm.contacto.$error" ng-show="lugarForm.contacto.$dirty && lugarForm.contacto.$invalid"><div ng-messages-include="error-messages"></div></div>
+        </div>
+    </form>
+
+
 </div>
