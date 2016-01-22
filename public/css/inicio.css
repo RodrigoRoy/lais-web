@@ -6,12 +6,13 @@
 
 /*controla la separación del margin-top con la sección del carusel con respecto del navbar*/
 #secCarrusel{
-	margin-top:-3%;
+	margin-top:-7%;
 }
 
 /*Controla el tamaño del carusel de eventos*/
 #carrusel{
 	width: 72%;
+	margin-top: -1%;
 }
 
 /* Controla el tamaño de las imagenes de recursos en linea(metadoc, huellas de luz,..)*/
