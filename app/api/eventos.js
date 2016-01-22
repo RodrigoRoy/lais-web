@@ -15,7 +15,7 @@ DELETE http://localhost:8080/api/eventos/1234567890
 var express = require('express');
 var router = express.Router(); // para modularizar las rutas
 var Evento = require('../models/evento'); // Modelo de la colección "Eventos"
-var Lugar = require('../models/lugar');
+var Lugar = require('../models/lugar'); // Modelo de la colección "Lugar"
 
 // Función a realizar siempre que se utilize esta API
 router.use(function(req, res, next){
@@ -23,30 +23,16 @@ router.use(function(req, res, next){
     next(); // Pasar el control de las rutas a la siguiente coincidencia
 });
 
-// Obtener los últimos 4 eventos creados
-router.route('/news')
-    .get(function(req, res){
-        Evento.find() // encontrar todos
-        .sort({fechaCreacion: 'desc'})
-        .limit(4)
-        .select('titulo descripcion imagenPrincipal')
-        .exec(function(err, eventos){
-            if(err)
-                res.send(err);
-            res.json(eventos);
-        })
-    })
-
 // En peticiones a la raiz del API
 router.route('/')
 	// Obtener todos los eventos
 	.get(function(req, res){
         Evento.find() // encontrar todos
         .populate('lugar') // poblar la referencia a "lugar"
-        .exec(function(err, evento){
+        .exec(function(err, eventos){
             if(err)
                 res.send(err);
-            res.json(evento);
+            res.json(eventos);
         })
     })
 
@@ -85,6 +71,20 @@ router.route('/')
             if(err)
                 res.send(err);
             res.json({message: 'Evento creado'});
+        })
+    })
+
+// Obtener los últimos 4 eventos creados
+router.route('/news')
+    .get(function(req, res){
+        Evento.find() // encontrar todos
+        .sort({fechaCreacion: 'desc'})
+        .limit(4)
+        .select('titulo descripcion imagenPrincipal')
+        .exec(function(err, eventos){
+            if(err)
+                res.send(err);
+            res.json(eventos);
         })
     })
 
