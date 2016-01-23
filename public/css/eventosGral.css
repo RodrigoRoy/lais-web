@@ -3,5 +3,9 @@
 /* Sección donde estan contenidos los thumbnails
 para mostrar todos los eventos*/
 #secEventos{
-	margin-top: 15%;
+	margin-top: 8%;
+}
+
+#buscador{
+	margin-top: 5%;
 }
