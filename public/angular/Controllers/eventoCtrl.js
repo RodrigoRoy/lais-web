@@ -11,22 +11,14 @@ angular.module('EventoCtrl',[]).controller('EventoController', function ($scope,
 			$scope.contenidoHTML = res.data.contenidoHTML;
 			$scope.tipo = res.data.tipo;
 			$scope.lugar = res.data.lugar;
-			console.log($scope.lugar);
+			//console.log($scope.lugar);
 			
-			//For para guardar a los realizadores en una cadena
-			var text = ""
-			for	(index = 0; index < res.data.realizador.length; index++) {
-    			text += " " + res.data.realizador[index];
-    			//console.log(text);
-			}
-			$scope.realizador = text;	
-			//console.log($scope.realizador);
-
-			var tels = ""
-			for(index = 0; index < res.data.lugar.telefono.length; index++) {
-			 	tels += res.data.lugar.telefono[index]+", ";
-			 	console.log(tels);
-			 };
-			 $scope.tels = tels;
-		})
+			//Join para guardar a los realizadores en una cadena
+			$scope.realizador = res.data.realizador.join();
+			
+			//Join para guardar los telefonos en una cadena
+			$scope.tels = res.data.lugar.telefono.join();
+			//console.log($scope.tels);
+			
+		})	
 })
