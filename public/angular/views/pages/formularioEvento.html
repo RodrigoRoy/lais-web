@@ -78,6 +78,14 @@
             <button class="btn btn-default" ng-click="submit()" ng-show="imagenPrincipal"><i class="fa fa-upload"></i></button>
         </div>
 
+        <!-- TODO: form-group & label -->
+        <pre>Model: {{asyncSelected | json}}</pre>
+        <input type="text" ng-model="asyncSelected" placeholder="Locations loaded via $http" uib-typeahead="lugares.nombre for lugares in searchPlace($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" class="form-control">
+        <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+        <div ng-show="noResults">
+            <i class="glyphicon glyphicon-remove"></i> No Results Found
+        </div>
+
         <div class="checkbox">
             <label>
                 <input type="checkbox" ng-model="showDirection"> Habilitar

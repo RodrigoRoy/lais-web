@@ -18,7 +18,9 @@ angular.module('laisApp', [
 	'EventoSlideCtrl', //Manejo del carusel(slide)
 	'EventosCtrl', //Carga toda la informacion de la Base de datos de los eventos
 	'EventoCtrl', //Carga la informacion de un evento en particular
-	'EventoService' //Servicio que administra las llamadas a la base de datos de eventos
+
+	'LugarService', // Servicio para administrar llamadas a la base de datos de "lugares"
+	'EventoService' //Servicio que administra las llamadas a la base de datos de "eventos"
 
 ]);
 

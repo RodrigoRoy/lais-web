@@ -2,7 +2,7 @@
     Controlador del formulario para eventos.
 */
 
-angular.module('EventoFormCtrl', []).controller('EventoFormController', function ($scope, Upload) {
+angular.module('EventoFormCtrl', []).controller('EventoFormController', function ($scope, Lugar, Upload) {
     
     $scope.fecha = null; //new Date();
     $scope.showDate = false; // Indicador para mostrar/ocultar el calendario
@@ -55,5 +55,21 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
             console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
         });
+    };
+
+
+    $scope.searchPlace = function(val){
+        return Lugar.find(val)
+        .then(function(res){ // callback para petición exitosa
+            // console.log(res.data);
+            // var array = [];
+            // for(var i in res.data){
+            //     console.log(i, res.data[i].nombre);
+            //     array[i] = res.data[i].nombre;
+            // }
+            return res.data;
+        }, function(res){ // callback para cuando hay un error
+            alert('Hubo un error de conexión. Por favor vuelve a intentarlo.');
+        });;
     };
 });
