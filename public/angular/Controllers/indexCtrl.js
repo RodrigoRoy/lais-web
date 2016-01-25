@@ -23,9 +23,22 @@ angular.module('IndexCtrl',[]).controller('IndexController', function ($scope, $
 		});
 	};
 
-	$scope.iniciarSesion = function (){
-		console.log("Usuario");
+
+	if(localStorage.getItem("sesion")){
+		$scope.sesion = true;
+		console.log("No vacio",$scope.sesion);
+	}else{
+		$scope.sesion = false;
+		console.log("vacio",$scope.sesion);
 	}
+
+	//Funcion que cierra sesion
+	$scope.cerrarSesion = function (){
+		localStorage.removeItem("sesion");
+		console.log("Cerrar Sesion",localStorage.getItem("sesion"));
+		window.location.reload();
+	}
+
 });
 
 /*Controlador que le da la funcionalidad a lo que se ha declarado dentro del modal*/
@@ -34,28 +47,27 @@ angular.module('AuthCtrl',[]).controller('AuthController', function ($scope, $lo
 	/*Funcion que inicia sesion y verifica si todo es correcto*/
 	$scope.iniciarSesion = function (user, pass){
 		console.log("Usuario");
-		console.log(user);
-		console.log(pass);
+		//console.log(user);
+		//console.log(pass);
 		Usuario.sign(
 			{
 				"username": user,
 				"password": pass
 			}
 			).then(function (res){
-				if(res.data.success){
+				if(res.data.success){ //Exito de inicio de sesion
 					$scope.token = res.data.token;
-					$scope.sesion = true;
-					console.log("Toke",$scope.token);
-					//localStorage
-				}else{
+					//console.log("Toke",$scope.token);
+					
+					localStorage.setItem("sesion",$scope.token); //LocalStorage de inicio de sesion
+					//console.log("Sesion",localStorage.getItem("sesion"));
+					window.location.reload();
+				}else{ //No es correcto el inicio de sesion
 					console.log("Usuario o Password incorrectos");
-					$scope.sesion = true;
+					
 				}
-				
-
-			}, function (data, status){
+			}, function (data, status){ //Mal conexion con el servidor
 				console.log("Error con el servidor");
 			});
 	};
-
 });

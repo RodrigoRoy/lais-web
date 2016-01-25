@@ -89,7 +89,7 @@
 		                        	</li>
 		                        </ul>
 		                    </li>
-		                    <li ng-show="true">
+		                    <li ng-show="!sesion">
 		                    	<a href="#" ng-click="open()">
 							    	<span id="imgUser" class="fa-stack fa-lg">
 									  	<i class="fa fa-square-o fa-stack-2x"></i>
@@ -97,7 +97,7 @@
 									</span>
 							    </a>
 		                    </li>
-		                    <li ng-show="false">
+		                    <li ng-show="sesion">
 		                    	<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 							    	<span id="imgUser" class="fa-stack fa-lg">
 									  	<i class="fa fa-square-o fa-stack-2x"></i>
@@ -113,7 +113,7 @@
 		                        		<a id="seclabel" href="#">Agregar Evento</a>
 		                        	</li>
 		                        	<li>
-		                        		<a id="seclabel" href="#">Cerrar Sesion</a>
+		                        		<a ng-click="cerrarSesion()" id="seclabel" href="#">Cerrar Sesion</a>
 		                        	</li>
 		                        </ul>
 		                    </li>
@@ -159,13 +159,13 @@
 	    		<h3 class="modal-title">Autentificación LAIS</h3>
 	    	</div>
 		    <div class="modal-body">
-	            <div class="input-group input-group-lg">
-					<span class="input-group-addon" id="sizing-addon1"><i class="fa fa-user"></i></span>
+	    		<div class="input-group input-group-lg">
+					<span class="input-group-addon"><i class="fa fa-user"></i></span>
 					<input ng-model="user" type="text" class="form-control" placeholder="Usuario" aria-describedby="sizing-addon1">
 				</div>
 				<hr>
 				<div class="input-group input-group-lg">
-					<span class="input-group-addon" id="sizing-addon1"><i class="fa fa-key"></i></span>
+					<span class="input-group-addon"><i class="fa fa-key"></i></span>
 					<input ng-model="pass" type="password" class="form-control" placeholder="Contraseña" aria-describedby="sizing-addon1">
 				</div>
         	</div>
