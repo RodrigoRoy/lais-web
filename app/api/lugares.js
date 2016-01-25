@@ -22,6 +22,17 @@ router.use(function(req, res, next){
     next(); // Pasar el control de las rutas a la siguiente coincidencia
 });
 
+// Busca lugares cuyo nombre incluya la variable "search" en el URL query
+// ej. /api/lugares/find?search=mora buscará coincidencias con /.*mora.*/ en "nombre"
+router.get('/find', function(req, res){
+    Lugar.find({"nombre": new RegExp('.*' + req.query.search + '.*', "i")})
+        .exec(function(err, lugares){
+            if(err)
+                res.send(err);
+            res.json(lugares);
+        })
+});
+
 // En peticiones a la raiz del API
 router.route('/')
 	// Obtener todos los lugares

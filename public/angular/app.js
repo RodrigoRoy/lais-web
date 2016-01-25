@@ -19,8 +19,9 @@ angular.module('laisApp', [
 	'EventosCtrl', //Carga toda la informacion de la Base de datos de los eventos
 	'EventoCtrl', //Carga la informacion de un evento en particular
 	'AuthCtrl', //Carga la informacion para autentificar a un usuario
-	'EventoService', //Servicio que administra las llamadas a la base de datos de eventos
-	'UsuarioService' //Servicio que administra las llamadas a la base de datos de usuarios
 
+	'LugarService', // Servicio para administrar llamadas a la base de datos de "lugares"
+	'EventoService', //Servicio que administra las llamadas a la base de datos de "eventos"
+	'UsuarioService' //Servicio que administra las llamadas a la base de datos de usuarios
 ]);
 
