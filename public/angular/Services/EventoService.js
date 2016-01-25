@@ -1,4 +1,5 @@
-/*Servicio(Factory) que administra las llamadas a servidor para obtener,editar,enviar y eliminar datos de los eventos a la base de datos*/
+/*Servicio(Factory) que administra las llamadas a servidor para obtener,editar,enviar y 
+eliminar datos de los eventos a la base de datos*/
 
 
 angular.module('EventoService', []).factory('Evento', ['$http', function($http){

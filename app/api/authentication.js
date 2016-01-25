@@ -33,7 +33,8 @@ router.post('/authenticate', function(req, res){
                 // si existe el usuario y el password es correcto
                 // crear token
                 var token = jwt.sign({
-                    username: usuario.username
+                    username: usuario.username,
+                    permisos: usuario.permisos
                 }, secret, {
                     expiresInMinutes: 1440 // expira en 24 horas
                 });
