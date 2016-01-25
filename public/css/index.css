@@ -21,3 +21,13 @@ footer{
     margin-top: -6px;
     margin-right: 20px;
 }
+
+/*Icono dentro del stack(user)*/
+#iconUser{
+	margin-top: -6%;
+}
+
+/* Seccion del logo */
+#secLogo{
+	margin-left: 3%;
+}
