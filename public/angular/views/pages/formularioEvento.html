@@ -77,8 +77,14 @@
             <img ngf-src="imagenPrincipal" ngf-resize="{height: 120, quality: 0.9}">
             <button class="btn btn-default" ng-click="submit()" ng-show="imagenPrincipal"><i class="fa fa-upload"></i></button>
         </div>
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" ng-model="showDirection"> Habilitar
+            </label>
+        </div>
         
-        <button type="submit" class="btn btn-primary" ng-disabled="eventoForm.$invalid" ng-click="enviar()" ng-cloak>Agregar evento</button>
+        <button type="submit" class="btn btn-primary" ng-disabled="eventoForm.$invalid" ng-click="enviar()">Agregar evento</button>
         
         <!-- Al implementar cookies se puede reutilizar la página para crear y editar un evento existente! (uso de eventoID): -->
         <!-- <button type="submit" class="btn btn-primary" ng-disabled="eventoForm.$invalid" ng-click="enviar()" ng-show="!eventoID" ng-cloak>Agregar evento</button>
@@ -86,7 +92,7 @@
     </form>
 
     <!-- DIRECCIÓN (Lugar) -->
-    <form name="lugarForm" id="lugarForm" role="form" novalidate class="form-inline">
+    <form name="lugarForm" id="lugarForm" role="form" novalidate class="form-inline" ng-show="showDirection">
         <h3>Dirección</h3>
 
         <!-- Nombre -->
@@ -165,6 +171,8 @@
             <input class="form-control" type="text" name="contacto" id="contacto" ng-model="contacto" placeholder="Persona y/o email">
             <div ng-messages="lugarForm.contacto.$error" ng-show="lugarForm.contacto.$dirty && lugarForm.contacto.$invalid"><div ng-messages-include="error-messages"></div></div>
         </div>
+
+        <button type="submit" class="btn btn-primary" ng-disabled="lugarForm.$invalid">Agregar lugar</button> <!--ng-click=""-->
     </form>
 
 
