@@ -7,7 +7,7 @@
 			<img class="img-responsive img-rounded" src="imgs/{{imagenPrincipal}}">
 			<h1>{{titulo}}</h1>
 		</center>
-		<p id="secRealizadores">Por: {{realizador}}</p>
+		<p ng-show="realizador" id="secRealizadores">Por: {{realizador}}</p>
 		<hr id="separadorInicio">
 		<p ng-bind-html="contenidoHTML"></p>
 		<hr>
@@ -23,6 +23,6 @@
 		<h3>Tipo: </h3>
 		<p>{{tipo}}</p>
 		<hr>
-		<p><i class="fa fa-phone-square"></i>  {{tels}}</p>
+		<p ng-show="tels"><i ng-show="tels" class="fa fa-phone-square"></i>  {{tels}}</p>
 	</div>
 </div>

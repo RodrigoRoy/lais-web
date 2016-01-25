@@ -28,10 +28,10 @@
 	    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 	</head>
 
-	<body ng-app="laisApp">
+	<body ng-app="laisApp" ng-controller="IndexController">
 	    <div class="container">
 		    <!-- Secciones de navegación -->
-		    <nav class="navbar navbar-default navbar-fixed-top" ng-controller="IndexController">
+		    <nav class="navbar navbar-default navbar-fixed-top" >
 		        
 		            <!-- Brand and toggle get grouped for better mobile display -->
 		            <div class="navbar-header page-scroll" id="secLogo">
@@ -89,8 +89,15 @@
 		                        	</li>
 		                        </ul>
 		                    </li>
-		                    <li>
-		                    	
+		                    <li ng-show="true">
+		                    	<a href="#" ng-click="open()">
+							    	<span id="imgUser" class="fa-stack fa-lg">
+									  	<i class="fa fa-square-o fa-stack-2x"></i>
+										<i id="iconUser" class="fa fa-user fa-stack-1x"></i>
+									</span>
+							    </a>
+		                    </li>
+		                    <li ng-show="false">
 		                    	<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 							    	<span id="imgUser" class="fa-stack fa-lg">
 									  	<i class="fa fa-square-o fa-stack-2x"></i>
@@ -100,10 +107,13 @@
 							    
 		                    	<ul class="dropdown-menu">
 		                        	<li>
-		                        		<a id="seclabel" href="#">Hola1</a>
+		                        		<a id="seclabel" href="#">Agregar Usuario</a>
 		                        	</li>
 		                        	<li>
-		                        		<a id="seclabel" href="#">Hola2</a>
+		                        		<a id="seclabel" href="#">Agregar Evento</a>
+		                        	</li>
+		                        	<li>
+		                        		<a id="seclabel" href="#">Cerrar Sesion</a>
 		                        	</li>
 		                        </ul>
 		                    </li>
@@ -143,6 +153,27 @@
 	        </div>
 	    </footer>
 
+	    <!-- Modal Script para Iniciar Sesion-->
+	    <script type="text/ng-template" id="iniciasSesionModalContent.html">
+	    	<div class="modal-header">
+	    		<h3 class="modal-title">Autentificación LAIS</h3>
+	    	</div>
+		    <div class="modal-body">
+	            <div class="input-group input-group-lg">
+					<span class="input-group-addon" id="sizing-addon1"><i class="fa fa-user"></i></span>
+					<input ng-model="user" type="text" class="form-control" placeholder="Usuario" aria-describedby="sizing-addon1">
+				</div>
+				<hr>
+				<div class="input-group input-group-lg">
+					<span class="input-group-addon" id="sizing-addon1"><i class="fa fa-key"></i></span>
+					<input ng-model="pass" type="password" class="form-control" placeholder="Contraseña" aria-describedby="sizing-addon1">
+				</div>
+        	</div>
+	        <div class="modal-footer">
+	            <button class="btn btn-primary" type="button" ng-click="iniciarSesion(user,pass)">Iniciar Sesion</button>
+	        </div>
+	    </script>	
+
         <!-- Angular Libraries --> 
     	<script src="libs/angular/angular.js"></script>
     	<script src="libs/angular-i18n/angular-locale_es-mx.js"></script>
@@ -172,7 +203,8 @@
 
     	<!--Angular Services -->
     	<script src="angular/Services/EventoService.js"></script>
-    	<script src="angular/Services/LugarService.js"></script>
+    	<script src="angular/Services/LugarService.js"></script>    	
+    	<script src="angular/Services/usuarioService.js"></script>
     	
     	<!--Angular Controllers  & JS's-->
     	<script src="angular/Controllers/eventoCtrl.js"></script>
