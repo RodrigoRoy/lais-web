@@ -22,6 +22,8 @@ var secret = require('../../config').jwt;
 // Función a realizar siempre que se utilize esta API
 router.use(function(req, res, next){
     // console.log('Usando el API de Usuarios.');
+    if ((req.method === 'POST') && (req.originalUrl === '/api/usuarios'))
+        return next();
     
     var token = req.body.token || req.param('token') || req.headers['x-access-token'];
 
