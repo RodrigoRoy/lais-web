@@ -61,15 +61,47 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
     $scope.searchPlace = function(val){
         return Lugar.find(val)
         .then(function(res){ // callback para petición exitosa
-            // console.log(res.data);
-            // var array = [];
-            // for(var i in res.data){
-            //     console.log(i, res.data[i].nombre);
-            //     array[i] = res.data[i].nombre;
-            // }
             return res.data;
         }, function(res){ // callback para cuando hay un error
+            //alert('Hubo un error de conexión. Por favor vuelve a intentarlo.'); // No es buena idea usar alert porque se ejecutar en cada "teclazo"
+        });
+    };
+
+    // $scope.onSelect = function(item, model, label){
+    //     // $scope.$item = $item;
+    //     // $scope.$model = $model;
+    //     // $scope.$label = $label;
+    //     console.log("Item", item);
+    //     console.log("Model", model);
+    //     console.log("Label", label);
+    // };
+
+    $scope.openLugarForm = function(){
+        $scope.showDirection = true;
+        $scope.asyncLugar = undefined;
+    };
+
+    $scope.lugar = {};
+    $scope.showDirection = false;
+
+    $scope.addPlace = function(){
+        var place = $scope.lugar;
+        place.telefonos = [];
+        for(var i in $scope.telefonos){
+            if($scope.telefonos[i].numero !== "")
+                place.telefonos[i] = $scope.telefonos[i].numero;
+        }
+        place._id = "33";
+        console.log(place);
+
+        Lugar.create(place)
+        .then(function(res){
+            console.log(res);
+            $scope.showDirection = false;
+            $scope.lugar = undefined;
+        }, function(res){
+            // Error on create
             alert('Hubo un error de conexión. Por favor vuelve a intentarlo.');
-        });;
+        });
     };
 });

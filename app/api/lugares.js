@@ -48,6 +48,8 @@ router.route('/')
     .post(function(req, res){
         var lugar = new Lugar();
         
+        if(req.body._id)
+            lugar._id = req.body._id;
         if(req.body.nombre)
         	lugar.nombre = req.body.nombre;
         if(req.body.calle)
