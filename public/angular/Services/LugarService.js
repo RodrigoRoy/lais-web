@@ -31,6 +31,8 @@ angular.module('LugarService', []).factory('Lugar', ['$http', function($http){
 			return $http.delete('/api/lugares/' + lugarID);
 		},
 
+		// Busca y devuelve el lugar con el nombre "val" dado como parámetro
+		// Ejemplo: (GET) http://localhost:8080/api/lugares/find?search=Rodrigo
 		find: function(val){
 			return $http.get('/api/lugares/find', {params: {search: val}});
 		}

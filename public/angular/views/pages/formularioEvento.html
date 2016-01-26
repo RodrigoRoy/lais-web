@@ -16,28 +16,28 @@
         <!-- TITULO DEL EVENTO -->
         <div class="form-group" ng-class="{'has-error': eventoForm.titulo.$dirty && eventoForm.titulo.$invalid}">
             <label class="control-label" for="titulo">Título</label>
-            <input class="form-control" type="text" name="titulo" id="titulo" ng-model="titulo" ng-maxlength="150" ng-trim required>
+            <input class="form-control" type="text" name="titulo" id="titulo" ng-model="evento.titulo" ng-maxlength="150" ng-trim required>
             <div ng-messages="eventoForm.titulo.$error" ng-show="eventoForm.titulo.$dirty && eventoForm.titulo.$invalid"><div ng-messages-include="error-messages"></div></div>
         </div>
 
         <!-- DESCRIPCION DEL EVENTO -->
         <div class="form-group" ng-class="{'has-error': eventoForm.descripcion.$dirty && eventoForm.descripcion.$invalid}">
             <label class="control-label" for="descripcion">Descripción</label>
-            <textarea class="form-control" rows="2" name="descripcion" id="descripcion" placeholder="Breve descripción del evento" ng-model="descripcion" ng-maxlength="250" ng-trim></textarea>
+            <textarea class="form-control" rows="2" name="descripcion" id="descripcion" placeholder="Breve descripción del evento" ng-model="evento.descripcion" ng-maxlength="250" ng-trim></textarea>
             <div ng-messages="eventoForm.descripcion.$error" ng-show="eventoForm.descripcion.$dirty && eventoForm.descripcion.$invalid"><div ng-messages-include="error-messages"></div></div>
         </div>
 
         <!-- INFORMACIÓN COMPLETA DEL EVENTO (HTML) -->
         <div class="form-group" ng-class="{'has-error': eventoForm.contenidoHTML.$dirty && eventoForm.contenidoHTML.$invalid}">
           <label class="control-label" for="contenidoHTML">Contenido</label>
-          <div text-angular ng-model="contenidoHTML" ta-text-editor-class="form-control" ta-html-editor-class="form-control" id="contenidoHTML" placeholder="Información completa sobre el evento" required></div>
+          <div text-angular ng-model="evento.contenidoHTML" ta-text-editor-class="form-control" ta-html-editor-class="form-control" id="contenidoHTML" placeholder="Información completa sobre el evento" required></div>
           <div ng-messages="eventoForm.contenidoHTML.$error" ng-show="eventoForm.contenidoHTML.$dirty && eventoForm.contenidoHTML.$invalid"><div ng-messages-include="error-messages"></div></div>
         </div>
 
         <!-- TIPO DE EVENTO -->
         <div class="form-group" ng-class="{'has-error': eventoForm.tipo.$dirty && eventoForm.tipo.$invalid}">
             <label class="control-label" for="tipo">Tipo de evento</label>
-            <select class="form-control" id="tipo" ng-model="tipo">
+            <select class="form-control" id="tipo" ng-model="evento.tipo">
                 <option value="academico">Académico</option>
                 <option value="docencia">Docencia</option>
             </select>
@@ -48,7 +48,7 @@
         <div class="form-group">
             <label class="control-label" for="fecha">Fecha</label>
             <div class="input-group">
-                <input type="text" id="fecha" class="form-control" uib-datepicker-popup ng-model="fecha" is-open="showDate" close-text="Listo" current-text="Hoy" clear-text="Borrar">
+                <input type="text" id="fecha" class="form-control" uib-datepicker-popup ng-model="evento.fecha" is-open="showDate" close-text="Listo" current-text="Hoy" clear-text="Borrar">
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-default" ng-click="openDate()"><i class="glyphicon glyphicon-calendar"></i></button>
                 </span>
@@ -58,7 +58,7 @@
         <!-- HORARIO -->
         <div class="form-group">
             <label class="control-label" for="horario">Horario</label>
-            <uib-timepicker id="horario" ng-model="horario" hour-step="1" minute-step="5"></uib-timepicker>
+            <uib-timepicker id="horario" ng-model="evento.horario" hour-step="1" minute-step="5"></uib-timepicker>
         </div>
 
         <!-- REALIZADOR -->
@@ -78,27 +78,21 @@
             <button class="btn btn-default" ng-click="submit()" ng-show="imagenPrincipal"><i class="fa fa-upload"></i></button>
         </div>
 
-        <pre>Model: {{asyncLugar | json}}</pre>
-
         <!-- LUGAR -->
         <div class="form-group">
-            <label class="control-label" for="lugar">Lugar o dirección</label>
-            <input type="text" id="lugar" ng-model="asyncLugar" placeholder="Locations loaded via $http" uib-typeahead="lugar as lugar.nombre for lugar in searchPlace($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" typeahead-editable="false" typeahead-on-select="onSelect($item, $model, $label)" class="form-control">
+            <label class="control-label" for="lugar">Dirección</label>
+            <input type="text" id="lugar" ng-model="asyncLugar" placeholder="Nombre del lugar" uib-typeahead="lugar as lugar.nombre for lugar in searchPlace($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" typeahead-editable="false" typeahead-on-select="onSelect($item, $model, $label)" class="form-control">
             <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
             <div ng-show="noResults">
                 <i class="glyphicon glyphicon-remove"></i> No se encontraron resultados
             </div>
+            <button class="btn btn-default" type="button" ng-show="!showDirection && !asyncLugar" ng-click="openLugarForm()">Agregar dirección</button>
         </div>
-
-        <!-- <div class="checkbox">
-            <label>
-                <input type="checkbox" ng-model="showDirection"> Habilitar
-            </label>
-        </div> -->
-        <button class="btn btn-default" type="button" ng-show="!showDirection" ng-click="openLugarForm()">Agregar lugar/dirección</button>
-        <pre>Lugar: {{lugar | json}}</pre>
+        <!-- <pre>Model: {{asyncLugar | json}}</pre> -->
+        <!-- <pre>Lugar: {{lugar | json}}</pre> -->
+        <pre>Evento: {{evento | json}}</pre>
         
-        <button type="submit" class="btn btn-primary" ng-disabled="eventoForm.$invalid" ng-click="enviar()">Agregar evento</button>
+        <button type="submit" class="btn btn-primary" ng-disabled="eventoForm.$invalid" ng-click="showEvento()">Agregar evento</button>
         
         <!-- Al implementar cookies se puede reutilizar la página para crear y editar un evento existente! (uso de eventoID): -->
         <!-- <button type="submit" class="btn btn-primary" ng-disabled="eventoForm.$invalid" ng-click="enviar()" ng-show="!eventoID" ng-cloak>Agregar evento</button>

@@ -48,24 +48,24 @@ router.route('/')
         	evento.contenidoHTML = req.body.contenidoHTML;
 	    if(req.body.fecha)
 	    	evento.fecha = req.body.fecha;
-	    if(req.body.fechaFin)
-	    	evento.fechaFin = req.body.fechaFin;
+	    // if(req.body.fechaFin)
+	    // 	evento.fechaFin = req.body.fechaFin;
 	    if(req.body.horario)
 	    	evento.horario = req.body.horario;
-	    if(req.body.horarioFin)
-	    	evento.horarioFin = req.body.horarioFin;
+	    // if(req.body.horarioFin)
+	    // 	evento.horarioFin = req.body.horarioFin;
 	    if(req.body.tipo)
 	    	evento.tipo = req.body.tipo;
         if(req.body.imagenPrincipal)
             evento.imagenPrincipal = req.body.imagenPrincipal;
 	    // Se espera que las imagenes se representen como una lista de nombres de archivo separados por comas
-	    if(req.body.imagen)
-	    	evento.imagen = req.body.imagen.split(/\s*,\s*/); // REGEXP elimina posibles espacios en blanco entre nombres y comas
+	    // if(req.body.imagen)
+	    // 	evento.imagen = req.body.imagen.split(/\s*,\s*/); // REGEXP elimina posibles espacios en blanco entre nombres y comas
 	    if(req.body.realizador)
 	    	evento.realizador = req.body.realizador.split(/\s*,\s*/);
 	    if(req.body.lugar)
 	     	evento.lugar = req.body.lugar; // id del lugar
-	    evento.fechaCreacion = new Date(); // fecha de creación auto-actualizada
+	    evento.fechaCreacion = new Date(); // fecha de creación automática al momento
 
         evento.save(function(err){
             if(err)
@@ -108,31 +108,31 @@ router.route('/:evento_id')
                 res.send(err);
             
             if(req.body.titulo)
-	        	evento.titulo = req.body.titulo;
-	        if(req.body.descripcion)
-	        	evento.descripcion = req.body.descripcion;
-	        if(req.body.contenidoHTML)
-	        	evento.contenidoHTML = req.body.contenidoHTML;
-		    if(req.body.fecha)
-		    	evento.fecha = req.body.fecha;
-		    if(req.body.fechaFin)
-		    	evento.fechaFin = req.body.fechaFin;
-		    if(req.body.horario)
-		    	evento.horario = req.body.horario;
-		    if(req.body.horarioFin)
-		    	evento.horarioFin = req.body.horarioFin;
-		    if(req.body.tipo)
-		    	evento.tipo = req.body.tipo;
+                evento.titulo = req.body.titulo;
+            if(req.body.descripcion)
+                evento.descripcion = req.body.descripcion;
+            if(req.body.contenidoHTML)
+                evento.contenidoHTML = req.body.contenidoHTML;
+            if(req.body.fecha)
+                evento.fecha = req.body.fecha;
+            // if(req.body.fechaFin)
+            //  evento.fechaFin = req.body.fechaFin;
+            if(req.body.horario)
+                evento.horario = req.body.horario;
+            // if(req.body.horarioFin)
+            //  evento.horarioFin = req.body.horarioFin;
+            if(req.body.tipo)
+                evento.tipo = req.body.tipo;
             if(req.body.imagenPrincipal)
                 evento.imagenPrincipal = req.body.imagenPrincipal;
-		    // Se espera que las imagenes se representen como una lista de nombres de archivo separados por comas
-		    if(req.body.imagen)
-		    	evento.imagen = req.body.imagen.split(/\s*,\s*/); // REGEXP elimina posibles espacios en blanco entre nombres y comas
-		    if(req.body.realizador)
-		    	evento.realizador = req.body.realizador.split(/\s*,\s*/);
-		    if(req.body.lugar)
-		     	evento.lugar = req.body.lugar; // id del lugar
-		    evento.fechaCreacion = new Date(); // fecha de creación auto-actualizada
+            // Se espera que las imagenes se representen como una lista de nombres de archivo separados por comas
+            // if(req.body.imagen)
+            //  evento.imagen = req.body.imagen.split(/\s*,\s*/); // REGEXP elimina posibles espacios en blanco entre nombres y comas
+            if(req.body.realizador)
+                evento.realizador = req.body.realizador.split(/\s*,\s*/);
+            if(req.body.lugar)
+                evento.lugar = req.body.lugar; // id del lugar
+            evento.fechaCreacion = new Date(); // fecha de creación auto-actualizada
 
             evento.save(function(err){
                 if(err)

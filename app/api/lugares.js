@@ -47,27 +47,27 @@ router.route('/')
     // Agregar un nuevo lugar
     .post(function(req, res){
         var lugar = new Lugar();
+        // console.log("request data: ");
+        // console.log(req.body);
         
-        if(req.body._id)
-            lugar._id = req.body._id;
         if(req.body.nombre)
         	lugar.nombre = req.body.nombre;
-        if(req.body.calle)
-        	lugar.direccion.calle = req.body.calle;
-        if(req.body.numero)
-        	lugar.direccion.numero = req.body.numero;
-		if(req.body.numeroInterior)
-			lugar.direccion.numeroInterior = req.body.numeroInterior;
-		if(req.body.colonia)
-			lugar.direccion.colonia = req.body.colonia;
-		if(req.body.ciudad)
-			lugar.direccion.ciudad = req.body.ciudad;
-		if(req.body.estado)
-			lugar.direccion.estado = req.body.estado;
-		if(req.body.cp)
-			lugar.direccion.cp = req.body.cp;
-		if(req.body.pais)
-			lugar.direccion.pais = req.body.pais;
+        if(req.body.direccion.calle)
+            lugar.direccion.calle = req.body.direccion.calle;
+        if(req.body.direccion.numero)
+        	lugar.direccion.numero = req.body.direccion.numero;
+		if(req.body.direccion.numeroInterior)
+			lugar.direccion.numeroInterior = req.body.direccion.numeroInterior;
+		if(req.body.direccion.colonia)
+			lugar.direccion.colonia = req.body.direccion.colonia;
+		if(req.body.direccion.ciudad)
+			lugar.direccion.ciudad = req.body.direccion.ciudad;
+		if(req.body.direccion.estado)
+			lugar.direccion.estado = req.body.direccion.estado;
+		if(req.body.direccion.cp)
+			lugar.direccion.cp = req.body.direccion.cp;
+		if(req.body.direccion.pais)
+			lugar.direccion.pais = req.body.direccion.pais;
 		if(req.body.telefono)
 			lugar.telefono = req.body.telefono;
 		if(req.body.contacto)
@@ -98,27 +98,27 @@ router.route('/:lugar_id')
                 res.send(err);
             
             if(req.body.nombre)
-	        	lugar.nombre = req.body.nombre;
-	        if(req.body.calle)
-	        	lugar.direccion.calle = req.body.calle;
-	        if(req.body.numero)
-	        	lugar.direccion.numero = req.body.numero;
-			if(req.body.numeroInterior)
-				lugar.direccion.numeroInterior = req.body.numeroInterior;
-			if(req.body.colonia)
-				lugar.direccion.colonia = req.body.colonia;
-			if(req.body.ciudad)
-				lugar.direccion.ciudad = req.body.ciudad;
-			if(req.body.estado)
-				lugar.direccion.estado = req.body.estado;
-			if(req.body.cp)
-				lugar.direccion.cp = req.body.cp;
-			if(req.body.pais)
-				lugar.direccion.pais = req.body.pais;
-			if(req.body.telefono)
-				lugar.telefono = req.body.telefono;
-			if(req.body.contacto)
-				lugar.contacto = req.body.contacto;
+                lugar.nombre = req.body.nombre;
+            if(req.body.direccion.calle)
+                lugar.direccion.calle = req.body.direccion.calle;
+            if(req.body.direccion.numero)
+                lugar.direccion.numero = req.body.direccion.numero;
+            if(req.body.direccion.numeroInterior)
+                lugar.direccion.numeroInterior = req.body.direccion.numeroInterior;
+            if(req.body.direccion.colonia)
+                lugar.direccion.colonia = req.body.direccion.colonia;
+            if(req.body.direccion.ciudad)
+                lugar.direccion.ciudad = req.body.direccion.ciudad;
+            if(req.body.direccion.estado)
+                lugar.direccion.estado = req.body.direccion.estado;
+            if(req.body.direccion.cp)
+                lugar.direccion.cp = req.body.direccion.cp;
+            if(req.body.direccion.pais)
+                lugar.direccion.pais = req.body.direccion.pais;
+            if(req.body.telefono)
+                lugar.telefono = req.body.telefono;
+            if(req.body.contacto)
+                lugar.contacto = req.body.contacto;
 
             lugar.save(function(err){
                 if(err)

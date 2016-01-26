@@ -3,6 +3,7 @@
 */
 
 angular.module('EventoFormCtrl', []).controller('EventoFormController', function ($scope, Lugar, Upload) {
+    $scope.evento = {};
     
     $scope.fecha = null; //new Date();
     $scope.showDate = false; // Indicador para mostrar/ocultar el calendario
@@ -10,10 +11,10 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
         $scope.showDate = true;
     };
 
-    $scope.horario = new Date();
+    $scope.evento.horario = new Date();
     $scope.roundTime = function(){ // auxiliar para redondear los minutos a módulo 5
-        while(($scope.horario.getMinutes() % 5) != 0)
-            $scope.horario.setMinutes($scope.horario.getMinutes() + 1);
+        while(($scope.evento.horario.getMinutes() % 5) != 0)
+            $scope.evento.horario.setMinutes($scope.evento.horario.getMinutes() + 1);
     };
     $scope.roundTime();
 
@@ -81,27 +82,43 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
         $scope.asyncLugar = undefined;
     };
 
-    $scope.lugar = {};
+    //$scope.lugar = {};
     $scope.showDirection = false;
 
     $scope.addPlace = function(){
         var place = $scope.lugar;
-        place.telefonos = [];
-        for(var i in $scope.telefonos){
-            if($scope.telefonos[i].numero !== "")
-                place.telefonos[i] = $scope.telefonos[i].numero;
+        place.telefono = [];
+        for(var i in $scope.telefono){
+            if($scope.telefono[i].numero !== "")
+                place.telefono[i] = $scope.telefono[i].numero;
         }
-        place._id = "33";
-        console.log(place);
+        //console.log(place);
 
         Lugar.create(place)
         .then(function(res){
-            console.log(res);
+            //console.log(res);
             $scope.showDirection = false;
             $scope.lugar = undefined;
         }, function(res){
             // Error on create
+            // TODO: Agregar un aviso dentro del formulario en vez de un popup del navegador
             alert('Hubo un error de conexión. Por favor vuelve a intentarlo.');
         });
+    };
+
+    // $scope.getEvento = function(){
+    //     var evento = $scope.evento;
+    //     return evento;
+    // };
+
+    $scope.showEvento = function(){
+        var evento = $scope.evento;
+        evento.realizador = [];
+        for(var i in $scope.realizadores)
+            if($scope.realizadores[i].nombre !== "")
+                evento.realizador[i] = $scope.realizadores[i].nombre;
+        if($scope.asyncLugar)
+            evento.lugar = $scope.asyncLugar._id;
+        console.log("Evento:", evento);
     };
 });
