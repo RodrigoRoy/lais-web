@@ -62,7 +62,7 @@ router.route('/')
 	    // if(req.body.imagen)
 	    // 	evento.imagen = req.body.imagen.split(/\s*,\s*/); // REGEXP elimina posibles espacios en blanco entre nombres y comas
 	    if(req.body.realizador)
-	    	evento.realizador = req.body.realizador.split(/\s*,\s*/);
+	    	evento.realizador = req.body.realizador; //.split(/\s*,\s*/);
 	    if(req.body.lugar)
 	     	evento.lugar = req.body.lugar; // id del lugar
 	    evento.fechaCreacion = new Date(); // fecha de creación automática al momento
@@ -85,6 +85,26 @@ router.route('/news')
             if(err)
                 res.send(err);
             res.json(eventos);
+        })
+    })
+
+router.route('/find')
+    .get(function(req, res){
+        Evento.find()
+        .populate('lugar')
+        .exec(function(err, eventos){
+            if(err)
+                res.send(err);
+            // Filtrar resultados:
+            var results = []; // Conjunto de resultados
+            var patt = new RegExp('.*' + req.query.search + '.*', "i"); // patrón de búsqueda
+            for(var i in eventos) // eventos
+                for(var j in eventos[i]) // propiedades del evento (sorpresivamente son más de las esperadas)
+                    if(patt.test(eventos[i][j])){ // verificar que coincida el patrón con la propiedad
+                        results.push(eventos[i]); // agregar al conjunto de resultados
+                        break; // evitar repeticiones
+                    }
+            res.json(results);
         })
     })
 
@@ -129,7 +149,7 @@ router.route('/:evento_id')
             // if(req.body.imagen)
             //  evento.imagen = req.body.imagen.split(/\s*,\s*/); // REGEXP elimina posibles espacios en blanco entre nombres y comas
             if(req.body.realizador)
-                evento.realizador = req.body.realizador.split(/\s*,\s*/);
+                evento.realizador = req.body.realizador; //.split(/\s*,\s*/);
             if(req.body.lugar)
                 evento.lugar = req.body.lugar; // id del lugar
             evento.fechaCreacion = new Date(); // fecha de creación auto-actualizada
