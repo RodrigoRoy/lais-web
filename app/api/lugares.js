@@ -34,6 +34,7 @@ router.get('/find', function(req, res){
         })
 });
 
+
 // En peticiones a la raiz del API
 router.route('/')
 	// Obtener todos los lugares

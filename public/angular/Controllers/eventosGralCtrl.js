@@ -14,5 +14,12 @@ angular.module('EventosCtrl', []).controller('EventosController', function ($sco
 		}, function(res){ 
 			alert('Error de Conexión con la Base de Datos');
 		});
+
+	$scope.buscar = function (query){
+		if(query){
+			$location.url('/eventos/busqueda/'+query)
+		}	
+		
+	}
 	
 });

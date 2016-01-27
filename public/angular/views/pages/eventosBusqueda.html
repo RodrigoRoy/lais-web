@@ -1,9 +1,9 @@
 <!-- Página que muestra todos los eventos que se tiene, ya sean de docencia o académicos -->
-<div class="container" id="secEventos" ng-controller="EventosController">
+<div class="container" id="secEventosBusqueda" ng-controller="EventosBusquedaController">
 	<hr>
 	<div class="row">
 		<div class="col-lg-8">
-			<h1>Eventos</h1>
+			<h3>Búsqueda de Evento con: <h4>{{busqueda}}</h4></h3>
 		</div>
 		<div class="col-lg-4">
 			<div class="input-group" id="buscador">
@@ -18,7 +18,7 @@
 	</div>
 	<hr>
 	<div class="row">
-		<div class="col-sm-6 col-md-4" ng-repeat="evento in eventos.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
+		<div class="col-sm-6 col-md-4" ng-repeat="evento in eventos.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))"> 
 			<a href="/eventos/{{evento._id}}">
 				<div class="thumbnail" style="height: 400px">
 			  		<img src="imgs/{{evento.imagenPrincipal}}" alt="imagen-{{evento.titulo}}">
@@ -30,8 +30,8 @@
 			</a>
 		</div>
 	</div>
+
 	<center>
 		<uib-pagination first-text="Inicio" previous-text="Anterior" next-text="Siguiente" last-text="Último"total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" items-per-page="itemsPerPage"></uib-pagination>
 	</center>
 </div>
-
