@@ -26,6 +26,7 @@ router.use(function(req, res, next){
 // ej. /api/lugares/find?search=mora buscará coincidencias con /.*mora.*/ en "nombre"
 router.get('/find', function(req, res){
     Lugar.find({"nombre": new RegExp('.*' + req.query.search + '.*', "i")})
+        .select('nombre') // Solamente se requiere el nombre (y el _id, que siempre se incluye)
         .exec(function(err, lugares){
             if(err)
                 res.send(err);
@@ -52,22 +53,24 @@ router.route('/')
         
         if(req.body.nombre)
         	lugar.nombre = req.body.nombre;
-        if(req.body.direccion.calle)
-            lugar.direccion.calle = req.body.direccion.calle;
-        if(req.body.direccion.numero)
-        	lugar.direccion.numero = req.body.direccion.numero;
-		if(req.body.direccion.numeroInterior)
-			lugar.direccion.numeroInterior = req.body.direccion.numeroInterior;
-		if(req.body.direccion.colonia)
-			lugar.direccion.colonia = req.body.direccion.colonia;
-		if(req.body.direccion.ciudad)
-			lugar.direccion.ciudad = req.body.direccion.ciudad;
-		if(req.body.direccion.estado)
-			lugar.direccion.estado = req.body.direccion.estado;
-		if(req.body.direccion.cp)
-			lugar.direccion.cp = req.body.direccion.cp;
-		if(req.body.direccion.pais)
-			lugar.direccion.pais = req.body.direccion.pais;
+        if(req.body.direccion){
+            if(req.body.direccion.calle)
+                lugar.direccion.calle = req.body.direccion.calle;
+            if(req.body.direccion.numero)
+                lugar.direccion.numero = req.body.direccion.numero;
+            if(req.body.direccion.numeroInterior)
+                lugar.direccion.numeroInterior = req.body.direccion.numeroInterior;
+            if(req.body.direccion.colonia)
+                lugar.direccion.colonia = req.body.direccion.colonia;
+            if(req.body.direccion.ciudad)
+                lugar.direccion.ciudad = req.body.direccion.ciudad;
+            if(req.body.direccion.estado)
+                lugar.direccion.estado = req.body.direccion.estado;
+            if(req.body.direccion.cp)
+                lugar.direccion.cp = req.body.direccion.cp;
+            if(req.body.direccion.pais)
+                lugar.direccion.pais = req.body.direccion.pais;
+        }
 		if(req.body.telefono)
 			lugar.telefono = req.body.telefono;
 		if(req.body.contacto)
@@ -99,22 +102,24 @@ router.route('/:lugar_id')
             
             if(req.body.nombre)
                 lugar.nombre = req.body.nombre;
-            if(req.body.direccion.calle)
-                lugar.direccion.calle = req.body.direccion.calle;
-            if(req.body.direccion.numero)
-                lugar.direccion.numero = req.body.direccion.numero;
-            if(req.body.direccion.numeroInterior)
-                lugar.direccion.numeroInterior = req.body.direccion.numeroInterior;
-            if(req.body.direccion.colonia)
-                lugar.direccion.colonia = req.body.direccion.colonia;
-            if(req.body.direccion.ciudad)
-                lugar.direccion.ciudad = req.body.direccion.ciudad;
-            if(req.body.direccion.estado)
-                lugar.direccion.estado = req.body.direccion.estado;
-            if(req.body.direccion.cp)
-                lugar.direccion.cp = req.body.direccion.cp;
-            if(req.body.direccion.pais)
-                lugar.direccion.pais = req.body.direccion.pais;
+            if(req.body.direccion){
+                if(req.body.direccion.calle)
+                    lugar.direccion.calle = req.body.direccion.calle;
+                if(req.body.direccion.numero)
+                    lugar.direccion.numero = req.body.direccion.numero;
+                if(req.body.direccion.numeroInterior)
+                    lugar.direccion.numeroInterior = req.body.direccion.numeroInterior;
+                if(req.body.direccion.colonia)
+                    lugar.direccion.colonia = req.body.direccion.colonia;
+                if(req.body.direccion.ciudad)
+                    lugar.direccion.ciudad = req.body.direccion.ciudad;
+                if(req.body.direccion.estado)
+                    lugar.direccion.estado = req.body.direccion.estado;
+                if(req.body.direccion.cp)
+                    lugar.direccion.cp = req.body.direccion.cp;
+                if(req.body.direccion.pais)
+                    lugar.direccion.pais = req.body.direccion.pais;
+            }
             if(req.body.telefono)
                 lugar.telefono = req.body.telefono;
             if(req.body.contacto)

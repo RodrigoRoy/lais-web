@@ -58,7 +58,7 @@
         <!-- HORARIO -->
         <div class="form-group">
             <label class="control-label" for="horario">Horario</label>
-            <uib-timepicker id="horario" ng-model="evento.horario" hour-step="1" minute-step="5"></uib-timepicker>
+            <uib-timepicker id="horario" ng-model="evento.horario" hour-step="1" minute-step="1"></uib-timepicker>
         </div>
 
         <!-- REALIZADOR -->
@@ -75,28 +75,20 @@
             <div ngf-select ngf-drop ng-model="imagenPrincipal" name="imagenPrincipal" id="imagenPrincipal" ngf-capture="'camera'" ngf-accept="'image/*'" ngf-pattern="'image/*'" style="border: 5px dashed #F5F5F5; width: 170px; text-align: center; padding: 50px 10px;"><i class="fa fa-file-image-o"></i> Selecciona o arrastra imagen</div>
             <!--Previsualización de imagen-->
             <img ngf-src="imagenPrincipal" ngf-resize="{height: 120, quality: 0.9}">
-            <button class="btn btn-default" ng-click="submit()" ng-show="imagenPrincipal"><i class="fa fa-upload"></i></button>
         </div>
 
         <!-- LUGAR -->
         <div class="form-group">
             <label class="control-label" for="lugar">Dirección</label>
-            <input type="text" id="lugar" ng-model="asyncLugar" placeholder="Nombre del lugar" uib-typeahead="lugar as lugar.nombre for lugar in searchPlace($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" typeahead-editable="false" typeahead-on-select="onSelect($item, $model, $label)" class="form-control">
+            <input type="text" id="lugar" ng-model="asyncLugar" placeholder="Nombre del lugar" uib-typeahead="lugar as lugar.nombre for lugar in searchPlace($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" typeahead-editable="false" typeahead-on-select="onSelect($item, $model, $label)" class="form-control" autocomplete="off">
             <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
             <div ng-show="noResults">
                 <i class="glyphicon glyphicon-remove"></i> No se encontraron resultados
             </div>
             <button class="btn btn-default" type="button" ng-show="!showDirection && !asyncLugar" ng-click="openLugarForm()">Agregar dirección</button>
         </div>
-        <!-- <pre>Model: {{asyncLugar | json}}</pre> -->
-        <!-- <pre>Lugar: {{lugar | json}}</pre> -->
-        <pre>Evento: {{evento | json}}</pre>
         
-        <button type="submit" class="btn btn-primary" ng-disabled="eventoForm.$invalid" ng-click="showEvento()">Agregar evento</button>
-        
-        <!-- Al implementar cookies se puede reutilizar la página para crear y editar un evento existente! (uso de eventoID): -->
-        <!-- <button type="submit" class="btn btn-primary" ng-disabled="eventoForm.$invalid" ng-click="enviar()" ng-show="!eventoID" ng-cloak>Agregar evento</button>
-        <button type="submit" class="btn btn-primary" ng-disabled="eventoForm.$invalid" ng-click="editar()" ng-show="eventoID" ng-cloak>Editar evento</button> -->
+        <button type="submit" class="btn btn-primary" ng-disabled="eventoForm.$invalid" ng-click="enviar()">Agregar evento</button>
     </form>
 
     <!-- DIRECCIÓN (Lugar) -->
@@ -180,7 +172,7 @@
             <div ng-messages="lugarForm.contacto.$error" ng-show="lugarForm.contacto.$dirty && lugarForm.contacto.$invalid"><div ng-messages-include="error-messages"></div></div>
         </div>
 
-        <button type="submit" class="btn btn-primary" ng-disabled="lugarForm.$invalid" ng-click="addPlace()">Agregar lugar</button> <!--ng-click=""-->
+        <button type="submit" class="btn btn-primary" ng-disabled="lugarForm.$invalid" ng-click="addPlace()">Agregar lugar</button>
     </form>
 
 
