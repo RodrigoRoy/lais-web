@@ -1,0 +1,37 @@
+<!-- Página que muestra todos los eventos que se tiene, ya sean de docencia o académicos -->
+<div class="container" id="secEventosBusqueda" ng-controller="EventosBusquedaController">
+	<hr>
+	<div class="row">
+		<div class="col-lg-8">
+			<h3>Búsqueda de Evento con: <h4>{{busqueda}}</h4></h3>
+		</div>
+		<div class="col-lg-4">
+			<div class="input-group" id="buscador">
+				<input ng-model="query" type="text" class="form-control" placeholder="buscar...">
+				<span class="input-group-btn">
+					<button ng-click="buscar(query)"class="btn btn-default" type="button">
+						<i class="fa fa-search"></i>
+					</button>
+				</span>
+			</div><!-- /input-group -->
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<div class="col-sm-6 col-md-4"> <!-- ng-Repeat -->
+			<a href="">
+				<div class="thumbnail" style="height: 400px">
+			  		<img src="" alt="">
+		  			<div class="caption">
+		    			<h3>{{hola}}</h3>
+		    			<p></p>
+		  			</div>
+				</div>
+			</a>
+		</div>
+	</div>
+
+	<center>
+		<uib-pagination first-text="Inicio" previous-text="Anterior" next-text="Siguiente" last-text="Último"total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" items-per-page="itemsPerPage"></uib-pagination>
+	</center>
+</div>
