@@ -12,17 +12,11 @@
 		<p ng-bind-html="contenidoHTML"></p>
 		<hr>
 		<h3>Dirección: </h3>
-		<p><strong>Lugar:</strong> {{lugar.nombre}}</p>
-		<p><strong>Calle:</strong> {{lugar.direccion.calle}}</p>
-		<p><strong>Número:</strong> {{lugar.direccion.numero}}</p>
-		<p><strong>Colonia:</strong> {{lugar.direccion.colonia}}</p>
-		<p><strong>Estado:</strong> {{lugar.direccion.estado}}</p>
-		<p><strong>País:</strong> {{lugar.direccion.pais}}</p>
-		<p><strong>CP:</strong> {{lugar.direccion.cp}}</p>
+		<p>{{direccion}}</p>
 		<hr>
 		<h3>Tipo: </h3>
 		<p>{{tipo}}</p>
 		<hr>
-		<p ng-show="tels"><i ng-show="tels" class="fa fa-phone-square"></i>  {{tels}}</p>
+		<p ng-show="tels"><i ng-show="tels" class="fa fa-phone-square"></i>{{tels}}</p>
 	</div>
 </div>
