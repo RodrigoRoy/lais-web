@@ -34,16 +34,6 @@
           <div ng-messages="eventoForm.contenidoHTML.$error" ng-show="eventoForm.contenidoHTML.$dirty && eventoForm.contenidoHTML.$invalid"><div ng-messages-include="error-messages"></div></div>
         </div>
 
-        <!-- TIPO DE EVENTO -->
-        <div class="form-group" ng-class="{'has-error': eventoForm.tipo.$dirty && eventoForm.tipo.$invalid}">
-            <label class="control-label" for="tipo">Tipo de evento</label>
-            <select class="form-control" id="tipo" ng-model="evento.tipo">
-                <option value="academico">Académico</option>
-                <option value="docencia">Docencia</option>
-            </select>
-            <div ng-messages="eventoForm.tipo.$error" ng-show="eventoForm.tipo.$dirty && eventoForm.tipo.$invalid"><div ng-messages-include="error-messages"></div></div>
-        </div>
-
         <!-- FECHA -->
         <div class="form-group">
             <label class="control-label" for="fecha">Fecha</label>
@@ -59,6 +49,16 @@
         <div class="form-group">
             <label class="control-label" for="horario">Horario</label>
             <uib-timepicker id="horario" ng-model="evento.horario" hour-step="1" minute-step="1"></uib-timepicker>
+        </div>
+
+        <!-- TIPO DE EVENTO -->
+        <div class="form-group" ng-class="{'has-error': eventoForm.tipo.$dirty && eventoForm.tipo.$invalid}">
+            <label class="control-label" for="tipo">Tipo de evento</label>
+            <select class="form-control" id="tipo" ng-model="evento.tipo">
+                <option value="academico">Académico</option>
+                <option value="docencia">Docencia</option>
+            </select>
+            <div ng-messages="eventoForm.tipo.$error" ng-show="eventoForm.tipo.$dirty && eventoForm.tipo.$invalid"><div ng-messages-include="error-messages"></div></div>
         </div>
 
         <!-- REALIZADOR -->

@@ -1,6 +1,6 @@
 /*Controlador de la página de eventos, se encarga de obtener todos los eventos existentes de la base de datos */
 
-angular.module('EventosCtrl', []).controller('EventosController', function ($scope, $location, $cookies, Evento) {
+angular.module('EventosCtrl', []).controller('EventosController', function ($scope, $location, Evento) {
 	
 	$scope.currentPage = 1; //Indica el número de página actual
 	$scope.maxSize = 5; //Maximo numero de páginas a mostrar para escojer

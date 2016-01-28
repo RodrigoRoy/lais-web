@@ -2,7 +2,7 @@
     Controlador del formulario para eventos.
 */
 
-angular.module('EventoFormCtrl', []).controller('EventoFormController', function ($scope, Lugar, Evento, Upload) {
+angular.module('EventoFormCtrl', []).controller('EventoFormController', function ($scope, $location, Lugar, Evento, Upload) {
     $scope.evento = {}; // Contiene los datos del evento
     
     $scope.fecha = null; //new Date(); // Solamente importan DD, MM, YYYYY
@@ -37,20 +37,26 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
     };
 
     // Función que realmente sube al servidor la imagen
-    $scope.upload = function(file){
-        Upload.upload({
-            url: 'api/upload', // Ruta de Node (usando POST) para el manejo del almacenamiento de la imagen
-            data: {file: file} // Se pueden incluir datos adicionales (ej. {file: file, 'username': 'Roy'})
-        }).then(function (resp) {
-            console.log('Success ' + resp.config.data.file.name + ' uploaded. Response: ' + resp.data);
-            $scope.imagenPrincipalFilename = resp.config.data.file.name; // guardar el nombre del archivo (para enviar filename a la base de datos)
-        }, function (resp) {
-            console.log('Error status: ' + resp.status);
-        }, function (evt) {
-            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-        });
-    };
+    // $scope.upload = function(file){
+    //     Upload.upload({
+    //         url: 'api/upload', // Ruta de Node (usando POST) para el manejo del almacenamiento de la imagen
+    //         data: {file: file} // Se pueden incluir datos adicionales (ej. {file: file, 'username': 'Roy'})
+    //     }).then(function (resp) {
+    //         console.log('Success ' + resp.config.data.file.name + ' uploaded. Response: ' + resp.data);
+    //         $scope.imagenPrincipalFilename = resp.config.data.file.name; // guardar el nombre del archivo (para enviar filename a la base de datos)
+    //         Evento.update($scope.id, {imagenPrincipal: resp.config.data.file.name}).
+    //         then(function(res){
+    //             console.log("Evento actualizado para imagen principal");
+    //         }, function(res){
+    //             console.log("Error al agregar imagen principal en base de datos");
+    //         });
+    //     }, function (resp) {
+    //         console.log('Error status: ' + resp.status);
+    //     }, function (evt) {
+    //         var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+    //         console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+    //     });
+    // };
 
     // Busca asíncronamente lugar(es) por su nombre. Devulve un arreglo de lugares desde la base de datos
     $scope.searchPlace = function(val){
@@ -86,12 +92,11 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
             $scope.showDirection = false; // Al ser agregado exitosamente oculta el formulario de Lugar
             $scope.lugar = undefined; // y limpia el campo (input) para seleccionar dicho lugar
         }, function(res){
-            // Error on create
-            console.log('Error de conexión.');
+            console.log('Error de conexión con la base de datos para crear un nuevo lugar.');
         });
     };
 
-    // Copia $scope del evento y hace un parse para realizadores, id lugar e imagenPrincipal.
+    // Copia $scope del evento y hace un parse para realizadores y id lugar.
     // Devuelve un objeto con los datos del evento.
     $scope.crearEvento = function(){
         var evento = $scope.evento;
@@ -104,24 +109,44 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
         if($scope.asyncLugar)
             evento.lugar = $scope.asyncLugar._id;
         // Agregar el nombre del archivo, solo si se agregó imagen
-        if($scope.imagenPrincipalFilename)
-            evento.imagenPrincipal = $scope.imagenPrincipalFilename;
+        // if($scope.imagenPrincipalFilename)
+        //     evento.imagenPrincipal = $scope.imagenPrincipalFilename;
         return evento;
     };
 
-    // Envia asincronamente la imagen al servidor (en caso de haber agregado)
-    // y los datos del evento a la base de datos.
     $scope.enviar = function(){
-        if ($scope.imagenPrincipal){ // Si se agregó imagen, subirla al servidor
-            $scope.upload($scope.imagenPrincipal);
-        }
-        var evento = $scope.crearEvento(); // Obtener los datos del evento
+        var evento = $scope.crearEvento();
 
-        Evento.create(evento) // Subir la información del evento a la base de datos
-        .then(function(res){
-            console.log("Evento creado!");
-        }, function(res){
-            console.log("ERROR: ", res);
-        });
+        if ($scope.imagenPrincipal){ // Si se agregó imagen, subirla al servidor
+            Upload.upload({
+                url: 'api/upload', // Ruta de Node (usando POST) para el manejo del almacenamiento de la imagen
+                data: {file: $scope.imagenPrincipal} // Se pueden incluir datos adicionales (ej. {file: file, 'username': 'Roy'})
+            }).then(function (resp) {
+                console.log('Success ' + resp.config.data.file.name + ' uploaded. Response: ' + resp.data);
+                evento.imagenPrincipal = resp.config.data.file.name; // Agregar el nombre de la imagen recien subida al servidor
+                Evento.create(evento) // Subir la información del evento a la base de datos
+                .then(function(res){
+                    console.log("Evento creado exitosamente", res.data.id);
+                    alert("Se ha creado el evento. Serás redirigido a la página de eventos.");
+                    $location.url('/eventos'); // Redirigir a la página de eventos
+                }, function(res){
+                    console.log("Error de conexión con la base de datos para la creación del evento.", res);
+                });
+            }, function (resp) {
+                console.log('Error status: ' + resp.status);
+            }, function (evt) {
+                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+            });
+        }else{
+            Evento.create(evento) // Subir la información del evento a la base de datos
+            .then(function(res){
+                console.log("Evento creado exitosamente", res.data.id);
+                alert("Se ha creado el evento. Serás redirigido a la página de eventos.");
+                $location.url('/eventos'); // Redirigir a la página de eventos
+            }, function(res){
+                console.log("Error de conexión con la base de datos para la creación del evento.", res);
+            });
+        }
     };
 });

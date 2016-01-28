@@ -70,7 +70,8 @@ router.route('/')
         evento.save(function(err){
             if(err)
                 res.send(err);
-            res.json({message: 'Evento creado'});
+            console.log("Id evento: ", evento._id);
+            res.json({message: 'Evento creado', id: evento._id});
         })
     })
 
