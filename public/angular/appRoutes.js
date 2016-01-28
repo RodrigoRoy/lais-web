@@ -21,6 +21,10 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 			controller: 'EventoFormController'
 		})
 
+		.when('/usuarios',{
+			templateUrl: 'angular/views/pages/usuarios.html'
+		})
+
 		.when('/eventos/busqueda/:query',{
 			templateUrl: 'angular/views/pages/eventosBusqueda.html',
 			controller: 'EventosBusquedaController'
