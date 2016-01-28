@@ -10,16 +10,30 @@ angular.module('EventosCtrl', []).controller('EventosController', function ($sco
 		.then(function(res){ 
 			$scope.eventos = res.data; //Todos los eventos
 			$scope.totalItems = res.data.length; //Número total de eventos
-
 		}, function(res){ 
 			alert('Error de Conexión con la Base de Datos');
 		});
 
 	$scope.buscar = function (query){
-		if(query){
+		if(query)
 			$location.url('/eventos/busqueda/'+query)
-		}	
-		
 	}
+
+	// Objeto contenedor de filtros. Hace referencia a cada checkbox en la vista.
+	$scope.filterModel = {
+		academico: true,
+		docencia: true
+	};
+	// Función que se manda a llamar durante el filtrado de Angular en la vista (ng-repeat) de los eventos.
+	// Recibe como parémetro el evento (value), su índice (index) y el arreglo completo con los eventos (array)
+	// Devuelve true si alguno de los checkboxs de filtrado (filterModel) es verdadero, false en otro caso.
+	$scope.filterType = function(value, index, array){
+		// if($scope.filterModel.academico && (value.tipo === 'academico'))
+		// 	return true;
+		// if($scope.filterModel.docencia && (value.tipo === 'docencia'))
+		// 	return true;
+		// return false;
+		return ($scope.filterModel.academico && (value.tipo === 'academico')) || ($scope.filterModel.docencia && (value.tipo === 'docencia'));
+	};
 	
 });

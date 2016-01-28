@@ -1,5 +1,5 @@
 <!-- Página que muestra todos los eventos que se tiene, ya sean de docencia o académicos -->
-<div class="container" id="secEventos" ng-controller="EventosController">
+<div class="container" id="secEventos">
 	<hr>
 	<div class="row">
 		<div class="col-lg-8">
@@ -16,9 +16,18 @@
 			</div><!-- /input-group -->
 		</div>
 	</div>
+
+	Filtro
+	<label class="checkbox-inline">
+		<input type="checkbox" ng-model="filterModel.academico"> Académico
+	</label>
+	<label class="checkbox-inline">
+		<input type="checkbox" ng-model="filterModel.docencia"> Docencia
+	</label>
+
 	<hr>
 	<div class="row">
-		<div class="col-sm-6 col-md-4" ng-repeat="evento in eventos.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
+		<div class="col-sm-6 col-md-4" ng-repeat="evento in eventos.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | filter: filterType">
 			<a href="/eventos/{{evento._id}}">
 				<div class="thumbnail">
 			  		<img id="imagen" src="imgs/{{evento.imagenPrincipal}}" alt="imagen-{{evento.titulo}}">
