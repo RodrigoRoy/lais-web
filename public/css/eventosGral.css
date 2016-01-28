@@ -4,8 +4,22 @@
 para mostrar todos los eventos*/
 #secEventos{
 	margin-top: 8%;
+	width: 95%;
 }
 
 #buscador{
 	margin-top: 5%;
+}
+
+#evento{
+	width: 100%;
+}
+
+#imagen{
+	height: 240px;
+	width: 100%;
+}
+
+#texto{
+	height: 220px;
 }
