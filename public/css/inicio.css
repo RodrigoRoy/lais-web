@@ -1,3 +1,7 @@
+#inicio{
+	margin-top: 3%;
+}
+
 
 /*Cambiar el background de la seccion de historia*/
 #historia{
@@ -6,13 +10,13 @@
 
 /*controla la separación del margin-top con la sección del carusel con respecto del navbar*/
 #secCarrusel{
-	margin-top:-7%;
+	margin-top: -7%;
 }
 
 /*Controla el tamaño del carusel de eventos*/
 #carrusel{
-	width: 70%;
-	margin-top: -1%;
+	width: 65%;
+	margin-top: 0%;
 }
 
 /* Controla el tamaño de las imagenes de recursos en linea(metadoc, huellas de luz,..)*/
@@ -20,4 +24,12 @@
 	width: 250px;
 	height: 250px;
 	display: inline-block;
+}
+
+#headerIcon{
+	margin-top: -3%;
+}
+
+#iconoLAIS{
+	margin-top: -91%;
 }

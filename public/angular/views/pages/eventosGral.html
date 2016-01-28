@@ -20,9 +20,9 @@
 	<div class="row">
 		<div class="col-sm-6 col-md-4" ng-repeat="evento in eventos.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
 			<a href="/eventos/{{evento._id}}">
-				<div class="thumbnail" style="height: 400px">
-			  		<img src="imgs/{{evento.imagenPrincipal}}" alt="imagen-{{evento.titulo}}">
-		  			<div class="caption">
+				<div class="thumbnail">
+			  		<img id="imagen" src="imgs/{{evento.imagenPrincipal}}" alt="imagen-{{evento.titulo}}">
+		  			<div class="caption" id="texto">
 		    			<h3>{{evento.titulo}}</h3>
 		    			<p>{{evento.descripcion}}</p>
 		  			</div>
