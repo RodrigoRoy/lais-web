@@ -28,6 +28,7 @@ router.route('/')
 	// Obtener todos los eventos
 	.get(function(req, res){
         Evento.find() // encontrar todos
+        .sort({fechaCreacion: 'desc'})
         .populate('lugar') // poblar la referencia a "lugar"
         .exec(function(err, eventos){
             if(err)
