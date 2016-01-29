@@ -27,7 +27,7 @@
 
 	<hr>
 	<div class="row">
-		<div class="col-sm-6 col-md-4" ng-repeat="evento in eventos.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | filter: filterType">
+		<div class="col-sm-6 col-md-4" ng-repeat="evento in eventos.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
 			<a href="/eventos/{{evento._id}}">
 				<div class="thumbnail">
 			  		<img id="imagen" src="imgs/eventos/{{evento.imagenPrincipal}}" alt="imagen-{{evento.titulo}}">
