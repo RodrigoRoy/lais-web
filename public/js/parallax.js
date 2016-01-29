@@ -9,8 +9,8 @@ $(function() {
     $('a.page-scroll').bind('click', function(event) {
         var $anchor = $(this);
         $('html, body').stop().animate({
-            scrollTop: $($anchor.attr('ng-href')).offset().top
-        }, 1500, 'easeInOutExpo');
+            scrollTop: $($anchor.attr('href')).offset().top
+        }, 1400, 'easeInOutExpo');
         event.preventDefault();
     });
 });
@@ -20,6 +20,7 @@ $(function() {
 $('body').scrollspy({
     target: '.navbar-fixed-top'
 })
+
 
 // Closes the Responsive Menu on Menu Item Click
 $('.navbar-collapse ul li a').click(function() {
