@@ -16,7 +16,7 @@ var EventoSchema = new Schema({
     tipo: {type: String, enum: tipos},
     
     fecha: {type: Date},
-    //fechaFin: {type: Date},
+    fechaFin: {type: Date},
     horario: {type: Date},
     //horarioFin: {type: Date},
 
@@ -27,6 +27,7 @@ var EventoSchema = new Schema({
     lugar: {type: mongoose.Schema.Types.ObjectId, ref: 'Lugares'},
     //creador: {type: mongoose.Schema.Types.ObjectId, ref: 'Usuarios'},
     //keywords: [String],
+    notas: {type: String},
     fechaCreacion: {type: Date, default: Date.now}
 });
 

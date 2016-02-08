@@ -65,7 +65,9 @@ router.route('/')
 	    if(req.body.realizador)
 	    	evento.realizador = req.body.realizador; //.split(/\s*,\s*/);
 	    if(req.body.lugar)
-	     	evento.lugar = req.body.lugar; // id del lugar
+            evento.lugar = req.body.lugar; // id del lugar
+        if(req.body.notas)
+            evento.notas = req.body.notas;
 	    evento.fechaCreacion = new Date(); // fecha de creación automática al momento
 
         evento.save(function(err){
@@ -154,6 +156,8 @@ router.route('/:evento_id')
                 evento.realizador = req.body.realizador; //.split(/\s*,\s*/);
             if(req.body.lugar)
                 evento.lugar = req.body.lugar; // id del lugar
+            if(req.body.notas)
+                evento.notas = req.body.notas;
             evento.fechaCreacion = new Date(); // fecha de creación auto-actualizada
 
             evento.save(function(err){

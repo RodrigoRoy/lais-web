@@ -89,6 +89,13 @@
             </div>
             <button class="btn btn-default" type="button" ng-show="!showDirection && !asyncLugar" ng-click="openLugarForm()">Agregar dirección</button>
         </div>
+
+        <!-- NOTAS -->
+        <div class="form-group" ng-class="{'has-error': eventoForm.notas.$dirty && eventoForm.notas.$invalid}">
+            <label class="control-label" for="notas">Notas</label>
+            <textarea class="form-control" rows="3" name="notas" id="notas" placeholder="Información adicional acerca del evento" ng-model="evento.notas" ng-trim></textarea>
+            <div ng-messages="eventoForm.notas.$error" ng-show="eventoForm.notas.$dirty && eventoForm.notas.$invalid"><div ng-messages-include="error-messages"></div></div>
+        </div>
         
         <button type="submit" class="btn btn-primary" ng-disabled="eventoForm.$invalid" ng-click="enviar()">Agregar evento</button>
     </form>
