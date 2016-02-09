@@ -6,17 +6,13 @@ body{
 /*Footer*/
 footer{
 	background-color: white;
-   	/*
-   	position:fixed;
-   	left:0px;
-   	bottom:0px;
-   	width:100%;
-   	height: 80px;
-   	/*background:#999;*/
-
 }
 
-
+/* Margen superior e inferior para el contenido de cada página dentro de <div ng-view>*/
+[ng-view]{
+  margin-top: 8em;
+  margin-bottom: 2em;
+}
 
 /*Secciones de las etiquestas de los dropdowns menu*/
 #seclabel{
@@ -24,16 +20,16 @@ footer{
 }
 
 /*Icono de usario para iniciar sesion*/
-#imgUser{
+/*#imgUser{
 	vertical-align: middle;
     margin-top: -6px;
     margin-right: 20px;
-}
+}*/
 
 /*Icono dentro del stack(user)*/
-#iconUser{
+/*#iconUser{
 	margin-top: -6%;
-}
+}*/
 
 /* Seccion del logo */
 #secLogo{
@@ -41,4 +37,3 @@ footer{
 	margin-top: -20%;
 
 }
-

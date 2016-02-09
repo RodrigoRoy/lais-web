@@ -96,7 +96,7 @@
 		                        	</li>
 		                        </ul>
 		                    </li>
-		                    <li ng-show="!sesion">
+		                    <!-- <li ng-show="!sesion">
 		                    	<a href="" ng-click="open()">
 							    	<span id="imgUser" class="fa-stack fa-lg">
 									  	<i class="fa fa-square-o fa-stack-2x"></i>
@@ -123,7 +123,7 @@
 		                        		<a ng-click="cerrarSesion()" id="seclabel" href="">Cerrar Sesion</a>
 		                        	</li>
 		                        </ul>
-		                    </li>
+		                    </li> -->
 		                </ul>
 		            </div>
 		            <!-- /.navbar-collapse -->
@@ -151,8 +151,14 @@
 	                    </ul>
 	                </div>
 	                <div class="col-md-4">
-	                    <ul class="list-inline quicklinks">
+	                    <ul class="list-unstyled quicklinks">
 	                        <li><a href="#">Ligas de Interes</a>
+	                        </li>
+	                        <li ng-show="!sesion">
+	                        	<a href="" ng-click="open()">Login LAIS</a>
+	                        </li>
+	                        <li ng-show="sesion">
+	                        	<a href="" ng-click="cerrarSesion()">Logout LAIS</a>
 	                        </li>
 	                    </ul>
 	                </div>
@@ -161,23 +167,28 @@
 	    </footer>
 
 	    <!-- Modal Script para Iniciar Sesion-->
-	    <script type="text/ng-template" id="iniciasSesionModalContent.html">
+	    <script type="text/ng-template" id="loginModalContent.html">
 	    	<div class="modal-header">
-	    		<h3 class="modal-title">Autentificación LAIS</h3>
+	    		<h3 class="modal-title">Login</h3>
 	    	</div>
 		    <div class="modal-body">
-	    		<div class="input-group input-group-lg">
-					<span class="input-group-addon"><i class="fa fa-user"></i></span>
-					<input ng-model="user" type="text" class="form-control" placeholder="Usuario" aria-describedby="sizing-addon1">
-				</div>
-				<hr>
-				<div class="input-group input-group-lg">
-					<span class="input-group-addon"><i class="fa fa-key"></i></span>
-					<input ng-model="pass" type="password" class="form-control" placeholder="Contraseña" aria-describedby="sizing-addon1">
-				</div>
+		    	<form name="loginForm" id="loginForm" role="form" novalidate>
+		    		
+		    		<div class="input-group" style="margin-bottom: 1em">
+						<span class="input-group-addon" id="username"><i class="fa fa-user"></i></span>
+						<input ng-model="username" type="text" class="form-control" placeholder="Usuario" aria-describedby="username" required>
+					</div>
+					
+					<div class="input-group" style="margin-bottom: 1em">
+						<span class="input-group-addon" id="password"><i class="fa fa-key"></i></span>
+						<input ng-model="password" type="password" class="form-control" placeholder="Contraseña" aria-describedby="password" required>
+					</div>
+
+					<button class="btn btn-primary" type="button" ng-click="iniciarSesion(username, password)">Iniciar Sesion</button>
+				</form>
         	</div>
 	        <div class="modal-footer">
-	            <button class="btn btn-primary" type="button" ng-click="iniciarSesion(user,pass)">Iniciar Sesion</button>
+	        	<button class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
 	        </div>
 	    </script>	
 

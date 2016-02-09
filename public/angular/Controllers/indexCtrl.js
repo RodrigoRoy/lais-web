@@ -12,30 +12,27 @@ angular.module('IndexCtrl',[]).controller('IndexController', function ($scope, $
 	    	$scope.isIndex = false;
 	});
 
-  	$scope.animationsEnabled = true; //Variable para hacer la animacion del modal
+	if(localStorage.getItem("sesion")){
+		$scope.sesion = true;
+		//console.log("No vacio",$scope.sesion);
+	}else{
+		$scope.sesion = false;
+		//console.log("vacio",$scope.sesion);
+	}
 
 	//Función que inicializa y abre el modal con su respectivo template, asociado a un controlador
-	$scope.open = function (size) {
+	$scope.open = function() {
 		var modalInstance = $uibModal.open({
-			animation: $scope.animationsEnabled,
-		  	templateUrl: 'iniciasSesionModalContent.html',
+			animation: true,
+		  	templateUrl: 'loginModalContent.html',
 		  	controller: 'AuthController'
 		});
 	};
 
-
-	if(localStorage.getItem("sesion")){
-		$scope.sesion = true;
-		console.log("No vacio",$scope.sesion);
-	}else{
-		$scope.sesion = false;
-		console.log("vacio",$scope.sesion);
-	}
-
 	//Funcion que cierra sesion
 	$scope.cerrarSesion = function (){
 		localStorage.removeItem("sesion");
-		console.log("Cerrar Sesion",localStorage.getItem("sesion"));
+		//console.log("Cerrar Sesion",localStorage.getItem("sesion"));
 		window.location.reload();
 	}
 
@@ -46,9 +43,7 @@ angular.module('AuthCtrl',[]).controller('AuthController', function ($scope, $lo
 	
 	/*Funcion que inicia sesion y verifica si todo es correcto*/
 	$scope.iniciarSesion = function (user, pass){
-		console.log("Usuario");
-		//console.log(user);
-		//console.log(pass);
+		//console.log("Usuario");
 		Usuario.sign(
 			{
 				"username": user,
@@ -59,15 +54,18 @@ angular.module('AuthCtrl',[]).controller('AuthController', function ($scope, $lo
 					$scope.token = res.data.token;
 					//console.log("Toke",$scope.token);
 					
-					localStorage.setItem("sesion",$scope.token); //LocalStorage de inicio de sesion
+					localStorage.setItem("sesion", $scope.token); //LocalStorage de inicio de sesion
 					//console.log("Sesion",localStorage.getItem("sesion"));
 					window.location.reload();
 				}else{ //No es correcto el inicio de sesion
 					console.log("Usuario o Password incorrectos");
-					
 				}
 			}, function (data, status){ //Mal conexion con el servidor
 				console.log("Error con el servidor");
 			});
+	};
+
+	$scope.cancel = function () {
+		$uibModalInstance.dismiss('cancel');
 	};
 });
