@@ -10,7 +10,7 @@ var secret = require('../../config').jwt;
 router.post('/authenticate', function(req, res){
     Usuario.findOne({
         username: req.body.username
-    }).select('username password').exec(function(err, usuario){
+    }).select('username password permisos').exec(function(err, usuario){
         if(err)
             throw err;
 
