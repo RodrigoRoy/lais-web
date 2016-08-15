@@ -1,6 +1,5 @@
 /*Seccion del body completo*/
 body{
-	/*background-color: #819E87;*/
 	background-color: rgba(0, 0, 0, 0.865);
 }
 
@@ -37,4 +36,12 @@ footer{
 	width: 48%;
 	margin-top: -20%;
 
+}
+
+/*Estilo a usar en dispositivos no-móviles (ancho > 768px)*/
+@media (min-width: 768px) {
+	/*Correccion para que el lado derecho del menu no quede pegado al borde*/
+	.nav{
+		padding-right: 15px;
+	}
 }
