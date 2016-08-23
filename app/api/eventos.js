@@ -29,7 +29,7 @@ router.route('/')
 	.get(function(req, res){
         Evento.find() // encontrar todos
         .sort({fechaCreacion: 'desc'})
-        .populate('lugar') // poblar la referencia a "lugar"
+        // .populate('lugar') // poblar la referencia a "lugar"
         .exec(function(err, eventos){
             if(err)
                 res.send(err);
@@ -68,6 +68,8 @@ router.route('/')
             evento.lugar = req.body.lugar; // id del lugar
         if(req.body.notas)
             evento.notas = req.body.notas;
+        if(req.body.documentos)
+            evento.documentos = req.body.documentos;
 	    evento.fechaCreacion = new Date(); // fecha de creación automática al momento
 
         evento.save(function(err){
@@ -95,7 +97,7 @@ router.route('/news')
 router.route('/find')
     .get(function(req, res){
         Evento.find()
-        .populate('lugar')
+        //.populate('lugar')
         .exec(function(err, eventos){
             if(err)
                 res.send(err);
@@ -117,7 +119,7 @@ router.route('/:evento_id')
 	// Obtener un evento particular (mediante el ID)
     .get(function(req, res){
         Evento.findById(req.params.evento_id)
-        .populate('lugar')
+        // .populate('lugar')
         .exec(function(err, evento){
             if(err)
                 res.send(err);
@@ -158,6 +160,8 @@ router.route('/:evento_id')
                 evento.lugar = req.body.lugar; // id del lugar
             if(req.body.notas)
                 evento.notas = req.body.notas;
+            if(req.body.documentos)
+                evento.documentos = req.body.documentos;
             evento.fechaCreacion = new Date(); // fecha de creación auto-actualizada
 
             evento.save(function(err){

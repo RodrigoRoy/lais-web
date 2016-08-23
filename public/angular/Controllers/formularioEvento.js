@@ -187,40 +187,16 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
     //         });
     //     }
     // };
-    $scope.enviar = function(){
-        var evento = $scope.crearEvento();
 
-        if ($scope.imagenPrincipal){ // Si se agregó imagen, subirla al servidor
-            Upload.upload({
-                url: 'api/upload', // Ruta de Node (usando POST) para el manejo del almacenamiento de la imagen
-                data: {file: $scope.imagenPrincipal} // Se pueden incluir datos adicionales (ej. {file: file, 'username': 'Roy'})
-            }).then(function (resp) {
-                console.log('Success ' + resp.config.data.file.name + ' uploaded. Response: ' + resp.data);
-                evento.imagenPrincipal = resp.config.data.file.name; // Agregar el nombre de la imagen recien subida al servidor
-                Evento.create(evento) // Subir la información del evento a la base de datos
-                .then(function(res){
-                    console.log("Evento creado exitosamente", res.data.id);
-                    alert("Se ha creado el evento. Serás redirigido a la página de eventos.");
-                    $location.url('/eventos'); // Redirigir a la página de eventos
-                }, function(res){
-                    console.log("Error de conexión con la base de datos para la creación del evento.", res);
-                });
-            }, function (resp) {
-                console.log('Error status: ' + resp.status);
-            }, function (evt) {
-                var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-                console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-            });
-        }else{
-            Evento.create(evento) // Subir la información del evento a la base de datos
-            .then(function(res){
-                console.log("Evento creado exitosamente", res.data.id);
-                alert("Se ha creado el evento. Serás redirigido a la página de eventos.");
-                $location.url('/eventos'); // Redirigir a la página de eventos
-            }, function(res){
-                console.log("Error de conexión con la base de datos para la creación del evento.", res);
-            });
-        }
+    $scope.enviar = function(){
+        Evento.create($scope.evento) // Subir la información del evento a la base de datos
+        .then(function(res){
+            console.log("Evento creado exitosamente", res.data.id);
+            alert("Se ha guardado la información del evento.\nSerás redirigido a la página de eventos.");
+            $location.url('/eventos'); // Redirigir a la página de eventos
+        }, function(res){
+            console.log("Error de conexión con la base de datos para la creación del evento.", res);
+        });
     };
 
     // Sube archivo (imagen) al servidor

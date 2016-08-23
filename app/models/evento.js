@@ -16,7 +16,7 @@ var EventoSchema = new Schema({
     tipo: {type: String, enum: tipos},
     
     fecha: {type: Date},
-    fechaFin: {type: Date},
+    // fechaFin: {type: Date},
     horario: {type: Date},
     //horarioFin: {type: Date},
 
@@ -24,10 +24,12 @@ var EventoSchema = new Schema({
     //imagen: [{type: String}],
     realizador: [{type: String}],
     
-    lugar: {type: mongoose.Schema.Types.ObjectId, ref: 'Lugares'},
+    // lugar: {type: mongoose.Schema.Types.ObjectId, ref: 'Lugares'},
+    lugar: {type: String},
     //creador: {type: mongoose.Schema.Types.ObjectId, ref: 'Usuarios'},
     //keywords: [String],
     notas: {type: String},
+    documentos: [{type: String}],
     fechaCreacion: {type: Date, default: Date.now}
 });
 
