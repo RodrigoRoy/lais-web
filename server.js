@@ -48,14 +48,32 @@ var fs = require('fs'); // File system utility
 var multipart = require('connect-multiparty'); // connect middleware (upload handler)
 var multipartMiddleware = multipart({uploadDir: './public/imgs/eventos' }); // definir ruta para archivos
 app.post('/api/upload', multipartMiddleware, function(req, res){ // refinir ruta para HTTP POST
-	console.log("  req.body", req.body); // Datos adicionales enviados
-	console.log("Información del archivo")
+	//console.log("  req.body", req.body); // Datos adicionales enviados
+	console.log("Información del archivo");
 	console.log(req.files);
-	fs.rename(req.files.file.path, 'public/imgs/eventos/' + req.files.file.name, function (err){ // renombrar archivo (usa el nombre original)
+	fs.rename(req.files.file.path, 'public/imgs/eventos/' + req.files.file.name, function (err){ // renombrar archivo (usar el nombre original)
 		if(err)
 			throw err;
 		res.json({"status": "OK"}); // responder al cliente 
 	});
+});
+var multipartMiddleware = multipart({uploadDir: './public/docs/eventos'}); // definir ruta para archivos
+app.post('/api/uploadFiles', multipartMiddleware, function(req, res){ // refinir ruta para HTTP POST
+	//console.log("  req.body", req.body); // Datos adicionales enviados
+	console.log("Información de archivos");
+	console.log(req.files);
+	for(var i in req.files.file){ // iterar en todos los archivos
+		fs.rename(req.files.file[i].path, 'public/docs/eventos/' + req.files.file[i].name, function(err){ // renombrar archivo (usar el nombre original)
+			if(err)
+				throw err;
+		})
+	}
+	res.json({"status": "OK"}); // responder al cliente 
+	// fs.rename(req.files.file.path, 'public/imgs/eventos/' + req.files.file.name, function (err){ // renombrar archivo (usa el nombre original)
+	// 	if(err)
+	// 		throw err;
+	// 	res.json({"status": "OK"}); // responder al cliente 
+	// });
 });
 // ***** END TESTING UPLOADS *****
 

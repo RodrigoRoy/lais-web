@@ -8,9 +8,9 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 			templateUrl: 'angular/views/pages/inicio.html'
 		})
 
-		.when('/Registro',{
-			templateUrl: 'angular/views/usuarioRegistro.html'
-		})
+		// .when('/registro',{
+		// 	templateUrl: 'angular/views/usuarioRegistro.html'
+		// })
 
 		.when('/eventos', {
 			templateUrl: 'angular/views/pages/eventosGral.html',
