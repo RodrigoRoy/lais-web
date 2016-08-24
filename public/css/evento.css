@@ -1,20 +1,17 @@
-body{
-}
-
-#eventoContenedor{
+/*.eventContainer{
 	margin-top: 10%;
 	width: 80%;
-}
+}*/
 
-h1{
-	color: white;
-}
-
-#separadorInicio{
-	margin-top: 10%;
-}
-
-#secRealizadores{
+/*.author{
 	font-size: 14px;
-    margin-left: 72%;
+}*/
+
+#map {
+	width: 100%;
+	height: 200px;
+}
+
+.capitalize:first-letter{
+	text-transform: uppercase;
 }

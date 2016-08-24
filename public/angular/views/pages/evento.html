@@ -1,22 +1,38 @@
 <!--Página que muestra toda la información referente a un evento en particular-->
 
-<div class="container" id="eventoContenedor">
-	<hr>	
+<div class="container">
+	<!-- <hr> -->
 	<div class="jumbotron">
 		<center>
-			<img class="img-responsive img-rounded" src="imgs/eventos/{{imagenPrincipal}}">
-			<h1>{{titulo}}</h1>
+			<h1>{{evento.titulo}}</h1>
+			<img class="img-responsive img-rounded" src="imgs/eventos/{{evento.imagenPrincipal}}">
 		</center>
-		<p ng-show="realizador" id="secRealizadores">Por: {{realizador}}</p>
-		<hr id="separadorInicio">
-		<p ng-bind-html="contenidoHTML"></p>
+		<p ng-show="evento.realizador" class="text-center">{{realizador}}</p>
 		<hr>
-		<h3>Dirección: </h3>
-		<p>{{direccion}}</p>
+		<p ng-bind-html="evento.contenidoHTML"></p>
 		<hr>
-		<h3>Tipo: </h3>
-		<p>{{tipo}}</p>
-		<hr>
-		<p ng-show="tels"><i ng-show="tels" class="fa fa-phone-square"></i>{{tels}}</p>
+		<div ng-show="direccion">
+			<h4>Dirección</h4>
+			<p>{{direccion}}</p>
+			<div id="map"></div>
+		</div>
+		<div ng-show="evento.tipo">
+			<h4>Tipo de evento</h4>
+			<p class="capitalize">{{evento.tipo}}</p>
+		</div>
+		<div ng-if="evento.fecha">
+			<h4>Fecha <span ng-show="evento.horario">y hora</span></h4>
+			<p class="capitalize">{{evento.fecha | date : 'fullDate'}} <span ng-show="evento.horario">- {{evento.horario | date : 'shortTime'}}</span> </p>
+		</div>
+		<div ng-if="evento.notas">
+			<h4>Notas:</h4>
+			<p>{{evento.notas}}</p>
+		</div>
+		<div ng-if="evento.documentos">
+			<h4>Archivos adjuntos</h4>
+			<ul>
+				<li ng-repeat="documento in evento.documentos"><a href="docs/eventos/{{documento}}" target="_blank">{{documento}}</a></li>
+			</ul>
+		</div>
 	</div>
 </div>
