@@ -7,11 +7,19 @@
 	font-size: 14px;
 }*/
 
+/*Tamaño del mapa con id=map*/
 #map {
 	width: 100%;
 	height: 200px;
 }
 
+/*Pone primera letra de un texto en mayúscula*/
 .capitalize:first-letter{
 	text-transform: uppercase;
+}
+
+/*Convierte las imagenes en responsivas dentro contenido HTML del evento*/
+img{
+	max-width: 100%;
+	height: auto;
 }

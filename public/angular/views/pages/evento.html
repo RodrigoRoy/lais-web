@@ -11,18 +11,18 @@
 		<hr>
 		<p ng-bind-html="evento.contenidoHTML"></p>
 		<hr>
-		<div ng-show="direccion">
+		<div ng-show="geocodeResult">
 			<h4>Dirección</h4>
-			<p>{{direccion}}</p>
+			<p>{{geocodeResult.formatted_address}}</p>
 			<div id="map"></div>
-		</div>
-		<div ng-show="evento.tipo">
-			<h4>Tipo de evento</h4>
-			<p class="capitalize">{{evento.tipo}}</p>
 		</div>
 		<div ng-if="evento.fecha">
 			<h4>Fecha <span ng-show="evento.horario">y hora</span></h4>
 			<p class="capitalize">{{evento.fecha | date : 'fullDate'}} <span ng-show="evento.horario">- {{evento.horario | date : 'shortTime'}}</span> </p>
+		</div>
+		<div ng-show="evento.tipo">
+			<h4>Tipo de evento</h4>
+			<p class="capitalize">{{evento.tipo}}</p>
 		</div>
 		<div ng-if="evento.notas">
 			<h4>Notas:</h4>
