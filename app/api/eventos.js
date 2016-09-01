@@ -49,12 +49,12 @@ router.route('/')
         	evento.contenidoHTML = req.body.contenidoHTML;
 	    if(req.body.fecha)
 	    	evento.fecha = req.body.fecha;
-	    // if(req.body.fechaFin)
-	    // 	evento.fechaFin = req.body.fechaFin;
+	    if(req.body.fechaFin)
+	    	evento.fechaFin = req.body.fechaFin;
 	    if(req.body.horario)
 	    	evento.horario = req.body.horario;
-	    // if(req.body.horarioFin)
-	    // 	evento.horarioFin = req.body.horarioFin;
+	    if(req.body.horarioFin)
+	    	evento.horarioFin = req.body.horarioFin;
 	    if(req.body.tipo)
 	    	evento.tipo = req.body.tipo;
         if(req.body.imagenPrincipal)
@@ -141,12 +141,12 @@ router.route('/:evento_id')
                 evento.contenidoHTML = req.body.contenidoHTML;
             if(req.body.fecha)
                 evento.fecha = req.body.fecha;
-            // if(req.body.fechaFin)
-            //  evento.fechaFin = req.body.fechaFin;
+            if(req.body.fechaFin)
+             evento.fechaFin = req.body.fechaFin;
             if(req.body.horario)
                 evento.horario = req.body.horario;
-            // if(req.body.horarioFin)
-            //  evento.horarioFin = req.body.horarioFin;
+            if(req.body.horarioFin)
+             evento.horarioFin = req.body.horarioFin;
             if(req.body.tipo)
                 evento.tipo = req.body.tipo;
             if(req.body.imagenPrincipal)

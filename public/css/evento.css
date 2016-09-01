@@ -1,12 +1,3 @@
-/*.eventContainer{
-	margin-top: 10%;
-	width: 80%;
-}*/
-
-/*.author{
-	font-size: 14px;
-}*/
-
 /*Tamaño del mapa con id=map*/
 #map {
 	width: 100%;
@@ -22,4 +13,27 @@
 img{
 	max-width: 100%;
 	height: auto;
+}
+
+/*Obliga a que un elemento "baje" de posición al hacer que ocupe todo el ancho para posicionarlo*/
+.full-width{
+	display: block;
+	max-width: 100%;
+}
+
+.drag-drop-area{
+	border: 5px dashed #F5F5F5;
+	/*width: 170px;*/
+	width: 100%;
+	text-align: center;
+	padding: 50px 10px;
+}
+
+.files-upload{
+	margin-top: 0.5em;
+}
+
+.label-lg{
+	margin-right: 1em;
+	font-size: 100%;
 }
