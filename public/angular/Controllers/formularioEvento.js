@@ -7,8 +7,8 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
     
     $scope.calendar = false; // Indicador para mostrar/ocultar el calendario
     $scope.secondCalendar = false; // Indicador para mostrar/ocultar el calendario en FechaFin
-    $scope.hourButton = true;
-    $scope.hourField = false;
+    // $scope.hourButton = true;
+    // $scope.hourField = false;
     
     // https://github.com/angular-ui/bootstrap/issues/3188
     // http://plnkr.co/edit/Ssa7ofSoCiolMqUnVWlq?p=preview
@@ -22,14 +22,13 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
         $event.stopPropagation();
         $scope.secondCalendar = true;
     };
-    $scope.showFechaFin = function(){
-        $scope.fechaFin = true; // Mostrar DIV con texto e input
-    };
-
-    $scope.showHour = function(){
-        $scope.hourField = true;
-        $scope.hourButton = false;
-    };
+    // $scope.showFechaFin = function(){
+    //     $scope.fechaFin = true; // Mostrar DIV con texto e input
+    // };
+    // $scope.showHour = function(){
+    //     $scope.hourField = true;
+    //     $scope.hourButton = false;
+    // };
 
     // $scope.roundTime = function(){ // auxiliar para redondear los minutos a módulo 5
     //     while(($scope.evento.horario.getMinutes() % 5) != 0)

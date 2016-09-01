@@ -37,3 +37,13 @@ img{
 	margin-right: 1em;
 	font-size: 100%;
 }
+
+/* Animación solamente para algunos elementos que aparecen/desaparecen */
+/* Cuando se esconde (mediante ng-show) */
+/*.show-hide.ng-hide-add{
+  animation:0.5s fadeOutUp linear;
+}*/
+/* Cuando se muestra (mediante ng-show) */
+/*.show-hide.ng-hide-remove{
+  animation:0.5s fadeIn linear;
+}*/

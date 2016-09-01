@@ -48,13 +48,13 @@
                             <button type="button" class="btn btn-default" ng-click="openDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                         </span>
                     </div>
-                    <div><button class="btn btn-default" ng-show="evento.fecha && !fechaFin" ng-click="showFechaFin()">Incluir fecha de término <i class="fa fa-calendar" aria-hidden="true"></i></button></div>
+                    <!-- <div><button class="btn btn-default" ng-show="evento.fecha && !fechaFin" ng-click="showFechaFin()">Incluir fecha de término <i class="fa fa-calendar" aria-hidden="true"></i></button></div> -->
                 </div>
             </div>
             
             <div class="col-md-6">
                 <!-- FECHA FINAL -->
-                <div class="form-group" ng-show="evento.fecha && fechaFin">
+                <div class="form-group" ng-show="evento.fecha"> <!-- && fechaFin -->
                     <label class="control-label" for="fechaFin">Fecha final</label>
                     <div class="input-group">
                         <input type="text" id="fechaFin" class="form-control" placeholder="Selecciona una fecha en el calendario" uib-datepicker-popup="dd 'de' MMMM 'de' yyyy (EEEE)" ng-model="evento.fechaFin" min-date="evento.fecha" show-weeks="false" is-open="secondCalendar" close-text="Listo" current-text="Hoy" clear-text="Borrar" readonly>
@@ -73,13 +73,13 @@
                 <div class="form-group">
                     <label class="control-label" for="horario">Horario</label>
                     <uib-timepicker id="horario" ng-model="evento.horario" hour-step="1" minute-step="1"></uib-timepicker>
-                    <div><button class="btn btn-default" ng-show="evento.horario && !hourField" ng-click="showHour()">Incluir hora de término <i class="fa fa-clock-o" aria-hidden="true"></i></button></div>
+                    <!-- <div><button class="btn btn-default" ng-show="evento.horario && !hourField" ng-click="showHour()">Incluir hora de término <i class="fa fa-clock-o" aria-hidden="true"></i></button></div> -->
                 </div>
             </div>
             
             <div class="col-md-6">
                 <!-- HORARIO FIN-->
-                <div class="form-group" ng-show="evento.horario && hourField">
+                <div class="form-group" ng-show="evento.horario"> <!-- && hourField -->
                     <label class="control-label" for="horarioFin">Horario final</label>
                     <uib-timepicker id="horarioFin" ng-model="evento.horarioFin" hour-step="1" minute-step="1"></uib-timepicker>
                 </div>
@@ -119,13 +119,6 @@
             <div id="map"></div>
         </div>
 
-        <!-- NOTAS -->
-        <div class="form-group" ng-class="{'has-error': eventoForm.notas.$dirty && eventoForm.notas.$invalid}">
-            <label class="control-label" for="notas">Notas</label>
-            <textarea class="form-control" rows="3" name="notas" id="notas" placeholder="Información adicional acerca del evento" ng-model="evento.notas" ng-trim></textarea>
-            <div ng-messages="eventoForm.notas.$error" ng-show="eventoForm.notas.$dirty && eventoForm.notas.$invalid"><div ng-messages-include="error-messages"></div></div>
-        </div>
-
         <!-- ARCHIVOS ADJUNTOS -->
         <div class="form-group">
             <label class="control-label" for="ajduntos">Archivos adjuntos</label>
@@ -133,6 +126,13 @@
             <div class="files-upload">
                 <span class="label label-success label-lg" ng-repeat="documento in evento.documentos">{{documento}}</span>
             </div>
+        </div>
+
+        <!-- NOTAS -->
+        <div class="form-group" ng-class="{'has-error': eventoForm.notas.$dirty && eventoForm.notas.$invalid}">
+            <label class="control-label" for="notas">Notas</label>
+            <textarea class="form-control" rows="3" name="notas" id="notas" placeholder="Información adicional acerca del evento" ng-model="evento.notas" ng-trim></textarea>
+            <div ng-messages="eventoForm.notas.$error" ng-show="eventoForm.notas.$dirty && eventoForm.notas.$invalid"><div ng-messages-include="error-messages"></div></div>
         </div>
         
         <button type="submit" class="btn btn-primary" ng-disabled="eventoForm.$invalid" ng-click="enviar()">Agregar evento</button>
