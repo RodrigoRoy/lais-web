@@ -42,7 +42,7 @@ app.use(function(req, res, next){
 // log de todas las peticiones (request) en consola
 app.use(morgan('dev'));
 
-// ***** TESTING UPLOADS *****
+// ***** TESTING UPLOAD *****
 // TODO: colocar en un archivo aparte
 var fs = require('fs'); // File system utility
 var multipart = require('connect-multiparty'); // connect middleware (upload handler)
@@ -75,7 +75,7 @@ app.post('/api/uploadFiles', multipartMiddleware, function(req, res){ // refinir
 	// 	res.json({"status": "OK"}); // responder al cliente 
 	// });
 });
-// ***** END TESTING UPLOADS *****
+// ***** END TESTING UPLOAD *****
 
 // RUTAS PARA EL API
 

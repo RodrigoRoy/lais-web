@@ -1,57 +1,22 @@
 /*
-    Controlador del formulario para eventos.
+    Controlador del formulario para eventos. 
+    Sirve tanto para crear nuevos eventos como para editar los existentes.
 */
 
-angular.module('EventoFormCtrl', []).controller('EventoFormController', function ($scope, $location, Lugar, Evento, Upload) {
+angular.module('EventoFormCtrl', []).controller('EventoFormController', function ($scope, $location, $routeParams, Evento, Upload) {
     $scope.evento = {}; // Contiene los datos del evento
-    
-    $scope.calendar = false; // Indicador para mostrar/ocultar el calendario
-    $scope.secondCalendar = false; // Indicador para mostrar/ocultar el calendario en FechaFin
-    // $scope.hourButton = true;
-    // $scope.hourField = false;
-    
-    // https://github.com/angular-ui/bootstrap/issues/3188
-    // http://plnkr.co/edit/Ssa7ofSoCiolMqUnVWlq?p=preview
-    $scope.openDate = function($event){
-        $event.preventDefault();
-        $event.stopPropagation();
-        $scope.calendar = true;
-    };
-    $scope.openFinalDate = function($event){
-        $event.preventDefault();
-        $event.stopPropagation();
-        $scope.secondCalendar = true;
-    };
-    // $scope.showFechaFin = function(){
-    //     $scope.fechaFin = true; // Mostrar DIV con texto e input
-    // };
-    // $scope.showHour = function(){
-    //     $scope.hourField = true;
-    //     $scope.hourButton = false;
-    // };
-
-    // $scope.roundTime = function(){ // auxiliar para redondear los minutos a módulo 5
-    //     while(($scope.evento.horario.getMinutes() % 5) != 0)
-    //         $scope.evento.horario.setMinutes($scope.evento.horario.getMinutes() + 1);
-    // };
-    // $scope.roundTime();
-
     $scope.maxLengthRealizadores = 10; // Cantidad máxima de realizadores
     $scope.realizadores = [{nombre: ""}]; // Arreglo de "personas" (objetos con propiedad 'nombre')
-    $scope.add = function(){ // Agrega un nuevo realizador (otro input en la vista)
-        if(($scope.realizadores[$scope.realizadores.length - 1].nombre !== "") && ($scope.realizadores.length < $scope.maxLengthRealizadores))
-            $scope.realizadores.push({
-                nombre: ""
-            });
-    };
-
-    // Google Maps map
-    var map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 19.356751, lng: -99.166728}, // Mora Madrid (se actualiza al marker)
-        zoom: 15,
-        disableDefaultUI: true,
+    $scope.calendar = false; // Indicador para mostrar/ocultar el calendario
+    $scope.secondCalendar = false; // Indicador para mostrar/ocultar el calendario en FechaFin
+    $scope.imageContainer = true; // Bandera para mostrar/ocultar elemento DIV para cargar una imagen
+    $scope.edit = false; // Bandera para saber si es edición de un evento o registro de uno nuevo
+    var map = new google.maps.Map(document.getElementById('map'), { // Google Maps map
+        center: {lat: 19.356751, lng: -99.166728}, // Mora Madrid (se actualiza mediante marker)
+        zoom: 15, // Se ven calles y vialidades a buena distancia
+        disableDefaultUI: true, // Ocultar UI para solo darle importancia a la ubicación
         scrollwheel: false, // Evitar hacer zoom con el scroll del mouse
-        styles: [ // Lunar Landscape
+        styles: [ // Estilo visual "Lunar Landscape" obtenido de https://snazzymaps.com/
             {
                 "stylers": [
                     {
@@ -82,33 +47,89 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
             }
         ]
     });
+    var marker; // Único marcador que se muestra según la dirección escrita en $scope.place
+
+    // EDICION
+    // Si se desea editar un evento, se reutiliza el formulario con información para $scope.evento desde la BD
+    if(/edit$/.test($location.path())){ // Prueba con expresión regular para saber si la URL termina con "edit"
+        $scope.edit = true;
+        Evento.get($routeParams.id) // Obtener la información del evento en la base de datos
+        .then(function(res){
+            $scope.evento = res.data // Casi toda la información del evento se asigna directamente
+            // Parse para "Realizadores":
+            if($scope.evento.realizador && $scope.evento.realizador.length > 0){
+                $scope.realizadores = [];
+                for(var i in $scope.evento.realizador)
+                    $scope.realizadores.push({nombre: $scope.evento.realizador[i]});
+            }
+            if($scope.evento.imagenPrincipal){ // Deshabilitar div para imagen si el evento ya tiene una
+                $scope.imageContainer = false;
+            }
+            // Reverse Geocoding para obtener dirección a partir de PlaceID ($scope.evento.lugar)
+            var geocoder = new google.maps.Geocoder;
+            geocoder.geocode({placeId: $scope.evento.lugar}, function(res, status){
+                if(status == google.maps.GeocoderStatus.OK){
+                    marker = new google.maps.Marker({
+                        position: res[0].geometry.location,
+                        map: map,
+                        clickable: false
+                    });
+                    map.setCenter(res[0].geometry.location); // Actualizar vista en mapa para marcar el lugar
+                    $scope.$apply(function(){ // Actualiza binding en llamadas asíncronas
+                        $scope.place = res[0].formatted_address;
+                    });
+                }
+            });
+        }, function(res){
+            console.log("Error de conexión con la base de datos para obtener información del evento.", res);
+        });
+    } // FIN EDICION
+    
+    // Abrir calendarios y hacer que el segundo actualize binding para fecha mínima en base a la primera seleccionada
+    // https://github.com/angular-ui/bootstrap/issues/3188
+    // http://plnkr.co/edit/Ssa7ofSoCiolMqUnVWlq?p=preview
+    $scope.openDate = function($event){
+        $event.preventDefault();
+        $event.stopPropagation();
+        $scope.calendar = true;
+    };
+    $scope.openFinalDate = function($event){
+        $event.preventDefault();
+        $event.stopPropagation();
+        $scope.secondCalendar = true;
+    };
+
+    // Agrega un nuevo realizador (otro input en la vista)
+    $scope.add = function(){
+        if(($scope.realizadores[$scope.realizadores.length - 1].nombre !== "") && ($scope.realizadores.length < $scope.maxLengthRealizadores))
+            $scope.realizadores.push({
+                nombre: ""
+            });
+    };
+
     // Google Maps API Autocomplete
     var options = {
         componentRestrictions: {country: 'mx'}
     };
     var autocomplete = new google.maps.places.Autocomplete(document.getElementById('place'), options);
-    var marker;
-    autocomplete.addListener('place_changed', function(){
+    autocomplete.addListener('place_changed', function(){ // Función cada vez que se selecciona una dirección en <input id="place">
         var place = autocomplete.getPlace();
-        console.log(place);
-        if(place.geometry){
+        if(place.geometry){ // Si es un lugar válido con ubicación LatLng
             if(marker){
                 marker.setMap(null);
             }
             $scope.evento.lugar = place.place_id; // Asignar el ID como "Lugar" para el evento
             marker = new google.maps.Marker({
                 position: place.geometry.location,
-                map: map
-                // animation: google.maps.Animation.DROP
+                map: map,
+                clickable: false
             });
             map.setCenter(place.geometry.location); // Actualizar vista al centro del mapa para marcar el lugar
         }
-        else{
-            console.log("No results");
-            if (marker) {
+        else{ // Si el lugar no tiene LatLng para ubicarlo en el mapa
+            if (marker) // Si ya se tenía seleccionado un lugar válido hay que borrar el marcador del mapa
                 marker.setMap(null);
-            }
-            $scope.evento.lugar = undefined;
+            $scope.evento.lugar = undefined; // También se debe "borrar" el PlaceID asociado
         }
     });
 
@@ -122,27 +143,14 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
                 $scope.evento.realizador[i] = $scope.realizadores[i].nombre;
     };
 
-    $scope.enviar = function(){
-        Evento.create($scope.evento) // Subir la información del evento a la base de datos
-        .then(function(res){
-            console.log("Evento creado exitosamente", res.data.id);
-            alert("Se ha guardado la información del evento.\nSerás redirigido a la página de eventos.");
-            $location.url('/eventos'); // Redirigir a la página de eventos
-        }, function(res){
-            console.log("Error de conexión con la base de datos para la creación del evento.", res);
-        });
-    };
-
-    $scope.showImgDiv = true;
     // Sube archivo (imagen) al servidor
     $scope.uploadImage = function(file){
         Upload.upload({
             url: 'api/upload', // Ruta de Node (usando POST) para el manejo del almacenamiento de la imagen
             data: {file: file} // Se pueden incluir datos adicionales (ej. {file: file, 'username': 'Roy'})
         }).then(function (resp) { // Función cuando el archivo es subido exitosamente
-            // console.log("resp", resp);
-            if(resp.data.status === "OK")
-                console.log("Node responde con status 'OK'");
+            // if(resp.data.status === "OK")
+            //     console.log("Node responde con status 'OK'");
             // console.log('Success ' + resp.config.data.file.name + ' uploaded. Response: ' + resp.data);
             // console.log('return ' + resp.config.data.file.name);
 
@@ -150,7 +158,7 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
             // Esta última sirve para previsualizar la imagen en HTML
             // Asignación del nombre de la imagen a $scope.evento
             $scope.evento.imagenPrincipal = resp.config.data.file.name;
-            $scope.showImgDiv = false;
+            $scope.imageContainer = false;
         }, function (resp) { // Función para manejo de error
             console.log('Error status: ' + resp.status);
         }, function (evt) { // Función para notificar progreso
@@ -165,9 +173,9 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
             url: 'api/uploadFiles', // Ruta de Node (usando POST) para el manejo del almacenamiento de la imagen
             data: {file: file} // Se pueden incluir datos adicionales (ej. {file: file, 'username': 'Roy'})
         }).then(function (resp) { // Función cuando el archivo es subido exitosamente
-            console.log("resp", resp);
-            if(resp.data.status === "OK")
-                console.log("Node responde con status 'OK'");
+            // console.log("resp", resp);
+            // if(resp.data.status === "OK")
+            //     console.log("Node responde con status 'OK'");
             
             // console.log('Success ' + resp.config.data.file.name + ' uploaded. Response: ' + resp.data);
             // console.log('return ' + resp.config.data.file.name);
@@ -183,7 +191,47 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
             console.log('Error status: ' + resp.status);
         }, function (evt) { // Función para notificar progreso
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+            console.log('progress: ' + progressPercentage + '% ');
+        });
+    };
+
+    // Elimina imagen del evento
+    $scope.deleteImage = function(){
+        $scope.evento.imagenPrincipal = undefined;
+        $scope.imageContainer = true;
+    };
+
+    // Elimina un archivo adjunto
+    $scope.deleteFile = function(filename){
+        var index = $scope.evento.documentos.indexOf(filename); // Buscar el indice
+        if(index !== -1){ // Remover de manera segura en el arreglo
+            $scope.evento.documentos.splice(index, 1);
+        }
+        if($scope.evento.documentos.length < 1) // Si no hay más documentos por borrar, eliminar el arreglo vacio
+            $scope.evento.documentos = undefined;
+    };
+
+    // Se ejecuta en clic al botón de envio. Manda la información del evento a la base de datos
+    $scope.enviar = function(){
+        Evento.create($scope.evento) // Subir la información del evento a la base de datos
+        .then(function(res){
+            // console.log("Evento creado exitosamente", res.data.id);
+            alert("Se ha guardado la información del evento.");
+            $location.url('/eventos/' + res.data.id); // Redirigir a la página del evento creado
+        }, function(res){
+            console.log("Error de conexión con la base de datos para la creación del evento.", res);
+        });
+    };
+
+    // Se ejecuta en clic al botón de envio. Manda la información del evento a la base de datos
+    $scope.editar = function(){
+        Evento.update($routeParams.id, $scope.evento) // Subir la información del evento a la base de datos
+        .then(function(res){
+            // console.log("Evento creado exitosamente", res.data.id);
+            alert("Se ha actualizado la información del evento.");
+            $location.url('/eventos/' + $routeParams.id); // Redirigir a la página del evento actualizado
+        }, function(res){
+            console.log("Error de conexión con la base de datos en la edición del evento.", res);
         });
     };
 });

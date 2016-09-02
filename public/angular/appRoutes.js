@@ -22,22 +22,27 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 			controller: 'EventoFormController'
 		})
 
+		.when('/eventos/busqueda/:query',{
+			templateUrl: 'angular/views/pages/eventosBusqueda.html',
+			controller: 'EventosBusquedaController'
+		})
+
+		.when('/eventos/:id/edit',{
+			templateUrl: 'angular/views/pages/formularioEvento.html',
+			controller: 'EventoFormController'
+		})
+
+		.when('/eventos/:id',{
+			templateUrl: 'angular/views/pages/evento.html',
+			controller: 'EventoController'
+		})
+
 		.when('/usuarios',{
 			templateUrl: 'angular/views/pages/usuarios.html'
 		})
 
 		.when('/publicaciones',{
 			templateUrl: 'angular/views/pages/publicaciones.html'
-		})
-
-		.when('/eventos/busqueda/:query',{
-			templateUrl: 'angular/views/pages/eventosBusqueda.html',
-			controller: 'EventosBusquedaController'
-		})
-
-		.when('/eventos/:id',{
-			templateUrl: 'angular/views/pages/evento.html',
-			controller: 'EventoController'
 		})
 
 		// RUTAS INVÁLIDAS (no descritas previamente)

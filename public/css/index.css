@@ -10,7 +10,7 @@ footer{
 
 /* Margen superior e inferior para el contenido de cada página dentro de <div ng-view>*/
 [ng-view]{
-  margin-top: 8em;
+  margin-top: 4em;
   margin-bottom: 2em;
 }
 
@@ -43,5 +43,11 @@ footer{
 	/*Correccion para que el lado derecho del menu no quede pegado al borde*/
 	.nav{
 		padding-right: 15px;
+	}
+
+	/* Margen superior e inferior para el contenido de cada página dentro de <div ng-view>*/
+	[ng-view]{
+	  margin-top: 8em;
+	  margin-bottom: 2em;
 	}
 }

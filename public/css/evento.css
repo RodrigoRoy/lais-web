@@ -9,9 +9,17 @@
 	text-transform: uppercase;
 }
 
-/*Convierte las imagenes en responsivas dentro contenido HTML del evento*/
+/*Convierte las imagenes en responsivas dentro del contenido HTML del evento*/
 img{
 	max-width: 100%;
+	height: auto;
+}
+
+/*Vista previa de una imagen*/
+img.preview{
+	/*height: 120px;
+	width: auto;*/
+	width: 100%;
 	height: auto;
 }
 
@@ -34,7 +42,6 @@ img{
 }
 
 .label-lg{
-	margin-right: 1em;
 	font-size: 100%;
 }
 
@@ -47,3 +54,11 @@ img{
 /*.show-hide.ng-hide-remove{
   animation:0.5s fadeIn linear;
 }*/
+
+@media (min-width: 768px) {
+	/*Vista previa de una imagen*/
+	img.preview{
+		width: 50%;
+		height: auto;
+	}
+}

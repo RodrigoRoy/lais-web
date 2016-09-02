@@ -32,95 +32,121 @@ angular.module('EventoCtrl',[]).controller('EventoController', function ($scope,
 			});
 
 			setTimeout(function(){
-				// Otras alternativas de estilos: ShadesOfGrey, LightDream
-				var mapSylePaleDown = [
-				    {
-				        "featureType": "administrative",
-				        "elementType": "all",
-				        "stylers": [
-				            {
-				                "visibility": "on"
-				            },
-				            {
-				                "lightness": 33
-				            }
-				        ]
-				    },
+				// Otras alternativas de estilos: PaleDown, ShadesOfGrey, LightDream
+				var mapSyle = [ // Subtle Grayscale
 				    {
 				        "featureType": "landscape",
-				        "elementType": "all",
 				        "stylers": [
 				            {
-				                "color": "#f2e5d4"
+				                "saturation": -100
+				            },
+				            {
+				                "lightness": 65
+				            },
+				            {
+				                "visibility": "on"
 				            }
 				        ]
 				    },
 				    {
-				        "featureType": "poi.park",
-				        "elementType": "geometry",
+				        "featureType": "poi",
 				        "stylers": [
 				            {
-				                "color": "#c5dac6"
+				                "saturation": -100
+				            },
+				            {
+				                "lightness": 51
+				            },
+				            {
+				                "visibility": "simplified"
 				            }
 				        ]
 				    },
 				    {
-				        "featureType": "poi.park",
+				        "featureType": "road.highway",
+				        "stylers": [
+				            {
+				                "saturation": -100
+				            },
+				            {
+				                "visibility": "simplified"
+				            }
+				        ]
+				    },
+				    {
+				        "featureType": "road.arterial",
+				        "stylers": [
+				            {
+				                "saturation": -100
+				            },
+				            {
+				                "lightness": 30
+				            },
+				            {
+				                "visibility": "on"
+				            }
+				        ]
+				    },
+				    {
+				        "featureType": "road.local",
+				        "stylers": [
+				            {
+				                "saturation": -100
+				            },
+				            {
+				                "lightness": 40
+				            },
+				            {
+				                "visibility": "on"
+				            }
+				        ]
+				    },
+				    {
+				        "featureType": "transit",
+				        "stylers": [
+				            {
+				                "saturation": -100
+				            },
+				            {
+				                "visibility": "simplified"
+				            }
+				        ]
+				    },
+				    {
+				        "featureType": "administrative.province",
+				        "stylers": [
+				            {
+				                "visibility": "off"
+				            }
+				        ]
+				    },
+				    {
+				        "featureType": "water",
 				        "elementType": "labels",
 				        "stylers": [
 				            {
 				                "visibility": "on"
 				            },
 				            {
-				                "lightness": 20
-				            }
-				        ]
-				    },
-				    {
-				        "featureType": "road",
-				        "elementType": "all",
-				        "stylers": [
+				                "lightness": -25
+				            },
 				            {
-				                "lightness": 20
-				            }
-				        ]
-				    },
-				    {
-				        "featureType": "road.highway",
-				        "elementType": "geometry",
-				        "stylers": [
-				            {
-				                "color": "#c5c6c6"
-				            }
-				        ]
-				    },
-				    {
-				        "featureType": "road.arterial",
-				        "elementType": "geometry",
-				        "stylers": [
-				            {
-				                "color": "#e4d7c6"
-				            }
-				        ]
-				    },
-				    {
-				        "featureType": "road.local",
-				        "elementType": "geometry",
-				        "stylers": [
-				            {
-				                "color": "#fbfaf7"
+				                "saturation": -100
 				            }
 				        ]
 				    },
 				    {
 				        "featureType": "water",
-				        "elementType": "all",
+				        "elementType": "geometry",
 				        "stylers": [
 				            {
-				                "visibility": "on"
+				                "hue": "#ffff00"
 				            },
 				            {
-				                "color": "#acbcc9"
+				                "lightness": -25
+				            },
+				            {
+				                "saturation": -97
 				            }
 				        ]
 				    }
@@ -131,14 +157,15 @@ angular.module('EventoCtrl',[]).controller('EventoController', function ($scope,
 					scrollwheel: false, // Evitar hacer zoom con el scroll del mouse
 					mapTypeControl: false, // Solo muestra el tipo de mapa "TERRAIN"
 					streetViewControl: false, // Oculta la opción "STREET VIEW"
-					styles: mapSylePaleDown
+					styles: mapSyle
 				});
 				var marker = new google.maps.Marker({
 					position: $scope.geocodeResult.geometry.location,
 					map: map,
-					animation: google.maps.Animation.DROP
+					animation: google.maps.Animation.DROP,
+					clickable: false
 				});
-				map.fitBounds($scope.geocodeResult.geometry.viewport); // Actualizar vista en mapa para marcar el lugar
+				map.setCenter($scope.geocodeResult.geometry.location); // Actualizar vista en mapa para marcar el lugar
 			}, 500);
 		});
 })

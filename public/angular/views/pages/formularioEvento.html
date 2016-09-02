@@ -11,7 +11,8 @@
         <span ng-message="pattern" class="help-block">El formato de este campo es incorrecto.</span>
     </script>
 
-    <h1>Agregar nuevo evento</h1>
+    <h1 ng-if="!edit">Agregar nuevo evento</h1>
+    <h1 ng-if="edit">Editar evento</h1>
 
     <!-- Formulario para agregar un nuevo evento a la base de datos -->
     <form name="eventoForm" id="eventoForm" role="form" novalidate>
@@ -107,9 +108,11 @@
         <div class="form-group">
             <label class="control-label" for="imagenPrincipal">Imagen</label>
             <!-- Detalles del componente: https://github.com/danialfarid/ng-file-upload -->
-            <div class="drag-drop-area" ngf-select="uploadImage($file)" ngf-drop="uploadImage($file)" ng-model="imagenPrincipal" ng-show="showImgDiv" name="imagenPrincipal" id="imagenPrincipal" ngf-capture="'camera'" ngf-accept="'image/*'" ngf-pattern="'image/*'"><i class="fa fa-file-image-o"></i> Selecciona o arrastra imagen</div>
+            <div class="drag-drop-area" ngf-select="uploadImage($file)" ngf-drop="uploadImage($file)" ng-model="imagenPrincipal" ng-show="imageContainer" name="imagenPrincipal" id="imagenPrincipal" ngf-capture="'camera'" ngf-accept="'image/*'" ngf-pattern="'image/*'"><i class="fa fa-file-image-o"></i> Selecciona o arrastra imagen</div>
             <!--Previsualización de imagen-->
-            <img class="full-width" ngf-src="imagenPrincipal" ngf-resize="{height: 120, quality: 0.9}">
+            <!-- <img class="full-width" ngf-src="imagenPrincipal" ngf-resize="{height: 120, quality: 0.9}"> -->
+            <img class="preview full-width" ng-show="evento.imagenPrincipal" src="imgs/eventos/{{evento.imagenPrincipal}}">
+            <button type="button" class="btn btn-danger" ng-show="evento.imagenPrincipal" ng-click="deleteImage()">Eliminar <i class="fa fa-times" aria-hidden="true"></i></button>
         </div>
 
         <!-- LUGAR (GOOGLE MAPS) -->
@@ -124,7 +127,12 @@
             <label class="control-label" for="ajduntos">Archivos adjuntos</label>
             <button type="button" class="btn btn-default full-width" name="adjuntos" id="adjuntos" ngf-select="uploadFiles($files)" ng-model="adjuntos" ngf-multiple="true" ngf-keep="'distinct'" ngf-accept="'image/*,.pdf,.doc,.docx'" ngf-max-files="10" ngf-pattern="'image/*,.pdf,.doc,.docx'" ngf-max-size="'1MB'" ngf-max-total-size="'5MB'">Selecciona archivos...</button>
             <div class="files-upload">
-                <span class="label label-success label-lg" ng-repeat="documento in evento.documentos">{{documento}}</span>
+                <ul class="list-inline">
+                    <li ng-repeat="documento in evento.documentos">
+                        <span class="label label-default label-lg">{{documento}} <button type="button" class="btn btn-danger btn-xs" ng-click="deleteFile(documento)"><i class="fa fa-times" aria-hidden="true"></i></button></span>
+                        <!-- <span ng-click="deleteFile(documento)"><i class="fa fa-times" aria-hidden="true"></i></span> -->
+                    </li>
+                </ul>
             </div>
         </div>
 
@@ -135,9 +143,10 @@
             <div ng-messages="eventoForm.notas.$error" ng-show="eventoForm.notas.$dirty && eventoForm.notas.$invalid"><div ng-messages-include="error-messages"></div></div>
         </div>
         
-        <button type="submit" class="btn btn-primary" ng-disabled="eventoForm.$invalid" ng-click="enviar()">Agregar evento</button>
+        <button type="submit" class="btn btn-primary" ng-if="!edit" ng-disabled="eventoForm.$invalid" ng-click="enviar()">Agregar evento</button>
+        <button type="submit" class="btn btn-primary" ng-if="edit" ng-disabled="eventoForm.$invalid" ng-click="editar()">Editar evento</button>
     </form>
 
-    <br>
-    <pre>{{evento | json}}</pre>
+    <!-- <br>
+    <pre>{{evento | json}}</pre> -->
 </div>
