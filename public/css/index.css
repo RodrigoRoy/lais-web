@@ -15,21 +15,9 @@ footer{
 }
 
 /*Secciones de las etiquestas de los dropdowns menu*/
-#seclabel{
-	color: black;
+#dropdown-label{
+	color: #ccc;
 }
-
-/*Icono de usario para iniciar sesion*/
-/*#imgUser{
-	vertical-align: middle;
-    margin-top: -6px;
-    margin-right: 20px;
-}*/
-
-/*Icono dentro del stack(user)*/
-/*#iconUser{
-	margin-top: -6%;
-}*/
 
 /* Seccion del logo */
 #secLogo{
@@ -50,4 +38,84 @@ footer{
 	  margin-top: 8em;
 	  margin-bottom: 2em;
 	}
+
+	/*Secciones de las etiquestas de los dropdowns menu*/
+	#dropdown-label{
+		color: black;
+	}
+}
+
+/*COLORES DE VARIOS ELEMENTOS. 
+BRINDAN LA SENSACIÓN DE UN TEMA BASADO EN LOS SIGUIENTES COLORES:*/
+
+/*Color primario: #c85c2d (naranja)*/
+/*Tono claro: #de7d54*/
+/*Tono oscuro: #a13f16*/
+/*Tono más oscuro: #782400*/
+/*Auxiliares en botones: #b34d23 (oscuro), #cc724d (claro)*/
+
+/*Pseudo elemento en selección de texto*/
+::-moz-selection{ /*Firefox*/
+	background: #de7d54;
+}
+::selection{
+	background: #de7d54;
+}
+/*Navbar background de sección activa*/
+.navbar-default .navbar-nav>.active>a {
+	background-color: #c85c2d;
+}
+/*Navbar background de sección activa (hover) - tono claro*/
+.navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus{
+	background-color: #de7d54;
+}
+/*Navbar texto de sección no-activa (hover)*/
+.navbar-default .nav li a:hover, .navbar-default .nav li a:focus{
+	color: #c85c2d;
+}
+/*Cuadro de navbar activo en menu*/
+.navbar-default .navbar-toggle, .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{
+	background-color: #c85c2d;
+	border-color: #a13f16;
+}
+/*SOBREESCRIBIR estilo de .btn-primary de bootstrap para un botón*/
+.btn-primary{
+	background-color: #c85c2d;
+	border-color: #a13f16;
+}
+.btn-primary:hover, .btn-primary:focus{
+	background-color: #b34d23; /*<--- Color auxiliar entre color primario y oscuro*/
+	border-color: #782400;
+}
+.btn-primary[disabled]{
+	background-color: #de7d54;
+	border-color: #a13f16;
+}
+.btn-primary[disabled]:hover, .btn-primary[disabled]:focus{
+	background-color: #cc724d; /*<--- Color auxiliar entre color primario y claro*/
+	border-color: #a13f16;
+}
+/*Ejemplos: Fondo de ícono LAIS en Inicio*/
+.text-primary{
+	color: #c85c2d;
+}
+/*Enlaces*/
+a{
+	color: #c85c2d;
+}
+/*Enlaces seleccionados*/
+a:hover, a:focus, a:active, a.active{
+	color: #c85c2d;
+}
+/*Botones de redes sociales*/
+ul.social-buttons li a:hover, ul.social-buttons li a:focus, ul.social-buttons li a:active{
+	background-color: #c85c2d;
+}
+/*Encabezados - tono oscuro*/
+.section-heading{
+	color: #a13f16;
+}
+/*Subtítulos en inicio y encabezados (de formulario)*/
+.service-heading, .color-title{
+	color: #c85c2d;
 }

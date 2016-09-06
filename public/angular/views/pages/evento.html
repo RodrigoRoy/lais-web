@@ -7,17 +7,17 @@
 			<h1>{{evento.titulo}}</h1>
 			<img class="img-responsive img-rounded" src="imgs/eventos/{{evento.imagenPrincipal}}">
 		</center>
-		<p ng-show="evento.realizador && evento.realizador.length > 0" class="text-center">{{realizador}}</p>
+		<p ng-show="evento.realizador && evento.realizador.length > 0" class="text-center">Imparte: {{realizador}}</p>
 		<hr>
-		<p ng-bind-html="evento.contenidoHTML"></p>
+		<p class="html-container" ng-bind-html="evento.contenidoHTML"></p>
 		<hr>
-		<div ng-show="geocodeResult">
-			<h4>Dirección</h4>
+		<div class="geocode-direction" ng-show="geocodeResult">
+			<h4 class="subtitle">Dirección</h4>
 			<p>{{geocodeResult.formatted_address}}</p>
 			<div id="map"></div>
 		</div>
 		<div ng-if="evento.fecha">
-			<h4>Fecha <span ng-show="evento.horario">y hora</span></h4>
+			<h4 class="subtitle">Fecha <span ng-show="evento.horario">y hora</span></h4>
 			<p class="capitalize">
 				{{evento.fecha | date : 'fullDate'}}<span ng-show="evento.horarioFin"> al {{evento.fechaFin | date : 'fullDate'}}</span>
 				<span ng-show="evento.horario"><br>
@@ -26,15 +26,15 @@
 			</p>
 		</div>
 		<div ng-show="evento.tipo">
-			<h4>Tipo de evento</h4>
+			<h4 class="subtitle">Tipo de evento</h4>
 			<p class="capitalize">{{evento.tipo}}</p>
 		</div>
 		<div ng-if="evento.notas">
-			<h4>Notas</h4>
+			<h4 class="subtitle">Notas</h4>
 			<p>{{evento.notas}}</p>
 		</div>
 		<div ng-if="evento.documentos && evento.documentos.length > 0">
-			<h4>Archivos adjuntos</h4>
+			<h4 class="subtitle">Archivos adjuntos</h4>
 			<ul>
 				<li ng-repeat="documento in evento.documentos"><a href="docs/eventos/{{documento}}" target="_blank">{{documento}}</a></li>
 			</ul>

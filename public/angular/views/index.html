@@ -24,10 +24,11 @@
 
 	    <!-- Custom Fonts -->
 	    <link href="libs/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
-	    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+	    <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 	    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
 	    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-	    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+	    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'> -->
+	    <link href="https://fonts.googleapis.com/css?family=Droid+Serif|Montserrat|Roboto+Slab" rel="stylesheet">
 	</head>
 
 	<body ng-app="laisApp" ng-controller="IndexController">
@@ -75,13 +76,13 @@
 		                        <a href="" class="dropdown-toggle active"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Eventos <span class="caret"></span></a>
 		                        <ul class="dropdown-menu">
 		                        	<li>
-		                        		<a id="seclabel" href="/eventos">Todos</a>
+		                        		<a id="dropdown-label" href="/eventos">Todos</a>
 		                        	</li>
 		                        	<li>
-		                        		<a id="seclabel" href="#">Académicos</a>
+		                        		<a id="dropdown-label" href="#">Académicos</a>
 		                        	</li>
 		                        	<li>
-		                        		<a id="seclabel" href="#">Docencia</a>
+		                        		<a id="dropdown-label" href="#">Docencia</a>
 		                        	</li>
 		                        </ul>
 		                    </li>
@@ -89,10 +90,10 @@
 		                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acervos <span class="caret"></span></a>
 		                        <ul class="dropdown-menu">
 		                        	<li>
-		                        		<a id="seclabel" href="">Audiovisual</a>
+		                        		<a id="dropdown-label" href="">Audiovisual</a>
 		                        	</li>
 		                        	<li>
-		                        		<a id="seclabel" href="">Fotografico</a>
+		                        		<a id="dropdown-label" href="">Fotografico</a>
 		                        	</li>
 		                        </ul>
 		                    </li>
@@ -114,13 +115,13 @@
 							    
 		                    	<ul class="dropdown-menu">
 		                        	<li>
-		                        		<a id="seclabel" href="">Agregar Usuario</a>
+		                        		<a id="dropdown-label" href="">Agregar Usuario</a>
 		                        	</li>
 		                        	<li>
-		                        		<a id="seclabel" href="/eventos/nuevo">Agregar Evento</a>
+		                        		<a id="dropdown-label" href="/eventos/nuevo">Agregar Evento</a>
 		                        	</li>
 		                        	<li>
-		                        		<a ng-click="cerrarSesion()" id="seclabel" href="">Cerrar Sesion</a>
+		                        		<a ng-click="cerrarSesion()" id="dropdown-label" href="">Cerrar Sesion</a>
 		                        	</li>
 		                        </ul>
 		                    </li> -->
@@ -137,16 +138,7 @@
         <footer>
 	        <div class="container">
 	            <div class="row">
-	                <div class="col-md-4">
-	                    <!-- <span class="copyright">Rodrigo &amp; Sergio</span> -->
-	                    <ul class="list-unstyled quicklinks">
-	                        <li><a href="#">Mapa del sitio</a>
-	                        </li>
-	                        <li><a href="#">Contacto</a>
-	                        </li>
-	                    </ul>
-	                </div>
-	                <div class="col-md-4">
+	                <div class="col-md-4 col-sm-12 col-md-push-4">
 	                    <ul class="list-inline social-buttons">
 	                        <li><a href="https://www.facebook.com/lais.mora.1" target="_blank"><i class="fa fa-facebook"></i></a>
 	                        </li>
@@ -159,7 +151,16 @@
 	                    <h6>Tel. Conmutador 5554 8946 y 55963777</h6>
 	                    <h6><small>INSTITUTO MORA 2016</small></h6>
 	                </div>
-	                <div class="col-md-4">
+	                <div class="col-md-4 col-sm-6 col-md-pull-4"> <!-- col-xs-6 -->
+	                    <!-- <span class="copyright">Rodrigo &amp; Sergio</span> -->
+	                    <ul class="list-unstyled quicklinks">
+	                        <li><a href="#">Mapa del sitio</a>
+	                        </li>
+	                        <li><a href="#">Contacto</a>
+	                        </li>
+	                    </ul>
+	                </div>
+	                <div class="col-md-4 col-sm-6"> <!-- col-xs-6 -->
 	                    <ul class="list-unstyled quicklinks">
 	                        <li><a href="#">Ligas de Interes</a>
 	                        </li>
