@@ -1,11 +1,8 @@
-#inicio{
-	margin-top: 2%;
-}
-
-
-/*Cambiar el background de la seccion de historia*/
-#historia{
-	background-color: white;
+/*Alineación (centrada) de la imagen dentro del slide*/
+.slide-img{
+	/*display: block;*/
+	margin: auto;
+	height: 550px !important;
 }
 
 /*controla la separación del margin-top con la sección del carusel con respecto del navbar*/
@@ -13,10 +10,14 @@
 	margin-top: -7%;
 }
 
-/*Controla el tamaño del carusel de eventos*/
-#carrusel{
-	width: 65%;
-	margin-top: 0%;
+/*Tipografía utilizado en los textos de cada slide*/
+.carousel-caption{
+	font-family: 'Roboto Slab', serif;
+}
+
+/*Cambiar el background de la seccion de historia*/
+#historia{
+	background-color: white;
 }
 
 /* Controla el tamaño de las imagenes de recursos en linea(metadoc, huellas de luz,..)*/

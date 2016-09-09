@@ -1,18 +1,20 @@
-<div id="inicio"> 
+<div>
     <!-- Seccion de carrusel/inicio -->
     <section id="secCarrusel">
         <center>
             <hr>
             <h1 style="color:white;">Noticias</h1>
             <hr>
-            <div id="carrusel" ng-controller="EventoSlideController">
-                <uib-carousel interval="myInterval" no-wrap="noWrapSlides">
-                  <uib-slide ng-repeat="slide in slides" active="slide.active" index="slide.id">
-                    <img ng-src="imgs/eventos/{{slide.imagenPrincipal}}" style="width:100%;">
-                    <div class="carousel-caption">
+            <div ng-controller="EventoSlideController">
+                <uib-carousel interval="5000">
+                  <uib-slide ng-repeat="slide in slides" index="$index">
+                    <a href="eventos/{{slide._id}}">
+                    <img class="slide-img" ng-src="imgs/eventos/{{slide.imagenPrincipal}}">
+                    <div class="carousel-caption" style="font-family: 'Roboto Slab', serif;">
                       <h4>{{slide.titulo}}</h4>
                       <p>{{slide.descripcion}}</p>
                     </div>
+                    </a>
                   </uib-slide>
                 </uib-carousel>
             </div>
