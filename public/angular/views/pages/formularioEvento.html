@@ -18,21 +18,21 @@
     <form name="eventoForm" id="eventoForm" role="form" novalidate>
         <!-- TITULO DEL EVENTO -->
         <div class="form-group" ng-class="{'has-error': eventoForm.titulo.$dirty && eventoForm.titulo.$invalid}">
-            <label class="control-label color-title" for="titulo">Título</label>
+            <label class="control-label color-title format-title" for="titulo">Título</label>
             <input class="form-control" type="text" name="titulo" id="titulo" placeholder="Nombre del evento" ng-model="evento.titulo" ng-maxlength="150" ng-trim required>
             <div ng-messages="eventoForm.titulo.$error" ng-show="eventoForm.titulo.$dirty && eventoForm.titulo.$invalid"><div ng-messages-include="error-messages"></div></div>
         </div>
 
         <!-- DESCRIPCION DEL EVENTO -->
         <div class="form-group" ng-class="{'has-error': eventoForm.descripcion.$dirty && eventoForm.descripcion.$invalid}">
-            <label class="control-label color-title" for="descripcion">Descripción</label>
+            <label class="control-label color-title format-title" for="descripcion">Descripción</label>
             <textarea class="form-control" rows="2" name="descripcion" id="descripcion" placeholder="Breve descripción del evento" ng-model="evento.descripcion" ng-maxlength="250" ng-trim></textarea>
             <div ng-messages="eventoForm.descripcion.$error" ng-show="eventoForm.descripcion.$dirty && eventoForm.descripcion.$invalid"><div ng-messages-include="error-messages"></div></div>
         </div>
 
         <!-- INFORMACIÓN COMPLETA DEL EVENTO (HTML) -->
         <div class="form-group" ng-class="{'has-error': eventoForm.contenidoHTML.$dirty && eventoForm.contenidoHTML.$invalid}">
-          <label class="control-label color-title" for="contenidoHTML">Contenido</label>
+          <label class="control-label color-title format-title" for="contenidoHTML">Contenido</label>
           <div text-angular ng-model="evento.contenidoHTML" ta-text-editor-class="form-control" ta-html-editor-class="form-control" id="contenidoHTML" placeholder="Información completa sobre el evento" required></div>
           <div ng-messages="eventoForm.contenidoHTML.$error" ng-show="eventoForm.contenidoHTML.$dirty && eventoForm.contenidoHTML.$invalid"><div ng-messages-include="error-messages"></div></div>
         </div>
@@ -42,7 +42,7 @@
             <div class="col-md-6">
                 <!-- FECHA UNICA/INICIAL -->
                 <div class="form-group">
-                    <label class="control-label color-title" for="fecha">Fecha</label>
+                    <label class="control-label color-title format-title" for="fecha">Fecha</label>
                     <div class="input-group">
                         <input type="text" id="fecha" class="form-control" placeholder="Selecciona una fecha en el calendario" uib-datepicker-popup="dd 'de' MMMM 'de' yyyy (EEEE)" ng-model="evento.fecha" show-weeks="false" is-open="calendar" close-text="Listo" current-text="Hoy" clear-text="Borrar" readonly>
                         <span class="input-group-btn">
@@ -56,7 +56,7 @@
             <div class="col-md-6">
                 <!-- FECHA FINAL -->
                 <div class="form-group" ng-show="evento.fecha"> <!-- && fechaFin -->
-                    <label class="control-label color-title" for="fechaFin">Fecha final</label>
+                    <label class="control-label color-title format-title" for="fechaFin">Fecha final</label>
                     <div class="input-group">
                         <input type="text" id="fechaFin" class="form-control" placeholder="Selecciona una fecha en el calendario" uib-datepicker-popup="dd 'de' MMMM 'de' yyyy (EEEE)" ng-model="evento.fechaFin" min-date="evento.fecha" show-weeks="false" is-open="secondCalendar" close-text="Listo" current-text="Hoy" clear-text="Borrar" readonly>
                         <span class="input-group-btn">
@@ -72,7 +72,7 @@
             <div class="col-md-6">
                 <!-- HORARIO -->
                 <div class="form-group">
-                    <label class="control-label color-title" for="horario">Horario</label>
+                    <label class="control-label color-title format-title" for="horario">Horario</label>
                     <uib-timepicker id="horario" ng-model="evento.horario" hour-step="1" minute-step="1"></uib-timepicker>
                     <!-- <div><button class="btn btn-default" ng-show="evento.horario && !hourField" ng-click="showHour()">Incluir hora de término <i class="fa fa-clock-o" aria-hidden="true"></i></button></div> -->
                 </div>
@@ -81,7 +81,7 @@
             <div class="col-md-6">
                 <!-- HORARIO FIN-->
                 <div class="form-group" ng-show="evento.horario"> <!-- && hourField -->
-                    <label class="control-label color-title" for="horarioFin">Horario final</label>
+                    <label class="control-label color-title format-title" for="horarioFin">Horario final</label>
                     <uib-timepicker id="horarioFin" ng-model="evento.horarioFin" hour-step="1" minute-step="1"></uib-timepicker>
                 </div>
             </div>
@@ -89,7 +89,7 @@
 
         <!-- TIPO DE EVENTO -->
         <div class="form-group" ng-class="{'has-error': eventoForm.tipo.$dirty && eventoForm.tipo.$invalid}">
-            <label class="control-label color-title" for="tipo">Tipo de evento</label>
+            <label class="control-label color-title format-title" for="tipo">Tipo de evento</label>
             <select class="form-control" id="tipo" ng-model="evento.tipo">
                 <option value="academico">Académico</option>
                 <option value="docencia">Docencia</option>
@@ -99,14 +99,14 @@
 
         <!-- REALIZADOR -->
         <div class="form-group">
-            <label class="control-label color-title" for="realizador">Realizador(es)</label>
+            <label class="control-label color-title format-title" for="realizador">Realizador(es)</label>
             <input type="text" class="form-control" ng-repeat="realizador in realizadores" placeholder="Persona(s) encargada(s) del evento" ng-model="realizador.nombre" ng-blur="updateRealizador()">
             <button class="btn btn-default" ng-click="add()" ng-disabled="realizadores[realizadores.length-1].nombre === ''" ng-show="realizadores.length < maxLengthRealizadores"><i class="fa fa-user-plus"></i></button>
         </div>
 
         <!-- IMAGEN -->
         <div class="form-group">
-            <label class="control-label color-title" for="imagenPrincipal">Imagen</label>
+            <label class="control-label color-title format-title" for="imagenPrincipal">Imagen</label>
             <!-- Detalles del componente: https://github.com/danialfarid/ng-file-upload -->
             <div class="drag-drop-area" ngf-select="uploadImage($file)" ngf-drop="uploadImage($file)" ng-model="imagenPrincipal" ng-show="imageContainer" name="imagenPrincipal" id="imagenPrincipal" ngf-capture="'camera'" ngf-accept="'image/*'" ngf-pattern="'image/*'"><i class="fa fa-file-image-o"></i> Selecciona o arrastra imagen</div>
             <!--Previsualización de imagen-->
@@ -117,14 +117,14 @@
 
         <!-- LUGAR (GOOGLE MAPS) -->
         <div class="form-group">
-            <label class="control-label color-title" for="place">Lugar</label>
+            <label class="control-label color-title format-title" for="place">Lugar</label>
             <input class="form-control" type="text" id="place" ng-model="place" placeholder="Escribe y selecciona un lugar o dirección">
             <div id="map"></div>
         </div>
 
         <!-- ARCHIVOS ADJUNTOS -->
         <div class="form-group">
-            <label class="control-label color-title" for="ajduntos">Archivos adjuntos</label>
+            <label class="control-label color-title format-title" for="ajduntos">Archivos adjuntos</label>
             <button type="button" class="btn btn-default full-width" name="adjuntos" id="adjuntos" ngf-select="uploadFiles($files)" ng-model="adjuntos" ngf-multiple="true" ngf-keep="'distinct'" ngf-accept="'image/*,.pdf,.doc,.docx'" ngf-max-files="10" ngf-pattern="'image/*,.pdf,.doc,.docx'" ngf-max-size="'1MB'" ngf-max-total-size="'5MB'">Selecciona archivos...</button>
             <div class="files-upload">
                 <ul class="list-inline">
@@ -138,7 +138,7 @@
 
         <!-- NOTAS -->
         <div class="form-group" ng-class="{'has-error': eventoForm.notas.$dirty && eventoForm.notas.$invalid}">
-            <label class="control-label color-title" for="notas">Notas</label>
+            <label class="control-label color-title format-title" for="notas">Notas</label>
             <textarea class="form-control" rows="3" name="notas" id="notas" placeholder="Información adicional acerca del evento" ng-model="evento.notas" ng-trim></textarea>
             <div ng-messages="eventoForm.notas.$error" ng-show="eventoForm.notas.$dirty && eventoForm.notas.$invalid"><div ng-messages-include="error-messages"></div></div>
         </div>

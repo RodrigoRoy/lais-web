@@ -1,5 +1,5 @@
 <!-- Página que muestra todos los eventos que se tiene, ya sean de docencia o académicos -->
-<div class="container" id="secEventos">
+<div class="container">
 	<hr>
 	<div class="row">
 		<div class="col-lg-8">
@@ -28,13 +28,14 @@
 	<hr>
 	<div class="row">
 		<div class="col-sm-6 col-md-4" ng-repeat="evento in eventos.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
-			<a href="/eventos/{{evento._id}}">
-				<div class="thumbnail">
-			  		<img id="imagen" src="imgs/eventos/{{evento.imagenPrincipal}}" alt="imagen-{{evento.titulo}}">
-		  			<div class="caption" id="texto">
+			<a href="/eventos/{{evento._id}}" class="thumbnail-link">
+				<div class="thumbnail"> <!-- ng-class="{available: isAvaliable(evento.fecha)}" -->
+			  		<img class="thumbnail-image" src="imgs/eventos/{{evento.imagenPrincipal}}" alt="imagen-{{evento.titulo}}">
+		  			<div class="caption thumbnail-text">
 		    			<h3>{{evento.titulo}}</h3>
-		    			<p>{{evento.descripcion}}</p>
+	    				<p>{{evento.descripcion}}</p>
 		  			</div>
+		  			<div class="available-label" ng-show="isAvaliable(evento.fecha)">Próximamente</div>
 				</div>
 			</a>
 		</div>

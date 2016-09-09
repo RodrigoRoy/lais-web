@@ -19,21 +19,31 @@ angular.module('EventosCtrl', []).controller('EventosController', function ($sco
 			$location.url('/eventos/busqueda/'+query)
 	}
 
-	// Objeto contenedor de filtros. Hace referencia a cada checkbox en la vista.
-	$scope.filterModel = {
-		academico: true,
-		docencia: true
+	// Determina si una fecha es menor que el día de hoy (en tiempo de ejecución)
+	$scope.isAvaliable = function(fechaStr){
+		if(fechaStr === undefined)
+			return false
+		var today = new Date(),
+			fecha = new Date(fechaStr);
+		return today.getTime() < fecha.getTime();
 	};
+
+	// Objeto contenedor de filtros. Hace referencia a cada checkbox en la vista.
+	// $scope.filterModel = {
+	// 	academico: true,
+	// 	docencia: true
+	// };
 	// Función que se manda a llamar durante el filtrado de Angular en la vista (ng-repeat) de los eventos.
 	// Recibe como parémetro el evento (value), su índice (index) y el arreglo completo con los eventos (array)
 	// Devuelve true si alguno de los checkboxs de filtrado (filterModel) es verdadero, false en otro caso.
-	$scope.filterType = function(value, index, array){
-		// if($scope.filterModel.academico && (value.tipo === 'academico'))
-		// 	return true;
-		// if($scope.filterModel.docencia && (value.tipo === 'docencia'))
-		// 	return true;
-		// return false;
-		return ($scope.filterModel.academico && (value.tipo === 'academico')) || ($scope.filterModel.docencia && (value.tipo === 'docencia'));
-	};
+	// $scope.filterType = function(value, index, array){
+	// 	return ($scope.filterModel.academico && (value.tipo === 'academico')) || ($scope.filterModel.docencia && (value.tipo === 'docencia'));
+	// 	Es decir:
+	// 	if($scope.filterModel.academico && (value.tipo === 'academico'))
+	// 		return true;
+	// 	if($scope.filterModel.docencia && (value.tipo === 'docencia'))
+	// 		return true;
+	// 	return false;
+	// };
 	
 });

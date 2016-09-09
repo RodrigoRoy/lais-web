@@ -4,7 +4,7 @@
 	y para que funcione "href" en páginas distintas a la de inicio (por ejemplo: /eventos).
 */
 
-angular.module('IndexCtrl',[]).controller('IndexController', function ($scope, $location,  $uibModal){
+angular.module('IndexCtrl',[]).controller('IndexController', function ($scope, $location, $uibModal){
 	$scope.$on('$locationChangeStart', function(event) { // Se ejecuta en cada cambio de URL
 	    if($location.path() === '/') // Verificar si estamos en la página inicial
 	    	$scope.isIndex = true; // Variable que se utiliza en la vista (index.html)
@@ -48,11 +48,10 @@ angular.module('AuthCtrl',[]).controller('AuthController', function ($scope, $lo
 			{
 				"username": user,
 				"password": pass
-			}
-			).then(function (res){
+			}).then(function (res){
 				if(res.data.success){ //Exito de inicio de sesion
 					$scope.token = res.data.token;
-					//console.log("Toke",$scope.token);
+					//console.log("Token",$scope.token);
 					
 					localStorage.setItem("sesion", $scope.token); //LocalStorage de inicio de sesion
 					//console.log("Sesion",localStorage.getItem("sesion"));

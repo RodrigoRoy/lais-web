@@ -69,11 +69,6 @@ app.post('/api/uploadFiles', multipartMiddleware, function(req, res){ // refinir
 		})
 	}
 	res.json({"status": "OK"}); // responder al cliente 
-	// fs.rename(req.files.file.path, 'public/imgs/eventos/' + req.files.file.name, function (err){ // renombrar archivo (usa el nombre original)
-	// 	if(err)
-	// 		throw err;
-	// 	res.json({"status": "OK"}); // responder al cliente 
-	// });
 });
 // ***** END TESTING UPLOAD *****
 

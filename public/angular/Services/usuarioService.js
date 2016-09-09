@@ -12,10 +12,7 @@ angular.module('UsuarioService', []).factory('Usuario', ['$http', function($http
 
 		//Inicia sesion con los datos del usuario(usename, password) 
 		sign: function (usuarioData){
-			return $http.post('/api/authenticate',usuarioData);
+			return $http.post('/api/authenticate', usuarioData);
 		}
-
-
-
 	}
 }]);

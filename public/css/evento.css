@@ -11,9 +11,13 @@
 }
 
 /*Convierte las imagenes en responsivas dentro del contenido HTML del evento*/
-.html-container img{
+p.html-container img{
 	max-width: 100%;
 	height: auto;
+}
+/*Convierte el texto a tamaño adecuado dentro del contenido HTML del evento*/
+p.html-container p{
+	font-size: 21px !important; /*Ignora otros estilos como los que usa el editor*/
 }
 
 /*Espaciado debajo del mapa para evitar que esté tan cerca de un título*/
@@ -61,6 +65,11 @@ img.preview{
 /*Tamaño normal para componente "Labels" de Bootstrap*/
 .label-lg{
 	font-size: 100%;
+}
+
+/*Tamaño de los títulos de cada componente (por ejemplo <input>)*/
+.format-title{
+	font-size: 1.3em;
 }
 
 /* Animación solamente para algunos elementos que aparecen/desaparecen */
