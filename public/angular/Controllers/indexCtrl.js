@@ -38,12 +38,12 @@ angular.module('IndexCtrl',[]).controller('IndexController', function ($scope, $
 
 });
 
-/*Controlador que le da la funcionalidad a lo que se ha declarado dentro del modal*/
+/*(Sub)Controlador que le da la funcionalidad a lo que se ha declarado dentro del modal. 
+Anhidado en el controlador IndexCtrl para usarse con $uibModal*/
 angular.module('AuthCtrl',[]).controller('AuthController', function ($scope, $location, $uibModalInstance, Usuario){
 	
 	/*Funcion que inicia sesion y verifica si todo es correcto*/
 	$scope.iniciarSesion = function (user, pass){
-		//console.log("Usuario");
 		Usuario.sign(
 			{
 				"username": user,
@@ -55,7 +55,11 @@ angular.module('AuthCtrl',[]).controller('AuthController', function ($scope, $lo
 					
 					localStorage.setItem("sesion", $scope.token); //LocalStorage de inicio de sesion
 					//console.log("Sesion",localStorage.getItem("sesion"));
-					window.location.reload();
+					// window.location.reload();
+					$location.url('/admin'); // No alcanza el tiempo para redirigir
+					// $scope.sesion = true; // No hay binding que se refleje en la vista HTML
+					// $uibModalInstance.dismiss('cancel');
+					window.location.reload(); // Solución temporal
 				}else{ //No es correcto el inicio de sesion
 					console.log("Usuario o Password incorrectos");
 				}

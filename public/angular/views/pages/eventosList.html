@@ -1,0 +1,39 @@
+<div class="container my-container">
+	<h1>Lista de eventos</h1>
+	<button class="btn btn-default btn-lg" ng-click="new()">Crear evento</button>
+	<div class="table-responsive">
+		<table class="table">
+			<tr>
+				<th>
+					<a href="" ng-click="sortBy('titulo')">Título</a> 
+					<i class="fa fa-sort-asc" aria-hidden="true" ng-show="propertyName === 'titulo' && !reverse"></i><i class="fa fa-sort-desc" aria-hidden="true" ng-show="propertyName === 'titulo' && reverse"></i>
+				</th>
+				<th>
+					<a href="" ng-click="sortBy('descripcion')">Descripción</a> 
+					<i class="fa fa-sort-asc" aria-hidden="true" ng-show="propertyName === 'descripcion' && !reverse"></i><i class="fa fa-sort-desc" aria-hidden="true" ng-show="propertyName === 'descripcion' && reverse"></i>
+				</th>
+				<th>
+					<a href="" ng-click="sortBy('tipo')">Tipo</a> 
+					<i class="fa fa-sort-asc" aria-hidden="true" ng-show="propertyName === 'tipo' && !reverse"></i><i class="fa fa-sort-desc" aria-hidden="true" ng-show="propertyName === 'tipo' && reverse"></i>
+				</th>
+				<th>
+					<a href="" ng-click="sortBy('fecha')">Fecha</a> 
+					<i class="fa fa-sort-asc" aria-hidden="true" ng-show="propertyName === 'fecha' && !reverse"></i><i class="fa fa-sort-desc" aria-hidden="true" ng-show="propertyName === 'fecha' && reverse"></i>
+				</th>
+				<th>
+					<a href="" ng-click="sortBy('fechaCreacion')">Creado en</a> 
+					<i class="fa fa-sort-asc" aria-hidden="true" ng-show="propertyName === 'fechaCreacion' && !reverse"></i><i class="fa fa-sort-desc" aria-hidden="true" ng-show="propertyName === 'fechaCreacion' && reverse"></i>
+				</th>
+			</tr>
+			<tr ng-repeat="evento in eventos | orderBy: propertyName: reverse">
+				<td>{{evento.titulo}}</td>
+				<td>{{evento.descripcion}}</td>
+				<td>{{evento.tipo}}</td>
+				<td>{{evento.fecha | date : 'dd/MM/yy'}}</td>
+				<td>{{evento.fechaCreacion | date : 'dd/MM/yy'}}</td>
+				<td><button class="btn btn-default btn-xs" ng-click="edit(evento._id)"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>
+				<td><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+			</tr>
+		</table>
+	</div>
+</div>

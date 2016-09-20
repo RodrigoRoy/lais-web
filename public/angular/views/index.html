@@ -168,7 +168,8 @@
 	                        	<a href="" ng-click="open()">Login LAIS</a>
 	                        </li>
 	                        <li ng-show="sesion">
-	                        	<a href="" ng-click="cerrarSesion()">Logout LAIS</a>
+	                        	<!-- <a href="" ng-click="cerrarSesion()">Logout LAIS</a> -->
+	                        	<a href="/admin">Administración del sitio</a>
 	                        </li>
 	                    </ul>
 	                </div>
@@ -239,13 +240,15 @@
     	<script src="angular/Services/LugarService.js"></script>    	
     	<script src="angular/Services/usuarioService.js"></script>
     	
-    	<!--Angular Controllers  & JS's-->
+    	<!--Angular Controllers & JS's-->
     	<script type="text/javascript" src="angular/Controllers/eventosBusquedaCtrl.js"></script>
     	<script src="angular/Controllers/eventoCtrl.js"></script>
     	<script src="angular/Controllers/indexCtrl.js"></script>
     	<script src="angular/Controllers/eventosGralCtrl.js"></script>
     	<script src="angular/Controllers/inicioCtrl.js"></script>
     	<script src="angular/Controllers/formularioEvento.js"></script>
+    	<script src="angular/Controllers/adminCtrl.js"></script>
+    	<script src="angular/Controllers/eventosListCtrl.js"></script>
     	<script src="angular/appRoutes.js"></script>
     	<script src="angular/app.js"></script>
     </body>

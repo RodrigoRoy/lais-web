@@ -8,10 +8,6 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 			templateUrl: 'angular/views/pages/inicio.html'
 		})
 
-		// .when('/registro',{
-		// 	templateUrl: 'angular/views/usuarioRegistro.html'
-		// })
-
 		.when('/eventos', {
 			templateUrl: 'angular/views/pages/eventosGral.html',
 			controller: 'EventosController'
@@ -35,6 +31,16 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 		.when('/eventos/:id',{
 			templateUrl: 'angular/views/pages/evento.html',
 			controller: 'EventoController'
+		})
+
+		.when('/admin',{
+			templateUrl: 'angular/views/pages/admin.html',
+			controller: 'AdminController'
+		})
+
+		.when('/admin/eventos',{
+			templateUrl: 'angular/views/pages/eventosList.html',
+			controller: 'EventosListController'
 		})
 
 		.when('/usuarios',{
