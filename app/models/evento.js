@@ -7,6 +7,7 @@ var mongoose = require('mongoose'); // controlador de la base de datos
 var Schema = mongoose.Schema; // "Modelo" de la colección
 
 var tipos = 'academico docencia'.split(' '); // Para los tipos de evento
+// var publico = 'público general,estudiantes,investigadores,docentes,'.split(','); // Para los tipos de evento
 
 // Definición del esquema "Evento", incluyendo nombre del campo y el tipo de dato (key: value_type)
 var EventoSchema = new Schema({
@@ -19,11 +20,13 @@ var EventoSchema = new Schema({
     horario: {type: Date},
     horarioFin: {type: Date},
     imagenPrincipal: {type: String},
-    realizador: [{type: String}],
+    // realizador: [{type: String}],
+    coordinador: [{type: String}], // Reemplazo para "realizador"
+    // participantes: [{type: String}], // Personas importantes del evento
     // lugar: {type: mongoose.Schema.Types.ObjectId, ref: 'Lugares'},
     lugar: {type: String},
     //creador: {type: mongoose.Schema.Types.ObjectId, ref: 'Usuarios'},
-    //keywords: [String],
+    keywords: [{type: String}],
     notas: {type: String},
     documentos: [{type: String}],
     fechaCreacion: {type: Date, default: Date.now}

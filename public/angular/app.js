@@ -12,6 +12,7 @@ angular.module('laisApp', [
 	'ngFileUpload', // upload files
 	'ui.bootstrap', // Componentes Bootstrap
 	'textAngular', // 3rd party WYSWYG HTML text editor
+	'ngTagsInput', // Tagging module for inputs forms
 
 	'EventoFormCtrl', // Formulario para eventos
 	'IndexCtrl', // Checa cambios en la URL

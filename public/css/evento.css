@@ -10,6 +10,11 @@
 	color: #a13f16;
 }
 
+/*Evita que dos componentes "label" de Bootstrap queden pegados*/
+.label-spacing{
+	margin-right: 1em;
+}
+
 /*Convierte las imagenes en responsivas dentro del contenido HTML del evento*/
 p.html-container img{
 	max-width: 100%;
@@ -86,7 +91,7 @@ img.preview{
 /*Contenedor en páginas generales*/
 .my-container{
 	background-color: #eee;
-	border-radius: 15px;
+	border-radius: 6px;
 }
 
 /*Estilo a usar en dispositivos no-móviles (ancho > 768px)*/

@@ -7,7 +7,7 @@
 			<h1>{{evento.titulo}}</h1>
 			<img class="img-responsive img-rounded" src="imgs/eventos/{{evento.imagenPrincipal}}">
 		</center>
-		<p ng-show="evento.realizador && evento.realizador.length > 0" class="text-center">Imparte: {{realizador}}</p>
+		<p ng-show="evento.coordinador && evento.coordinador.length > 0" class="text-center">Imparte: {{coordinador}}</p>
 		<hr>
 		<p class="html-container" ng-bind-html="evento.contenidoHTML"></p>
 		<hr>
@@ -25,7 +25,7 @@
 				</span>
 			</p>
 		</div>
-		<div ng-show="evento.tipo">
+		<div ng-if="evento.tipo">
 			<h4 class="subtitle">Tipo de evento</h4>
 			<p class="capitalize">{{evento.tipo}}</p>
 		</div>
@@ -38,6 +38,12 @@
 			<ul>
 				<li ng-repeat="documento in evento.documentos"><a href="docs/eventos/{{documento}}" target="_blank">{{documento}}</a></li>
 			</ul>
+		</div>
+		<div ng-if="evento.keywords">
+			<h4 class="subtitle">Palabras clave</h4>
+			<p>
+				<span class="label label-default label-spacing" ng-repeat="keyword in evento.keywords">{{keyword}}</span>
+			</p>
 		</div>
 
 		<!-- <br>

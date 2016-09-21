@@ -97,11 +97,11 @@
             <div ng-messages="eventoForm.tipo.$error" ng-show="eventoForm.tipo.$dirty && eventoForm.tipo.$invalid"><div ng-messages-include="error-messages"></div></div>
         </div>
 
-        <!-- REALIZADOR -->
+        <!-- COORDINADOR -->
         <div class="form-group">
-            <label class="control-label color-title format-title" for="realizador">Realizador(es)</label>
-            <input type="text" class="form-control" ng-repeat="realizador in realizadores" placeholder="Persona(s) encargada(s) del evento" ng-model="realizador.nombre" ng-blur="updateRealizador()">
-            <button class="btn btn-default" ng-click="add()" ng-disabled="realizadores[realizadores.length-1].nombre === ''" ng-show="realizadores.length < maxLengthRealizadores"><i class="fa fa-user-plus"></i></button>
+            <label class="control-label color-title format-title" for="coordinador">Coordinador(es)</label>
+            <input type="text" class="form-control" ng-repeat="coordinador in coordinadores" placeholder="Persona(s) encargada(s) del evento" ng-model="coordinador.nombre" ng-blur="updateCoordinador()">
+            <button class="btn btn-default" ng-click="add()" ng-disabled="coordinadores[coordinadores.length-1].nombre === ''" ng-show="coordinadores.length < maxLengthCoordinadores"><i class="fa fa-user-plus"></i></button>
         </div>
 
         <!-- IMAGEN -->
@@ -134,6 +134,14 @@
                     </li>
                 </ul>
             </div>
+        </div>
+
+        <!-- PALABRAS CLAVE (KEYWORDS) -->
+        <div class="form-group">
+            <label class="control-label color-title format-title" for="keywords">Palabras clave</label>
+            <tags-input ng-model="keywords" name="keywords" id="keywords" type="text" placeholder="Agrega una etiqueta" min-length="3" max-length="50" min-tags="0" max-tags="10"  replace-spaces-with-dashes="false" add-from-autocomplete-only="true" spellcheck="false" ng-blur="updateKeywords()">
+                <auto-complete source="loadTags($query)" display-property="text" min-length="1" max-results-to-show="5"></auto-complete>
+            </tags-input>
         </div>
 
         <!-- NOTAS -->

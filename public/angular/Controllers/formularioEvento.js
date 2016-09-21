@@ -3,10 +3,10 @@
     Sirve tanto para crear nuevos eventos como para editar los existentes.
 */
 
-angular.module('EventoFormCtrl', []).controller('EventoFormController', function ($scope, $location, $routeParams, Evento, Upload) {
+angular.module('EventoFormCtrl', []).controller('EventoFormController', function ($scope, $location, $routeParams, $http, Evento, Upload) {
     $scope.evento = {}; // Contiene los datos del evento
-    $scope.maxLengthRealizadores = 10; // Cantidad máxima de realizadores
-    $scope.realizadores = [{nombre: ""}]; // Arreglo de "personas" (objetos con propiedad 'nombre')
+    $scope.maxLengthCoordinadores = 10; // Cantidad máxima de coordinadores
+    $scope.coordinadores = [{nombre: ""}]; // Arreglo de "personas" (objetos con propiedad 'nombre')
     $scope.calendar = false; // Indicador para mostrar/ocultar el calendario
     $scope.secondCalendar = false; // Indicador para mostrar/ocultar el calendario en FechaFin
     $scope.imageContainer = true; // Bandera para mostrar/ocultar elemento DIV para cargar una imagen
@@ -56,11 +56,19 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
         Evento.get($routeParams.id) // Obtener la información del evento en la base de datos
         .then(function(res){
             $scope.evento = res.data // Casi toda la información del evento se asigna directamente
-            // Parse para "Realizadores":
-            if($scope.evento.realizador && $scope.evento.realizador.length > 0){
-                $scope.realizadores = [];
-                for(var i in $scope.evento.realizador)
-                    $scope.realizadores.push({nombre: $scope.evento.realizador[i]});
+            // Parse para "Coordinadores":
+            if($scope.evento.coordinador && $scope.evento.coordinador.length > 0){
+                $scope.coordinadores = [];
+                console.log($scope.evento.coordinador);
+                for(var i in $scope.evento.coordinador)
+                    $scope.coordinadores.push({nombre: $scope.evento.coordinador[i]});
+            }
+            // Parse para "keywords":
+            if($scope.evento.keywords && $scope.evento.keywords.length > 0){
+                $scope.keywords = [];
+                console.log($scope.evento.keywords);
+                for(var i in $scope.evento.keywords)
+                    $scope.keywords.push({"text": $scope.evento.keywords[i]});
             }
             if($scope.evento.imagenPrincipal){ // Deshabilitar div para imagen si el evento ya tiene una
                 $scope.imageContainer = false;
@@ -99,10 +107,10 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
         $scope.secondCalendar = true;
     };
 
-    // Agrega un nuevo realizador (otro input en la vista)
+    // Agrega un nuevo coordinador (otro input en la vista)
     $scope.add = function(){
-        if(($scope.realizadores[$scope.realizadores.length - 1].nombre !== "") && ($scope.realizadores.length < $scope.maxLengthRealizadores))
-            $scope.realizadores.push({
+        if(($scope.coordinadores[$scope.coordinadores.length - 1].nombre !== "") && ($scope.coordinadores.length < $scope.maxLengthCoordinadores))
+            $scope.coordinadores.push({
                 nombre: ""
             });
     };
@@ -133,14 +141,34 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
         }
     });
 
-    // Cambia y asigna el arreglo de objetos "$scope.realizadores" por el arreglo de strings "$scope.evento.realizador"
-    $scope.updateRealizador = function(){
-        // Parse de realizadores para agregar solo el texto (sin ser objetos)
-        if(!(($scope.realizadores.length == 1) && ($scope.realizadores[0].nombre === "")))
-        $scope.evento.realizador = [];
-        for(var i in $scope.realizadores)
-            if($scope.realizadores[i].nombre !== "")
-                $scope.evento.realizador[i] = $scope.realizadores[i].nombre;
+    // Cambia y asigna el arreglo de objetos "$scope.coordinadores" por el arreglo de strings "$scope.evento.coordinador"
+    $scope.updateCoordinador = function(){
+        // Parse de coordinadores para agregar solo el texto (sin ser objetos)
+        if(!(($scope.coordinadores.length == 1) && ($scope.coordinadores[0].nombre === "")))
+        $scope.evento.coordinador = [];
+        for(var i in $scope.coordinadores)
+            if($scope.coordinadores[i].nombre !== "")
+                $scope.evento.coordinador[i] = $scope.coordinadores[i].nombre;
+    };
+
+    // Llamada asíncrona para obtener los tags desde archivo y filtrarlos por medio del query dado como parámetro
+    $scope.loadTags = function(query){
+        return $http.get('js/eventTags.json').then(function(res){
+            var results = []; // Tags que coinciden con el query
+            for(var i in res.data)
+                if(res.data[i].text.toLowerCase().indexOf(query.toLowerCase()) > -1) // Si contiene texto agregarlo a "results"
+                    results.push(res.data[i].text) // NOTA: la propiedad "text" contiene el nombre del tag/keyword
+            return results;
+        });
+    };
+
+    // Cambia y asigna el arreglo de objetos "$scocpe.keywords" por el arreglo de strings "$scope.evento.keywords"
+    $scope.updateKeywords = function(){
+        // Parse de keywords para agregar solo el texto (sin ser objetos)
+        if($scope.keywords)
+            $scope.evento.keywords = [];
+            for(var i in $scope.keywords)
+                $scope.evento.keywords[i] = $scope.keywords[i].text; // NOTA: la propiedad "text" contiene el nombre del tag/keyword
     };
 
     // Sube archivo (imagen) al servidor

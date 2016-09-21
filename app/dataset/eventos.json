@@ -4,7 +4,7 @@
 	"contenidoHTML": "Mauris tincidunt urna eget massa sollicitudin, sed tempus diam porta.",
 	"tipo": "academico",
 	"imagenPrincipal": "slideuno.jpg",
-	"realizador": ["Tellus Sed Ligula"],
+	"coordinador": ["Tellus Sed Ligula"],
 	"lugar": "56a7db039c3d6498ca51adc8"
 }
 {
@@ -13,7 +13,7 @@
 	"contenidoHTML": "Praesent tempus dui a est imperdiet, posuere fringilla sem lacinia.Nunc non dui pretium enim cursus consequat.",
 	"tipo": "docencia",
 	"imagenPrincipal": "slidedos.jpg",
-	"realizador": ["Praesent Accumsan"],
+	"coordinador": ["Praesent Accumsan"],
 	"lugar": "56a7db039c3d6498ca51adc9"
 }
 {
@@ -30,7 +30,7 @@
 	"contenidoHTML": "Cras vel lacus in purus semper egestas eget non purus.",
 	"tipo": "academico",
 	"imagenPrincipal": "slideuno.jpg",
-	"realizador": ["Integer Vel Velit"],
+	"coordinador": ["Integer Vel Velit"],
 	"lugar": "56a7db039c3d6498ca51adcb"
 }
 {
@@ -39,7 +39,7 @@
 	"contenidoHTML": "Vestibulum dignissim justo eget nisi faucibus ultrices. Vivamus ultricies tellus id lacus posuere imperdiet. Morbi pulvinar urna eu ex feugiat consectetur. Mauris imperdiet metus in dui condimentum, sed dictum diam consequat.",
 	"tipo": "academico",
 	"imagenPrincipal": "slidedos.jpg",
-	"realizador": ["Dignissim Accumsan"],
+	"coordinador": ["Dignissim Accumsan"],
 	"lugar": "56a7db039c3d6498ca51adcc"
 }
 {
@@ -79,6 +79,6 @@
 	"contenidoHTML": "Mauris sed ante ut ipsum consequat molestie. Vestibulum dignissim justo eget nisi faucibus ultrices. Vivamus ultricies tellus id lacus posuere imperdiet. Morbi pulvinar urna eu ex feugiat consectetur. Mauris imperdiet metus in dui condimentum, sed dictum diam consequat.",
 	"tipo": "academico",
 	"imagenPrincipal": "slideuno.jpg",
-	"realizador": ["Risus Dignissim"],
+	"coordinador": ["Risus Dignissim"],
 	"lugar": "56a7db039c3d6498ca51adc9"
 }

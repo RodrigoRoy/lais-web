@@ -62,14 +62,16 @@ router.route('/')
 	    // Se espera que las imagenes se representen como una lista de nombres de archivo separados por comas
 	    // if(req.body.imagen)
 	    // 	evento.imagen = req.body.imagen.split(/\s*,\s*/); // REGEXP elimina posibles espacios en blanco entre nombres y comas
-	    if(req.body.realizador)
-	    	evento.realizador = req.body.realizador; //.split(/\s*,\s*/);
+	    if(req.body.coordinador)
+	    	evento.coordinador = req.body.coordinador; //.split(/\s*,\s*/);
 	    if(req.body.lugar)
             evento.lugar = req.body.lugar; // id del lugar
         if(req.body.notas)
             evento.notas = req.body.notas;
         if(req.body.documentos)
             evento.documentos = req.body.documentos;
+        if(req.body.keywords)
+            evento.keywords = req.body.keywords;
 	    evento.fechaCreacion = new Date(); // fecha de creación automática al momento
 
         evento.save(function(err){
@@ -94,6 +96,7 @@ router.route('/news')
         })
     })
 
+// Obtener los eventos que contengan el query de búsqueda
 router.route('/find')
     .get(function(req, res){
         Evento.find()
@@ -154,14 +157,16 @@ router.route('/:evento_id')
             // Se espera que las imagenes se representen como una lista de nombres de archivo separados por comas
             // if(req.body.imagen)
             //  evento.imagen = req.body.imagen.split(/\s*,\s*/); // REGEXP elimina posibles espacios en blanco entre nombres y comas
-            if(req.body.realizador)
-                evento.realizador = req.body.realizador; //.split(/\s*,\s*/);
+            if(req.body.coordinador)
+                evento.coordinador = req.body.coordinador; //.split(/\s*,\s*/);
             if(req.body.lugar)
                 evento.lugar = req.body.lugar; // id del lugar
             if(req.body.notas)
                 evento.notas = req.body.notas;
             if(req.body.documentos)
                 evento.documentos = req.body.documentos;
+            if(req.body.keywords)
+                evento.keywords = req.body.keywords;
             evento.fechaCreacion = new Date(); // fecha de creación auto-actualizada
 
             evento.save(function(err){
