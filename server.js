@@ -57,13 +57,26 @@ app.post('/api/upload', multipartMiddleware, function(req, res){ // refinir ruta
 		res.json({"status": "OK"}); // responder al cliente 
 	});
 });
-var multipartMiddleware = multipart({uploadDir: './public/docs/eventos'}); // definir ruta para archivos
+var multipartMiddleware = multipart({uploadDir: './public/files/eventos'}); // definir ruta para archivos
 app.post('/api/uploadFiles', multipartMiddleware, function(req, res){ // refinir ruta para HTTP POST
 	//console.log("  req.body", req.body); // Datos adicionales enviados
 	console.log("Información de archivos");
 	console.log(req.files);
 	for(var i in req.files.file){ // iterar en todos los archivos
-		fs.rename(req.files.file[i].path, 'public/docs/eventos/' + req.files.file[i].name, function(err){ // renombrar archivo (usar el nombre original)
+		fs.rename(req.files.file[i].path, 'public/files/eventos/' + req.files.file[i].name, function(err){ // renombrar archivo (usar el nombre original)
+			if(err)
+				throw err;
+		})
+	}
+	res.json({"status": "OK"}); // responder al cliente 
+});
+var multipartMiddleware = multipart({uploadDir: './public/files'}); // definir ruta para archivos
+app.post('/api/uploadMultiFiles', multipartMiddleware, function(req, res){ // refinir ruta para HTTP POST
+	//console.log("  req.body", req.body); // Datos adicionales enviados
+	console.log("Información de archivos");
+	console.log(req.files);
+	for(var i in req.files.file){ // iterar en todos los archivos
+		fs.rename(req.files.file[i].path, 'public/files/' + req.files.file[i].name, function(err){ // renombrar archivo (usar el nombre original)
 			if(err)
 				throw err;
 		})
@@ -85,6 +98,9 @@ app.use('/api/lugares', lugares); // usar el API desde la ruta "/api/lugares"
 
 var eventos = require('./app/api/eventos'); // API para Eventos de la base de datos
 app.use('/api/eventos', eventos); // usar el API desde la ruta "/api/eventos"
+
+var archivos = require('./app/api/archivos'); // API para Archivos de la base de datos
+app.use('/api/archivos', archivos); // usar el API desde la ruta "/api/archivos"
 
 // REGISTRAR LAS DEMÁS RUTAS
 

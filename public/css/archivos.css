@@ -1,0 +1,12 @@
+/*Tamaño de icono Font Awesome personalizado*/
+.fa-1-5x{
+	font-size: 1.5em !important;
+}
+
+.spacing-block{
+	margin-bottom: 3em;
+}
+
+[ng-click]{
+	cursor: pointer;
+}

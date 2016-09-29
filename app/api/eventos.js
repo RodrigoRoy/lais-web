@@ -15,7 +15,7 @@ DELETE http://localhost:8080/api/eventos/1234567890
 var express = require('express');
 var router = express.Router(); // para modularizar las rutas
 var Evento = require('../models/evento'); // Modelo de la colección "Eventos"
-var Lugar = require('../models/lugar'); // Modelo de la colección "Lugar"
+// var Lugar = require('../models/lugar'); // Modelo de la colección "Lugar"
 
 // Función a realizar siempre que se utilize esta API
 router.use(function(req, res, next){

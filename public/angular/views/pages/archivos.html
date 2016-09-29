@@ -1,0 +1,59 @@
+<!-- Página que muestra todos los archivos -->
+<div class="container my-container">
+	<h1>Lista de archivos</h1>
+	
+	<!-- Formulario para agregar nuevo(s) archivo(s) a la base de datos -->
+    <div class="spacing-block"> <!-- ng-show="sesion" -->
+	    <button type="button" class="btn btn-default full-width" name="adjuntos" id="adjuntos" ngf-select="uploadFiles($files)" ng-model="adjuntos" ngf-multiple="true" ngf-keep="'distinct'" ngf-max-files="10" ngf-max-size="'2MB'" ngf-max-total-size="'5MB'">Agregar archivo(s)...</button>
+	    <table class="table">
+	    	<tr ng-repeat="file in uploadedFiles">
+	    		<td>{{file.filename}}</td>
+	    		<td><input type="text" class="form-control" placeholder="Agregar descripción" ng-model="file.descripcion"></td>
+	    		<td><button type="button" class="btn btn-danger" ng-click="deleteFile(file.filename)"><i class="fa fa-times" aria-hidden="true"></i></button></td>
+	    	</tr>
+	    </table>
+	    <button class="btn btn-primary" ng-show="uploadedFiles && uploadedFiles.length > 0" ng-click="enviar()">Subir archivo(s) al servidor</button>
+    </div>
+
+	<!-- TABLA PARA MOSTRAR LOS ARCHIVOS REGISTRADOS EN LA BASE DE DATOS -->
+	<div class="table-responsive">
+		<table class="table table-hover">
+			<tr>
+				<th>
+					<a href="" ng-click="sortBy('filename')">Nombre</a> 
+					<i class="fa fa-sort-asc" aria-hidden="true" ng-show="propertyName === 'filename' && !reverse"></i><i class="fa fa-sort-desc" aria-hidden="true" ng-show="propertyName === 'filename' && reverse"></i>
+				</th>
+				<th>
+					<a href="" ng-click="sortBy('descripcion')">Descripción</a> 
+					<i class="fa fa-sort-asc" aria-hidden="true" ng-show="propertyName === 'descripcion' && !reverse"></i><i class="fa fa-sort-desc" aria-hidden="true" ng-show="propertyName === 'descripcion' && reverse"></i>
+				</th>
+				<th>
+					<a href="" ng-click="sortBy('tipo')">Tipo</a> 
+					<i class="fa fa-sort-asc" aria-hidden="true" ng-show="propertyName === 'tipo' && !reverse"></i><i class="fa fa-sort-desc" aria-hidden="true" ng-show="propertyName === 'tipo' && reverse"></i>
+				</th>
+				<th>
+					<a href="" ng-click="sortBy('fechaCreacion')">Fecha</a> 
+					<i class="fa fa-sort-asc" aria-hidden="true" ng-show="propertyName === 'fechaCreacion' && !reverse"></i><i class="fa fa-sort-desc" aria-hidden="true" ng-show="propertyName === 'fechaCreacion' && reverse"></i>
+				</th>
+			</tr>
+			<tr ng-repeat="archivo in archivos | orderBy: propertyName: reverse" ng-click="openFile(archivo.filename)">
+				<td>{{archivo.filename}}</td>
+				<td>
+					<span ng-show="archivo._id != editable">{{archivo.descripcion}}</span>
+					<span ng-show="archivo._id === editable"><input type="text" class="form-control" placeholder="{{archivo.descripcion || 'Nueva descripción'}}" ng-click="$event.stopPropagation();" ng-blur="update()" ng-model="tempFile.descripcion"></span>
+				</td>
+				<td><span ng-bind-html="archivo.icon"></span> {{archivo.tipo}}</td>
+				<td>{{archivo.fechaCreacion | date : 'dd/MM/yy'}}</td>
+				<td>
+					<button class="btn btn-default btn-xs" ng-show="archivo._id != editable" ng-click="enableEdit(archivo._id); $event.stopPropagation();"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+					<button class="btn btn-default btn-xs" ng-show="archivo._id === editable" ng-click="update(); $event.stopPropagation();"><i class="fa fa-check" aria-hidden="true"></i></button>
+				</td>
+				<td><button class="btn btn-danger btn-xs" ng-click="delete(archivo._id); $event.stopPropagation();"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+			</tr>
+		</table>
+	</div>
+
+	<!-- <br>
+    <pre>{{archivos | json}}</pre> -->    
+</div>
+
