@@ -24,11 +24,11 @@
         </div>
 
         <!-- DESCRIPCION DEL EVENTO -->
-        <div class="form-group" ng-class="{'has-error': eventoForm.descripcion.$dirty && eventoForm.descripcion.$invalid}">
+        <!-- <div class="form-group" ng-class="{'has-error': eventoForm.descripcion.$dirty && eventoForm.descripcion.$invalid}">
             <label class="control-label color-title format-title" for="descripcion">Descripción</label>
             <textarea class="form-control" rows="2" name="descripcion" id="descripcion" placeholder="Breve descripción del evento" ng-model="evento.descripcion" ng-maxlength="250" ng-trim></textarea>
             <div ng-messages="eventoForm.descripcion.$error" ng-show="eventoForm.descripcion.$dirty && eventoForm.descripcion.$invalid"><div ng-messages-include="error-messages"></div></div>
-        </div>
+        </div> -->
 
         <!-- INFORMACIÓN COMPLETA DEL EVENTO (HTML) -->
         <div class="form-group" ng-class="{'has-error': eventoForm.contenidoHTML.$dirty && eventoForm.contenidoHTML.$invalid}">
@@ -104,15 +104,22 @@
             <button class="btn btn-default" ng-click="add()" ng-disabled="coordinadores[coordinadores.length-1].nombre === ''" ng-show="coordinadores.length < maxLengthCoordinadores"><i class="fa fa-user-plus"></i></button>
         </div>
 
+        <!-- PARTICIPANTES -->
+        <div class="form-group">
+            <label class="control-label color-title format-title" for="participantes">Participantes</label>
+            <input type="text" class="form-control" ng-repeat="participante in participantes" placeholder="Persona destacada en el evento" ng-model="participante.nombre" ng-blur="updateParticipantes()">
+            <button class="btn btn-default" ng-click="addParticipante()" ng-disabled="participantes[participantes.length-1].nombre === ''" ng-show="participantes.length < maxLengthParticipantes"><i class="fa fa-user-plus"></i></button>
+        </div>
+
         <!-- IMAGEN -->
         <div class="form-group">
-            <label class="control-label color-title format-title" for="imagenPrincipal">Imagen</label>
+            <label class="control-label color-title format-title" for="imagen">Imagen</label>
             <!-- Detalles del componente: https://github.com/danialfarid/ng-file-upload -->
-            <div class="drag-drop-area" ngf-select="uploadImage($file)" ngf-drop="uploadImage($file)" ng-model="imagenPrincipal" ng-show="imageContainer" name="imagenPrincipal" id="imagenPrincipal" ngf-capture="'camera'" ngf-accept="'image/*'" ngf-pattern="'image/*'"><i class="fa fa-file-image-o"></i> Selecciona o arrastra imagen</div>
+            <div class="drag-drop-area" ngf-select="uploadImage($file)" ngf-drop="uploadImage($file)" ng-model="imagen" ng-show="imageContainer" name="imagen" id="imagen" ngf-capture="'camera'" ngf-accept="'image/*'" ngf-pattern="'image/*'"><i class="fa fa-file-image-o"></i> Selecciona o arrastra imagen</div>
             <!--Previsualización de imagen-->
-            <!-- <img class="full-width" ngf-src="imagenPrincipal" ngf-resize="{height: 120, quality: 0.9}"> -->
-            <img class="preview full-width" ng-show="evento.imagenPrincipal" src="imgs/eventos/{{evento.imagenPrincipal}}">
-            <button type="button" class="btn btn-danger" ng-show="evento.imagenPrincipal" ng-click="deleteImage()">Eliminar <i class="fa fa-times" aria-hidden="true"></i></button>
+            <!-- <img class="full-width" ngf-src="imagen" ngf-resize="{height: 120, quality: 0.9}"> -->
+            <img class="preview full-width" ng-show="evento.imagen" src="imgs/eventos/{{evento.imagen}}">
+            <button type="button" class="btn btn-danger" ng-show="evento.imagen" ng-click="deleteImage()">Eliminar <i class="fa fa-times" aria-hidden="true"></i></button>
         </div>
 
         <!-- LUGAR (GOOGLE MAPS) -->

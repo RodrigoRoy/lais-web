@@ -30,7 +30,7 @@
 		<div class="col-sm-6 col-md-4" ng-repeat="evento in eventos.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
 			<a href="/eventos/{{evento._id}}" class="thumbnail-link">
 				<div class="thumbnail"> <!-- ng-class="{available: isAvaliable(evento.fecha)}" -->
-			  		<img class="thumbnail-image" src="imgs/eventos/{{evento.imagenPrincipal}}" alt="imagen-{{evento.titulo}}">
+			  		<img class="thumbnail-image" src="imgs/eventos/{{evento.imagen}}" alt="imagen-{{evento.titulo}}">
 		  			<div class="caption thumbnail-text">
 		    			<h3>{{evento.titulo}}</h3>
 	    				<p>{{evento.descripcion}}</p>

@@ -7,6 +7,8 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
     $scope.evento = {}; // Contiene los datos del evento
     $scope.maxLengthCoordinadores = 10; // Cantidad máxima de coordinadores
     $scope.coordinadores = [{nombre: ""}]; // Arreglo de "personas" (objetos con propiedad 'nombre')
+    $scope.maxLengthParticipantes = 10; // Cantidad máxima de coordinadores
+    $scope.participantes = [{nombre: ""}]; // Arreglo de "participantes" (objetos con propiedad 'nombre')
     $scope.calendar = false; // Indicador para mostrar/ocultar el calendario
     $scope.secondCalendar = false; // Indicador para mostrar/ocultar el calendario en FechaFin
     $scope.imageContainer = true; // Bandera para mostrar/ocultar elemento DIV para cargar una imagen
@@ -59,9 +61,15 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
             // Parse para "Coordinadores":
             if($scope.evento.coordinador && $scope.evento.coordinador.length > 0){
                 $scope.coordinadores = [];
-                console.log($scope.evento.coordinador);
+                // console.log($scope.evento.coordinador);
                 for(var i in $scope.evento.coordinador)
                     $scope.coordinadores.push({nombre: $scope.evento.coordinador[i]});
+            }
+            // Parse para "Participantes":
+            if($scope.evento.participantes && $scope.evento.participantes.length > 0){
+                $scope.participantes = [];
+                for(var i in $scope.evento.participantes)
+                    $scope.participantes.push({nombre: $scope.evento.participantes[i]});
             }
             // Parse para "keywords":
             if($scope.evento.keywords && $scope.evento.keywords.length > 0){
@@ -70,7 +78,7 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
                 for(var i in $scope.evento.keywords)
                     $scope.keywords.push({"text": $scope.evento.keywords[i]});
             }
-            if($scope.evento.imagenPrincipal){ // Deshabilitar div para imagen si el evento ya tiene una
+            if($scope.evento.imagen){ // Deshabilitar div para imagen si el evento ya tiene una
                 $scope.imageContainer = false;
             }
             // Reverse Geocoding para obtener dirección a partir de PlaceID ($scope.evento.lugar)
@@ -115,6 +123,34 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
             });
     };
 
+    // Cambia y asigna el arreglo de objetos "$scope.coordinadores" por el arreglo de strings "$scope.evento.coordinador"
+    $scope.updateCoordinador = function(){
+        // Parse de coordinadores para agregar solo el texto (sin ser objetos)
+        if(!(($scope.coordinadores.length == 1) && ($scope.coordinadores[0].nombre === "")))
+        $scope.evento.coordinador = [];
+        for(var i in $scope.coordinadores)
+            if($scope.coordinadores[i].nombre !== "")
+                $scope.evento.coordinador[i] = $scope.coordinadores[i].nombre;
+    };
+
+    // Agrega un nuevo coordinador (otro input en la vista)
+    $scope.addParticipante = function(){
+        if(($scope.participantes[$scope.participantes.length - 1].nombre !== "") && ($scope.participantes.length < $scope.maxLengthParticipantes))
+            $scope.participantes.push({
+                nombre: ""
+            });
+    };
+
+    // Cambia y asigna el arreglo de objetos "$scope.coordinadores" por el arreglo de strings "$scope.evento.coordinador"
+    $scope.updateParticipantes = function(){
+        // Parse de participantes para agregar solo el texto (sin ser objetos)
+        if(!(($scope.participantes.length == 1) && ($scope.participantes[0].nombre === "")))
+        $scope.evento.participantes = [];
+        for(var i in $scope.participantes)
+            if($scope.participantes[i].nombre !== "")
+                $scope.evento.participantes[i] = $scope.participantes[i].nombre;
+    };
+
     // Google Maps API Autocomplete
     var options = {
         componentRestrictions: {country: 'mx'}
@@ -140,16 +176,6 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
             $scope.evento.lugar = undefined; // También se debe "borrar" el PlaceID asociado
         }
     });
-
-    // Cambia y asigna el arreglo de objetos "$scope.coordinadores" por el arreglo de strings "$scope.evento.coordinador"
-    $scope.updateCoordinador = function(){
-        // Parse de coordinadores para agregar solo el texto (sin ser objetos)
-        if(!(($scope.coordinadores.length == 1) && ($scope.coordinadores[0].nombre === "")))
-        $scope.evento.coordinador = [];
-        for(var i in $scope.coordinadores)
-            if($scope.coordinadores[i].nombre !== "")
-                $scope.evento.coordinador[i] = $scope.coordinadores[i].nombre;
-    };
 
     // Llamada asíncrona para obtener los tags desde archivo y filtrarlos por medio del query dado como parámetro
     $scope.loadTags = function(query){
@@ -182,10 +208,10 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
             // console.log('Success ' + resp.config.data.file.name + ' uploaded. Response: ' + resp.data);
             // console.log('return ' + resp.config.data.file.name);
 
-            // NOTA: $scope.evento.imagenPrincipal NO es igual a $scope.imagenPrincipal
+            // NOTA: $scope.evento.imagen NO es igual a $scope.imagen
             // Esta última sirve para previsualizar la imagen en HTML
             // Asignación del nombre de la imagen a $scope.evento
-            $scope.evento.imagenPrincipal = resp.config.data.file.name;
+            $scope.evento.imagen = resp.config.data.file.name;
             $scope.imageContainer = false;
         }, function (resp) { // Función para manejo de error
             console.log('Error status: ' + resp.status);
@@ -208,10 +234,10 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
             // console.log('Success ' + resp.config.data.file.name + ' uploaded. Response: ' + resp.data);
             // console.log('return ' + resp.config.data.file.name);
 
-            // NOTA: $scope.evento.imagenPrincipal NO es igual a $scope.imagenPrincipal
+            // NOTA: $scope.evento.imagen NO es igual a $scope.imagen
             // Esta última sirve para previsualizar la imagen en HTML
             // Asignación del nombre de la imagen a $scope.evento
-            //$scope.evento.imagenPrincipal = resp.config.data.file.name;
+            //$scope.evento.imagen = resp.config.data.file.name;
             $scope.evento.documentos = [];
             for(var i in resp.config.data.file)
                 $scope.evento.documentos[i] = resp.config.data.file[i].name;
@@ -225,7 +251,7 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
 
     // Elimina imagen del evento
     $scope.deleteImage = function(){
-        $scope.evento.imagenPrincipal = undefined;
+        $scope.evento.imagen = undefined;
         $scope.imageContainer = true;
     };
 

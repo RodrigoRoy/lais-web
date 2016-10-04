@@ -43,8 +43,6 @@ router.route('/')
         
         if(req.body.titulo)
         	evento.titulo = req.body.titulo;
-        if(req.body.descripcion)
-        	evento.descripcion = req.body.descripcion;
         if(req.body.contenidoHTML)
         	evento.contenidoHTML = req.body.contenidoHTML;
 	    if(req.body.fecha)
@@ -57,15 +55,14 @@ router.route('/')
 	    	evento.horarioFin = req.body.horarioFin;
 	    if(req.body.tipo)
 	    	evento.tipo = req.body.tipo;
-        if(req.body.imagenPrincipal)
-            evento.imagenPrincipal = req.body.imagenPrincipal;
-	    // Se espera que las imagenes se representen como una lista de nombres de archivo separados por comas
-	    // if(req.body.imagen)
-	    // 	evento.imagen = req.body.imagen.split(/\s*,\s*/); // REGEXP elimina posibles espacios en blanco entre nombres y comas
+        if(req.body.imagen)
+            evento.imagen = req.body.imagen;
 	    if(req.body.coordinador)
-	    	evento.coordinador = req.body.coordinador; //.split(/\s*,\s*/);
+	    	evento.coordinador = req.body.coordinador;
+        if(req.body.participantes)
+            evento.participantes = req.body.participantes;
 	    if(req.body.lugar)
-            evento.lugar = req.body.lugar; // id del lugar
+            evento.lugar = req.body.lugar; // ID del lugar
         if(req.body.notas)
             evento.notas = req.body.notas;
         if(req.body.documentos)
@@ -88,7 +85,7 @@ router.route('/news')
         Evento.find() // encontrar todos
         .sort({fechaCreacion: 'desc'})
         .limit(4)
-        .select('titulo descripcion imagenPrincipal')
+        .select('titulo imagen')
         .exec(function(err, eventos){
             if(err)
                 res.send(err);
@@ -138,8 +135,6 @@ router.route('/:evento_id')
             
             if(req.body.titulo)
                 evento.titulo = req.body.titulo;
-            if(req.body.descripcion)
-                evento.descripcion = req.body.descripcion;
             if(req.body.contenidoHTML)
                 evento.contenidoHTML = req.body.contenidoHTML;
             if(req.body.fecha)
@@ -152,13 +147,12 @@ router.route('/:evento_id')
              evento.horarioFin = req.body.horarioFin;
             if(req.body.tipo)
                 evento.tipo = req.body.tipo;
-            if(req.body.imagenPrincipal)
-                evento.imagenPrincipal = req.body.imagenPrincipal;
-            // Se espera que las imagenes se representen como una lista de nombres de archivo separados por comas
-            // if(req.body.imagen)
-            //  evento.imagen = req.body.imagen.split(/\s*,\s*/); // REGEXP elimina posibles espacios en blanco entre nombres y comas
+            if(req.body.imagen)
+                evento.imagen = req.body.imagen;
             if(req.body.coordinador)
-                evento.coordinador = req.body.coordinador; //.split(/\s*,\s*/);
+                evento.coordinador = req.body.coordinador;
+            if(req.body.participantes)
+                evento.participantes = req.body.participantes;
             if(req.body.lugar)
                 evento.lugar = req.body.lugar; // id del lugar
             if(req.body.notas)
@@ -167,7 +161,7 @@ router.route('/:evento_id')
                 evento.documentos = req.body.documentos;
             if(req.body.keywords)
                 evento.keywords = req.body.keywords;
-            evento.fechaCreacion = new Date(); // fecha de creación auto-actualizada
+            //evento.fechaCreacion = new Date(); // fecha de creación auto-actualizada
 
             evento.save(function(err){
                 if(err)

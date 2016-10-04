@@ -18,6 +18,8 @@ angular.module('EventoCtrl',[]).controller('EventoController', function ($scope,
 
 			//Join para guardar a los coordinadores en una cadena
 			$scope.coordinador = $scope.evento.coordinador.join(", ");
+			//Join para guardar a los participantes en una cadena
+			$scope.participantes = $scope.evento.participantes.join(", ");
 
 			// Reverse Geocoding para obtener dirección a partir de PlaceID ($scope.evento.lugar)
 			var geocoder = new google.maps.Geocoder;

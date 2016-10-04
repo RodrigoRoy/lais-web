@@ -8,10 +8,10 @@
 					<a href="" ng-click="sortBy('titulo')">Título</a> 
 					<i class="fa fa-sort-asc" aria-hidden="true" ng-show="propertyName === 'titulo' && !reverse"></i><i class="fa fa-sort-desc" aria-hidden="true" ng-show="propertyName === 'titulo' && reverse"></i>
 				</th>
-				<th>
+				<!-- <th>
 					<a href="" ng-click="sortBy('descripcion')">Descripción</a> 
 					<i class="fa fa-sort-asc" aria-hidden="true" ng-show="propertyName === 'descripcion' && !reverse"></i><i class="fa fa-sort-desc" aria-hidden="true" ng-show="propertyName === 'descripcion' && reverse"></i>
-				</th>
+				</th> -->
 				<th>
 					<a href="" ng-click="sortBy('tipo')">Tipo</a> 
 					<i class="fa fa-sort-asc" aria-hidden="true" ng-show="propertyName === 'tipo' && !reverse"></i><i class="fa fa-sort-desc" aria-hidden="true" ng-show="propertyName === 'tipo' && reverse"></i>
@@ -27,7 +27,7 @@
 			</tr>
 			<tr ng-repeat="evento in eventos | orderBy: propertyName: reverse">
 				<td>{{evento.titulo}}</td>
-				<td>{{evento.descripcion}}</td>
+				<!-- <td>{{evento.descripcion}}</td> -->
 				<td>{{evento.tipo}}</td>
 				<td>{{evento.fecha | date : 'dd/MM/yy'}}</td>
 				<td>{{evento.fechaCreacion | date : 'dd/MM/yy'}}</td>

@@ -9,10 +9,10 @@
                 <uib-carousel interval="5000">
                   <uib-slide ng-repeat="slide in slides" index="$index">
                     <a href="eventos/{{slide._id}}">
-                    <img class="slide-img" ng-src="imgs/eventos/{{slide.imagenPrincipal}}">
+                    <img class="slide-img" ng-src="imgs/eventos/{{slide.imagen}}">
                     <div class="carousel-caption" style="font-family: 'Roboto Slab', serif;">
                       <h4>{{slide.titulo}}</h4>
-                      <p>{{slide.descripcion}}</p>
+                      <!-- <p>{{slide.descripcion}}</p> -->
                     </div>
                     </a>
                   </uib-slide>
