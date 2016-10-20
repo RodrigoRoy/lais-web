@@ -32,6 +32,10 @@
 					<i class="fa fa-sort-asc" aria-hidden="true" ng-show="propertyName === 'tipo' && !reverse"></i><i class="fa fa-sort-desc" aria-hidden="true" ng-show="propertyName === 'tipo' && reverse"></i>
 				</th>
 				<th>
+					<a href="" ng-click="sortBy('size')">Tamaño</a> 
+					<i class="fa fa-sort-asc" aria-hidden="true" ng-show="propertyName === 'size' && !reverse"></i><i class="fa fa-sort-desc" aria-hidden="true" ng-show="propertyName === 'size' && reverse"></i>
+				</th>
+				<th>
 					<a href="" ng-click="sortBy('fechaCreacion')">Fecha</a> 
 					<i class="fa fa-sort-asc" aria-hidden="true" ng-show="propertyName === 'fechaCreacion' && !reverse"></i><i class="fa fa-sort-desc" aria-hidden="true" ng-show="propertyName === 'fechaCreacion' && reverse"></i>
 				</th>
@@ -43,6 +47,7 @@
 					<span ng-show="archivo._id === editable"><input type="text" class="form-control" placeholder="{{archivo.descripcion || 'Nueva descripción'}}" ng-click="$event.stopPropagation();" ng-blur="update()" ng-model="tempFile.descripcion"></span>
 				</td>
 				<td><span ng-bind-html="archivo.icon"></span> {{archivo.tipo}}</td>
+				<td>{{archivo.size}}</td>
 				<td>{{archivo.fechaCreacion | date : 'dd/MM/yy'}}</td>
 				<td>
 					<button class="btn btn-default btn-xs" ng-show="archivo._id != editable" ng-click="enableEdit(archivo._id); $event.stopPropagation();"><i class="fa fa-pencil" aria-hidden="true"></i></button>

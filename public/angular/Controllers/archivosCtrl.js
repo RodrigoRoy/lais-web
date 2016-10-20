@@ -141,13 +141,31 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
 
     // Elimina un archivo de la base de datos.
     $scope.delete = function(archivoID){
-    	Archivo.delete(archivoID)
-    		.then(function(res){
-    			console.log(res);
-    			if(res.statusText === 'OK'){ // re.data.status === 'OK' utiliza el código de status definido por el usuario
-					alert("Se ha eliminado exitosamente el archivo");
-		            $route.reload(); // Reload a la página para mostrar nuevamente los archivos
-				}
+    	var filename;
+    	// var path = 'public/files/';
+    	Archivo.get(archivoID).
+    		then(function(res){
+    			filename = res.data.filename;
+    			Archivo.delete(archivoID)
+		    		.then(function(res){
+		    			if(res.statusText === 'OK') // re.data.status === 'OK' utiliza el código de status definido por el usuario
+		    				// Archivo.unlink({path: path, filename: filename}).
+		    				Archivo.unlink(filename).
+		    					then(function(res){
+		    						alert("Se ha eliminado exitosamente el archivo");
+		    						$route.reload();
+		    					}, function(res){
+		    						if (res.status === 400) {
+		    							console.log('Error al borrar archivo del sistema');
+		    						}
+		    						if(res.status === 404){ // res.statusText === 'Not Found'
+		    							alert("Se ha eliminado el archivo de la lista");
+		    							$route.reload();
+		    						}
+		    					});
+		    		}, function(res){
+		    			console.log('Error de conexión con la base de datos');
+		    		});
     		}, function(res){
     			console.log('Error de conexión con la base de datos');
     		});

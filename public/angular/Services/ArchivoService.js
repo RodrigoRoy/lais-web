@@ -29,5 +29,14 @@ angular.module('ArchivoService', []).factory('Archivo', ['$http', function($http
 		delete: function(archivoID){
 			return $http.delete('/api/archivos/' + archivoID);
 		},
+
+		// unlink: function(archivoData){
+		// 	return $http.post('/api/deleteFile', archivoData);
+		// },
+
+		unlink: function(filename){
+			return $http.delete('/files/' + filename);
+		}
+
 	}
 }]);

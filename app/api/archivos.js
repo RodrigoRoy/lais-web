@@ -15,6 +15,8 @@ DELETE http://localhost:8080/api/archivos/1234567890
 var express = require('express');
 var router = express.Router(); // para modularizar las rutas
 var Archivo = require('../models/archivo'); // Modelo de la colección "Archivos"
+var fs = require('fs'); // File system utility
+var filesize = require('filesize'); // Human readable file size string from number
 
 // Función a realizar siempre que se utilize esta API
 router.use(function(req, res, next){
@@ -27,12 +29,22 @@ router.route('/')
 	// Obtener todos los archivos
 	.get(function(req, res){
         Archivo.find() // encontrar todos
+        .lean() // Convierte los archivos a JSON (en vez de MongooseDocuments donde no se pueden incluir propiedades)
         .sort({fechaCreacion: 'desc'})
         .exec(function(err, archivos){
             if(err)
                 res.send(err);
-            res.json(archivos);
-        })
+            for(var i in archivos){
+                try{
+                    // Verifica si existe el archivo, en caso contrario se dispara excepción (se maneja en catch)
+                    fs.accessSync('public/files/' + archivos[i].filename, fs.constants.F_OK);
+                    archivos[i].size = filesize(fs.statSync('public/files/' + archivos[i].filename).size, {round: 0});
+                }catch(err){
+                    archivos[i].size = filesize(0, {round: 0});
+                }
+            }
+            res.send(archivos);
+        });
     })
 
     // Agregar un nuevo archivo o en caso de ser un arreglo agrega varios archivos

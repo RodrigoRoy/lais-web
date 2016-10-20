@@ -83,6 +83,55 @@ app.post('/api/uploadMultiFiles', multipartMiddleware, function(req, res){ // re
 	}
 	res.json({"status": "OK"}); // responder al cliente 
 });
+
+// DEPRECATED. USAR DELETE EN VEZ DE POST ES CORRECTO SEMÁNTICAMENTE
+// Elimina un archivo, útil para borrar archivos adjuntos de los eventos
+// Las propiedades "path" y "filename" indican la ubicación y nombre del archivo (con extensión) a eliminar
+app.post('/api/deleteFile', function(req, res){
+	if(!req.body.path || !req.body.filename) // Error si no hay path o filename
+		return res.status(400).send({
+			success: false,
+			message: 'Error 400 Bad Request. Path and filename properties expected.'
+		});
+	// Verificar si el archivo existe
+	fs.access(req.body.path + req.body.filename, fs.constants.F_OK, function(err){
+		if(err) // Error si el archivo que se quiere eliminar no existe
+			return res.status(404).send({
+				success: false,
+				message: "File " + req.body.filename + " don't exist"
+			});
+		// Eliminar el archivo (indicando la ruta)
+		fs.unlink(req.body.path + req.body.filename, function(err){
+			if (err)
+				throw err;
+			res.send({
+				success: true,
+				message: 'File ' + req.body.filename + ' deleted'
+			});
+		});
+	});
+});
+
+// Elimina el archivo indicado dentro de la carpeta 'files'. Útil para borrar archivos adjuntos de los eventos
+app.delete('/files/:filename', function(req, res){
+	// Verificar si el archivo existe
+	fs.access('public/files/' + req.params.filename, fs.constants.F_OK, function(err){
+		if(err) // Error si el archivo que se quiere eliminar no existe
+			return res.status(404).send({
+				success: false,
+				message: "File " + req.params.filename + " don't exist"
+			});
+		// Eliminar el archivo (indicando la ruta)
+		fs.unlink('public/files/' + req.params.filename, function(err){
+			if(err)
+				throw err;
+			res.send({
+				success: true,
+				message: 'File ' + req.params.filename + ' deleted'
+			});
+		});
+	});
+});
 // ***** END TESTING UPLOAD *****
 
 // RUTAS PARA EL API
