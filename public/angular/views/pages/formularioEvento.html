@@ -132,7 +132,7 @@
         <!-- ARCHIVOS ADJUNTOS -->
         <div class="form-group">
             <label class="control-label color-title format-title" for="ajduntos">Archivos adjuntos</label>
-            <button type="button" class="btn btn-default full-width" name="adjuntos" id="adjuntos" ngf-select="uploadFiles($files)" ng-model="adjuntos" ngf-multiple="true" ngf-keep="'distinct'" ngf-accept="'image/*,.pdf,.doc,.docx'" ngf-max-files="10" ngf-pattern="'image/*,.pdf,.doc,.docx'" ngf-max-size="'1MB'" ngf-max-total-size="'5MB'">Selecciona archivos...</button>
+            <button type="button" class="btn btn-default full-width" name="adjuntos" id="adjuntos" ngf-select="uploadFiles($files)" ng-model="adjuntos" ngf-multiple="true" ngf-keep="'distinct'" ngf-accept="'image/*,.pdf,.doc,.docx'" ngf-max-files="10" ngf-pattern="'image/*,.pdf,.doc,.docx'" ngf-max-size="'100MB'" ngf-max-total-size="'200MB'">Selecciona archivos...</button>
             <div class="files-upload">
                 <ul class="list-inline">
                     <li ng-repeat="documento in evento.documentos">

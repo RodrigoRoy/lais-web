@@ -3,7 +3,7 @@
     Sirve tanto para crear nuevos eventos como para editar los existentes.
 */
 
-angular.module('EventoFormCtrl', []).controller('EventoFormController', function ($scope, $location, $routeParams, $http, Evento, Upload) {
+angular.module('EventoFormCtrl', []).controller('EventoFormController', function ($scope, $location, $routeParams, $http, Evento, Archivo, Upload) {
     $scope.evento = {}; // Contiene los datos del evento
     $scope.maxLengthCoordinadores = 10; // Cantidad máxima de coordinadores
     $scope.coordinadores = [{nombre: ""}]; // Arreglo de "personas" (objetos con propiedad 'nombre')
@@ -251,8 +251,21 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
 
     // Elimina imagen del evento
     $scope.deleteImage = function(){
+        var filename = $scope.evento.imagen; // auxiliar para guardar el nombre de la imagen
         $scope.evento.imagen = undefined;
         $scope.imageContainer = true;
+        // Borrar archivo del sistema:
+        Archivo.unlink('/imgs/eventos/', filename).
+            then(function(res){
+                console.log("Se ha borrado exitosamente el archivo del sistema");
+            }, function(res){
+                if (res.status === 400) {
+                    console.log('Error al borrar archivo del sistema');
+                }
+                if(res.status === 404){ // res.statusText === 'Not Found'
+                    console.log("El archivo ya ha sido borrado del sistema");
+                }
+            });
     };
 
     // Elimina un archivo adjunto
@@ -263,6 +276,18 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
         }
         if($scope.evento.documentos.length < 1) // Si no hay más documentos por borrar, eliminar el arreglo vacio
             $scope.evento.documentos = undefined;
+        // Borrar archivo del sistema:
+        Archivo.unlink('/files/eventos/', filename).
+            then(function(res){
+                console.log("Se ha borrado exitosamente el archivo del sistema");
+            }, function(res){
+                if (res.status === 400) {
+                    console.log('Error al borrar archivo del sistema');
+                }
+                if(res.status === 404){ // res.statusText === 'Not Found'
+                    console.log("El archivo ya ha sido borrado del sistema");
+                }
+            });
     };
 
     // Se ejecuta en clic al botón de envio. Manda la información del evento a la base de datos

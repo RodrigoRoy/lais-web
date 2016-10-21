@@ -122,6 +122,13 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
     		}
         if(index !== undefined){ // Remover de manera segura en el arreglo
             $scope.uploadedFiles.splice(index, 1);
+            // Elminar del sistema de archivos
+            Archivo.unlink('/files/', filename).
+				then(function(res){
+					console.log("Archivo " + filename + " borrado del sistema");
+				}, function(res){
+					console.log("Error al borrar archivo en el sistema");
+				});
         }
         if($scope.uploadedFiles.length < 1) // Si no hay más documentos por borrar, eliminar el arreglo vacio
             $scope.uploadedFiles = undefined;
@@ -150,7 +157,7 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
 		    		.then(function(res){
 		    			if(res.statusText === 'OK') // re.data.status === 'OK' utiliza el código de status definido por el usuario
 		    				// Archivo.unlink({path: path, filename: filename}).
-		    				Archivo.unlink(filename).
+		    				Archivo.unlink('/files/', filename).
 		    					then(function(res){
 		    						alert("Se ha eliminado exitosamente el archivo");
 		    						$route.reload();
