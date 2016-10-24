@@ -4,7 +4,7 @@
 	<!-- <hr> -->
 	<div class="jumbotron">
 		<center>
-			<h1>{{evento.titulo}}</h1>
+			<h1 class="title">{{evento.titulo}}</h1>
 			<img class="img-responsive img-rounded" src="imgs/eventos/{{evento.imagen}}">
 		</center>
 		<hr>
@@ -18,9 +18,11 @@
 		<div ng-if="evento.fecha">
 			<h4 class="subtitle">Fecha <span ng-show="evento.horario">y hora</span></h4>
 			<p class="capitalize">
-				{{evento.fecha | date : 'fullDate'}}<span ng-show="evento.horarioFin"> al {{evento.fechaFin | date : 'fullDate'}}</span>
+				{{evento.fecha | date : 'fullDate'}}
+				<span ng-show="evento.fechaFin"> al {{evento.fechaFin | date : 'fullDate'}}</span>
 				<span ng-show="evento.horario"><br>
-					{{evento.horario | date : 'shortTime'}}</span><span ng-show="evento.horarioFin"> a {{evento.horarioFin | date : 'shortTime'}}
+					{{evento.horario | date : 'shortTime'}}
+					<span ng-show="evento.horarioFin"> a {{evento.horarioFin | date : 'shortTime'}}</span>
 				</span>
 			</p>
 		</div>
@@ -29,7 +31,7 @@
 			<p>{{coordinador}}</p>
 		</div>
 		<div ng-if="evento.participantes && evento.participantes.length > 0">
-			<h4 class="subtitle">Participante<span ng-if="evento.coordinador.length > 1">s</span> destacados</h4>
+			<h4 class="subtitle">Participante<span ng-if="evento.participantes.length > 1">s</span> destacado<span ng-if="evento.participantes.length > 1">s</span></h4>
 			<p>{{participantes}}</p>
 		</div>
 		<div ng-if="evento.tipo">
@@ -50,6 +52,17 @@
 			<h4 class="subtitle">Palabras clave</h4>
 			<p>
 				<span class="label label-default label-spacing" ng-repeat="keyword in evento.keywords">{{keyword}}</span>
+			</p>
+		</div>
+		<div>
+			<h4 class="subtitle">Comparte</h4>
+			<p>
+				<!-- FACEBOOK -->
+				<button class="btn btn-default" socialshare socialshare-provider="facebook" socialshare-url="{{url}}" socialshare-text="{{evento.titulo}}" socialshare-type="feed" socialshare-via="148770792254400"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</button>
+				<!-- TWITTER -->
+				<button class="btn btn-default" socialshare socialshare-provider="twitter" socialshare-text="{{evento.titulo}}" socialshare-url="{{url}}"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</button>
+				<!-- EMAIL -->
+				<button class="btn btn-default" socialshare socialshare-provider="email" socialshare-subject="Evento audiovisual" socialshare-body="A quien corresponda.%0D%0A %0D%0APor considerarlo de su interés, el Laboratorio Audiovisual de Investigación Social del Instituto Mora le invita a revisar la información del evento {{evento.titulo}} desde su página en internet:%0D%0A {{url}}.%0D%0A %0D%0AUn cordial saludo y gracias por su atención."><i class="fa fa-envelope-o" aria-hidden="true"></i> Email</button>
 			</p>
 		</div>
 

@@ -13,6 +13,7 @@ angular.module('laisApp', [
 	'ui.bootstrap', // Componentes Bootstrap
 	'textAngular', // 3rd party WYSWYG HTML text editor
 	'ngTagsInput', // Tagging module for inputs forms
+	'720kb.socialshare', // Social share buttons
 
 	'EventoFormCtrl', // Formulario para eventos
 	'IndexCtrl', // Checa cambios en la URL

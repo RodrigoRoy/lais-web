@@ -87,6 +87,13 @@
             </div>
         </div>
 
+        <!-- LUGAR (GOOGLE MAPS) -->
+        <div class="form-group">
+            <label class="control-label color-title format-title" for="place">Lugar</label>
+            <input class="form-control" type="text" id="place" ng-model="place" placeholder="Escribe y selecciona un lugar o dirección">
+            <div id="map"></div>
+        </div>
+
         <!-- TIPO DE EVENTO -->
         <div class="form-group" ng-class="{'has-error': eventoForm.tipo.$dirty && eventoForm.tipo.$invalid}">
             <label class="control-label color-title format-title" for="tipo">Tipo de evento</label>
@@ -120,13 +127,6 @@
             <!-- <img class="full-width" ngf-src="imagen" ngf-resize="{height: 120, quality: 0.9}"> -->
             <img class="preview full-width" ng-show="evento.imagen" src="imgs/eventos/{{evento.imagen}}">
             <button type="button" class="btn btn-danger" ng-show="evento.imagen" ng-click="deleteImage()">Eliminar <i class="fa fa-times" aria-hidden="true"></i></button>
-        </div>
-
-        <!-- LUGAR (GOOGLE MAPS) -->
-        <div class="form-group">
-            <label class="control-label color-title format-title" for="place">Lugar</label>
-            <input class="form-control" type="text" id="place" ng-model="place" placeholder="Escribe y selecciona un lugar o dirección">
-            <div id="map"></div>
         </div>
 
         <!-- ARCHIVOS ADJUNTOS -->

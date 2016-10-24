@@ -6,6 +6,11 @@
 }
 
 /*Subtítulo para evento*/
+.title{
+	font-size: 3em !important;
+}
+
+/*Subtítulo para evento*/
 .subtitle{
 	color: #a13f16;
 }

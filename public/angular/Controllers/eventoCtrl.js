@@ -1,6 +1,6 @@
 /*Controlador que manda a llamar la información de un evento con su id */
 
-angular.module('EventoCtrl',[]).controller('EventoController', function ($scope, $routeParams, Evento){
+angular.module('EventoCtrl',[]).controller('EventoController', function ($scope, $routeParams, $location, Evento){
 
 	// Carga síncrona (no recomendada) para mostrar correctamente el mapa en pantalla
 	// var initialize = function(){
@@ -20,6 +20,7 @@ angular.module('EventoCtrl',[]).controller('EventoController', function ($scope,
 			$scope.coordinador = $scope.evento.coordinador.join(", ");
 			//Join para guardar a los participantes en una cadena
 			$scope.participantes = $scope.evento.participantes.join(", ");
+			$scope.url = $location.absUrl(); // URL completa de la página actual del evento (útil para social share)
 
 			// Reverse Geocoding para obtener dirección a partir de PlaceID ($scope.evento.lugar)
 			var geocoder = new google.maps.Geocoder;
