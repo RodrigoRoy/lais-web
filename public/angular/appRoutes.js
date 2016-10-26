@@ -52,8 +52,13 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 			templateUrl: 'angular/views/pages/usuarios.html'
 		})
 
-		.when('/publicaciones',{
-			templateUrl: 'angular/views/pages/publicaciones.html'
+		// .when('/publicaciones',{
+		// 	templateUrl: 'angular/views/pages/publicaciones.html'
+		// })
+
+		.when('/contacto',{
+			templateUrl: 'angular/views/pages/contacto.html',
+			controller: 'ContactoController'
 		})
 
 		// RUTAS INVÁLIDAS (no descritas previamente)

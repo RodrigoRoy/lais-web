@@ -1,0 +1,58 @@
+<div class="container my-container">
+    <!--Script para mostrar mensajes de error en los campos del formulario-->
+    <script type="text/ng-template" id="error-messages">
+        <span ng-message="required" class="help-block">Esta información es necesaria.</span>
+        <span ng-message="maxlength" class="help-block">El texto es demasiado largo.</span>
+        <span ng-message="minlength" class="help-block">La información es demasiado corta.</span>
+        <span ng-message="date" class="help-block">La fecha es incorrecta.</span>
+        <span ng-message="url" class="help-block">Se requiere la dirección completa de internet (comúnmente iniciando con "http://").</span>
+        <span ng-message="pattern" class="help-block">El formato de este campo es incorrecto.</span>
+    </script>
+
+	<h1>Contacto</h1>
+
+    <p>
+        El Laboratorio Audiovisual de Investigación Social (LAIS) se encuentra ubicado en Coyoacán, Ciudad de México. Por favor tenga la confianza de contactarnos mediante correo, redes sociales o con el formulario de esta página.
+    </p>
+
+    <!-- Google Map -->
+    <!-- <div id="map"></div> -->
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3764.2866207622515!2d-99.16888298457964!3d19.356738248116745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ffc1c18f3a57%3A0xa17b4d145c0ad550!2sInstituto+Mora!5e0!3m2!1sen!2smx!4v1477408629289" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+    <h3>Dirección</h3>
+    <p>
+        {{geocodeResult.formatted_address}}
+    </p>
+
+    <h3>Correo electrónico</h3>
+    <a href="mailto:rcolin@institutomora.edu.mx?subject=Contacto">lais@mora.edu.mx</a>
+
+    <h3>Envíanos un mensaje</h3>
+    
+    <!-- Formulario -->
+    <form name="contactoForm" id="contactoForm" role="form" novalidate>
+        <!-- Nombre de la persona -->
+        <div class="form-group" ng-class="{'has-error': contactoForm.nombre.$dirty && contactoForm.nombre.$invalid}">
+            <label class="control-label color-title format-title" for="nombre">Su nombre</label>
+            <input class="form-control" type="text" name="nombre" id="nombre" placeholder="" ng-model="mailData.nombre" ng-maxlength="60" ng-trim>
+            <div ng-messages="contactoForm.nombre.$error" ng-show="contactoForm.nombre.$dirty && contactoForm.nombre.$invalid"><div ng-messages-include="error-messages"></div></div>
+        </div>
+
+        <!-- Correo electrónico -->
+        <div class="form-group" ng-class="{'has-error': contactoForm.email.$dirty && contactoForm.email.$invalid}">
+            <label class="control-label color-title format-title" for="email">Su correo</label>
+            <input class="form-control" type="email" name="email" id="email" ng-model="mailData.email">
+            <div ng-messages="contactoForm.email.$error" ng-show="contactoForm.email.$dirty && contactoForm.email.$invalid"><div ng-messages-include="error-messages"></div></div>
+        </div>
+
+        <!-- Mensaje -->
+        <div class="form-group" ng-class="{'has-error': contactoForm.mensaje.$dirty && contactoForm.mensaje.$invalid}">
+            <label class="control-label color-title format-title" for="mensaje">Su mensaje</label>
+            <textarea class="form-control" name="mensaje" id="mensaje" ng-model="mailData.mensaje" rows="8" required=""></textarea>
+            <div ng-messages="contactoForm.mensaje.$error" ng-show="contactoForm.mensaje.$dirty && contactoForm.mensaje.$invalid"><div ng-messages-include="error-messages"></div></div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" ng-disabled="contactoForm.$invalid" ng-click="enviar()">Enviar</button>
+    </form>
+
+</div>

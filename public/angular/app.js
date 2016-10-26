@@ -25,10 +25,13 @@ angular.module('laisApp', [
 	'AdminCtrl', // Información general para la administración del sitio
 	'EventosListCtrl', // Administración de los eventos (en forma de lista)
 	'ArchivosCtrl', //Carga toda la informacion de la Base de datos de los archivos
+	'ContactoCtrl', // Página de contacto
+	
 	'LugarService', // Servicio para administrar llamadas a la base de datos de "lugares"
 	'EventoService', //Servicio que administra las llamadas a la base de datos de "eventos"
 	'ArchivoService', //Servicio que administra las llamadas a la base de datos de "archivos"
 	'UsuarioService', //Servicio que administra las llamadas a la base de datos de usuarios
-	'EventosBusquedaService' //Servicio que obtiene los oventos con la coincidencia de busqueda
+	'EventosBusquedaService', //Servicio que obtiene los oventos con la coincidencia de busqueda
+	'ContactoService' // Servicio para envio de información en página de contacto
 ]);
 
