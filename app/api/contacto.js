@@ -27,10 +27,26 @@ router.route('/')
     //   req.body.email   - Correo de la persona que envia mensaje (opcional)
     //   req.body.mensaje - Mensaje en texto plano
     .post(function(req, res){
+        if(!req.body.mensaje) // Error si no hay mensaje
+            return res.status(400).send({
+                success: false,
+                message: "Bad request. No message found"
+            });
+
+        var userName = req.body.nombre || 'Anónimo(a)';
+        // var userMail = req.body.email ? '<br><strong>Correo: </strong><a href="mailto:' + req.body.email + '?subject=Contacto%20LAIS>' + req.body.email +'</a>' : '';
+        var userMail = req.body.email ? '<br><strong>Correo: </strong>' + req.body.email : '';
+        var htmlBody = '<p>El siguiente mensaje es enviado desde la <a href="http://lais.mora.edu.mx">p&aacute;gina del LAIS</a></p>' +
+            '<p>' + 
+                '<strong>De: </strong>' + userName +
+                userMail +
+            '</p>' +
+                req.body.mensaje +
+            '</p>';
+
         // create reusable transporter object using the default SMTP transport
         var transporter = nodemailer.createTransport({
-            // service: 'Gmail',
-            // service: 'Hotmail',
+            // Configuración para usar cuenta Outlook365 (no es igual que Hotmail):
             host: 'smtp.office365.com',
             port: 587,
             secure: false,
@@ -48,7 +64,8 @@ router.route('/')
             from: '"Rodrigo Colín" <rcolin@institutomora.edu.mx>', // sender address
             to: 'rodrigo.cln@ciencias.unam.mx', // list of receivers
             subject: 'Mensaje de la página del LAIS', // Subject line
-            text: req.body.mensaje + '\n--------------------\nMensaje de prueba enviado automáticamente' // plaintext body
+            html: htmlBody // html text
+            // text: req.body.mensaje // plain text
         };
 
         // send mail with defined transport object
