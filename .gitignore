@@ -7,8 +7,6 @@ lib-cov
 *.pid
 *.gz
 
-config.js
-
 pids
 logs
 results
@@ -16,4 +14,7 @@ results
 npm-debug.log
 node_modules
 
+config.js
 public/libs
+public/files
+public/imgs/eventos
