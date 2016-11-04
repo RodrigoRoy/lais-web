@@ -153,7 +153,7 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
 
     // Google Maps API Autocomplete
     var options = {
-        componentRestrictions: {country: 'mx'}
+        // componentRestrictions: {country: 'mx'}
     };
     var autocomplete = new google.maps.places.Autocomplete(document.getElementById('place'), options);
     autocomplete.addListener('place_changed', function(){ // Función cada vez que se selecciona una dirección en <input id="place">

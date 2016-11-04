@@ -1,6 +1,6 @@
 //Controlador que enlista todos los eventos
 
-angular.module('EventosListCtrl',[]).controller('EventosListController', function ($scope, $location, Evento) {
+angular.module('EventosListCtrl',[]).controller('EventosListController', function ($scope, $location, $route, Evento) {
 	
 	$scope.propertyName = 'fechaCreacion';
 	$scope.reverse = true;
@@ -30,6 +30,17 @@ angular.module('EventosListCtrl',[]).controller('EventosListController', functio
 	$scope.sortBy = function(propertyName){
 		$scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
 		$scope.propertyName = propertyName;
+	};
+
+	// Elimnia un evento de la base de datos
+	$scope.delete = function(eventoID){
+		Evento.delete(eventoID)
+			.then(function(res){
+				alert("Evento eliminado");
+            	$route.reload(); // Recargar la vista actual (no es una recarga completa de la página)
+			}, function(res){
+				alert("Error al eliminar. Por favor intentalo más tarde.");
+			});
 	};
 
 })
