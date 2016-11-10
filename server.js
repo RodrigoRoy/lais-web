@@ -172,7 +172,10 @@ app.use('/api/contacto', contacto); // usar el API desde la ruta "/api/contacto"
 
 // require('./app/routes')(app); // pasar a la aplicación las demás rutas a utilizar
 app.get('*', function(req, res) {
-    res.sendfile('./public/angular/views/index.html'); // cargar el archivo public/index.html
+	var options = {
+		root: __dirname
+	};
+    res.sendFile('/public/angular/views/index.html', options); // cargar el archivo index.html
 });
 
 // INICIAR APP =============================================
