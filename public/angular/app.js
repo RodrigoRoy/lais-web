@@ -27,11 +27,17 @@ angular.module('laisApp', [
 	'ArchivosCtrl', //Carga toda la informacion de la Base de datos de los archivos
 	'ContactoCtrl', // Página de contacto
 	
+	'authService', // Servicio para la autentificación de usuarios
 	'LugarService', // Servicio para administrar llamadas a la base de datos de "lugares"
 	'EventoService', //Servicio que administra las llamadas a la base de datos de "eventos"
 	'ArchivoService', //Servicio que administra las llamadas a la base de datos de "archivos"
 	'UsuarioService', //Servicio que administra las llamadas a la base de datos de usuarios
 	'EventosBusquedaService', //Servicio que obtiene los oventos con la coincidencia de busqueda
 	'ContactoService' // Servicio para envio de información en página de contacto
-]);
+])
+
+// configuración de aplicación para integrar token en peticiones
+.config(function($httpProvider){
+	$httpProvider.interceptors.push('AuthInterceptor');
+});
 

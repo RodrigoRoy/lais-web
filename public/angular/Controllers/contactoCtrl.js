@@ -6,7 +6,7 @@ angular.module('ContactoCtrl',[]).controller('ContactoController', function ($sc
 	$scope.sending = false; // Bandera 
 	$scope.alerts = {
 		success: {msg: 'Mensaje enviado. Gracias por tu comentario.', show: false},
-		fail: {msg: 'Hubo un erro al enviar el mensaje. Por favor intenta más tarde', show: false}
+		fail: {msg: 'Hubo un error al enviar el mensaje. Por favor intenta más tarde', show: false}
 	};
 
 	// var placeId = "ChIJVzqPwcH_0YURUNUKXBRNe6E"; // ID del Instituto Mora Madrid

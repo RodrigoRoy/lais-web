@@ -10,7 +10,7 @@ angular.module('authService', [])
 // injecta $q para devolver objetos promise (asíncronos)
 // injecta AuthToken para administrar tokens (local storage)
 // ===================================================
-.factory('Auth', function($http, $q, AuthToken) {
+.factory('Auth', function($http, $q, $cacheFactory, AuthToken) {
 	// crear un objeto auth factory
 	var authFactory = {};
 
@@ -21,9 +21,12 @@ angular.module('authService', [])
 			username: username,
 			password: password
 		})
-		.success(function(data){
-			AuthToken.setToken(data.token);
-			return data;
+		.then(function(res){
+			AuthToken.setToken(res.data.token); // guarda token en Local Storage del navegador
+			return res;
+		}, function(res){
+			console.error("Error en autentificación de usuario: ", res);
+			return res;
 		});
 	};
 
@@ -31,10 +34,13 @@ angular.module('authService', [])
 	authFactory.logout = function(){
 		// eliminar el token
 		AuthToken.setToken();
+		// eliminar cache (evita mal inicio de sesión al hacer logout/login como otro usuario y sin recargar la página)
+		// source; http://stackoverflow.com/questions/17059569/how-to-refresh-invalidate-resource-cache-in-angularjs
+		var $httpDefaultCache = $cacheFactory.get('$http');
+		$httpDefaultCache.remove('/api/usuarios/me');
 	};
 
-	// verifica si hay un usuario con sesión iniciada
-	// verifica si hay un token en local storage
+	// verifica si hay un usuario con sesión iniciada (existencia de token en Local Storage)
 	authFactory.isLoggedIn = function(){
 		if(AuthToken.getToken())
 			return true;
@@ -45,7 +51,7 @@ angular.module('authService', [])
 	// obtener al usuario que está con sesión iniciada
 	authFactory.getUser = function(){
 		if(AuthToken.getToken())
-			return $http.get('/api/usuarios/me');
+			return $http.get('/api/usuarios/me', {cache: true}); // cache evita peticiones adicionales al servidor
 		else
 			return $q.reject({message: 'El usuario no tiene token'});
 	};

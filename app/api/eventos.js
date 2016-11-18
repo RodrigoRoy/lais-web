@@ -16,11 +16,16 @@ var express = require('express');
 var router = express.Router(); // para modularizar las rutas
 var Evento = require('../models/evento'); // Modelo de la colección "Eventos"
 // var Lugar = require('../models/lugar'); // Modelo de la colección "Lugar"
+var verifyToken = require('./token'); // Función de verificación de token
 
 // Función a realizar siempre que se utilize esta API
 router.use(function(req, res, next){
-    console.log('Usando el API de Eventos.');
-    next(); // Pasar el control de las rutas a la siguiente coincidencia
+    console.log('Usando el API de Usuarios.');
+    // Rutas que son excluidas de verificación de token:
+    if(req.method === 'GET')
+        return next();
+    // Antes de usar el API de usuario se verifica que haya token y sea válido
+    verifyToken(req, res, next);
 });
 
 // En peticiones a la raiz del API

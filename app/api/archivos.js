@@ -17,11 +17,16 @@ var router = express.Router(); // para modularizar las rutas
 var Archivo = require('../models/archivo'); // Modelo de la colección "Archivos"
 var fs = require('fs'); // File system utility
 var filesize = require('filesize'); // Human readable file size string from number
+var verifyToken = require('./token'); // Función de verificación de token
 
 // Función a realizar siempre que se utilize esta API
 router.use(function(req, res, next){
     console.log('Usando el API de Archivos.');
-    next(); // Pasar el control de las rutas a la siguiente coincidencia
+    // Rutas que son excluidas de verificación de token:
+    if(req.method === 'GET')
+        return next();
+    // Antes de usar el API de usuario se verifica que haya token y sea válido
+    verifyToken(req, res, next);
 });
 
 // En peticiones a la raiz del API

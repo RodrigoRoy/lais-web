@@ -30,7 +30,13 @@ footer{
 #secLogo{
 	width: 48%;
 	margin-top: -20%;
+	font-weight: 700;
+}
 
+/*Ajustes de tipografía en botones*/
+.btn-custom{
+	font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	text-transform: uppercase;
 }
 
 /*Estilo a usar en dispositivos no-móviles (ancho > 768px)*/
@@ -94,11 +100,11 @@ BRINDAN LA SENSACIÓN DE UN TEMA BASADO EN LOS SIGUIENTES COLORES:*/
 	background-color: #b34d23; /*<--- Color auxiliar entre color primario y oscuro*/
 	border-color: #782400;
 }
-.btn-primary[disabled]{
+.btn-primary[disabled], .btn-primary.disabled{
 	background-color: #de7d54;
 	border-color: #a13f16;
 }
-.btn-primary[disabled]:hover, .btn-primary[disabled]:focus{
+.btn-primary[disabled]:hover, .btn-primary[disabled]:focus, .btn-primary.disabled:hover, .btn-primary.disabled:focus{
 	background-color: #cc724d; /*<--- Color auxiliar entre color primario y claro*/
 	border-color: #a13f16;
 }

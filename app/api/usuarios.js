@@ -15,45 +15,18 @@ DELETE http://localhost:8080/api/usuarios/1234567890
 var express = require('express');
 var router = express.Router(); // para modularizar las rutas
 var Usuario = require('../models/usuario'); // Modelo de la colección "Usuarios"
-
-var jwt = require('jsonwebtoken'); // manejo de autentificación por JSON Web Token
-var secret = require('../../config').jwt;
+var verifyToken = require('./token'); // Función de verificación de token
 
 // Función a realizar siempre que se utilize esta API
 router.use(function(req, res, next){
     // console.log('Usando el API de Usuarios.');
-    if ((req.method === 'POST') && (req.originalUrl === '/api/usuarios'))
+    
+    // Rutas que son excluidas de verificación de token:
+    if ((req.method === 'POST') && (req.originalUrl === '/api/usuarios/'))
         return next();
     
-    var token = req.body.token || req.param('token') || req.headers['x-access-token'];
-
-    //decodificar token
-    if(token){
-        // verifica con secret y checa expiración
-        jwt.verify(token, secret, function(err, decoded){
-            if(err){
-                return res.status(403).send({
-                    success: false,
-                    message: 'Error en autentificación de token.'
-                });
-            }
-            else{
-                // si todo está bien, guardar a petición (request) para usar en otras rutas
-                req.decoded = decoded;
-                //console.log('req.decoded: ', req.decoded);
-
-                next(); // Pasar el control de las rutas a la siguiente coincidencia
-            }
-        });
-    }
-    else{
-        // si no hay token
-        // devolver respuesta HTTP 403 (acceso prohibido) y un mensaje de error
-        return res.status(403).send({
-            success: false,
-            message: 'No hay token.'
-        });
-    }
+    // Antes de usar el API de usuario se verifica que haya token y sea válido
+    verifyToken(req, res, next);
 });
 
 // obtener la información del usuario autentificado

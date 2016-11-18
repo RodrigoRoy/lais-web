@@ -4,7 +4,8 @@
 		<meta charset="utf-8">
  	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>LAIS-Web</title>
+    	<meta name="description" content="Página web del Laboratorio Audiovisual de Investigación Social (LAIS) del Instituto Mora.">
+		<title>Laboratorio Audiovisual de Investigación Social (LAIS)</title>
 
 		<!-- Establece la base ruta de la aplicación(elimina el # como base predeterminada) -->
 	    <base href="/">
@@ -27,10 +28,6 @@
 
 	    <!-- Custom Fonts -->
 	    <link href="libs/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
-	    <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-	    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-	    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-	    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'> -->
 	    <link href="https://fonts.googleapis.com/css?family=Droid+Serif|Montserrat|Roboto+Slab" rel="stylesheet">
 	</head>
 
@@ -60,33 +57,22 @@
 		                    <li class="active">
 		                    	<!-- $scope.isIndex se actualiza en cada cambio de URL. El atributo ng-clock evita que se carguen ambas opciones
 		                    	de manera prematura, debido a que 'scroll parallax' no funcion utilizando ng-if -->
-		                        <a id="inicioLink" class="page-scroll" ng-href="#inicio" ng-show="isIndex">Inicio</a>
-		                        <a id="inicioLink" class="page-scroll" href="index.html#inicio" ng-hide="isIndex">Inicio</a>
+		                        <a class="page-scroll" ng-href="#secCarrusel" ng-show="isIndex">Inicio</a>
+		                        <a class="page-scroll" href="index.html#secCarrusel" ng-hide="isIndex">Inicio</a>
 		                    </li>
 		                    <li>
-		                    	<a id="historiaLink" class="page-scroll" ng-href="#historia" ng-show="isIndex">Trayectoria</a>
-		                    	<a id="historiaLink" class="page-scroll" href="index.html#historia" ng-hide="isIndex">Trayectoria</a>
+		                    	<a class="page-scroll" ng-href="#historia" ng-show="isIndex">Trayectoria</a>
+		                    	<a class="page-scroll" href="index.html#historia" ng-hide="isIndex">Trayectoria</a>
 		                    </li>
 		                    <li>
-		                        <a id="recursosLink" class="page-scroll" ng-href="#recursosLinea" ng-show="isIndex">Recursos en Línea</a>
-		                        <a id="recursosLink" class="page-scroll" href="index.html#recursosLinea" ng-hide="isIndex">Recursos en Línea</a>
+		                        <a class="page-scroll" ng-href="#recursosLinea" ng-show="isIndex">Recursos en Línea</a>
+		                        <a class="page-scroll" href="index.html#recursosLinea" ng-hide="isIndex">Recursos en Línea</a>
 		                    </li>
-		                    <li>
+		                    <!-- <li>
 		                        <a href="#">Publicaciones</a>
-		                    </li>
-	                    	<li class="dropdown">
-		                        <a href="" class="dropdown-toggle active"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Eventos <span class="caret"></span></a>
-		                        <ul class="dropdown-menu">
-		                        	<li>
-		                        		<a id="dropdown-label" href="/eventos">Todos</a>
-		                        	</li>
-		                        	<li>
-		                        		<a id="dropdown-label" href="#">Académicos</a>
-		                        	</li>
-		                        	<li>
-		                        		<a id="dropdown-label" href="#">Docencia</a>
-		                        	</li>
-		                        </ul>
+		                    </li> -->
+		                    <li>
+		                    	<a class="page-scroll" href="/eventos">Eventos</a>
 		                    </li>
 		                    <li class="dropdown">
 		                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acervos <span class="caret"></span></a>
@@ -99,34 +85,6 @@
 		                        	</li>
 		                        </ul>
 		                    </li>
-		                    <!-- <li ng-show="!sesion">
-		                    	<a href="" ng-click="open()">
-							    	<span id="imgUser" class="fa-stack fa-lg">
-									  	<i class="fa fa-square-o fa-stack-2x"></i>
-										<i id="iconUser" class="fa fa-user fa-stack-1x"></i>
-									</span>
-							    </a>
-		                    </li>
-		                    <li ng-show="sesion">
-		                    	<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-							    	<span id="imgUser" class="fa-stack fa-lg">
-									  	<i class="fa fa-square-o fa-stack-2x"></i>
-										<i id="iconUser" class="fa fa-user fa-stack-1x"></i>
-									</span>
-							    </a>
-							    
-		                    	<ul class="dropdown-menu">
-		                        	<li>
-		                        		<a id="dropdown-label" href="">Agregar Usuario</a>
-		                        	</li>
-		                        	<li>
-		                        		<a id="dropdown-label" href="/eventos/nuevo">Agregar Evento</a>
-		                        	</li>
-		                        	<li>
-		                        		<a ng-click="cerrarSesion()" id="dropdown-label" href="">Cerrar Sesion</a>
-		                        	</li>
-		                        </ul>
-		                    </li> -->
 		                </ul>
 		            </div>
 		            <!-- /.navbar-collapse -->
@@ -166,13 +124,12 @@
 	                    <ul class="list-unstyled quicklinks">
 	                        <li><a href="#">Ligas de Interes</a>
 	                        </li>
-	                        <!-- <li ng-show="!sesion">
-	                        	<a href="" ng-click="open()">Login LAIS</a>
+	                        <li ng-show="!loggedIn">
+	                        	<a href="" ng-click="openModal()">Login LAIS</a>
 	                        </li>
-	                        <li ng-show="sesion">
+	                        <li ng-show="loggedIn">
 	                        	<a href="/admin">Administración del sitio</a>
-	                        </li> -->
-	                        <li><a href="/admin">Administración del sitio</a></li>
+	                        </li>
 	                    </ul>
 	                </div>
 	            </div>
@@ -181,28 +138,36 @@
 
 	    <!-- Modal Script para Iniciar Sesion-->
 	    <script type="text/ng-template" id="loginModalContent.html">
-	    	<div class="modal-header">
-	    		<h3 class="modal-title">Login</h3>
-	    	</div>
+	    	<!-- <div class="modal-header">
+	    		<h3 class="modal-title">Acceso al sitio</h3>
+	    	</div> -->
 		    <div class="modal-body">
+		    	<h3 class="modal-title" style="margin-bottom: 0.4em;">Acceso al sitio</h3>
+
 		    	<form name="loginForm" id="loginForm" role="form" novalidate>
 		    		
 		    		<div class="input-group" style="margin-bottom: 1em">
 						<span class="input-group-addon" id="username"><i class="fa fa-user"></i></span>
-						<input ng-model="username" type="text" class="form-control" placeholder="Usuario" aria-describedby="username" required>
+						<input ng-model="user.name" type="text" class="form-control" placeholder="Usuario" aria-describedby="username" required>
 					</div>
 					
 					<div class="input-group" style="margin-bottom: 1em">
 						<span class="input-group-addon" id="password"><i class="fa fa-key"></i></span>
-						<input ng-model="password" type="password" class="form-control" placeholder="Contraseña" aria-describedby="password" required>
+						<input ng-model="user.pass" type="password" class="form-control" placeholder="Contraseña" aria-describedby="password" required>
 					</div>
 
-					<button class="btn btn-primary" type="button" ng-click="iniciarSesion(username, password)">Iniciar Sesion</button>
+					<uib-alert type="danger" close="closeAlert()" ng-show="showAlert">{{errorMessage}}</uib-alert>
+
+					<button class="btn btn-success btn-custom" type="button" ng-click="iniciarSesion()" ng-disabled="loginForm.$invalid || logging">
+						<span ng-show="!logging">Iniciar Sesion</span>
+						<span ng-show="logging"><i class="fa fa-spinner fa-spin fa-pulse"></i> Enviando datos...</span>
+					</button>
+					<button class="btn btn-danger btn-custom" type="button" ng-click="closeModal()">Cerrar</button>
 				</form>
         	</div>
-	        <div class="modal-footer">
-	        	<button class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
-	        </div>
+	        <!-- <div class="modal-footer">
+	        	<button class="btn btn-danger" type="button" ng-click="closeModal()">Cancel</button>
+	        </div> -->
 	    </script>	
 
         <!-- Angular Libraries --> 
@@ -241,6 +206,7 @@
     	<script src="js/parallax.js"></script>
 
     	<!--Angular Services -->
+    	<script src="angular/Services/authService.js"></script>
     	<script src="angular/Services/EventoBusquedaService.js"></script>
     	<script src="angular/Services/EventoService.js"></script>
     	<script src="angular/Services/LugarService.js"></script>    	

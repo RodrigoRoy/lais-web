@@ -16,18 +16,20 @@ router.post('/authenticate', function(req, res){
 
         // no se encontró usuario con ese username
         if(!usuario){
-            res.json({
+            res.status(400).send({
                 success: false,
-                message: 'Autentificación fallida. Usuario no encontrado.'
+                code: 'username',
+                message: 'Nombre de usuario no encontrado'
             });
         }
         else if (usuario) {
             // revisar que el password coincida
             var validPassword = usuario.comparePassword(req.body.password);
             if(!validPassword){
-                res.json({
+                res.status(400).send({
                     success: false,
-                    message: 'Autentificación fallida. Contraseña incorrecta.'
+                    code: 'password',
+                    message: 'La contraseña es incorrecta'
                 });
             } else {
                 // si existe el usuario y el password es correcto
@@ -36,13 +38,12 @@ router.post('/authenticate', function(req, res){
                     username: usuario.username,
                     permisos: usuario.permisos
                 }, secret, {
-                    expiresInMinutes: 1440 // expira en 24 horas
+                    expiresIn: '7 days' // expresado en notación de https://github.com/zeit/ms
                 });
 
                 // devolver la información del token como JSON
                 res.json({
                     success: true,
-                    //message: 'Disfruta tu token!',
                     token: token
                 });
             }
