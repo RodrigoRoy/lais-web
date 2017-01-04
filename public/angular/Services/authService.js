@@ -41,6 +41,8 @@ angular.module('authService', [])
 	};
 
 	// verifica si hay un usuario con sesión iniciada (existencia de token en Local Storage)
+	// DEPRECATED: NO se recomienda usar esta función, ya que la presencia de un token en memoria no es suficiente
+	// 		porque tiene un tiempo de expiración que invalida el inicio de sesión sin borrar el token en memoria.
 	authFactory.isLoggedIn = function(){
 		if(AuthToken.getToken())
 			return true;

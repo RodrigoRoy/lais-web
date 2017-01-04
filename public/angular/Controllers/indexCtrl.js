@@ -8,15 +8,9 @@ angular.module('IndexCtrl',[]).controller('IndexController', function ($scope, $
 	$scope.user = {}; // Información del usuario (si inicia sesión)
 	$scope.loggedIn = false; // Bandera que indica si un usuario se encuetra con sesión iniciada
 
-	// $scope.$on('$locationChangeStart', function(event) { // Se ejecuta en cada cambio de URL
-	//     if($location.path() === '/') // Verificar si estamos en la página inicial
-	//     	$scope.isIndex = true; // Variable que se utiliza en la vista (index.html)
-	//     else
-	//     	$scope.isIndex = false;
-	// });
-
 	// determinar si una persona está con sesión iniciada
-	$scope.loggedIn = Auth.isLoggedIn();
+	//$scope.loggedIn = Auth.isLoggedIn();
+	$scope.loggedIn = !angular.equals($scope.user, {});
 
 	// verificar si un usuario está con sesión iniciada en cada petición o cambio de ruta/página
 	$rootScope.$on('$routeChangeStart', function(){
@@ -25,13 +19,19 @@ angular.module('IndexCtrl',[]).controller('IndexController', function ($scope, $
 	    else
 	    	$scope.isIndex = false;
 	    
-		$scope.loggedIn = Auth.isLoggedIn();
 		// obtener la información del usuario
 		Auth.getUser()
 			.then(function(res){
 				$scope.user = res.data;
+				$scope.loggedIn = !angular.equals($scope.user, {});
+				console.log("LoggedIn? ", $scope.loggedIn);
+				console.log("User: ", $scope.user);
 			}, function(res){
 				// console.error("User data can't found: ", res);
+				$scope.user = {};
+				$scope.loggedIn = !angular.equals($scope.user, {});
+				console.error("LoggedIn? ", $scope.loggedIn);
+				console.error("User: ", $scope.user);
 			});
 	});
 
