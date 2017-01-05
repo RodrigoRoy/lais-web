@@ -11,6 +11,7 @@ angular.module('laisApp', [
 	
 	'ngFileUpload', // upload files
 	'ui.bootstrap', // Componentes Bootstrap
+	'ui.validate', // General purpose validator
 	'textAngular', // 3rd party WYSWYG HTML text editor
 	'ngTagsInput', // Tagging module for inputs forms
 	'720kb.socialshare', // Social share buttons
@@ -23,6 +24,7 @@ angular.module('laisApp', [
 	'AuthCtrl', //Carga la informacion para autentificar a un usuario
 	'EventosBusquedaCtrl', //Carga la informacion de la busqueda
 	'AdminCtrl', // Información general para la administración del sitio
+	'UsuariosCtrl', // Administración de los usuarios
 	'EventosListCtrl', // Administración de los eventos (en forma de lista)
 	'ArchivosCtrl', //Carga toda la informacion de la Base de datos de los archivos
 	'ContactoCtrl', // Página de contacto

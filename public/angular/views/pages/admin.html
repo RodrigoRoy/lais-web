@@ -1,22 +1,23 @@
 <div class="container my-container">
 	<h1>Administración y configuración</h1>
+	<p>Estás conectado como <strong>{{user.username || "Anónimo"}}</strong></p>
 
 	<h3><a href="/admin/eventos">Eventos</a></h3>
 	<p>
 		Listado con todos los eventos relacionados al Laboratorio Audiovisual de Investigación Social y de interés para la investigación social. Se presenta un listado que puede ser ordenado mediante algún campo específico, además de crear, editar o borrar un evento.
 	</p>
 
-	<h3><a href="">Publicaciones</a></h3>
+	<!-- <h3><a href="">Publicaciones</a></h3>
 	<p>
 		Listado con las publicaciones o menciones de documentos producidos en el LAIS a través de medios como la imprenta, radio, medios digitales, etc.
-	</p>
+	</p> -->
 
 	<h3><a href="/archivos">Archivos</a></h3>
 	<p>
 		Lista de archivos auxiliares que pueden ser consultados en línea. Incluye un área para subir nuevo material al servidor y editar o borrar archivos existentes.
 	</p>
 
-	<h3><a href="">Usuarios registrados</a></h3>
+	<h3><a href="/admin/usuarios">Usuarios registrados</a></h3>
 	<p>
 		Lista de personas registradas como usuarios internos que pueden administrar contenido en la página. Se pueden revocar o limitar los permisos a determinados usuarios y además se muestran solicitudes pendientes de usuarios que solicitan ingreso.
 	</p>

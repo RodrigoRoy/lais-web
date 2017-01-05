@@ -1,35 +1,133 @@
+<!-- Página que muestra todos los archivos -->
+<div class="container my-container">
+	<h1>Usuarios</h1>
+	
+	<!--Script para mostrar mensajes de error en los campos del formulario-->
+    <script type="text/ng-template" id="error-messages">
+        <span ng-message="required" class="help-block">Este campo es obligatorio.</span>
+        <span ng-message="maxlength" class="help-block">La información excede el límite de longitud permitido.</span>
+        <span ng-message="minlength" class="help-block">La información es demasiado corta.</span>
+        <span ng-message="date" class="help-block">La fecha es incorrecta.</span>
+        <span ng-message="url" class="help-block">Se requiere la dirección completa de internet (comúnmente iniciando con "http://").</span>
+        <span ng-message="email" class="help-block">La dirección de correo no es válida.</span>
+        <span ng-message="pattern" class="help-block">El formato de este campo es incorrecto.</span>
+    </script>
 
-<div class="container">
-	<section>
-		<hr>
-		<h1>Agregar Usuario</h1>
-		<hr>
-		<form class="form-horizontal">
-			<div class="form-group">
-				<label for="inputEmail3" class="col-md-2 control-label">Nombre</label>
-				<div class="col-md-10 secInput">
-			 		<input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="inputPassword3" class="col-sm-2 control-label">Contraseña</label>
-				<div class="col-sm-10 secInput">
-			  		<input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="inputPassword3" class="col-sm-2 control-label">Email</label>
-				<div class="col-sm-10 secInput">
-			  		<input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-default">Agregar Usuario</button>
-				</div>
-			</div>	
-		</form>
-		<hr>
-		<h1>Usuarios</h1>
-	</section>
+	<!-- Formulario para agregar nuevo(s) archivo(s) a la base de datos -->
+    <div class="spacing-block"> <!-- ng-show="sesion" -->
+	    <button type="button" class="btn btn-default full-width" ng-click="creatingUser = true" ng-show="!creatingUser"><i class="fa fa-user-plus" aria-hidden="true"></i> Nuevo usuario</button>
+
+	    <form name="userForm" id="userForm" role="form" novalidate ng-show="creatingUser">
+	        <div class="form-group" ng-class="{'has-error': userForm.username.$dirty && userForm.username.$invalid}">
+	            <label class="control-label color-title format-title" for="username">Nombre</label>
+	            <input class="form-control" type="text" name="username" id="username" placeholder="Usa un nombre breve y fácil de recordar" ng-model="newUser.username" ng-maxlength="150" ng-trim required>
+	            <div ng-messages="userForm.username.$error" ng-show="userForm.username.$dirty && userForm.username.$invalid"><div ng-messages-include="error-messages"></div></div>
+	        </div>
+	        <div class="form-group" ng-class="{'has-error': userForm.email.$dirty && userForm.email.$invalid}">
+	            <label class="control-label color-title format-title" for="email">Correo</label>
+	            <input class="form-control" type="email" name="email" id="email" placeholder="Tu dirección de correo electrónico" ng-model="newUser.email" required>
+	            <div ng-messages="userForm.email.$error" ng-show="userForm.email.$dirty && userForm.email.$invalid"><div ng-messages-include="error-messages"></div></div>
+	        </div>
+	        <div class="form-group" ng-class="{'has-error': userForm.password.$dirty && userForm.password.$invalid}">
+	            <label class="control-label color-title format-title" for="password">Contraseña</label>
+	            <input class="form-control" type="password" name="password" id="password" placeholder="De al menos 3 letras de longitud" ng-model="newUser.password" ng-minlength="3" required>
+	            <div ng-messages="userForm.password.$error" ng-show="userForm.password.$dirty && userForm.password.$invalid"><div ng-messages-include="error-messages"></div></div>
+	        </div>
+	        <div class="form-group" ng-class="{'has-error': userForm.confirmPassword.$dirty && userForm.confirmPassword.$invalid}">
+	            <label class="control-label color-title format-title" for="confirmPassword">Confirmar contraseña</label>
+	            <input class="form-control" type="password" name="confirmPassword" id="confirmPassword" placeholder="Repite tu contraseña" ng-model="confirmPassword" ng-minlength="3" required ui-validate="'$value === newUser.password'">
+	            <div ng-messages="userForm.confirmPassword.$error" ng-show="userForm.confirmPassword.$dirty && userForm.confirmPassword.$invalid"><div ng-messages-include="error-messages"></div></div>
+	        </div>
+	        <label class="control-label color-title format-title">Permisos</label>
+	        <div class="checkbox">
+	        	<label>
+	        		<input type="checkbox" name="read" ng-model="newUser.permissions.read" ng-change="convertPermissions()"> <span class="format-title">Lectura</span> - El usuario no tiene restricciones para ver contenido en el sitio.
+	        	</label>
+	        </div>
+	        <div class="checkbox">
+	        	<label>
+	        		<input type="checkbox" name="create" ng-model="newUser.permissions.create" ng-change="convertPermissions()"> <span class="format-title">Creación</span> - El usuario puede agregar eventos, publicaciones y archivos en el sitio.
+	        	</label>
+	        </div>
+	        <div class="checkbox">
+	        	<label>
+	        		<input type="checkbox" name="update" ng-model="newUser.permissions.update" ng-change="convertPermissions()"> <span class="format-title">Edición</span> - El usuario puede modificar la información de eventos y publicaciones.
+	        	</label>
+	        </div>
+	        <div class="checkbox">
+	        	<label>
+	        		<input type="checkbox" name="delete" ng-model="newUser.permissions.delete" ng-change="convertPermissions()"> <span class="format-title">Borrado</span> - El usuario puede eliminar contenido como eventos, publicaciones y archivos.
+	        	</label>
+	        </div>
+	        
+	        <div class="checkbox" style="margin-top: 1.5em;">
+	        	<label>
+	        		<input type="checkbox" name="" ng-model="newUser.admin"> <span class="format-title"> Administrador</span> - Un usuario administrador puede revocar permisos y eliminar otros usuarios.
+	        	</label>
+	        </div>
+	        <uib-alert type="danger" close="closeAlert()" ng-show="showAlert">{{serverMessage}}</uib-alert>
+	        <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid" ng-click="createUser(newUser)">
+	        	<span ng-show="!sendingInfo">Crear usuario</span>
+	        	<span ng-show="sendingInfo"><i class="fa fa-spinner fa-spin fa-pulse"></i> Enviando información...</span>
+	        </button>
+	        <button type="submit" class="btn btn-danger btn-custom" ng-click="creatingUser = false" ng-show="!sendingInfo">Cancelar</button>
+	    </form>
+    </div>
+
+    <!-- <br>
+    <pre>{{newUser | json}}</pre> -->
+    
+    <uib-alert type="success" close="closeAlert()" ng-show="showSuccess">{{serverMessage}}</uib-alert>
+
+	<!-- TABLA PARA MOSTRAR LOS ARCHIVOS REGISTRADOS EN LA BASE DE DATOS -->
+	<div class="table-responsive">
+		<table class="table table-hover" ng-show="!creatingUser">
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Correo</th>
+					<th>Lectura</th>
+					<th>Creación</th>
+					<th>Edición</th>
+					<th>Borrado</th>
+					<th>Administrador</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="usuario in usuarios">
+					<td>{{usuario.username}}</td>
+					<td>
+						<span ng-show="usuario._id != editable">{{usuario.email}}</span>
+						<input type="text" ng-show="usuario._id === editable" ng-model="tempUser.email">
+					</td>
+					<td>
+						<i class="fa fa-check" aria-hidden="true" ng-show="usuario._id != editable" ng-if="usuario.permissions.read"></i>
+						<input type="checkbox" ng-show="usuario._id === editable" ng-model="tempUser.permissions.read" ng-change="convertTempPermissions()">
+					</td>
+					<td>
+						<i class="fa fa-check" aria-hidden="true" ng-show="usuario._id != editable" ng-if="usuario.permissions.create"></i>
+						<input type="checkbox" ng-show="usuario._id === editable" ng-model="tempUser.permissions.create" ng-change="convertTempPermissions()">
+					</td>
+					<td>
+						<i class="fa fa-check" aria-hidden="true" ng-show="usuario._id != editable" ng-if="usuario.permissions.update"></i>
+						<input type="checkbox" ng-show="usuario._id === editable" ng-model="tempUser.permissions.update" ng-change="convertTempPermissions()">
+					</td>
+					<td>
+						<i class="fa fa-check" aria-hidden="true" ng-show="usuario._id != editable" ng-if="usuario.permissions.delete"></i>
+						<input type="checkbox" ng-show="usuario._id === editable" ng-model="tempUser.permissions.delete" ng-change="convertTempPermissions()">
+					</td>
+					<td>
+						<i class="fa fa-star" aria-hidden="true" ng-show="usuario._id != editable" ng-if="usuario.admin"></i>
+						<input type="checkbox" ng-show="usuario._id === editable" ng-model="tempUser.admin">
+					</td>
+					<td>
+						<button class="btn btn-default btn-xs" ng-show="usuario._id != editable" ng-click="enableEdit(usuario)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+						<button class="btn btn-default btn-xs" ng-show="usuario._id === editable" ng-click="updateUser()"><i class="fa fa-check" aria-hidden="true"></i></button>
+					</td>
+					<td><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>
+

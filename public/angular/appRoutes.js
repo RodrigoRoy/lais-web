@@ -43,13 +43,14 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 			controller: 'EventosListController'
 		})
 
+		.when('/admin/usuarios',{
+			templateUrl: 'angular/views/pages/usuarios.html',
+			controller: 'UsuariosController'
+		})
+
 		.when('/archivos',{
 			templateUrl: 'angular/views/pages/archivos.html',
 			controller: 'ArchivosController'
-		})
-
-		.when('/usuarios',{
-			templateUrl: 'angular/views/pages/usuarios.html'
 		})
 
 		// .when('/publicaciones',{

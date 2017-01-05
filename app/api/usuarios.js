@@ -38,11 +38,16 @@ router.get('/me', function(req, res){
 router.route('/')
 	// Obtener todos los usuarios
 	.get(function(req, res){
-        Usuario.find(function(err, usuarios){
+        Usuario.find()
+        .lean() // Convierte los resultados a JSON (en vez de MongooseDocuments donde no se pueden incluir propiedades)
+        .exec(function(err, usuarios){
             if(err)
                 res.send(err);
+            // Integrar propiedad con los permisos codificados
+            for(var i in usuarios)
+                usuarios[i].permissions = getPermissions(usuarios[i].permisos);
             res.json(usuarios);
-        })
+        });
     })
 
     // Agregar un nuevo usuario
@@ -56,16 +61,18 @@ router.route('/')
             usuario.email = req.body.email;
         if(req.body.permisos)
             usuario.permisos = req.body.permisos;
+        if(req.body.admin)
+            usuario.admin = req.body.admin;
 
         usuario.save(function(err){
             if(err){
                 if(err.code == 11000)
-                    return res.json({success: false, message: 'Un usuario con ese nombre ya existe'});
+                    return res.status(400).send({success: false, message: 'Un usuario con ese nombre ya existe.'});
                 else
-                    return res.send(err);
+                    return res.status(400).send({success: false, message: 'Error en la base de datos.', error: err});
             }
 
-            res.json({message: 'Usuario creado'});
+            res.json({success: true, message: 'Usuario creado'});
         });
     });
 
@@ -95,12 +102,13 @@ router.route('/:usuario_id')
                 usuario.email = req.body.email;
             if(req.body.permisos)
                 usuario.permisos = req.body.permisos;
-            
+            if(req.body.admin)
+                usuario.admin = req.body.admin;
 
             usuario.save(function(err){
                 if(err)
                     res.send(err);
-                res.json({message: 'Usuario actualizado'});
+                res.json({success: true, message: 'Usuario actualizado'});
             });
         });
     })
@@ -112,8 +120,23 @@ router.route('/:usuario_id')
         }, function(err, usuario){
             if(err)
                 res.send(err);
-            res.json({message: 'Usuario borrado exitosamente'});
+            res.json({success: true, message: 'Usuario borrado exitosamente'});
         });
     })
+
+var getPermissions = function(decimalPermissions){
+    var codifiedPermissions = {create: false, read: false, update: false, delete: false};
+    if(!decimalPermissions)
+        return codifiedPermissions;
+
+    var binaryPermission = decimalPermissions.toString(2); // Conversión decimal a binario
+    while(binaryPermission.length < 4) // Forzar la notación a 4 dígitos
+        binaryPermission = '0' + binaryPermission; // Ceros a la izquierda
+    codifiedPermissions.create = binaryPermission.charAt(0) === '1';
+    codifiedPermissions.read   = binaryPermission.charAt(1) === '1';
+    codifiedPermissions.update = binaryPermission.charAt(2) === '1';
+    codifiedPermissions.delete = binaryPermission.charAt(3) === '1';
+    return codifiedPermissions;
+};
 
 module.exports = router; // Exportar el API para ser utilizado en server.js
