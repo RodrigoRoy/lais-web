@@ -36,7 +36,8 @@ router.post('/authenticate', function(req, res){
                 // crear token
                 var token = jwt.sign({
                     username: usuario.username,
-                    permisos: usuario.permisos
+                    permisos: usuario.permisos,
+                    id: usuario._id
                 }, secret, {
                     expiresIn: '7 days' // expresado en notación de https://github.com/zeit/ms
                 });

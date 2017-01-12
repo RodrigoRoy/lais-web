@@ -33,6 +33,11 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 			controller: 'EventoController'
 		})
 
+		.when('/publicaciones/nuevo', {
+			templateUrl: 'angular/views/pages/publicacionForm.html',
+			controller: 'PublicacionFormController'
+		})
+
 		.when('/admin',{
 			templateUrl: 'angular/views/pages/admin.html',
 			controller: 'AdminController'
@@ -52,10 +57,6 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 			templateUrl: 'angular/views/pages/archivos.html',
 			controller: 'ArchivosController'
 		})
-
-		// .when('/publicaciones',{
-		// 	templateUrl: 'angular/views/pages/publicaciones.html'
-		// })
 
 		.when('/contacto',{
 			templateUrl: 'angular/views/pages/contacto.html',

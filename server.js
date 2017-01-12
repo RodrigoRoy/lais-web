@@ -168,6 +168,12 @@ app.use('/api/archivos', archivos); // usar el API desde la ruta "/api/archivos"
 var contacto = require('./app/api/contacto'); // API para envio por medio de email
 app.use('/api/contacto', contacto); // usar el API desde la ruta "/api/contacto"
 
+var autor = require('./app/api/autores'); // API para Autores
+app.use('/api/autores', autor); // usar el API desde la ruta "/api/autores"
+
+var publicacion = require('./app/api/publicaciones'); // API para Publicaciones
+app.use('/api/publicaciones', publicacion); // usar el API desde la ruta "/api/publicaciones"
+
 // REGISTRAR LAS DEMÁS RUTAS
 
 // require('./app/routes')(app); // pasar a la aplicación las demás rutas a utilizar

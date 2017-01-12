@@ -1,0 +1,173 @@
+<!-- Página con el formulario para agregar un publicacion -->
+
+<div class="container my-container">
+    <!--Script para mostrar mensajes de error en los campos del formulario-->
+    <script type="text/ng-template" id="error-messages">
+        <span ng-message="required" class="help-block">Este campo es obligatorio.</span>
+        <span ng-message="maxlength" class="help-block">La información excede el límite de longitud permitido.</span>
+        <span ng-message="minlength" class="help-block">La información es demasiado corta.</span>
+        <span ng-message="date" class="help-block">La fecha es incorrecta.</span>
+        <span ng-message="url" class="help-block">Se requiere la dirección completa de internet (comúnmente iniciando con "http://").</span>
+        <span ng-message="pattern" class="help-block">El formato de este campo es incorrecto.</span>
+    </script>
+
+    <script type="text/ng-template" id="customTemplate.html">
+        <a>
+            <!-- <img ng-src="http://upload.wikimedia.org/wikipedia/commons/thumb/{{match.model.flag}}" width="16">
+            <span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span> -->
+            {{match.model.apellido}}, {{match.model.nombre}}
+        </a>
+    </script>
+
+    <h1 class="color-title" ng-if="!edit">Agregar nueva publicacion</h1>
+    <h1 class="color-title" ng-if="edit">Editar publicacion</h1>
+
+    <!-- Formulario para agregar una nueva publicacion a la base de datos -->
+    <form name="publicacionForm" id="publicacionForm" role="form" novalidate>
+        <!-- TIPO -->
+        <div class="form-group" ng-class="{'has-error': publicacionForm.tipo.$dirty && publicacionForm.tipo.$invalid}">
+            <label class="control-label color-title format-title" for="tipo">Tipo</label>
+            <select class="form-control" id="tipo" ng-model="publicacion.tipo" required>
+                <option value=""></option>
+                <option value="Artículo">Artículo</option>
+                <option value="Libro">Libro</option>
+                <option value="Documental">Documental</option>
+                <option value="Tesis">Tesis</option>
+                <option value="Ponencia">Ponencia</option>
+                <option value="Manual">Manual</option>
+                <option value="Página web">Página web</option>
+                <option value="Incollection">Incollection</option>
+                <option value="No especificado">No especificado</option>
+            </select>
+            <div ng-messages="publicacionForm.tipo.$error" ng-show="publicacionForm.tipo.$dirty && publicacionForm.tipo.$invalid"><div ng-messages-include="error-messages"></div></div>
+        </div>
+        
+        <!-- TITULO DE LA PUBLICACION -->
+        <div class="form-group" ng-class="{'has-error': publicacionForm.titulo.$dirty && publicacionForm.titulo.$invalid}">
+            <label class="control-label color-title format-title" for="titulo">Título</label>
+            <input class="form-control" type="text" name="titulo" id="titulo" placeholder="" ng-model="publicacion.titulo" ng-trim required>
+            <div ng-messages="publicacionForm.titulo.$error" ng-show="publicacionForm.titulo.$dirty && publicacionForm.titulo.$invalid"><div ng-messages-include="error-messages"></div></div>
+        </div>
+
+        <!-- AUTORES -->
+        <div class="form-group" ng-class="{'has-error': publicacionForm.autor.$dirty && publicacionForm.autor.$invalid}">
+            <label class="control-label color-title format-title" for="autor">Autor(es)</label>
+            <input class="form-control" type="text" name="autor" id="autor" placeholder="" ng-model="asyncAutorInput" uib-typeahead="autor.apellido + ', ' + autor.nombre for autor in getAutor($viewValue)" typeahead-loading="loadingAutores" typeahead-no-results="noResults" typeahead-template-url="customTemplate.html" typeahead-on-select="onSelectAutor($item, $model, $label, $event)">
+            <i class="fa fa-spinner fa-spin fa-fw" ng-show="loadingAutores"></i>
+            <div ng-show="noResults"><i class="fa fa-times" aria-hidden="true"></i> No se encontraron resultados</div>
+            <ul ng-show="publicacion.autorNombres && publicacion.autorNombres.length > 0">
+                <li ng-repeat="autor in publicacion.autorNombres">{{autor}}</li>
+            </ul>
+        </div>
+
+        <!-- FECHA -->
+        <div class="form-group">
+            <label class="control-label color-title format-title" for="fecha">Fecha</label>
+            <div class="input-group">
+                <input class="form-control" type="text" uib-datepicker-popup="yyyy" ng-model="publicacion.fecha" datepicker-options="dateOptions" is-open="calendar.open" show-button-bar="false">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="openCalendar($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+
+        <!-- COLECCION -->
+        <div class="form-group" ng-class="{'has-error': publicacionForm.coleccion.$dirty && publicacionForm.coleccion.$invalid}">
+            <label class="control-label color-title format-title" for="coleccion">Colección</label>
+            <input class="form-control" type="text" name="coleccion" id="coleccion" placeholder="" ng-model="publicacion.coleccion" ng-trim>
+            <div ng-messages="publicacionForm.coleccion.$error" ng-show="publicacionForm.coleccion.$dirty && publicacionForm.coleccion.$invalid"><div ng-messages-include="error-messages"></div></div>
+        </div>
+
+        <!-- PUBLISHER -->
+        <div class="form-group" ng-class="{'has-error': publicacionForm.publisher.$dirty && publicacionForm.publisher.$invalid}">
+            <label class="control-label color-title format-title" for="publisher">Editorial</label>
+            <input class="form-control" type="text" name="publisher" id="publisher" placeholder="" ng-model="publicacion.publisher" ng-trim>
+            <div ng-messages="publicacionForm.publisher.$error" ng-show="publicacionForm.publisher.$dirty && publicacionForm.publisher.$invalid"><div ng-messages-include="error-messages"></div></div>
+        </div>
+
+        <!-- JOURNAL -->
+        <div class="form-group" ng-class="{'has-error': publicacionForm.journal.$dirty && publicacionForm.journal.$invalid}">
+            <label class="control-label color-title format-title" for="journal">Journal</label>
+            <input class="form-control" type="text" name="journal" id="journal" placeholder="" ng-model="publicacion.journal" ng-trim>
+            <div ng-messages="publicacionForm.journal.$error" ng-show="publicacionForm.journal.$dirty && publicacionForm.journal.$invalid"><div ng-messages-include="error-messages"></div></div>
+        </div>
+
+        <!-- VOLUMEN -->
+        <div class="form-group" ng-class="{'has-error': publicacionForm.volumen.$dirty && publicacionForm.volumen.$invalid}">
+            <label class="control-label color-title format-title" for="volumen">Volumen</label>
+            <input class="form-control" type="text" name="volumen" id="volumen" placeholder="" ng-model="publicacion.volumen" ng-trim>
+            <div ng-messages="publicacionForm.volumen.$error" ng-show="publicacionForm.volumen.$dirty && publicacionForm.volumen.$invalid"><div ng-messages-include="error-messages"></div></div>
+        </div>
+
+        <!-- PÁGINAS -->
+        <div class="form-group" ng-class="{'has-error': publicacionForm.paginas.$dirty && publicacionForm.paginas.$invalid}">
+            <label class="control-label color-title format-title" for="paginas">Páginas</label>
+            <input class="form-control" type="text" name="paginas" id="paginas" placeholder="" ng-model="publicacion.paginas" ng-trim>
+            <div ng-messages="publicacionForm.paginas.$error" ng-show="publicacionForm.paginas.$dirty && publicacionForm.paginas.$invalid"><div ng-messages-include="error-messages"></div></div>
+        </div>
+
+        <!-- NÚMERO -->
+        <div class="form-group" ng-class="{'has-error': publicacionForm.numero.$dirty && publicacionForm.numero.$invalid}">
+            <label class="control-label color-title format-title" for="numero">Número</label>
+            <input class="form-control" type="text" name="numero" id="numero" placeholder="" ng-model="publicacion.numero" ng-trim>
+            <div ng-messages="publicacionForm.numero.$error" ng-show="publicacionForm.numero.$dirty && publicacionForm.numero.$invalid"><div ng-messages-include="error-messages"></div></div>
+        </div>
+
+        <!-- BOOKTITLE --> <!-- Libro o publicación a la que pertenece -->
+        <div class="form-group" ng-class="{'has-error': publicacionForm.booktitle.$dirty && publicacionForm.booktitle.$invalid}">
+            <label class="control-label color-title format-title" for="booktitle">Booktitle</label>
+            <input class="form-control" type="text" name="booktitle" id="booktitle" placeholder="" ng-model="publicacion.booktitle" ng-trim>
+            <div ng-messages="publicacionForm.booktitle.$error" ng-show="publicacionForm.booktitle.$dirty && publicacionForm.booktitle.$invalid"><div ng-messages-include="error-messages"></div></div>
+        </div>
+
+        <!-- DESCRIPCIÓN -->
+        <div class="form-group" ng-class="{'has-error': publicacionForm.descripcion.$dirty && publicacionForm.descripcion.$invalid}">
+            <label class="control-label color-title format-title" for="descripcion">Descripción</label>
+            <textarea class="form-control" name="descripcion" id="descripcion" rows="2" placeholder="" ng-model="publicacion.descripcion" ng-trim></textarea>
+            <div ng-messages="publicacionForm.descripcion.$error" ng-show="publicacionForm.descripcion.$dirty && publicacionForm.descripcion.$invalid"><div ng-messages-include="error-messages"></div></div>
+        </div>
+
+        <!-- ISBN -->
+        <div class="form-group" ng-class="{'has-error': publicacionForm.isbn.$dirty && publicacionForm.isbn.$invalid}">
+            <label class="control-label color-title format-title" for="isbn">ISBN</label>
+            <input class="form-control" type="text" name="isbn" id="isbn" placeholder="" ng-model="publicacion.isbn" ng-trim>
+            <div ng-messages="publicacionForm.isbn.$error" ng-show="publicacionForm.isbn.$dirty && publicacionForm.isbn.$invalid"><div ng-messages-include="error-messages"></div></div>
+        </div>
+
+        <!-- ABSTRACT -->
+        <div class="form-group" ng-class="{'has-error': publicacionForm.abstract.$dirty && publicacionForm.abstract.$invalid}">
+            <label class="control-label color-title format-title" for="abstract">Abstract / Resumen</label>
+            <textarea class="form-control" name="abstract" id="abstract" rows="3" placeholder="" ng-model="publicacion.abstract" ng-trim></textarea>
+            <div ng-messages="publicacionForm.abstract.$error" ng-show="publicacionForm.abstract.$dirty && publicacionForm.abstract.$invalid"><div ng-messages-include="error-messages"></div></div>
+        </div>
+
+        <!-- URL -->
+        <div class="form-group" ng-class="{'has-error': publicacionForm.url.$dirty && publicacionForm.url.$invalid}">
+            <label class="control-label color-title format-title" for="url">URL</label>
+            <input class="form-control" type="url" name="url" id="url" placeholder="" ng-model="publicacion.url" ng-trim>
+            <div ng-messages="publicacionForm.url.$error" ng-show="publicacionForm.url.$dirty && publicacionForm.url.$invalid"><div ng-messages-include="error-messages"></div></div>
+        </div>
+
+        <!-- KEYWORDS -->
+        <div class="form-group">
+            <label class="control-label color-title format-title" for="keywords">Keywords</label>
+            <tags-input ng-model="keywords" name="keywords" id="keywords" type="text" placeholder="" replace-spaces-with-dashes="false" add-from-autocomplete-only="false" spellcheck="false" ng-blur="updateKeywords()"><!-- ng-blur="updateKeywords()" -->
+                <auto-complete source="loadTags($query)" display-property="text" min-length="1" max-results-to-show="5"></auto-complete>
+            </tags-input>
+        </div>
+
+        <!-- NOTAS -->
+        <div class="form-group" ng-class="{'has-error': publicacionForm.notas.$dirty && publicacionForm.notas.$invalid}">
+            <label class="control-label color-title format-title" for="notas">Notas</label>
+            <textarea class="form-control" name="notas" id="notas" rows="2" placeholder="" ng-model="publicacion.notas" ng-trim></textarea>
+            <div ng-messages="publicacionForm.notas.$error" ng-show="publicacionForm.notas.$dirty && publicacionForm.notas.$invalid"><div ng-messages-include="error-messages"></div></div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" ng-if="!edit" ng-disabled="publicacionForm.$invalid" ng-click="enviar()">Agregar publicacion</button>
+        <button type="submit" class="btn btn-primary" ng-if="edit" ng-disabled="publicacionForm.$invalid" ng-click="editar()">Editar publicacion</button>
+    </form>
+
+    <br>
+    <pre>{{publicacion | json}}</pre>
+    <pre>{{keywords | json}}</pre>
+</div>

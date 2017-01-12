@@ -16,13 +16,14 @@ angular.module('laisApp', [
 	'ngTagsInput', // Tagging module for inputs forms
 	'720kb.socialshare', // Social share buttons
 
-	'EventoFormCtrl', // Formulario para eventos
 	'IndexCtrl', // Checa cambios en la URL
+	'EventoFormCtrl', // Formulario para eventos
 	'EventoSlideCtrl', //Manejo del carusel(slide)
 	'EventosCtrl', //Carga toda la informacion de la Base de datos de los eventos
 	'EventoCtrl', //Carga la informacion de un evento en particular
-	'AuthCtrl', //Carga la informacion para autentificar a un usuario
 	'EventosBusquedaCtrl', //Carga la informacion de la busqueda
+	'PublicacionFormCtrl', // Formulario para publicaciones
+	'AuthCtrl', //Carga la informacion para autentificar a un usuario
 	'AdminCtrl', // Información general para la administración del sitio
 	'UsuariosCtrl', // Administración de los usuarios
 	'EventosListCtrl', // Administración de los eventos (en forma de lista)
@@ -32,6 +33,8 @@ angular.module('laisApp', [
 	'authService', // Servicio para la autentificación de usuarios
 	'LugarService', // Servicio para administrar llamadas a la base de datos de "lugares"
 	'EventoService', //Servicio que administra las llamadas a la base de datos de "eventos"
+	'AutorService', // Servicio que administra las llamadas a la base de datos de "autores"
+	'PublicacionService', //Servicio que administra las llamada a la base de datos de "publicaciones"
 	'ArchivoService', //Servicio que administra las llamadas a la base de datos de "archivos"
 	'UsuarioService', //Servicio que administra las llamadas a la base de datos de usuarios
 	'EventosBusquedaService', //Servicio que obtiene los oventos con la coincidencia de busqueda

@@ -191,10 +191,11 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
     // Cambia y asigna el arreglo de objetos "$scocpe.keywords" por el arreglo de strings "$scope.evento.keywords"
     $scope.updateKeywords = function(){
         // Parse de keywords para agregar solo el texto (sin ser objetos)
-        if($scope.keywords)
+        if($scope.keywords){
             $scope.evento.keywords = [];
             for(var i in $scope.keywords)
                 $scope.evento.keywords[i] = $scope.keywords[i].text; // NOTA: la propiedad "text" contiene el nombre del tag/keyword
+        }
     };
 
     // Sube archivo (imagen) al servidor
