@@ -18,6 +18,7 @@ var config = require('./config');
 var port = process.env.PORT || config.port || 8080; // establecer puerto
 
 // base de datos
+mongoose.Promise = global.Promise // Use native promise (avoid DeprecationWarning with mongoose default promise library)
 mongoose.connect(config.db); // conectar a base de datos mongoDB
 
 // permite obtener datos de los parámetros del cuerpo/body (POST)
@@ -47,7 +48,7 @@ app.use(morgan('dev'));
 var fs = require('fs'); // File system utility
 var multipart = require('connect-multiparty'); // connect middleware (upload handler)
 var multipartMiddleware = multipart({uploadDir: './public/imgs/eventos' }); // definir ruta para archivos
-app.post('/api/upload', multipartMiddleware, function(req, res){ // refinir ruta para HTTP POST
+app.post('/api/upload', multipartMiddleware, function(req, res){ // definir ruta para HTTP POST
 	//console.log("  req.body", req.body); // Datos adicionales enviados
 	console.log("Información del archivo");
 	console.log(req.files);
@@ -58,7 +59,7 @@ app.post('/api/upload', multipartMiddleware, function(req, res){ // refinir ruta
 	});
 });
 var multipartMiddleware = multipart({uploadDir: './public/files/eventos'}); // definir ruta para archivos
-app.post('/api/uploadFiles', multipartMiddleware, function(req, res){ // refinir ruta para HTTP POST
+app.post('/api/uploadFiles', multipartMiddleware, function(req, res){ // definir ruta para HTTP POST
 	//console.log("  req.body", req.body); // Datos adicionales enviados
 	console.log("Información de archivos");
 	console.log(req.files);
@@ -71,7 +72,7 @@ app.post('/api/uploadFiles', multipartMiddleware, function(req, res){ // refinir
 	res.json({"status": "OK"}); // responder al cliente 
 });
 var multipartMiddleware = multipart({uploadDir: './public/files'}); // definir ruta para archivos
-app.post('/api/uploadMultiFiles', multipartMiddleware, function(req, res){ // refinir ruta para HTTP POST
+app.post('/api/uploadMultiFiles', multipartMiddleware, function(req, res){ // definir ruta para HTTP POST
 	//console.log("  req.body", req.body); // Datos adicionales enviados
 	console.log("Información de archivos");
 	console.log(req.files);
@@ -168,11 +169,14 @@ app.use('/api/archivos', archivos); // usar el API desde la ruta "/api/archivos"
 var contacto = require('./app/api/contacto'); // API para envio por medio de email
 app.use('/api/contacto', contacto); // usar el API desde la ruta "/api/contacto"
 
-var autor = require('./app/api/autores'); // API para Autores
-app.use('/api/autores', autor); // usar el API desde la ruta "/api/autores"
+var autores = require('./app/api/autores'); // API para Autores
+app.use('/api/autores', autores); // usar el API desde la ruta "/api/autores"
 
-var publicacion = require('./app/api/publicaciones'); // API para Publicaciones
-app.use('/api/publicaciones', publicacion); // usar el API desde la ruta "/api/publicaciones"
+var publicaciones = require('./app/api/publicaciones'); // API para Publicaciones
+app.use('/api/publicaciones', publicaciones); // usar el API desde la ruta "/api/publicaciones"
+
+var files = require('./app/api/files'); // API para Files
+app.use('/api/files', files); // usar el API desde la ruta "/api/files"
 
 // REGISTRAR LAS DEMÁS RUTAS
 

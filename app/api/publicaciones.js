@@ -14,6 +14,8 @@ DELETE http://localhost:8080/api/publicaiones/1234567890
 // Dependencias
 var express = require('express');
 var router = express.Router(); // para modularizar las rutas
+var Autor = require('../models/autor'); // Modelo de la colección "Autor"
+var Archivo = require('../models/archivo') // Modelo de la colección "Archivos"
 var Publicacion = require('../models/publicacion'); // Modelo de la colección "Publicacion"
 var verifyToken = require('./token'); // Función de verificación de token
 
@@ -63,7 +65,7 @@ router.route('/')
         if(req.body.tipo)
             publicacion.tipo = req.body.tipo;
         if(req.body.fecha)
-            publicacion.fecha = req.body.fech;
+            publicacion.fecha = req.body.fecha;
         if(req.body.coleccion)
             publicacion.coleccion = req.body.coleccion;
         if(req.body.publisher)
@@ -133,6 +135,8 @@ router.route('/:publicacion_id')
 	// Obtener un publicacion particular (mediante el ID)
     .get(function(req, res){
         Publicacion.findById(req.params.publicacion_id)
+        .populate('autor', 'nombre apellido')
+        .populate('adjuntos')
         .exec(function(err, publicacion){
             if(err)
                 res.send(err);
@@ -153,7 +157,7 @@ router.route('/:publicacion_id')
             if(req.body.tipo)
                 publicacion.tipo = req.body.tipo;
             if(req.body.fecha)
-                publicacion.fecha = req.body.fech;
+                publicacion.fecha = req.body.fecha;
             if(req.body.coleccion)
                 publicacion.coleccion = req.body.coleccion;
             if(req.body.publisher)

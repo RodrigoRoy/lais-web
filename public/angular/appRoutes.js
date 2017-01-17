@@ -38,6 +38,11 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 			controller: 'PublicacionFormController'
 		})
 
+		.when('/publicaciones/:id/edit', {
+			templateUrl: 'angular/views/pages/publicacionForm.html',
+			controller: 'PublicacionFormController'
+		})
+
 		.when('/admin',{
 			templateUrl: 'angular/views/pages/admin.html',
 			controller: 'AdminController'

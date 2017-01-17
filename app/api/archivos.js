@@ -65,7 +65,12 @@ router.route('/')
                 if(err){
                     res.send(err);
                 }
-                res.json({status: "OK"});
+                //console.log("ARCHIVOS SUBIDOS: ", typeof archivos, archivos);
+                res.json({
+                    success: true,
+                    message: 'Archivos agregados al servidor',
+                    files: archivos
+                });
             });
         }
         else{ // En caso de que no sea un arreglo, se procede normalmente para un archivo
@@ -75,12 +80,20 @@ router.route('/')
                 archivo.filename = req.body.filename;
             if(req.body.descripcion)
                 archivo.descripcion = req.body.descripcion;
+            if(req.body.location)
+                archivo.location = req.body.location;
+            if(req.body.usuario)
+                archivo.usuario = req.body.usuario;
             archivo.fechaCreacion = new Date(); // fecha de creación automática al momento
 
             archivo.save(function(err){
                 if(err)
                     res.send(err);
-                res.json({status: "OK", id: archivo._id});
+                res.json({
+                    success: true,
+                    message: 'Archivo agregado al servidor',
+                    id: archivo._id
+                });
             })
         }
     })
@@ -109,12 +122,19 @@ router.route('/:archivo_id')
             //     archivo.filename = req.body.filename;
             if(req.body.descripcion)
                 archivo.descripcion = req.body.descripcion;
+            if(req.body.location)
+                archivo.location = req.body.location;
+            if(req.body.usuario)
+                archivo.usuario = req.body.usuario;
             archivo.fechaCreacion = new Date(); // fecha de creación auto-actualizada
 
             archivo.save(function(err){
                 if(err)
                     res.send(err);
-                res.json({status: "OK"});
+                res.json({
+                    success: true,
+                    message: 'Información de archivo modificado'
+                });
             });
         });
     })
@@ -126,7 +146,10 @@ router.route('/:archivo_id')
         }, function(err, archivo){
             if(err)
                 res.send(err);
-            res.json({status: "OK"});
+            res.json({
+                success: true, 
+                message: 'El archivo con Id: ' + archivo._id + ' ha sido eliminado'
+            });
         });
     })
 

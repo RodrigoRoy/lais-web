@@ -9,24 +9,24 @@ var Schema = mongoose.Schema; // "Modelo" de la colección
 // Definición del esquema "Autor":
 var PublicacionSchema = new Schema({
 	titulo: {type: String, required: true},
-	autor: [{type: mongoose.Schema.Types.ObjectId, ref: 'Autores'}],
-	tipo: {type: String, enum: ['Artículo', 'Libro', 'Documental', 'Tesis', 'Ponencia', 'Manual', 'Página web', 'Incollection', 'No especificado']},
 	fecha: {type: Date},
-	coleccion: {type: String},
+	autor: [{type: mongoose.Schema.Types.ObjectId, ref: 'Autor'}],
+	tipo: {type: String, enum: ['Artículo', 'Libro', 'Documental', 'Tesis', 'Ponencia', 'Manual', 'Página web', 'Incollection']},
 	publisher: {type: String},
 	journal: {type: String}, // para "Articulo"
 	volumen: {type: String}, // para "Articulo"
-	paginas: {type: String}, // para "Articulo"
 	numero: {type: String},  // para "Articulo"
 	booktitle: {type: String},
+	paginas: {type: String}, // para "Articulo"
+	coleccion: {type: String},
 	descripcion: {type: String},
 	isbn: {type: String},
 	abstract: {type: String},
 	url: {type: String, match: [/https?.*/, 'URL debe comenzar con "http(s)://"']}, // necesario en "Página web"
 	keywords: [{type: String}], 
 	notas: {type: String},
+	adjuntos: [{type: mongoose.Schema.Types.ObjectId, ref: 'Archivo'}],
 	usuario: {type: mongoose.Schema.Types.ObjectId, ref: 'Usuarios'},
-	adjuntos: [{type: mongoose.Schema.Types.ObjectId, ref: 'Archivos'}],
 	timestamp: {type: Date},
 	modificacion: {type: Date}
 });

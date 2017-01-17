@@ -10,8 +10,9 @@ var Schema = mongoose.Schema; // "Modelo" de la colección
 var ArchivoSchema = new Schema({
 	filename : {type: String, required: true},
     descripcion: {type: String},
-    fechaCreacion: {type: Date, default: Date.now}
-    // usuario: {type: mongoose.Schema.Types.ObjectId, ref: 'Usuarios'}
+    fechaCreacion: {type: Date, default: Date.now},
+    location: {type: String},
+    usuario: {type: mongoose.Schema.Types.ObjectId, ref: 'Usuarios'}
 });
 
 // exportar el modelo "Archivos"
