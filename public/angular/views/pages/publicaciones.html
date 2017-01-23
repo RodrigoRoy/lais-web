@@ -1,0 +1,16 @@
+<!-- Página con las publicaciones del LAIS -->
+
+<div class="container my-container">
+    <h1 class="color-title">Publicaciones</h1>
+
+    <div ng-repeat="agrupacion in publicaciones">
+        <blockquote style="border-left: 5px solid #666;background-color: #ddd;">
+            {{agrupacion._id | date: 'yyyy'}}
+        </blockquote>
+        
+        <ul class="list-unstyled" ng-repeat="publicacion in agrupacion.publicaciones">
+            <li>"{{publicacion.titulo}}" <span class="label label-default">{{publicacion.tipo}}</span></li>
+        </ul>
+    </div>
+
+</div>

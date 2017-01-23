@@ -26,9 +26,6 @@ angular.module('PublicacionFormCtrl',[]).controller('PublicacionFormController',
 	// Nota: item === {Autor}
 	//		 model === "Apellido, Nombre"
 	$scope.onSelectAutor = function(item, model, label, event){
-		console.log('item: ', item);
-		console.log('model: ', model);
-		console.log('label: ', label);
 		if(!$scope.publicacion.autor)
 			$scope.publicacion.autor = []; // Lista de Id de autores
 		if(!$scope.autores)

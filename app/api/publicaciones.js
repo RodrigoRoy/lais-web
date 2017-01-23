@@ -43,6 +43,29 @@ router.route('/')
                     res.send(err);
                 res.send(publicaciones);
             });
+        // En caso de desear agrupaciones de publicaciones. Por ejemplo, por fecha:
+        // GET api/publicaciones?group=fecha
+        }else if(req.query.group){
+            Publicacion.aggregate([
+                {$group: {_id: "$" + req.query.group, publicaciones: {$push: "$$ROOT"}}},
+                {$sort: {_id: -1}}
+            ])
+            .exec(function(err, publicaciones){
+                if(err)
+                    res.send(err);
+                res.send(publicaciones);
+            });
+            // Publicacion.find()
+            // .populate('autor') // Deseado pero no soportado: populate y aggregate en la misma consulta
+            // .aggregate([
+            //     {$group: {_id: "$" + req.query.group, publicaciones: {$push: "$$ROOT"}}},
+            //     {$sort: {_id: -1}}
+            // ])
+            // .exec(function(err, publicaciones){
+            //     if(err)
+            //         res.send(err);
+            //     res.send(publicaciones);
+            // })
         }else{
             Publicacion.find() // encontrar todos
             .exec(function(err, publicaciones){

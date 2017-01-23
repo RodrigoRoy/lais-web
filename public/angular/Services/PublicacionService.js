@@ -32,6 +32,10 @@ angular.module('PublicacionService', []).factory('Publicacion', ['$http', functi
 
 		tagSearch: function(query){
 			return $http.get('api/publicaciones/tags?q=' + query);
+		},
+
+		groupBy: function(propiedad){
+			return $http.get('api/publicaciones?group=' + propiedad);
 		}
 	}
 }]);
