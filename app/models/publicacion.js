@@ -12,16 +12,16 @@ var PublicacionSchema = new Schema({
 	fecha: {type: Date},
 	autor: [{type: mongoose.Schema.Types.ObjectId, ref: 'Autor'}],
 	tipo: {type: String, enum: ['Artículo', 'Libro', 'Documental', 'Tesis', 'Ponencia', 'Manual', 'Página web', 'Incollection']},
-	publisher: {type: String},
-	journal: {type: String}, // para "Articulo"
-	numero: {type: String},  // para "Articulo"
-	volumen: {type: String}, // para "Articulo"
-	booktitle: {type: String},
-	paginas: {type: String}, // para "Articulo"
-	coleccion: {type: String},
+	publisher: {type: String}, // Libro, Incollection
+	journal: {type: String},   // Artículo
+	numero: {type: String},    // Artículo
+	volumen: {type: String},   // Artículo, Libro
+	booktitle: {type: String}, // Incollection
+	paginas: {type: String},   // Artículo, Incollection, Ponencia
+	coleccion: {type: String}, // Incollection
+	isbn: {type: String},      // Libro, Incollection
 	descripcion: {type: String},
-	isbn: {type: String},
-	abstract: {type: String},
+	abstract: {type: String},  // !Página web
 	url: {type: String, match: [/https?.*/, 'URL debe comenzar con "http(s)://"']}, // necesario en "Página web"
 	keywords: [{type: String}], 
 	notas: {type: String},

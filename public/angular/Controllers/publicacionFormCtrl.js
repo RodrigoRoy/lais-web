@@ -90,7 +90,7 @@ angular.module('PublicacionFormCtrl',[]).controller('PublicacionFormController',
         Publicacion.create($scope.publicacion) // Subir la información de la publicación a la base de datos
         .then(function(res){
             alert("Se ha guardado la información de la publicación.");
-            //$location.url('/publicaciones/' + res.data.id); // Redirigir a la página de la publicación creada
+            $location.url('/publicaciones/' + res.data.id); // Redirigir a la página de la publicación creada
         }, function(res){
             console.log("Error de conexión con la base de datos para la creación de la publicación.", res);
         });
@@ -100,7 +100,7 @@ angular.module('PublicacionFormCtrl',[]).controller('PublicacionFormController',
         Publicacion.update($routeParams.id, $scope.publicacion)
         .then(function(res){
             alert("Se ha actualizado la información de la publicación.");
-            //$location.url('/publicaciones/' + res.data.id); // Redirigir a la página de la publicación creada
+            $location.url('/publicaciones/' + $routeParams.id); // Redirigir a la página de la publicación
         }, function(res){
             console.log("Error de conexión con la base de datos para la creación de la publicación.", res);
         });

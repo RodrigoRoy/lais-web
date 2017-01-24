@@ -9,7 +9,7 @@
         </blockquote>
         
         <ul class="list-unstyled" ng-repeat="publicacion in agrupacion.publicaciones">
-            <li>"{{publicacion.titulo}}" <span class="label label-default">{{publicacion.tipo}}</span></li>
+            <li><a href="publicaciones/{{publicacion._id}}">{{publicacion.titulo}}</a> <span class="label label-default">{{publicacion.tipo}}</span></li>
         </ul>
     </div>
 

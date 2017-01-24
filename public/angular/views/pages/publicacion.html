@@ -1,0 +1,95 @@
+<!-- Página individual para una publicación del LAIS -->
+
+<div class="container my-container">
+    <h1 class="color-title">{{publicacion.titulo}}</h1>
+
+    <div class="table-responsive">
+	    <table class="table">
+	    	<tbody>
+	    		<tr>
+	    			<td>Título </td>
+	    			<td>{{publicacion.titulo}}</td>
+	    		</tr>
+	    		<tr ng-show="publicacion.booktitle">
+	    			<td>Título dentro de publicación </td>
+	    			<td>{{publicacion.booktitle}}</td>
+	    		</tr>
+	    		<tr ng-show="publicacion.autor && publicacion.autor.length > 0">
+	    			<td>Autor<span ng-show="publicacion.autor.length > 1">es</span></td>
+	    			<td>
+	    				<ul class="list-unstyled">
+	    					<li ng-repeat="autor in publicacion.autor">{{autor.nombre}} {{autor.apellido}}</li>
+	    				</ul>
+	    			</td>
+	    		</tr>
+	    		<tr ng-show="publicacion.fecha">
+	    			<td>Año </td>
+	    			<td>{{publicacion.fecha | date: 'yyyy'}}</td>
+	    		</tr>
+	    		<tr>
+	    			<td>Tipo de publicación </td>
+	    			<td>{{publicacion.tipo}}</td>
+	    		</tr>
+	    		<tr ng-show="publicacion.publisher">
+	    			<td>Publisher</td>
+	    			<td>{{publicacion.publisher}}</td>
+	    		</tr>
+	    		<tr ng-show="publicacion.journal">
+	    			<td>Journal</td>
+	    			<td>{{publicacion.journal}}</td>
+	    		</tr>
+	    		<tr ng-show="publicacion.numero">
+	    			<td>Número</td>
+	    			<td>{{publicacion.numero}}</td>
+	    		</tr>
+	    		<tr ng-show="publicacion.volumen">
+	    			<td>Volumen</td>
+	    			<td>{{publicacion.volumen}}</td>
+	    		</tr>
+	    		<tr ng-show="publicacion.paginas">
+	    			<td>Páginas</td>
+	    			<td>{{publicacion.paginas}}</td>
+	    		</tr>
+	    		<tr ng-show="publicacion.coleccion">
+	    			<td>Colección a la que pertenece</td>
+	    			<td>{{publicacion.coleccion}}</td>
+	    		</tr>
+	    		<tr ng-show="publicacion.isbn">
+	    			<td>ISBN</td>
+	    			<td>{{publicacion.isbn}}</td>
+	    		</tr>
+	    		<tr ng-show="publicacion.descripcion">
+	    			<td>Descripción</td>
+	    			<td>{{publicacion.descripcion}}</td>
+	    		</tr>
+	    		<tr ng-show="publicacion.abstract">
+	    			<td>Abstract</td>
+	    			<td>{{publicacion.abstract}}</td>
+	    		</tr>
+	    		<tr ng-show="publicacion.url">
+	    			<td>URL</td>
+	    			<td><a href="{{publicacion.url}}" target="_blank">{{publicacion.url}}</a></td>
+	    		</tr>
+	    		<tr ng-show="publicacion.notas">
+	    			<td>Notas</td>
+	    			<td>{{publicacion.notas}}</td>
+	    		</tr>
+	    		<tr ng-show="publicacion.adjuntos && publicacion.adjuntos.length > 0">
+	    			<td>Archivos adjuntos</td>
+	    			<td>
+	    				<ul class="list-unstyled">
+	    					<li ng-repeat="adjunto in publicacion.adjuntos"><a href="{{adjunto.location + '/' + adjunto.filename}}" target="_blank">{{adjunto.filename}}</a></li>
+	    				</ul>
+	    			</td>
+	    		</tr>
+	    		<tr ng-show="publicacion.keywords && publicacion.keywords.length > 0">
+	    			<td>Palabras clave</td>
+	    			<td>{{publicacion.keywords.join(', ')}}</td>
+	    		</tr>
+	    	</tbody>
+	    </table>
+    </div>
+
+    <!-- <br>
+    <pre>{{publicacion | json}}</pre> -->
+</div>

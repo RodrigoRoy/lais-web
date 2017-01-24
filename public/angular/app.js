@@ -23,6 +23,7 @@ angular.module('laisApp', [
 	'EventoCtrl', //Carga la informacion de un evento en particular
 	'EventosBusquedaCtrl', //Carga la informacion de la busqueda
 	'PublicacionesCtrl', // Información sobre las publicaciones
+	'PublicacionCtrl', // Información sobre las publicaciones
 	'PublicacionFormCtrl', // Formulario para publicaciones
 	'AuthCtrl', //Carga la informacion para autentificar a un usuario
 	'AdminCtrl', // Información general para la administración del sitio

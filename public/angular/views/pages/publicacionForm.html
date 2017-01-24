@@ -13,8 +13,6 @@
 
     <script type="text/ng-template" id="customTemplate.html">
         <a>
-            <!-- <img ng-src="http://upload.wikimedia.org/wikipedia/commons/thumb/{{match.model.flag}}" width="16">
-            <span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span> -->
             {{match.model.apellido}}, {{match.model.nombre}}
         </a>
     </script>
@@ -122,18 +120,18 @@
                 <div ng-messages="publicacionForm.coleccion.$error" ng-show="publicacionForm.coleccion.$dirty && publicacionForm.coleccion.$invalid"><div ng-messages-include="error-messages"></div></div>
             </div>
 
-            <!-- DESCRIPCIÓN -->
-            <div class="form-group" ng-class="{'has-error': publicacionForm.descripcion.$dirty && publicacionForm.descripcion.$invalid}">
-                <label class="control-label color-title format-title" for="descripcion">Descripción</label>
-                <textarea class="form-control" name="descripcion" id="descripcion" rows="2" placeholder="" ng-model="publicacion.descripcion" ng-trim></textarea>
-                <div ng-messages="publicacionForm.descripcion.$error" ng-show="publicacionForm.descripcion.$dirty && publicacionForm.descripcion.$invalid"><div ng-messages-include="error-messages"></div></div>
-            </div>
-
             <!-- ISBN -->
             <div class="form-group" ng-class="{'has-error': publicacionForm.isbn.$dirty && publicacionForm.isbn.$invalid}" ng-show="publicacion.tipo === 'Libro' || publicacion.tipo === 'Incollection'">
                 <label class="control-label color-title format-title" for="isbn">ISBN</label>
                 <input class="form-control" type="text" name="isbn" id="isbn" placeholder="" ng-model="publicacion.isbn" ng-trim>
                 <div ng-messages="publicacionForm.isbn.$error" ng-show="publicacionForm.isbn.$dirty && publicacionForm.isbn.$invalid"><div ng-messages-include="error-messages"></div></div>
+            </div>
+
+            <!-- DESCRIPCIÓN -->
+            <div class="form-group" ng-class="{'has-error': publicacionForm.descripcion.$dirty && publicacionForm.descripcion.$invalid}">
+                <label class="control-label color-title format-title" for="descripcion">Descripción</label>
+                <textarea class="form-control" name="descripcion" id="descripcion" rows="2" placeholder="" ng-model="publicacion.descripcion" ng-trim></textarea>
+                <div ng-messages="publicacionForm.descripcion.$error" ng-show="publicacionForm.descripcion.$dirty && publicacionForm.descripcion.$invalid"><div ng-messages-include="error-messages"></div></div>
             </div>
 
             <!-- ABSTRACT -->

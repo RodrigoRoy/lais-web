@@ -16,6 +16,7 @@ var express = require('express');
 var router = express.Router(); // para modularizar las rutas
 var Autor = require('../models/autor'); // Modelo de la colección "Autor"
 var Archivo = require('../models/archivo') // Modelo de la colección "Archivos"
+var Usuario = require('../models/usuario') // Modelo de la colección "Usuario"
 var Publicacion = require('../models/publicacion'); // Modelo de la colección "Publicacion"
 var verifyToken = require('./token'); // Función de verificación de token
 
@@ -68,6 +69,9 @@ router.route('/')
             // })
         }else{
             Publicacion.find() // encontrar todos
+            .populate('autor')
+            .populate('adjuntos')
+            .populate('usuario')
             .exec(function(err, publicaciones){
                 if(err)
                     res.send(err);
