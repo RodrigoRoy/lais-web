@@ -44,29 +44,28 @@ router.route('/')
                     res.send(err);
                 res.send(publicaciones);
             });
-        // En caso de desear agrupaciones de publicaciones. Por ejemplo, por fecha:
-        // GET api/publicaciones?group=fecha
+        // En caso de desear agrupaciones de publicaciones. Por ejemplo, agrupar por fecha y filtrar por tipo:
+        // GET api/publicaciones?group=fecha&match=Documental
         }else if(req.query.group){
             Publicacion.aggregate([
-                {$group: {_id: "$" + req.query.group, publicaciones: {$push: "$$ROOT"}}},
+                {$match: {tipo: {$regex: '.*' + req.query.match + '.*', $options: 'i'}}},
+                {$sort: {fecha: -1, titulo: 1}},
+                {$group: {
+                    _id: "$" + req.query.group, 
+                    publicaciones: {$push: "$$ROOT"}}},
                 {$sort: {_id: -1}}
             ])
             .exec(function(err, publicaciones){
                 if(err)
                     res.send(err);
-                res.send(publicaciones);
+                // Populate después del operador aggregate (utilizando resultado del callback anterior)
+                // http://mongoosejs.com/docs/api.html#model_Model.populate
+                Autor.populate(publicaciones, {path: "publicaciones.autor"}, function(err, populatedPublicaciones){
+                    if(err)
+                        res.send(err);
+                    res.send(populatedPublicaciones);
+                });
             });
-            // Publicacion.find()
-            // .populate('autor') // Deseado pero no soportado: populate y aggregate en la misma consulta
-            // .aggregate([
-            //     {$group: {_id: "$" + req.query.group, publicaciones: {$push: "$$ROOT"}}},
-            //     {$sort: {_id: -1}}
-            // ])
-            // .exec(function(err, publicaciones){
-            //     if(err)
-            //         res.send(err);
-            //     res.send(publicaciones);
-            // })
         }else{
             Publicacion.find() // encontrar todos
             .populate('autor')

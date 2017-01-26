@@ -56,8 +56,8 @@ router.route('/')
         autor.save(function(err){
             if(err)
                 res.send(err);
-            res.json({success: true, message: "Información del autor guardado", id: autor._id});
-        })
+            res.json({success: true, message: "Información del autor guardada", id: autor._id});
+        });
     })
 
 // En búsquedas por nombre de autor(es). Ejemplo:
