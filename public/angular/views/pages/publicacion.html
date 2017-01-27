@@ -18,7 +18,7 @@
 	    			<td>Autor<span ng-show="publicacion.autor.length > 1">es</span></td>
 	    			<td>
 	    				<ul class="list-unstyled">
-	    					<li ng-repeat="autor in publicacion.autor">{{autor.nombre}} {{autor.apellido}}</li>
+	    					<li ng-repeat="autor in publicacion.autor"><a href="/publicaciones?autor={{autor._id}}">{{autor.nombre}} {{autor.apellido}}</a></li>
 	    				</ul>
 	    			</td>
 	    		</tr>

@@ -5,6 +5,8 @@ angular.module('PublicacionFormCtrl',[]).controller('PublicacionFormController',
 	// Variables
 	$scope.publicacion = {}; // Representa al objeto que se ingresa en la base de datos
 	$scope.edit = false; // Determina si se está realizando nuevo ingreso o edición de una publicación existente
+	$scope.autor = {}; // Auxiliar que contiene la información de un autor a registrar
+	$scope.addingAuthor = false; // Determina si se está registrando un nuevo autor
 	$scope.calendar = { // Auxiliar para determinar propiedades del calendario (por ejemplo: cuándo es visible)
 		open: false,
 	}
@@ -35,6 +37,20 @@ angular.module('PublicacionFormCtrl',[]).controller('PublicacionFormController',
 			$scope.autores.push(item);
 		}
 		$scope.asyncAutorInput = ""; // Borrar el input text para buscar otro autor
+	};
+	// Mostrar inputs para registrar autor
+	$scope.showAutorForm = function(){
+		$scope.addingAuthor = true;
+	};
+	// Agrega nombre y apellido de un nuevo autor
+	$scope.addAutor = function(){
+		Autor.create($scope.autor).
+			then(function(res){
+				$scope.addingAuthor = false;
+				$scope.autor = {};
+				$scope.asyncAutorInput = ""; // Borrar el input text
+				alert("Autor registrado. Ahora puedes agregarlo como autor de la publicación");
+			});
 	};
 	// Abrir el calendario al dar clic en el botón con icono
 	$scope.openCalendar = function(event){

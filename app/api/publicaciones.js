@@ -13,6 +13,7 @@ DELETE http://localhost:8080/api/publicaiones/1234567890
 
 // Dependencias
 var express = require('express');
+var mongoose = require('mongoose');
 var router = express.Router(); // para modularizar las rutas
 var Autor = require('../models/autor'); // Modelo de la colección "Autor"
 var Archivo = require('../models/archivo') // Modelo de la colección "Archivos"
@@ -61,6 +62,25 @@ router.route('/')
                 // Populate después del operador aggregate (utilizando resultado del callback anterior)
                 // http://mongoosejs.com/docs/api.html#model_Model.populate
                 Autor.populate(publicaciones, {path: "publicaciones.autor"}, function(err, populatedPublicaciones){
+                    if(err)
+                        res.send(err);
+                    res.send(populatedPublicaciones);
+                });
+            });
+        // En caso de pedir las publicaciones de un autor en particular, agrupadas por fecha
+        // GET api/publicaciones?autor=1234567890
+        }else if(req.query.autor){
+            Publicacion.aggregate([
+                {$match: {autor: mongoose.Types.ObjectId(req.query.autor)}},
+                {$group: {
+                    _id: '$fecha',
+                    publicaciones: {$push: '$$ROOT'}}},
+                {$sort: {_id: -1}}
+            ])
+            .exec(function(err, publicaciones){
+                if(err)
+                    res.send(err);
+                Autor.populate(publicaciones, {path: 'publicaciones.autor'}, function(err, populatedPublicaciones){
                     if(err)
                         res.send(err);
                     res.send(populatedPublicaciones);

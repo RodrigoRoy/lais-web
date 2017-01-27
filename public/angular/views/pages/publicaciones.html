@@ -3,14 +3,30 @@
 <div class="container my-container">
     <h1 class="color-title">Publicaciones</h1>
 
+    <h3 ng-if="autorObject">{{autorObject.nombre + ' ' + autorObject.apellido}}</h3>
+
     <div ng-repeat="agrupacion in publicaciones">
         <blockquote style="border-left: 5px solid #666;background-color: #ddd;">
             {{agrupacion._id | date: 'yyyy'}}
         </blockquote>
         
         <ul class="list-unstyled" ng-repeat="publicacion in agrupacion.publicaciones">
-            <li><a href="publicaciones/{{publicacion._id}}">{{publicacion.titulo}}</a> <span class="label label-default">{{publicacion.tipo}}</span></li>
+            <li>
+            	<!-- <span ng-if="publicacion.tipo === 'Artículo'"> -->
+	            	<span ng-repeat="autor in publicacion.autor"><a href="publicaciones?autor={{autor._id}}" style="color: #c85c2d;">{{stylizeName(autor.nombre, autor.apellido)}}</a><span ng-if="!$last">, </span></span> 
+	            	({{publicacion.fecha | date: 'yyyy'}}).
+	            	<a href="publicaciones/{{publicacion._id}}" style="color: #782400;">{{publicacion.titulo}}</a>. 
+	            	<span ng-if="publicacion.journal">
+	            		<em>{{publicacion.journal}}</em>
+	            		<span ng-if="publicacion.volume"><em>, {{publicacion.volumen}}</em></span>
+	            		<span ng-if="publicacion.numero"> ({{publicacion.numero}}). </span>
+	            	</span>
+	            	<a href="/publicaciones?group=tipo&match={{publicacion.tipo}}"><span class="label label-default">{{publicacion.tipo}}</span></a>
+            	<!-- </span> -->
+            </li>
         </ul>
     </div>
 
+    <!-- <br>
+    <pre>{{publicaciones | json}}</pre> -->
 </div>

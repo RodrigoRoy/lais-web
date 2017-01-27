@@ -45,7 +45,22 @@
             <label class="control-label color-title format-title" for="autor">Autor(es)</label>
             <input class="form-control" type="text" name="autor" id="autor" placeholder="" ng-model="asyncAutorInput" uib-typeahead="autor.apellido + ', ' + autor.nombre for autor in getAutor($viewValue)" typeahead-loading="loadingAutores" typeahead-no-results="noResults" typeahead-template-url="customTemplate.html" typeahead-on-select="onSelectAutor($item, $model, $label, $event)">
             <i class="fa fa-spinner fa-spin fa-fw" ng-show="loadingAutores"></i>
-            <div ng-show="noResults"><i class="fa fa-times" aria-hidden="true"></i> No se encontraron resultados</div>
+            <div ng-show="noResults">
+                <i class="fa fa-times" aria-hidden="true"></i> No se encontraron resultados. <a href="" ng-click="showAutorForm()">Registra al autor</a>
+                <div class="container-fluid" ng-show="addingAuthor">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-5">
+                            <input type="text" class="form-control" ng-model="autor.nombre" placeholder="Nombre(s) del autor">
+                        </div>
+                        <div class="col-xs-12 col-md-5">
+                            <input type="text" class="form-control" ng-model="autor.apellido" placeholder="Apellido(s) del autor">
+                        </div>
+                        <div class="col-xs-12 col-md-2">
+                            <button class="btn btn-default" ng-click="addAutor()" ng-disabled="!autor.nombre && !autor.apellido">Registrar autor</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <ul ng-show="autores && autores.length > 0">
                 <li ng-repeat="autor in autores">{{autor.apellido}}, {{autor.nombre}}</li>
             </ul>

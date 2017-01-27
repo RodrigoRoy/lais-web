@@ -30,12 +30,19 @@ angular.module('PublicacionService', []).factory('Publicacion', ['$http', functi
 			return $http.delete('/api/publicaciones/' + publicacionID);
 		},
 
+		// Filtrar publicaciones por keyword
 		tagSearch: function(query){
 			return $http.get('api/publicaciones/tags?q=' + query);
 		},
 
-		groupBy: function(propiedad){
-			return $http.get('api/publicaciones?group=' + propiedad);
+		// Agrupar las publicaciones por propiedad (e.g. fecha). Permite restringuir mediante match (e.g. tipo)
+		groupBy: function(propiedad, match){
+			return $http.get('api/publicaciones?group=' + propiedad + '&match=' + match);
+		},
+
+		// Agrupar publicaciones por autor (en orden cronológico por default)
+		autor: function(autorID){
+			return $http.get('api/publicaciones?autor=' + autorID);
 		}
 	}
 }]);
