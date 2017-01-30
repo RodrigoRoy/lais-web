@@ -10,7 +10,7 @@ var Schema = mongoose.Schema; // "Modelo" de la colección
 var PublicacionSchema = new Schema({
 	titulo: {type: String, required: true},
 	fecha: {type: Date},
-	autor: [{type: mongoose.Schema.Types.ObjectId, ref: 'Autor'}],
+	autor: [{type: mongoose.Schema.Types.ObjectId, ref: 'Autores'}],
 	tipo: {type: String, enum: ['Artículo', 'Libro', 'Documental', 'Página web', 'Incollection', 'Ponencia', 'Manual']},
 	publisher: {type: String}, // Libro, Incollection
 	journal: {type: String},   // Artículo
@@ -33,4 +33,4 @@ var PublicacionSchema = new Schema({
 
 // exportar el modelo "Publicacions"
 // module.exports permite pasar el modelo a otros archivos cuando es llamado
-module.exports = mongoose.model('Publicacion', PublicacionSchema);
+module.exports = mongoose.model('Publicaciones', PublicacionSchema);

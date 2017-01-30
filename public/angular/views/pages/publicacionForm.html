@@ -29,17 +29,6 @@
             <div ng-messages="publicacionForm.titulo.$error" ng-show="publicacionForm.titulo.$dirty && publicacionForm.titulo.$invalid"><div ng-messages-include="error-messages"></div></div>
         </div>
 
-        <!-- FECHA -->
-        <div class="form-group">
-            <label class="control-label color-title format-title" for="fecha">Fecha</label>
-            <div class="input-group">
-                <input class="form-control" type="text" uib-datepicker-popup="yyyy" ng-model="publicacion.fecha" datepicker-options="dateOptions" is-open="calendar.open" show-button-bar="false">
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-default" ng-click="openCalendar($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                </span>
-            </div>
-        </div>
-
         <!-- AUTORES -->
         <div class="form-group" ng-class="{'has-error': publicacionForm.autor.$dirty && publicacionForm.autor.$invalid}">
             <label class="control-label color-title format-title" for="autor">Autor(es)</label>
@@ -75,9 +64,9 @@
                 <option value="Artículo">Artículo</option>
                 <option value="Libro">Libro</option>
                 <option value="Ponencia">Ponencia</option>
-                <option value="Incollection">Incollection</option>
+                <!-- <option value="Incollection">Incollection</option>
                 <option value="Manual">Manual</option>
-                <option value="Tesis">Tesis</option>
+                <option value="Tesis">Tesis</option> -->
                 <option value="Página web">Página web</option>
                 <!-- <option value="No especificado">No especificado</option> -->
             </select>
@@ -86,8 +75,19 @@
         
         <div ng-show="publicacion.tipo"><!-- Contenedor de campos hasta que se elija el tipo de publicación -->
 
+            <!-- FECHA -->
+            <div class="form-group">
+                <label class="control-label color-title format-title" for="fecha">Fecha</label>
+                <div class="input-group">
+                    <input class="form-control" type="text" uib-datepicker-popup="yyyy" ng-model="publicacion.fecha" datepicker-options="dateOptions" is-open="calendar.open" show-button-bar="false">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="openCalendar($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+            </div>
+
             <!-- PUBLISHER -->
-            <div class="form-group" ng-class="{'has-error': publicacionForm.publisher.$dirty && publicacionForm.publisher.$invalid}" ng-show="publicacion.tipo === 'Libro' || publicacion.tipo === 'Incollection'">
+            <div class="form-group" ng-class="{'has-error': publicacionForm.publisher.$dirty && publicacionForm.publisher.$invalid}" ng-show="publicacion.tipo === 'Libro'">
                 <label class="control-label color-title format-title" for="publisher">Editorial</label>
                 <input class="form-control" type="text" name="publisher" id="publisher" placeholder="" ng-model="publicacion.publisher" ng-trim>
                 <div ng-messages="publicacionForm.publisher.$error" ng-show="publicacionForm.publisher.$dirty && publicacionForm.publisher.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -95,16 +95,9 @@
 
             <!-- JOURNAL -->
             <div class="form-group" ng-class="{'has-error': publicacionForm.journal.$dirty && publicacionForm.journal.$invalid}" ng-show="publicacion.tipo === 'Artículo'">
-                <label class="control-label color-title format-title" for="journal">Journal</label>
+                <label class="control-label color-title format-title" for="journal">Journal / Revista</label>
                 <input class="form-control" type="text" name="journal" id="journal" placeholder="" ng-model="publicacion.journal" ng-trim>
                 <div ng-messages="publicacionForm.journal.$error" ng-show="publicacionForm.journal.$dirty && publicacionForm.journal.$invalid"><div ng-messages-include="error-messages"></div></div>
-            </div>
-
-            <!-- NÚMERO -->
-            <div class="form-group" ng-class="{'has-error': publicacionForm.numero.$dirty && publicacionForm.numero.$invalid}" ng-show="publicacion.tipo === 'Artículo'">
-                <label class="control-label color-title format-title" for="numero">Número</label>
-                <input class="form-control" type="text" name="numero" id="numero" placeholder="" ng-model="publicacion.numero" ng-trim>
-                <div ng-messages="publicacionForm.numero.$error" ng-show="publicacionForm.numero.$dirty && publicacionForm.numero.$invalid"><div ng-messages-include="error-messages"></div></div>
             </div>
 
             <!-- VOLUMEN -->
@@ -114,29 +107,36 @@
                 <div ng-messages="publicacionForm.volumen.$error" ng-show="publicacionForm.volumen.$dirty && publicacionForm.volumen.$invalid"><div ng-messages-include="error-messages"></div></div>
             </div>
 
-            <!-- BOOKTITLE --> <!-- Libro o publicación a la que pertenece -->
-            <div class="form-group" ng-class="{'has-error': publicacionForm.booktitle.$dirty && publicacionForm.booktitle.$invalid}" ng-show="publicacion.tipo === 'Incollection'">
-                <label class="control-label color-title format-title" for="booktitle">Booktitle</label>
-                <input class="form-control" type="text" name="booktitle" id="booktitle" placeholder="" ng-model="publicacion.booktitle" ng-trim>
-                <div ng-messages="publicacionForm.booktitle.$error" ng-show="publicacionForm.booktitle.$dirty && publicacionForm.booktitle.$invalid"><div ng-messages-include="error-messages"></div></div>
+            <!-- NÚMERO -->
+            <div class="form-group" ng-class="{'has-error': publicacionForm.numero.$dirty && publicacionForm.numero.$invalid}" ng-show="publicacion.tipo === 'Artículo'">
+                <label class="control-label color-title format-title" for="numero">Número</label>
+                <input class="form-control" type="text" name="numero" id="numero" placeholder="" ng-model="publicacion.numero" ng-trim>
+                <div ng-messages="publicacionForm.numero.$error" ng-show="publicacionForm.numero.$dirty && publicacionForm.numero.$invalid"><div ng-messages-include="error-messages"></div></div>
             </div>
 
             <!-- PÁGINAS -->
-            <div class="form-group" ng-class="{'has-error': publicacionForm.paginas.$dirty && publicacionForm.paginas.$invalid}" ng-show="publicacion.tipo === 'Artículo' || publicacion.tipo === 'Incollection' || publicacion.tipo === 'Ponencia'">
+            <div class="form-group" ng-class="{'has-error': publicacionForm.paginas.$dirty && publicacionForm.paginas.$invalid}" ng-show="publicacion.tipo === 'Artículo' || publicacion.tipo === 'Ponencia'">
                 <label class="control-label color-title format-title" for="paginas">Páginas</label>
                 <input class="form-control" type="text" name="paginas" id="paginas" placeholder="" ng-model="publicacion.paginas" ng-trim>
                 <div ng-messages="publicacionForm.paginas.$error" ng-show="publicacionForm.paginas.$dirty && publicacionForm.paginas.$invalid"><div ng-messages-include="error-messages"></div></div>
             </div>
 
+            <!-- BOOKTITLE --> <!-- Libro o publicación a la que pertenece -->
+            <div class="form-group" ng-class="{'has-error': publicacionForm.booktitle.$dirty && publicacionForm.booktitle.$invalid}" ng-show="publicacion.tipo === 'Artículo'">
+                <label class="control-label color-title format-title" for="booktitle">Booktitle</label>
+                <input class="form-control" type="text" name="booktitle" id="booktitle" placeholder="" ng-model="publicacion.booktitle" ng-trim>
+                <div ng-messages="publicacionForm.booktitle.$error" ng-show="publicacionForm.booktitle.$dirty && publicacionForm.booktitle.$invalid"><div ng-messages-include="error-messages"></div></div>
+            </div>
+
             <!-- COLECCION -->
-            <div class="form-group" ng-class="{'has-error': publicacionForm.coleccion.$dirty && publicacionForm.coleccion.$invalid}" ng-show="publicacion.tipo === 'Incollection'">
+            <div class="form-group" ng-class="{'has-error': publicacionForm.coleccion.$dirty && publicacionForm.coleccion.$invalid}" ng-show="publicacion.tipo === 'Artículo'">
                 <label class="control-label color-title format-title" for="coleccion">Colección</label>
                 <input class="form-control" type="text" name="coleccion" id="coleccion" placeholder="" ng-model="publicacion.coleccion" ng-trim>
                 <div ng-messages="publicacionForm.coleccion.$error" ng-show="publicacionForm.coleccion.$dirty && publicacionForm.coleccion.$invalid"><div ng-messages-include="error-messages"></div></div>
             </div>
 
             <!-- ISBN -->
-            <div class="form-group" ng-class="{'has-error': publicacionForm.isbn.$dirty && publicacionForm.isbn.$invalid}" ng-show="publicacion.tipo === 'Libro' || publicacion.tipo === 'Incollection'">
+            <div class="form-group" ng-class="{'has-error': publicacionForm.isbn.$dirty && publicacionForm.isbn.$invalid}" ng-show="publicacion.tipo === 'Libro'">
                 <label class="control-label color-title format-title" for="isbn">ISBN</label>
                 <input class="form-control" type="text" name="isbn" id="isbn" placeholder="" ng-model="publicacion.isbn" ng-trim>
                 <div ng-messages="publicacionForm.isbn.$error" ng-show="publicacionForm.isbn.$dirty && publicacionForm.isbn.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -165,7 +165,7 @@
 
             <!-- KEYWORDS -->
             <div class="form-group">
-                <label class="control-label color-title format-title" for="keywords">Keywords</label>
+                <label class="control-label color-title format-title" for="keywords">Palabras clave</label>
                 <tags-input ng-model="keywords" name="keywords" id="keywords" type="text" placeholder="Agrega una etiqueta" replace-spaces-with-dashes="false" add-from-autocomplete-only="false" spellcheck="false" ng-blur="updateKeywords()">
                     <auto-complete source="loadTags($query)" display-property="text" min-length="1" max-results-to-show="5"></auto-complete>
                 </tags-input>

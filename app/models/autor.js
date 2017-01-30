@@ -17,4 +17,4 @@ var AutorSchema = new Schema({
 
 // exportar el modelo "Autores"
 // module.exports permite pasar el modelo a otros archivos cuando es llamado
-module.exports = mongoose.model('Autor', AutorSchema);
+module.exports = mongoose.model('Autores', AutorSchema);
