@@ -9,6 +9,11 @@ angular.module('ArchivoService', []).factory('Archivo', ['$http', function($http
 			return $http.get('/api/archivos');
 		},
 
+		getByLocation: function(path){
+			var location = path || '';
+			return $http.get('/api/archivos?path=' + location);
+		},
+
 		// Obtiene el archivo en particular con el archivoID
 		get: function(archivoID){
 			return $http.get('/api/archivos/' + archivoID);

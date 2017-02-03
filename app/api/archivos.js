@@ -31,19 +31,22 @@ router.use(function(req, res, next){
 
 // En peticiones a la raiz del API
 router.route('/')
-	// Obtener todos los archivos
+	// Obtener todos archivos
 	.get(function(req, res){
-        Archivo.find() // encontrar todos
-        .lean() // Convierte los archivos a JSON (en vez de MongooseDocuments donde no se pueden incluir propiedades)
-        .sort({fechaCreacion: 'desc'})
+        var dirbase = 'public/files/';
+        // Por ubicación en subdirectorios
+        var path = req.query.path || '';
+        Archivo.find({location: {$regex: '^' + path + '/?$', $options: 'im'}})
+        .lean()
+        .sort({createdAt: 'desc'})
         .exec(function(err, archivos){
             if(err)
                 res.send(err);
             for(var i in archivos){
                 try{
                     // Verifica si existe el archivo, en caso contrario se dispara excepción (se maneja en catch)
-                    fs.accessSync('public/files/' + archivos[i].filename, fs.constants.F_OK);
-                    archivos[i].size = filesize(fs.statSync('public/files/' + archivos[i].filename).size, {round: 0});
+                    fs.accessSync(dirbase + archivos[i].location + archivos[i].filename, (fs.constants || fs).F_OK);
+                    archivos[i].size = filesize(fs.statSync(dirbase + archivos[i].location + archivos[i].filename).size, {round: 0});
                 }catch(err){
                     archivos[i].size = filesize(0, {round: 0});
                 }
@@ -62,11 +65,9 @@ router.route('/')
                     files[i].descripcion = undefined;
             }
             Archivo.insertMany(files, function(err, archivos){ // Bulk insert
-                if(err){
+                if(err)
                     res.send(err);
-                }
-                //console.log("ARCHIVOS SUBIDOS: ", typeof archivos, archivos);
-                res.json({
+                res.send({
                     success: true,
                     message: 'Archivos agregados al servidor',
                     files: archivos
@@ -82,13 +83,31 @@ router.route('/')
                 archivo.descripcion = req.body.descripcion;
             if(req.body.location)
                 archivo.location = req.body.location;
+            if(req.body.directory)
+                archivo.directory = req.body.directory;
             if(req.body.usuario)
                 archivo.usuario = req.body.usuario;
-            archivo.fechaCreacion = new Date(); // fecha de creación automática al momento
+
+            // TODO:
+            if(archivo.directory){
+                var path = archivo.location ? 'public/files/' + archivo.location : 'public/files/';
+                fs.access(path, (fs.constants || fs).F_OK, function(err){
+                    if(err)
+                        console.log('Error. No existe la carpeta ' + path, err);
+                    fs.mkdir(path + archivo.filename, function(err){
+                        if(err)
+                            console.log('Error al crear carpeta ' + path + archivo.filename, err);
+                    });
+                });
+            }
 
             archivo.save(function(err){
-                if(err)
-                    res.send(err);
+                if(err){
+                    if(err.code == 11000)
+                        return res.status(400).send({success: false, message: 'Nombre de archivo o carpeta duplicado.'});
+                    else
+                        return res.status(400).send({success: false, message: 'Error en la base de datos', error: err});
+                }
                 res.json({
                     success: true,
                     message: 'Archivo agregado al servidor',
@@ -103,7 +122,6 @@ router.route('/:archivo_id')
 	// Obtener un archivo particular (mediante el ID)
     .get(function(req, res){
         Archivo.findById(req.params.archivo_id)
-        // .populate('lugar')
         .exec(function(err, archivo){
             if(err)
                 res.send(err);
@@ -124,9 +142,10 @@ router.route('/:archivo_id')
                 archivo.descripcion = req.body.descripcion;
             if(req.body.location)
                 archivo.location = req.body.location;
+            if(req.body.directory)
+                archivo.directory = req.body.directory;
             if(req.body.usuario)
                 archivo.usuario = req.body.usuario;
-            archivo.fechaCreacion = new Date(); // fecha de creación auto-actualizada
 
             archivo.save(function(err){
                 if(err)

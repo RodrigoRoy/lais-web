@@ -8,11 +8,14 @@ var Schema = mongoose.Schema; // "Modelo" de la colección
 
 // Definición del esquema "Archivos", incluyendo nombre del campo y el tipo de dato (key: value_type)
 var ArchivoSchema = new Schema({
-	filename : {type: String, required: true},
+	filename : {type: String, trim: true, required: true, index: {unique: true}},
     descripcion: {type: String},
-    fechaCreacion: {type: Date, default: Date.now},
-    location: {type: String},
-    usuario: {type: mongoose.Schema.Types.ObjectId, ref: 'Usuarios'}
+    location: {type: String, default: ''},
+    directory: {type: Boolean, default: false},
+    usuario: {type: Schema.Types.ObjectId, ref: 'Usuarios'}
+}, { // Opciones:
+	collection: 'archivos',
+	timestamps: true //timestamps: {createdAt: 'creacion', updatedAt: 'actualizacion'}
 });
 
 // exportar el modelo "Archivos"

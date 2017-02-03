@@ -82,7 +82,7 @@ angular.module('PublicacionFormCtrl',[]).controller('PublicacionFormController',
             // Crear un arreglo temporal con los nombres de los archivos y su ubicación (desde response de servidor)
             $scope.adjuntos = [];
             for(var i in res.config.data.file)
-                $scope.adjuntos[i] = {filename: res.config.data.file[i].name, location: res.data.location};
+                $scope.adjuntos[i] = {filename: res.config.data.file[i].name, location: res.data.location + '/'};
             // Agregarlos en la base de datos, en la colección "Archivos"
             Archivo.create($scope.adjuntos)
 	            .then(function(res){

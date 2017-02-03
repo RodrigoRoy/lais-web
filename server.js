@@ -71,40 +71,42 @@ app.post('/api/uploadFiles', multipartMiddleware, function(req, res){ // definir
 	}
 	res.json({"status": "OK"}); // responder al cliente 
 });
-var multipartMiddleware = multipart({uploadDir: './public/files'}); // definir ruta para archivos
-app.post('/api/uploadMultiFiles', multipartMiddleware, function(req, res){ // definir ruta para HTTP POST
-	//console.log("  req.body", req.body); // Datos adicionales enviados
-	console.log("Información de archivos");
-	console.log(req.files);
-	for(var i in req.files.file){ // iterar en todos los archivos
-		fs.rename(req.files.file[i].path, 'public/files/' + req.files.file[i].name, function(err){ // renombrar archivo (usar el nombre original)
-			if(err)
-				throw err;
-		})
-	}
-	res.json({"status": "OK"}); // responder al cliente 
-});
+// var multipartMiddleware = multipart({uploadDir: './public/files'}); // definir ruta para archivos
+// app.post('/api/uploadMultiFiles', multipartMiddleware, function(req, res){ // definir ruta para HTTP POST
+// 	//console.log("  req.body", req.body); // Datos adicionales enviados
+// 	console.log("Información de archivos");
+// 	console.log(req.files);
+// 	for(var i in req.files.file){ // iterar en todos los archivos
+// 		fs.rename(req.files.file[i].path, 'public/files/' + req.files.file[i].name, function(err){ // renombrar archivo (usar el nombre original)
+// 			if(err)
+// 				throw err;
+// 		})
+// 	}
+// 	res.json({"status": "OK"}); // responder al cliente 
+// });
 
+
+// EN PROCESO DE CAMBIO AL API "FILES"
 // Elimina el archivo indicado dentro de la carpeta 'files'. Útil para borrar archivos adjuntos de los eventos
-app.delete('/files/:filename', function(req, res){
-	// Verificar si el archivo existe
-	fs.access('public/files/' + req.params.filename, fs.constants.F_OK, function(err){
-		if(err) // Error si el archivo que se quiere eliminar no existe
-			return res.status(404).send({
-				success: false,
-				message: "File " + req.params.filename + " don't exist"
-			});
-		// Eliminar el archivo (indicando la ruta)
-		fs.unlink('public/files/' + req.params.filename, function(err){
-			if(err)
-				throw err;
-			res.send({
-				success: true,
-				message: 'File ' + req.params.filename + ' deleted'
-			});
-		});
-	});
-});
+// app.delete('/files/:filename', function(req, res){
+// 	// Verificar si el archivo existe
+// 	fs.access('public/files/' + req.params.filename, fs.constants.F_OK, function(err){
+// 		if(err) // Error si el archivo que se quiere eliminar no existe
+// 			return res.status(404).send({
+// 				success: false,
+// 				message: "File " + req.params.filename + " don't exist"
+// 			});
+// 		// Eliminar el archivo (indicando la ruta)
+// 		fs.unlink('public/files/' + req.params.filename, function(err){
+// 			if(err)
+// 				throw err;
+// 			res.send({
+// 				success: true,
+// 				message: 'File ' + req.params.filename + ' deleted'
+// 			});
+// 		});
+// 	});
+// });
 
 // Elimina el archivo indicado dentro de la carpeta 'files/eventos/'. Útil para borrar archivos adjuntos de los eventos
 app.delete('/files/eventos/:filename', function(req, res){

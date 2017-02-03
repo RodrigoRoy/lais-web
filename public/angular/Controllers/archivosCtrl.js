@@ -1,50 +1,58 @@
 //Controlador que enlista todos los archivos
 
-angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($scope, $location, $route, $window, Archivo, Upload) {
+angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($scope, $location, $route, $routeParams, Archivo, Upload){
 	
 	$scope.propertyName = 'fechaCreacion'; // Propiedad usada por default para ordenar los archivos
 	$scope.reverse = true; // Orden reversible por default
+	$scope.addingDirectory = false;
+	//$scope.directoryFile = {}; // Archivo que representa un directorio
 	$scope.archivos = []; // Lista de archivos en la base de datos
 	$scope.uploadedFiles = []; // Lista de archivos que en ese momento se suben al servidor
 	$scope.editable; // ID del evento que en ese momento es editable. También es el indicador de que se lleva a cabo una edición
 	$scope.tempFile = {}; // Objeto temporal para actualizar información (como la descripción)
+	$scope.currentLocation = $routeParams.path || ''; // Directorio actual
 
-	// Obtener todos los archivos para mostrar en la vista
-	Archivo.all()
+	// Permite obtener/inicializar el arreglo de objetos 'Archivo' para mostrar en la vista
+	$scope.getFiles = function(){
+		Archivo.getByLocation($scope.currentLocation)
 		.then(function(res){
 			if(res.statusText === 'OK'){
 				$scope.archivos = res.data;
 				for(var i in $scope.archivos){
 					// Incluir propiedades extras: tipo y icon
-					$scope.archivos[i].tipo = setFileType($scope.archivos[i].filename);
+					$scope.archivos[i].tipo = setFileType($scope.archivos[i]);
 					$scope.archivos[i].icon = setIcon($scope.archivos[i].tipo);
 				}
 			}
 		}, function(res){
 			console.log('Error de conexión con la base de datos');
 		});
+	};
 
 	// Auxiliar que devuelve un texto que determinar el tipo de archivo en base a su extensión
 	// Los valores que devuelve son: 'file' (default), 'text', 'image', 'audio', 'video', 'word', 'excel', 'powerpoint', 'pdf' y 'unknown'
-	var setFileType = function(filename){
-		var myREarray = /\.[^\.]*$/.exec(filename); // Uso de expresión regular para obtener la extensión
+	var setFileType = function(file){
+		if(file.directory)
+			return 'directory';
+		var myREarray = /\.[^\.]*$/.exec(file.filename); // Uso de expresión regular para obtener la extensión
 		if(myREarray === null)
 			return 'file'
-		else if (myREarray[0] === '.txt')
+		var extension = myREarray[0];
+		if (extension === '.txt')
 			return 'text'
-		else if (myREarray[0] === '.jpg' || myREarray[0] === '.jpeg' || myREarray[0] === '.gif' || myREarray[0] === '.png' || myREarray[0] === '.tiff' || myREarray[0] === '.bmp' || myREarray[0] === '.svg' || myREarray[0] === '.webp')
+		else if (extension === '.jpg' || extension === '.jpeg' || extension === '.gif' || extension === '.png' || extension === '.tiff' || extension === '.bmp' || extension === '.svg' || extension === '.webp')
 			return 'image'
-		else if (myREarray[0] === '.ogg' || myREarray[0] === '.mp3' || myREarray[0] === '.wav' || myREarray[0] === '.m4a' || myREarray[0] === '.wma' || myREarray[0] === '.aac' || myREarray[0] === '.flac')
+		else if (extension === '.ogg' || extension === '.mp3' || extension === '.wav' || extension === '.m4a' || extension === '.wma' || extension === '.aac' || extension === '.flac')
 			return 'audio'
-		else if (myREarray[0] === '.mp4' || myREarray[0] === '.avi' || myREarray[0] === '.mkv' ||  myREarray[0] === '.wmv' || myREarray[0] === '.flv' || myREarray[0] === '.3gp' || myREarray[0] === '.ogv' || myREarray[0] === '.webm')
+		else if (extension === '.mp4' || extension === '.avi' || extension === '.mkv' ||  extension === '.wmv' || extension === '.flv' || extension === '.3gp' || extension === '.ogv' || extension === '.webm')
 			return 'video'
-		else if (myREarray[0] === '.doc' || myREarray[0] === '.docx' || myREarray[0] === '.odt' || myREarray[0] === '.fodt')
+		else if (extension === '.doc' || extension === '.docx' || extension === '.odt' || extension === '.fodt')
 			return 'word'
-		else if (myREarray[0] === '.xls' || myREarray[0] === '.xlsx' || myREarray[0] === '.ods' || myREarray[0] === '.fods')
+		else if (extension === '.xls' || extension === '.xlsx' || extension === '.ods' || extension === '.fods')
 			return 'excel'
-		else if (myREarray[0] === '.ppt' || myREarray[0] === '.pptx' || myREarray[0] === '.odp' || myREarray[0] === '.fodp')
+		else if (extension === '.ppt' || extension === '.pptx' || extension === '.odp' || extension === '.fodp')
 			return 'powerpoint'
-		else if (myREarray[0] === '.pdf')
+		else if (extension === '.pdf')
 			return 'pdf'
 		else
 			return 'unknown'
@@ -55,6 +63,9 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
 	var setIcon = function(filetype){
 		var htmlIcon = '<i class="fa fa-file-o fa-1-5x" aria-hidden="true"></i>'; // simple file icon by default
 		switch (filetype){
+			case 'directory':
+				htmlIcon = '<i class="fa fa-folder-o fa-1-5x" aria-hidden="true"></i>';
+				break;
 			case 'text':
 				htmlIcon = '<i class="fa fa-file-text-o fa-1-5x" aria-hidden="true"></i>';
 				break;
@@ -90,20 +101,22 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
 		$scope.propertyName = propertyName;
 	};
 
-	// Abre el archivo en una nueva ventana (similar a <a href="filename">)
-	$scope.openFile = function(filename){
-		$window.open('files/' + filename);
-	};
-
 	// Sube archivos al servidor
     $scope.uploadFiles = function(file){
         Upload.upload({
-            url: 'api/uploadMultiFiles', // Ruta de Node (usando POST) para el manejo del almacenamiento de los archivos
-            data: {file: file} // Se pueden incluir datos adicionales (ej. {file: file, 'username': 'Roy'})
+            //url: 'api/uploadMultiFiles', // Ruta de Node (usando POST) para el manejo del almacenamiento de los archivos
+            url: 'api/files', // Ruta de Node (usando POST) para el manejo del almacenamiento de los archivos
+            data: {file: file, path: $scope.currentLocation} // Se pueden incluir datos adicionales (ej. {file: file, 'username': 'Roy'})
         }).then(function (resp) { // Función cuando el archivo es subido exitosamente
             $scope.uploadedFiles = [];
             for(var i in resp.config.data.file) // Crear un objeto dentro de $scope.uploadedFiles por cada archivo
-                $scope.uploadedFiles[i] = {filename: resp.config.data.file[i].name, descripcion: ""};
+                $scope.uploadedFiles[i] = {
+                	filename: resp.config.data.file[i].name, 
+                	descripcion: "", 
+                	location: $scope.currentLocation, 
+                	usuario: $scope.user.id,
+                	directory: false
+                };
         }, function (resp) { // Función para manejo de error
             console.log('Error status: ' + resp.status);
         }, function (evt) { // Función para notificar progreso
@@ -138,9 +151,30 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
     $scope.enviar = function(){
     	Archivo.create($scope.uploadedFiles) // Subir la información de los archivos a la base de datos
         .then(function(res){
-            alert("Se ha guardado la información de los archivos.");
+            //alert("Se ha guardado la información de los archivos.");
             $scope.uploadedFiles = []; // En caso de que falle reload se vacia el arreglo
-            $route.reload(); // Reload a la página para mostrar los nuevos archivos recien subidos
+            //$route.reload(); // Reload a la página para mostrar los nuevos archivos recien subidos
+            $scope.getFiles();
+        }, function(res){
+            console.log("Error de conexión con la base de datos para la creación del evento.", res);
+        });
+    };
+
+    $scope.showAddDirectory = function(){
+    	$scope.addingDirectory = true;
+    };
+
+    // Crear un 'archivo' tipo directorio en la base de datos para crear carpetas
+    $scope.addDirectory = function(){
+    	$scope.directoryFile.directory = true;
+    	$scope.directoryFile.location = $scope.currentLocation;
+    	$scope.directoryFile.usuario = $scope.user.id;
+    	Archivo.create($scope.directoryFile) // Subir la información de los archivos a la base de datos
+        .then(function(res){
+            // alert("Carpeta creada");
+            $scope.directoryFile = {}; // En caso de que falle reload se vacia el arreglo
+            $scope.getFiles();
+            $scope.addingDirectory = false;
         }, function(res){
             console.log("Error de conexión con la base de datos para la creación del evento.", res);
         });
@@ -197,4 +231,6 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
     			console.log('Error de conexión con la base de datos');
     		});
     };
+
+    $scope.getFiles();
 });

@@ -4,7 +4,9 @@
 	
 	<!-- Formulario para agregar nuevo(s) archivo(s) a la base de datos -->
     <div class="spacing-block"> <!-- ng-show="sesion" -->
-	    <button type="button" class="btn btn-default full-width" name="adjuntos" id="adjuntos" ngf-select="uploadFiles($files)" ng-model="adjuntos" ngf-multiple="true" ngf-keep="'distinct'" ngf-max-files="10" ngf-max-size="'100MB'" ngf-max-total-size="'200MB'">Agregar archivo(s)...</button>
+	    <button type="button" class="btn btn-default full-width" name="adjuntos" id="adjuntos" ng-show="uploadedFiles && uploadedFiles.length === 0" ngf-select="uploadFiles($files)" ng-model="adjuntos" ngf-multiple="true" ngf-keep="'distinct'" ngf-max-files="10" ngf-max-size="'100MB'" ngf-max-total-size="'200MB'">Agregar archivo(s)...</button>
+	    <button type="button" class="btn btn-default full-width" name="directory" id="directory" ng-click="showAddDirectory()">Agregar carpeta</button>
+	    
 	    <table class="table">
 	    	<tr ng-repeat="file in uploadedFiles">
 	    		<td>{{file.filename}}</td>
@@ -13,7 +15,23 @@
 	    	</tr>
 	    </table>
 	    <button class="btn btn-primary" ng-show="uploadedFiles && uploadedFiles.length > 0" ng-click="enviar()">Subir archivo(s) al servidor</button>
+
+	    <div ng-show="addingDirectory">
+	    	<table class="table">
+	    		<tr>
+	    			<td><input type="text" class="form-control" placeholder="Nombre de la carpeta" ng-model="directoryFile.filename" required=""></td>
+	    			<td><input type="text" class="form-control" placeholder="Agregar descripción (Opcional)" ng-model="directoryFile.descripcion"></td>
+	    			<td><button type="button" class="btn btn-primary" ng-click="addDirectory()" ng-disabled="!directoryFile.filename">Crear carpeta</button></td>
+	    		</tr>
+	    	</table>
+	    </div>
+
     </div>
+
+	<!-- TODO: Barra de navegación -->
+	<!-- <ol class="breadcrumb" ng-show="currentLocation != ''">
+		<li ng-repeat="directory in currentLocation.split('/')"><a href="#" ng-class="{'active': $last}">{{directory}}</a></li>
+	</ol> -->
 
 	<!-- TABLA PARA MOSTRAR LOS ARCHIVOS REGISTRADOS EN LA BASE DE DATOS -->
 	<div class="table-responsive">
@@ -41,7 +59,10 @@
 				</th>
 			</tr>
 			<tr ng-repeat="archivo in archivos | orderBy: propertyName: reverse">
-				<td><a href=""><span ng-click="openFile(archivo.filename)">{{archivo.filename}}</span></a></td>
+				<td>
+					<a href="{{'files/' + archivo.location + archivo.filename}}" target="_blank" ng-if="!archivo.directory">{{archivo.filename}}</a>
+					<a href="archivos?path={{archivo.location + archivo.filename + '/'}}" ng-if="archivo.directory">{{archivo.filename}}</a>
+				</td>
 				<td><span ng-bind-html="archivo.icon"></span> {{archivo.tipo}}</td>
 				<td>{{archivo.fechaCreacion | date : 'dd/MM/yy'}}</td>
 				<td>{{archivo.size}}</td>
