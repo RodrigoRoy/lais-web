@@ -76,8 +76,8 @@ angular.module('PublicacionFormCtrl',[]).controller('PublicacionFormController',
 	// De esta manera se obtienen los Id de los archivos para $scope.publicacion.adjuntos
     $scope.uploadFiles = function(file){
         Upload.upload({
-            url: 'api/files/publicaciones', // Ruta de Node (usando POST) para el manejo del almacenamiento en servidor
-            data: {file: file} // Es posible incluir datos adicionales si es necesario (ej. {file: file, 'username': 'Roy'})
+            url: 'api/files', // Ruta de Node (usando POST) para el manejo del almacenamiento en servidor
+            data: {file: file, path: 'publicaciones/'} // Es posible incluir datos adicionales si es necesario (ej. {file: file, 'username': 'Roy'})
         }).then(function (res) { // Función cuando el archivo es subido exitosamente al servidor
             // Crear un arreglo temporal con los nombres de los archivos y su ubicación (desde response de servidor)
             $scope.adjuntos = [];

@@ -35,8 +35,10 @@ angular.module('ArchivoService', []).factory('Archivo', ['$http', function($http
 			return $http.delete('/api/archivos/' + archivoID);
 		},
 
-		unlink: function(path, filename){
-			return $http.delete(path + filename); // Por ejemplo: $http.delete('/files/foo.pdf');
+		// Elimina en el sistema de archivos (no en base de datos)
+		// El parámetro debe ser la concatenación de 'location' y 'filename' en el objeto Archivo
+		unlink: function(pathWithFilename){
+			return $http.delete('/api/files/' + pathWithFilename); // Por ejemplo: $http.delete('/api/files/Carpeta/Subcarpeta/foo.pdf');
 		}
 
 	}

@@ -1,6 +1,6 @@
 //Controlador que enlista todos los archivos
 
-angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($scope, $location, $route, $routeParams, Archivo, Upload){
+angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($scope, $location, $routeParams, Archivo, Upload){
 	
 	$scope.propertyName = 'fechaCreacion'; // Propiedad usada por default para ordenar los archivos
 	$scope.reverse = true; // Orden reversible por default
@@ -11,9 +11,21 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
 	$scope.editable; // ID del evento que en ese momento es editable. También es el indicador de que se lleva a cabo una edición
 	$scope.tempFile = {}; // Objeto temporal para actualizar información (como la descripción)
 	$scope.currentLocation = $routeParams.path || ''; // Directorio actual
+	$scope.breadcrumbsArray = $scope.currentLocation.split('/');//.unshift('Inicio');
+
+	// Establece el arreglo $scope.breadcrumbsArray con los nombres (no vacios) de todas las subcarpetas
+	var setBreadcrumbs = function(){
+		$scope.breadcrumbsArray = $scope.currentLocation.split('/');
+		var cleanArray = [];
+		for(var i in $scope.breadcrumbsArray)
+			if($scope.breadcrumbsArray[i])
+				cleanArray.push($scope.breadcrumbsArray[i]);
+		$scope.breadcrumbsArray = cleanArray;
+	};
 
 	// Permite obtener/inicializar el arreglo de objetos 'Archivo' para mostrar en la vista
 	$scope.getFiles = function(){
+		setBreadcrumbs();
 		Archivo.getByLocation($scope.currentLocation)
 		.then(function(res){
 			if(res.statusText === 'OK'){
@@ -101,6 +113,20 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
 		$scope.propertyName = propertyName;
 	};
 
+	$scope.comparator = function(item1, item2){
+		if(item1.directory){
+			if(item2.directory)
+				return 0;
+			else
+				return 1;
+		}else{
+			if(item2.directory)
+				return -1;
+			else
+				return 0;
+		}
+	};
+
 	// Sube archivos al servidor
     $scope.uploadFiles = function(file){
         Upload.upload({
@@ -136,15 +162,15 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
         if(index !== undefined){ // Remover de manera segura en el arreglo
             $scope.uploadedFiles.splice(index, 1);
             // Elminar del sistema de archivos
-            Archivo.unlink('/files/', filename).
+            Archivo.unlink($scope.currentLocation + filename).
 				then(function(res){
-					console.log("Archivo " + filename + " borrado del sistema");
+					// console.log("Archivo " + filename + " borrado del sistema");
 				}, function(res){
-					console.log("Error al borrar archivo en el sistema");
+					// console.log("Error al borrar archivo en el sistema");
 				});
         }
         if($scope.uploadedFiles.length < 1) // Si no hay más documentos por borrar, eliminar el arreglo vacio
-            $scope.uploadedFiles = undefined;
+            $scope.uploadedFiles = [];
     };
 
     // Se ejecuta en clic al botón de "subir archivos". Manda la información de los archivos a la base de datos
@@ -153,10 +179,10 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
         .then(function(res){
             //alert("Se ha guardado la información de los archivos.");
             $scope.uploadedFiles = []; // En caso de que falle reload se vacia el arreglo
-            //$route.reload(); // Reload a la página para mostrar los nuevos archivos recien subidos
-            $scope.getFiles();
+            $scope.getFiles(); // Reload de los archivos
         }, function(res){
             console.log("Error de conexión con la base de datos para la creación del evento.", res);
+            $scope.uploadedFiles = []; // En caso de que falle en envio se limpia el formulario
         });
     };
 
@@ -183,40 +209,41 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
     // Elimina un archivo de la base de datos.
     $scope.delete = function(archivoID){
     	var filename;
+    	var location;
     	// var path = 'public/files/';
-    	Archivo.get(archivoID).
-    		then(function(res){
-    			filename = res.data.filename;
-    			Archivo.delete(archivoID)
-		    		.then(function(res){
-		    			if(res.statusText === 'OK') // re.data.status === 'OK' utiliza el código de status definido por el usuario
-		    				// Archivo.unlink({path: path, filename: filename}).
-		    				Archivo.unlink('/files/', filename).
-		    					then(function(res){
-		    						alert("Se ha eliminado exitosamente el archivo");
-		    						$route.reload();
-		    					}, function(res){
-		    						if (res.status === 400) {
-		    							console.log('Error al borrar archivo del sistema');
-		    						}
-		    						if(res.status === 404){ // res.statusText === 'Not Found'
-		    							alert("Se ha eliminado el archivo de la lista");
-		    							$route.reload();
-		    						}
-		    					});
-		    		}, function(res){
-		    			console.log('Error de conexión con la base de datos');
-		    		});
+    	Archivo.get(archivoID)
+		.then(function(res){
+			filename = res.data.filename;
+			location = res.data.location;
+			Archivo.delete(archivoID)
+    		.then(function(res){
+    			if(res.statusText === 'OK') // re.data.status === 'OK' utiliza el código de status definido por el usuario
+    				Archivo.unlink(location + filename)
+					.then(function(res){
+						//alert("Se ha eliminado exitosamente el archivo");
+						$scope.getFiles(); // Reload de los archivos
+					}, function(res){
+						if (res.status === 400) {
+							console.log('Error al borrar archivo del sistema');
+						}
+						if(res.status === 404){ // res.statusText === 'Not Found'
+							//alert("Se ha eliminado el archivo de la lista");
+							$scope.getFiles(); // Reload de los archivos
+						}
+					});
     		}, function(res){
     			console.log('Error de conexión con la base de datos');
     		});
+		}, function(res){
+			console.log('Error de conexión con la base de datos');
+		});
     };
 
     // Asigna $scope.editable al ID del archivo que se desea edita.
     // En la vista, $scope.editable indica que en ese momento se está llevando a cabo una edición
     $scope.enableEdit = function(archivoID){
     	$scope.editable = archivoID;
-    	console.log($scope.editable);
+    	//console.log($scope.editable);
     };
 
     // Actualizar la información de un archivo (por ejemplo, descripción). 
@@ -224,7 +251,7 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
     $scope.update = function(){
     	Archivo.update($scope.editable, $scope.tempFile)
     		.then(function(res){
-    			$route.reload();
+    			$scope.getFiles(); // Reload de los archivos
     			$scope.editable = undefined;
     			$scope.tempFile = {};
     		}, function(res){
@@ -232,5 +259,6 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
     		});
     };
 
+    // Inicialización: Cargar la lista de archivos.
     $scope.getFiles();
 });

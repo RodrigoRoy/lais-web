@@ -65,8 +65,12 @@ router.route('/')
                     files[i].descripcion = undefined;
             }
             Archivo.insertMany(files, function(err, archivos){ // Bulk insert
-                if(err)
-                    res.send(err);
+                if(err){
+                    if(err.code == 11000)
+                        return res.status(400).send({success: false, message: 'Nombre de archivo o carpeta duplicado.'});
+                    else
+                        return res.status(400).send({success: false, message: 'Error en la base de datos', error: err});
+                }
                 res.send({
                     success: true,
                     message: 'Archivos agregados al servidor',
@@ -133,7 +137,7 @@ router.route('/:archivo_id')
     .put(function(req, res){
         Archivo.findById(req.params.archivo_id, function(err, archivo){
             if(err)
-                res.send(err);
+                return res.send(err);
             
             // El nombre del archivo no se debe cambiar para no perder la referencia en sistema de archivos
             // if(req.body.filename)

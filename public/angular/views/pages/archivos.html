@@ -4,8 +4,8 @@
 	
 	<!-- Formulario para agregar nuevo(s) archivo(s) a la base de datos -->
     <div class="spacing-block"> <!-- ng-show="sesion" -->
-	    <button type="button" class="btn btn-default full-width" name="adjuntos" id="adjuntos" ng-show="uploadedFiles && uploadedFiles.length === 0" ngf-select="uploadFiles($files)" ng-model="adjuntos" ngf-multiple="true" ngf-keep="'distinct'" ngf-max-files="10" ngf-max-size="'100MB'" ngf-max-total-size="'200MB'">Agregar archivo(s)...</button>
-	    <button type="button" class="btn btn-default full-width" name="directory" id="directory" ng-click="showAddDirectory()">Agregar carpeta</button>
+	    <button type="button" class="btn btn-default full-width" name="adjuntos" id="adjuntos" ng-show="uploadedFiles && uploadedFiles.length === 0" ngf-select="uploadFiles($files)" ng-model="adjuntos" ngf-multiple="true" ngf-keep="'distinct'" ngf-max-files="10" ngf-max-size="'100MB'" ngf-max-total-size="'200MB'"><i class="fa fa-file-o" aria-hidden="true"></i> Agregar archivo(s)...</button>
+	    <button type="button" class="btn btn-default full-width" name="directory" id="directory" ng-click="showAddDirectory()"><i class="fa fa-folder-open-o" aria-hidden="true"></i> Agregar carpeta</button>
 	    
 	    <table class="table">
 	    	<tr ng-repeat="file in uploadedFiles">
@@ -28,16 +28,17 @@
 
     </div>
 
-	<!-- TODO: Barra de navegación -->
-	<!-- <ol class="breadcrumb" ng-show="currentLocation != ''">
-		<li ng-repeat="directory in currentLocation.split('/')"><a href="#" ng-class="{'active': $last}">{{directory}}</a></li>
-	</ol> -->
+	<!-- Barra de navegación -->
+	<ol class="breadcrumb" ng-show="breadcrumbsArray && breadcrumbsArray.length > 0">
+		<li><a href="/archivos">Inicio</a></li>
+		<li ng-repeat="directory in breadcrumbsArray" ng-class="{active: $last}"><a href="/archivos?path={{breadcrumbsArray.slice(0,$index+1).join('/') + '/'}}">{{directory}}</a></li>
+	</ol>
 
 	<!-- TABLA PARA MOSTRAR LOS ARCHIVOS REGISTRADOS EN LA BASE DE DATOS -->
 	<div class="table-responsive">
 		<table class="table table-hover">
 			<tr>
-				<th>
+				<!-- <th>
 					<a href="" ng-click="sortBy('filename')">Nombre</a> 
 					<i class="fa fa-sort-asc" aria-hidden="true" ng-show="propertyName === 'filename' && !reverse"></i><i class="fa fa-sort-desc" aria-hidden="true" ng-show="propertyName === 'filename' && reverse"></i>
 				</th>
@@ -56,19 +57,35 @@
 				<th>
 					<a href="" ng-click="sortBy('descripcion')">Descripción</a> 
 					<i class="fa fa-sort-asc" aria-hidden="true" ng-show="propertyName === 'descripcion' && !reverse"></i><i class="fa fa-sort-desc" aria-hidden="true" ng-show="propertyName === 'descripcion' && reverse"></i>
+				</th> -->
+				<th>
+					<strong>Nombre</strong>
+				</th>
+				<th>
+					<strong>Tipo</strong>
+				</th>
+				<th>
+					<strong>Fecha</strong>
+				</th>
+				<th>
+					<strong>Tamaño</strong>
+				</th>
+				<th>
+					<strong>Descripción</strong>
 				</th>
 			</tr>
-			<tr ng-repeat="archivo in archivos | orderBy: propertyName: reverse">
+			<!-- <tr ng-repeat="archivo in archivos | orderBy: propertyName: reverse"> -->
+			<tr ng-repeat="archivo in archivos | orderBy: propertyName: false: comparator">
 				<td>
 					<a href="{{'files/' + archivo.location + archivo.filename}}" target="_blank" ng-if="!archivo.directory">{{archivo.filename}}</a>
 					<a href="archivos?path={{archivo.location + archivo.filename + '/'}}" ng-if="archivo.directory">{{archivo.filename}}</a>
 				</td>
 				<td><span ng-bind-html="archivo.icon"></span> {{archivo.tipo}}</td>
-				<td>{{archivo.fechaCreacion | date : 'dd/MM/yy'}}</td>
+				<td>{{archivo.createdAt | date : 'dd/MM/yy'}}</td>
 				<td>{{archivo.size}}</td>
 				<td>
 					<span ng-show="archivo._id != editable">{{archivo.descripcion}}</span>
-					<span ng-show="archivo._id === editable"><input type="text" class="form-control" placeholder="{{archivo.descripcion || 'Nueva descripción'}}" ng-blur="update()" ng-model="tempFile.descripcion"></span>
+					<span ng-show="archivo._id === editable"><input type="text" class="form-control" placeholder="{{archivo.descripcion || 'Nueva descripción'}}" ng-blur="update()" ng-keydown="$event.which === 13 && update()" ng-model="tempFile.descripcion"></span>
 				</td>
 				<td>
 					<button class="btn btn-default btn-xs" ng-show="archivo._id != editable" ng-click="enableEdit(archivo._id)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
@@ -78,5 +95,8 @@
 			</tr>
 		</table>
 	</div>
-</div>
 
+	<!-- <br>
+    <pre>{{uploadedFiles | json}}</pre> -->
+
+</div>
