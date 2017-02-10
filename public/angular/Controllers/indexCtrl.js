@@ -7,6 +7,7 @@
 angular.module('IndexCtrl',[]).controller('IndexController', function ($scope, $location, $uibModal, $rootScope, Auth){
 	$scope.user = {}; // Información del usuario (si inicia sesión)
 	$scope.loggedIn = false; // Bandera que indica si un usuario se encuetra con sesión iniciada
+	$scope.today = new Date();
 
 	// determinar si una persona está con sesión iniciada
 	//$scope.loggedIn = Auth.isLoggedIn();

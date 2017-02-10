@@ -142,7 +142,6 @@ router.route('/')
             publicacion.usuario = req.body.usuario;
         if(req.body.adjuntos)
             publicacion.adjuntos = req.body.adjuntos;
-        publicacion.timestamp = new Date();
 
         publicacion.save(function(err){
             if(err)
@@ -234,7 +233,6 @@ router.route('/:publicacion_id')
                 publicacion.usuario = req.body.usuario;
             if(req.body.adjuntos)
                 publicacion.adjuntos = req.body.adjuntos;
-            publicacion.modificacion = new Date();
 
             publicacion.save(function(err){
                 if(err)

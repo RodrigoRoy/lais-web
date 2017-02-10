@@ -26,9 +26,12 @@ var PublicacionSchema = new Schema({
 	keywords: [{type: String}], 
 	notas: {type: String},
 	adjuntos: [{type: mongoose.Schema.Types.ObjectId, ref: 'Archivo'}],
-	usuario: {type: mongoose.Schema.Types.ObjectId, ref: 'Usuario'},
-	timestamp: {type: Date, default: Date.now},
-	modificacion: {type: Date}
+	usuario: {type: mongoose.Schema.Types.ObjectId, ref: 'Usuario'}
+	// timestamp: {type: Date, default: Date.now},
+	// modificacion: {type: Date}
+}, { // Opciones:
+	collection: 'publicaciones',
+	timestamps: true //timestamps: {createdAt: 'creacion', updatedAt: 'actualizacion'}
 });
 
 // exportar el modelo "Publicacions"
