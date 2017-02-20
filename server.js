@@ -187,7 +187,7 @@ app.get('*', function(req, res) {
 	var options = {
 		root: __dirname
 	};
-    res.sendFile('/public/angular/views/index.html', options); // cargar el archivo index.html
+    res.sendFile('/public/angular/Views/index.html', options); // cargar el archivo index.html
 });
 
 // INICIAR APP =============================================

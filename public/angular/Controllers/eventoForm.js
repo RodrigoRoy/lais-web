@@ -61,56 +61,6 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
     });
     var marker; // Único marcador que se muestra según la dirección escrita en $scope.place
 
-    // EDICION
-    // Si se desea editar un evento, se reutiliza el formulario con información para $scope.evento desde la BD
-    if(/edit$/.test($location.path())){ // Prueba con expresión regular para saber si la URL termina con "edit"
-        $scope.edit = true;
-        Evento.get($routeParams.id) // Obtener la información del evento en la base de datos
-        .then(function(res){
-            $scope.evento = res.data // Casi toda la información del evento se asigna directamente
-            // Parse para "Coordinadores":
-            if($scope.evento.coordinador && $scope.evento.coordinador.length > 0){
-                $scope.coordinadores = [];
-                // console.log($scope.evento.coordinador);
-                for(var i in $scope.evento.coordinador)
-                    $scope.coordinadores.push({nombre: $scope.evento.coordinador[i]});
-            }
-            // Parse para "Participantes":
-            if($scope.evento.participantes && $scope.evento.participantes.length > 0){
-                $scope.participantes = [];
-                for(var i in $scope.evento.participantes)
-                    $scope.participantes.push({nombre: $scope.evento.participantes[i]});
-            }
-            // Parse para "keywords":
-            if($scope.evento.keywords && $scope.evento.keywords.length > 0){
-                $scope.keywords = [];
-                console.log($scope.evento.keywords);
-                for(var i in $scope.evento.keywords)
-                    $scope.keywords.push({"text": $scope.evento.keywords[i]});
-            }
-            if($scope.evento.imagen){ // Deshabilitar div para imagen si el evento ya tiene una
-                $scope.imageContainer = false;
-            }
-            // Reverse Geocoding para obtener dirección a partir de PlaceID ($scope.evento.lugar)
-            var geocoder = new google.maps.Geocoder;
-            geocoder.geocode({placeId: $scope.evento.lugar}, function(res, status){
-                if(status == google.maps.GeocoderStatus.OK){
-                    marker = new google.maps.Marker({
-                        position: res[0].geometry.location,
-                        map: map,
-                        clickable: false
-                    });
-                    map.setCenter(res[0].geometry.location); // Actualizar vista en mapa para marcar el lugar
-                    $scope.$apply(function(){ // Actualiza binding en llamadas asíncronas
-                        $scope.place = res[0].formatted_address;
-                    });
-                }
-            });
-        }, function(res){
-            console.log("Error de conexión con la base de datos para obtener información del evento.", res);
-        });
-    } // FIN EDICION
-    
     // Abrir calendarios y hacer que el segundo actualize binding para fecha mínima en base a la primera seleccionada
     // https://github.com/angular-ui/bootstrap/issues/3188
     // http://plnkr.co/edit/Ssa7ofSoCiolMqUnVWlq?p=preview
@@ -342,4 +292,54 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
             console.log("Error de conexión con la base de datos en la edición del evento.", res);
         });
     };
+
+    // INICIALIZACIÓN: CHECAR EDICION
+    // Si se desea editar un evento, se reutiliza el formulario con información para $scope.evento desde la BD
+    if(/edit$/.test($location.path())){ // Prueba con expresión regular para saber si la URL termina con "edit"
+        $scope.edit = true;
+        Evento.get($routeParams.id) // Obtener la información del evento en la base de datos
+        .then(function(res){
+            $scope.evento = res.data // Casi toda la información del evento se asigna directamente
+            // Parse para "Coordinadores":
+            if($scope.evento.coordinador && $scope.evento.coordinador.length > 0){
+                $scope.coordinadores = [];
+                // console.log($scope.evento.coordinador);
+                for(var i in $scope.evento.coordinador)
+                    $scope.coordinadores.push({nombre: $scope.evento.coordinador[i]});
+            }
+            // Parse para "Participantes":
+            if($scope.evento.participantes && $scope.evento.participantes.length > 0){
+                $scope.participantes = [];
+                for(var i in $scope.evento.participantes)
+                    $scope.participantes.push({nombre: $scope.evento.participantes[i]});
+            }
+            // Parse para "keywords":
+            if($scope.evento.keywords && $scope.evento.keywords.length > 0){
+                $scope.keywords = [];
+                console.log($scope.evento.keywords);
+                for(var i in $scope.evento.keywords)
+                    $scope.keywords.push({"text": $scope.evento.keywords[i]});
+            }
+            if($scope.evento.imagen){ // Deshabilitar div para imagen si el evento ya tiene una
+                $scope.imageContainer = false;
+            }
+            // Reverse Geocoding para obtener dirección a partir de PlaceID ($scope.evento.lugar)
+            var geocoder = new google.maps.Geocoder;
+            geocoder.geocode({placeId: $scope.evento.lugar}, function(res, status){
+                if(status == google.maps.GeocoderStatus.OK){
+                    marker = new google.maps.Marker({
+                        position: res[0].geometry.location,
+                        map: map,
+                        clickable: false
+                    });
+                    map.setCenter(res[0].geometry.location); // Actualizar vista en mapa para marcar el lugar
+                    $scope.$apply(function(){ // Actualiza binding en llamadas asíncronas
+                        $scope.place = res[0].formatted_address;
+                    });
+                }
+            });
+        }, function(res){
+            console.log("Error de conexión con la base de datos para obtener información del evento.", res);
+        });
+    } // FIN EDICION
 });
