@@ -5,7 +5,8 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 	$routeProvider
 		// HOME
 		.when('/', {
-			templateUrl: 'angular/views/pages/inicio.html'
+			templateUrl: 'angular/views/pages/inicio.html',
+			controller: 'InicioController'
 		})
 
 		.when('/eventos', {

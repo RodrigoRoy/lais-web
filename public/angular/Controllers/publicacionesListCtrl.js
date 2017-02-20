@@ -2,7 +2,7 @@
 
 angular.module('PublicacionesListCtrl',[]).controller('PublicacionesListController', function ($scope, $location, $route, Publicacion) {
 	
-	$scope.propertyName = 'createdAt';
+	$scope.propertyName = 'fecha';
 	$scope.reverse = true;
 
 	// Obtener todas las publicaciones

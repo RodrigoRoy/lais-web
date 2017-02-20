@@ -14,7 +14,7 @@ angular.module('PublicacionFormCtrl',[]).controller('PublicacionFormController',
 		formatYear: 'yyyy',
 	    minMode: 'year' // Usar esta propiedad en vez de 'dateMode' evita errores al ingresar el año
 	};
-	$scope.publicacion.usuario = $scope.user.id ? $scope.user.id : undefined; // Obtener Id de usuario
+	$scope.publicacion.usuario = $scope.user.id || undefined; // Obtener Id de usuario
 	
 	// Promise para autocompletar el input 'typeahead' de Autor
 	$scope.getAutor = function(query){

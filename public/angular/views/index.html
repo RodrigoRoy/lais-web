@@ -156,7 +156,7 @@
 						<input ng-model="user.pass" type="password" class="form-control" placeholder="Contraseña" aria-describedby="password" ng-keydown="$event.which === 13 && iniciarSesion()" required>
 					</div>
 
-					<uib-alert type="danger" close="closeAlert()" ng-show="showAlert">{{errorMessage}}</uib-alert>
+					<div uib-alert class="alert-danger" close="closeAlert()" ng-show="showAlert">{{errorMessage}}</div>
 
 					<button class="btn btn-success btn-custom" type="button" ng-click="iniciarSesion()" ng-disabled="loginForm.$invalid || logging">
 						<span ng-show="!logging">Iniciar Sesion</span>

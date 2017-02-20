@@ -19,7 +19,7 @@
 			<h4 class="subtitle">Fecha <span ng-show="evento.horario">y hora</span></h4>
 			<p class="capitalize">
 				{{evento.fecha | date : 'fullDate'}}
-				<span ng-show="evento.fechaFin"> al {{evento.fechaFin | date : 'fullDate'}}</span>
+				<span ng-show="evento.fechaFin"> &ndash; {{evento.fechaFin | date : 'fullDate'}}</span>
 				<span ng-show="evento.horario"><br>
 					{{evento.horario | date : 'shortTime'}}
 					<span ng-show="evento.horarioFin"> a {{evento.horarioFin | date : 'shortTime'}}</span>

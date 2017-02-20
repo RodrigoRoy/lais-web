@@ -79,10 +79,12 @@
             <div class="form-group">
                 <label class="control-label color-title format-title" for="fecha">Fecha</label>
                 <div class="input-group">
-                    <input class="form-control" type="text" uib-datepicker-popup="yyyy" ng-model="publicacion.fecha" datepicker-options="dateOptions" is-open="calendar.open" show-button-bar="false">
+                    <!-- DATEPICKER POPUP BUG: no muestra fecha hasta volver a dar clic en el calendario: -->
+                    <!-- <input id="fecha" class="form-control" type="text" uib-datepicker-popup="yyyy" ng-model="publicacion.fecha" datepicker-options="dateOptions" is-open="calendar.open" show-button-bar="false">
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="openCalendar($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
+                    </span> -->
+                    <div id="fecha" class="well well-sm" uib-datepicker ng-model="publicacion.fecha" datepicker-options="dateOptions"></div>
                 </div>
             </div>
 

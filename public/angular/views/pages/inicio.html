@@ -5,18 +5,16 @@
             <hr>
             <h1 style="color:white;">Noticias</h1>
             <hr>
-            <div ng-controller="EventoSlideController">
-                <uib-carousel interval="5000">
-                  <uib-slide ng-repeat="slide in slides" index="$index">
+            <div uib-carousel interval="myInterval">
+                <div uib-slide ng-repeat="slide in slides" index="$index">
                     <a href="eventos/{{slide._id}}">
                     <img class="slide-img" ng-src="imgs/eventos/{{slide.imagen}}">
                     <div class="carousel-caption" style="font-family: 'Roboto Slab', serif;">
-                      <h4>{{slide.titulo}}</h4>
-                      <!-- <p>{{slide.descripcion}}</p> -->
+                        <h4>{{slide.titulo}}</h4>
+                        <!-- <p>{{slide.descripcion}}</p> -->
                     </div>
                     </a>
-                  </uib-slide>
-                </uib-carousel>
+                </div>
             </div>
         </center>
     </section>

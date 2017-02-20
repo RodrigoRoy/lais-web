@@ -51,8 +51,8 @@
         <!-- Indicador de envio -->
         <span ng-show="sending"><i class="fa fa-spinner fa-spin fa-pulse"></i> Enviando mensaje...</span>
         <!-- Mensajes de envio exitoso y error -->
-        <div uib-alert type="{{'success'}}" close="closeAlert('success')" ng-show="alerts.success.show">{{alerts.success.msg}}</div>
-        <div uib-alert type="{{'danger'}}" close="closeAlert('fail')" ng-show="alerts.fail.show">{{alerts.fail.msg}}</div>
+        <div uib-alert class="alert-success" close="closeAlert('success')" ng-show="alerts.success.show">{{alerts.success.msg}}</div>
+        <div uib-alert class="alert-danger" close="closeAlert('fail')" ng-show="alerts.fail.show">{{alerts.fail.msg}}</div>
         <!-- Botón de envio -->
         <button type="submit" class="btn btn-primary" ng-disabled="contactoForm.$invalid" ng-click="enviar()" ng-show="!sending">Enviar</button>
     </form>

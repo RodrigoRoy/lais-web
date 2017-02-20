@@ -65,7 +65,7 @@
 	        		<input type="checkbox" name="" ng-model="newUser.admin"> <span class="format-title"> Administrador</span> - Un usuario administrador puede revocar permisos y eliminar otros usuarios.
 	        	</label>
 	        </div>
-	        <uib-alert type="danger" close="closeAlert()" ng-show="showAlert">{{serverMessage}}</uib-alert>
+	        <div uib-alert clss="alert-danger" close="closeAlert()" ng-show="showAlert">{{serverMessage}}</div>
 	        <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid" ng-click="createUser(newUser)">
 	        	<span ng-show="!sendingInfo">Crear usuario</span>
 	        	<span ng-show="sendingInfo"><i class="fa fa-spinner fa-spin fa-pulse"></i> Enviando información...</span>
@@ -77,7 +77,7 @@
     <!-- <br>
     <pre>{{newUser | json}}</pre> -->
     
-    <uib-alert type="success" close="closeAlert()" ng-show="showSuccess">{{serverMessage}}</uib-alert>
+    <div uib-alert class="alert-success" close="closeAlert()" ng-show="showSuccess">{{serverMessage}}</div>
 
 	<!-- TABLA PARA MOSTRAR LOS ARCHIVOS REGISTRADOS EN LA BASE DE DATOS -->
 	<div class="table-responsive">

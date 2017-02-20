@@ -30,10 +30,11 @@ router.use(function(req, res, next){
 
 // En peticiones a la raiz del API
 router.route('/')
-	// Obtener todos los eventos
+	// Obtener todos los eventos. Permite filtrar por tipo de evento, ejemplo:
+    // GET http://localhost:8080/api/eventos?tipo=Docencia
 	.get(function(req, res){
-        Evento.find() // encontrar todos
-        .sort({fechaCreacion: 'desc'})
+        Evento.find({tipo: {$regex: '.*' + (req.query.tipo || '') + '.*', $options: 'i'}}) // encontrar todos
+        .sort({fecha: 'desc'})
         // .populate('lugar') // poblar la referencia a "lugar"
         .exec(function(err, eventos){
             if(err)
@@ -72,9 +73,10 @@ router.route('/')
             evento.notas = req.body.notas;
         if(req.body.documentos)
             evento.documentos = req.body.documentos;
+        if(req.body.creador)
+            evento.creador = req.body.creador;
         if(req.body.keywords)
             evento.keywords = req.body.keywords;
-	    evento.fechaCreacion = new Date(); // fecha de creación automática al momento
 
         evento.save(function(err){
             if(err)
@@ -164,9 +166,10 @@ router.route('/:evento_id')
                 evento.notas = req.body.notas;
             if(req.body.documentos)
                 evento.documentos = req.body.documentos;
+            if(req.body.creador)
+                evento.creador = req.body.creador;
             if(req.body.keywords)
                 evento.keywords = req.body.keywords;
-            //evento.fechaCreacion = new Date(); // fecha de creación auto-actualizada
 
             evento.save(function(err){
                 if(err)

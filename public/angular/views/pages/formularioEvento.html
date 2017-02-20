@@ -1,6 +1,6 @@
 <!-- Página con el formulario para agregar un evento -->
 
-<div class="container">
+<div class="container my-container">
     <!--Script para mostrar mensajes de error en los campos del formulario-->
     <script type="text/ng-template" id="error-messages">
         <span ng-message="required" class="help-block">Este campo es obligatorio.</span>
@@ -44,12 +44,14 @@
                 <div class="form-group">
                     <label class="control-label color-title format-title" for="fecha">Fecha</label>
                     <div class="input-group">
-                        <input type="text" id="fecha" class="form-control" placeholder="Selecciona una fecha en el calendario" uib-datepicker-popup="dd 'de' MMMM 'de' yyyy (EEEE)" ng-model="evento.fecha" show-weeks="false" is-open="calendar" close-text="Listo" current-text="Hoy" clear-text="Borrar" readonly>
+                        <!-- DATEPICKER POPUP BUG: No se muestra la fecha hasta dar clic en el calendario -->
+                        <!-- <input type="text" id="fecha" class="form-control" uib-datepicker-popup="dd 'de' MMMM 'de' yyyy (EEEE)" ng-model="evento.fecha" is-open="calendar" datepicker-options="dateOptions" close-text="Close" close-text="Listo" current-text="Hoy" clear-text="Borrar" readonly>
                         <span class="input-group-btn">
                             <button type="button" class="btn btn-default" ng-click="openDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                        </span>
+                        </span> -->
+                        <div id="fecha" class="well well-sm" uib-datepicker ng-model="evento.fecha" datepicker-options="dateOptions"></div>
+                        <button class="btn btn-danger btn-sm" ng-click="deleteDate()" ng-show="evento.fecha"><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Borrar fecha</button>
                     </div>
-                    <!-- <div><button class="btn btn-default" ng-show="evento.fecha && !fechaFin" ng-click="showFechaFin()">Incluir fecha de término <i class="fa fa-calendar" aria-hidden="true"></i></button></div> -->
                 </div>
             </div>
             
@@ -58,10 +60,13 @@
                 <div class="form-group" ng-show="evento.fecha"> <!-- && fechaFin -->
                     <label class="control-label color-title format-title" for="fechaFin">Fecha final</label>
                     <div class="input-group">
-                        <input type="text" id="fechaFin" class="form-control" placeholder="Selecciona una fecha en el calendario" uib-datepicker-popup="dd 'de' MMMM 'de' yyyy (EEEE)" ng-model="evento.fechaFin" min-date="evento.fecha" show-weeks="false" is-open="secondCalendar" close-text="Listo" current-text="Hoy" clear-text="Borrar" readonly>
+                        <!-- DATEPICKER POPUP BUG: No se muestra la fecha hasta dar clic en el calendario -->
+                        <!-- <input type="text" id="fechaFin" class="form-control" uib-datepicker-popup="dd 'de' MMMM 'de' yyyy (EEEE)" ng-model="evento.fechaFin" is-open="secondCalendar" datepicker-options="finalDateOptions" close-text="Close" close-text="Listo" current-text="Hoy" clear-text="Borrar" readonly>
                         <span class="input-group-btn">
                             <button type="button" class="btn btn-default" ng-click="openFinalDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                        </span>
+                        </span> -->
+                        <div id="fechaFin" class="well well-sm" uib-datepicker ng-model="evento.fechaFin" datepicker-options="finalDateOptions"></div>
+                        <button class="btn btn-danger btn-sm" ng-click="deleteFinalDate()" ng-show="evento.fechaFin"><i class="fa fa-calendar-times-o" aria-hidden="true"></i> Borrar fecha final</button>
                     </div>
                 </div>
             </div>
@@ -73,8 +78,8 @@
                 <!-- HORARIO -->
                 <div class="form-group">
                     <label class="control-label color-title format-title" for="horario">Horario</label>
-                    <uib-timepicker id="horario" ng-model="evento.horario" hour-step="1" minute-step="1"></uib-timepicker>
-                    <!-- <div><button class="btn btn-default" ng-show="evento.horario && !hourField" ng-click="showHour()">Incluir hora de término <i class="fa fa-clock-o" aria-hidden="true"></i></button></div> -->
+                    <div uib-timepicker id="horario" ng-model="evento.horario" hour-step="1" minute-step="1"></div>
+                    <button class="btn btn-danger btn-sm" ng-click="deleteHorario()" ng-show="evento.horario"><i class="fa fa-clock-o" aria-hidden="true"></i> Borrar hora</button>
                 </div>
             </div>
             
@@ -82,7 +87,8 @@
                 <!-- HORARIO FIN-->
                 <div class="form-group" ng-show="evento.horario"> <!-- && hourField -->
                     <label class="control-label color-title format-title" for="horarioFin">Horario final</label>
-                    <uib-timepicker id="horarioFin" ng-model="evento.horarioFin" hour-step="1" minute-step="1"></uib-timepicker>
+                    <div uib-timepicker id="horarioFin" ng-model="evento.horarioFin" hour-step="1" minute-step="1"></div>
+                    <button class="btn btn-danger btn-sm" ng-click="deleteFinalHorario()" ng-show="evento.horarioFin"><i class="fa fa-clock-o" aria-hidden="true"></i> Borrar hora final</button>
                 </div>
             </div>
         </div>
@@ -98,8 +104,8 @@
         <div class="form-group" ng-class="{'has-error': eventoForm.tipo.$dirty && eventoForm.tipo.$invalid}">
             <label class="control-label color-title format-title" for="tipo">Tipo de evento</label>
             <select class="form-control" id="tipo" ng-model="evento.tipo">
-                <option value="academico">Académico</option>
-                <option value="docencia">Docencia</option>
+                <option value="Académico">Académico</option>
+                <option value="Docencia">Docencia</option>
             </select>
             <div ng-messages="eventoForm.tipo.$error" ng-show="eventoForm.tipo.$dirty && eventoForm.tipo.$invalid"><div ng-messages-include="error-messages"></div></div>
         </div>

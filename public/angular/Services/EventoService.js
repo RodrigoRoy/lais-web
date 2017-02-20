@@ -5,8 +5,10 @@ eliminar datos de los eventos a la base de datos*/
 angular.module('EventoService', []).factory('Evento', ['$http', function($http){
 	return {
 		// Obtiene todos los eventos
-		all: function(){
-			return $http.get('/api/eventos');
+		// Permite filtrar por tipo de evento (Académico o Docencia)
+		all: function(tipoEvento){
+			var query = tipoEvento ? '?tipo='+tipoEvento : '';
+			return $http.get('/api/eventos' + query);
 		},
 
 		// Obtiene el evento en particular con el eventoID

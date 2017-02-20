@@ -5,12 +5,22 @@
 
 angular.module('EventoFormCtrl', []).controller('EventoFormController', function ($scope, $location, $routeParams, $http, Evento, Archivo, Upload) {
     $scope.evento = {}; // Contiene los datos del evento
+    $scope.evento.usuario = $scope.user.id || undefined; // Obtener Id de usuario
     $scope.maxLengthCoordinadores = 10; // Cantidad máxima de coordinadores
     $scope.coordinadores = [{nombre: ""}]; // Arreglo de "personas" (objetos con propiedad 'nombre')
     $scope.maxLengthParticipantes = 10; // Cantidad máxima de coordinadores
     $scope.participantes = [{nombre: ""}]; // Arreglo de "participantes" (objetos con propiedad 'nombre')
     $scope.calendar = false; // Indicador para mostrar/ocultar el calendario
     $scope.secondCalendar = false; // Indicador para mostrar/ocultar el calendario en FechaFin
+    $scope.dateOptions = { // Configuración del calendario (fecha)
+        datepickerMode: 'day',
+        showWeeks: false
+    };
+    $scope.finalDateOptions = { // Configuración del calendario (fechaFinal)
+        datepickerMode: 'day',
+        minDate: $scope.evento.fecha,
+        showWeeks: false
+    };
     $scope.imageContainer = true; // Bandera para mostrar/ocultar elemento DIV para cargar una imagen
     $scope.edit = false; // Bandera para saber si es edición de un evento o registro de uno nuevo
     var map = new google.maps.Map(document.getElementById('map'), { // Google Maps map
@@ -113,6 +123,24 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
         $event.preventDefault();
         $event.stopPropagation();
         $scope.secondCalendar = true;
+    };
+
+    // Auxiliares para los botones "Borrar fecha/hora"
+    $scope.deleteDate = function(){
+        $scope.evento.fecha = undefined;
+        $scope.evento.fechaFin = undefined;
+        $scope.evento.horario = undefined;
+        $scope.evento.horarioFin = undefined;
+    };
+    $scope.deleteFinalDate = function(){
+        $scope.evento.fechaFin = undefined;
+    };
+    $scope.deleteHorario = function(){
+        $scope.evento.horario = undefined;
+        $scope.evento.horarioFin = undefined;
+    };
+    $scope.deleteFinalHorario = function(){
+        $scope.evento.horarioFin = undefined;
     };
 
     // Agrega un nuevo coordinador (otro input en la vista)

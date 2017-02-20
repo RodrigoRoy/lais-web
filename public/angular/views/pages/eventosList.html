@@ -21,8 +21,8 @@
 					<i class="fa fa-sort-asc" aria-hidden="true" ng-show="propertyName === 'fecha' && !reverse"></i><i class="fa fa-sort-desc" aria-hidden="true" ng-show="propertyName === 'fecha' && reverse"></i>
 				</th>
 				<th>
-					<a href="" ng-click="sortBy('fechaCreacion')">Creado en</a> 
-					<i class="fa fa-sort-asc" aria-hidden="true" ng-show="propertyName === 'fechaCreacion' && !reverse"></i><i class="fa fa-sort-desc" aria-hidden="true" ng-show="propertyName === 'fechaCreacion' && reverse"></i>
+					<a href="" ng-click="sortBy('createdAt')">Creado en</a> 
+					<i class="fa fa-sort-asc" aria-hidden="true" ng-show="propertyName === 'createdAt' && !reverse"></i><i class="fa fa-sort-desc" aria-hidden="true" ng-show="propertyName === 'createdAt' && reverse"></i>
 				</th>
 			</tr>
 			<tr ng-repeat="evento in eventos | orderBy: propertyName: reverse">
@@ -30,7 +30,7 @@
 				<!-- <td>{{evento.descripcion}}</td> -->
 				<!-- <td>{{evento.tipo}}</td> -->
 				<td>{{evento.fecha | date : 'dd/MM/yy'}}</td>
-				<td>{{evento.fechaCreacion | date : 'dd/MM/yy'}}</td>
+				<td>{{evento.createdAt | date : 'dd/MM/yy'}}</td>
 				<td><button class="btn btn-default btn-xs" ng-click="edit(evento._id)"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>
 				<td><button class="btn btn-danger btn-xs" ng-click="delete(evento._id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
 			</tr>

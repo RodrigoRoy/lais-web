@@ -153,7 +153,7 @@ router.route('/:archivo_id')
 
             archivo.save(function(err){
                 if(err)
-                    returnres.send(err);
+                    return res.send(err);
                 res.json({
                     success: true,
                     message: 'Información de archivo modificado'

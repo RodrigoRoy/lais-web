@@ -41,7 +41,7 @@
 		</div>
 	</div>
 	<center>
-		<uib-pagination first-text="Inicio" previous-text="Anterior" next-text="Siguiente" last-text="Último"total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" items-per-page="itemsPerPage"></uib-pagination>
+		<ul uib-pagination boundary-link-numbers="true" direction-links="true" boundary-links="true" first-text="Inicio" previous-text="Anterior" next-text="Siguiente" last-text="Último" total-items="eventos.length" ng-model="currentPage" rotate="true" max-size="maxSize" class="pagination" items-per-page="itemsPerPage"></ul>
 	</center>
 </div>
 

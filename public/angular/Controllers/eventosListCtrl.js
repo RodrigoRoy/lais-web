@@ -2,12 +2,12 @@
 
 angular.module('EventosListCtrl',[]).controller('EventosListController', function ($scope, $location, $route, Evento) {
 	
-	$scope.propertyName = 'fechaCreacion';
+	$scope.propertyName = 'createdAt';
 	$scope.reverse = true;
 
-
 	// Obtener todos los eventos
-	Evento.all()
+	$scope.getEvents = function(){
+		Evento.all()
 		.then(function(res){
 			if(res.statusText === 'OK'){
 				$scope.eventos = res.data;
@@ -15,6 +15,7 @@ angular.module('EventosListCtrl',[]).controller('EventosListController', functio
 		}, function(res){
 			console.log('Error de conexión con la base de datos');
 		});
+	};
 
 	// Redirige a la página de edición del evento cuyo ID es dado como parámetro
 	$scope.edit = function(id){
@@ -43,4 +44,6 @@ angular.module('EventosListCtrl',[]).controller('EventosListController', functio
 			});
 	};
 
+	// INICIALIZACION: Obtener eventos
+	$scope.getEvents();
 })
