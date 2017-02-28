@@ -38,7 +38,7 @@ router.route('/')
         var path = req.query.path || '';
         Archivo.find({location: {$regex: '^' + path + '/?$', $options: 'im'}})
         .lean()
-        .sort({createdAt: 'desc'})
+        .sort({directory: 'desc', createdAt: 'desc', filename: 'desc'})
         .exec(function(err, archivos){
             if(err)
                 res.send(err);
@@ -64,10 +64,10 @@ router.route('/')
                 if(files[i].descripcion === '')
                     files[i].descripcion = undefined;
             }
-            Archivo.insertMany(files, function(err, archivos){ // Bulk insert
+            Archivo.insertMany(files, {ordered: false}, function(err, archivos){ // Bulk insert
                 if(err){
                     if(err.code == 11000)
-                        return res.status(400).send({success: false, message: 'Nombre de archivo o carpeta duplicado.'});
+                        return res.status(400).send({success: false, message: 'Nombre de archivo o carpeta duplicado.', error: err});
                     else
                         return res.status(400).send({success: false, message: 'Error en la base de datos', error: err});
                 }
@@ -105,20 +105,41 @@ router.route('/')
                 });
             }
 
+            console.log("REQ: ", req);
+            console.log("ARCHIVO: ", archivo);
             archivo.save(function(err){
                 if(err){
                     if(err.code == 11000)
                         return res.status(400).send({success: false, message: 'Nombre de archivo o carpeta duplicado.'});
                     else
-                        return res.status(400).send({success: false, message: 'Error en la base de datos', error: err});
+                        return res.status(400).send({success: false, message: 'Error al guardar archivo en la base de datos', error: err});
                 }
                 res.json({
                     success: true,
                     message: 'Archivo agregado al servidor',
-                    id: archivo._id
+                    id: archivo._id,
+                    file: archivo
                 });
             })
         }
+    })
+
+// Busca la información completa de un archivo con base en su nombre (filename) y ubicación (location)
+// GET http://localhost:8080/api/archivos/search?filename=Foo.jpg&location=some/where/
+router.route('/search')
+    .get(function(req, res){
+        var query = {};
+        if(req.query.filename && req.query.location){
+            var filename = req.query.filename || '',
+                location = req.query.location || '';
+            query = {filename: filename, location: location};
+        }
+        Archivo.find(query)
+        .exec(function(err, archivo){
+            if(err)
+                res.send(err);
+            res.json(archivo);
+        })
     })
 
 // En peticiones con un ID

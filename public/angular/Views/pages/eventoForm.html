@@ -138,11 +138,11 @@
         <!-- ARCHIVOS ADJUNTOS -->
         <div class="form-group">
             <label class="control-label color-title format-title" for="ajduntos">Archivos adjuntos</label>
-            <button type="button" class="btn btn-default full-width" name="adjuntos" id="adjuntos" ngf-select="uploadFiles($files)" ng-model="adjuntos" ngf-multiple="true" ngf-keep="'distinct'" ngf-accept="'image/*,.pdf,.doc,.docx'" ngf-max-files="10" ngf-pattern="'image/*,.pdf,.doc,.docx'" ngf-max-size="'100MB'" ngf-max-total-size="'200MB'">Selecciona archivos...</button>
+            <button type="button" class="btn btn-default full-width" name="adjuntos" id="adjuntos" ngf-select="uploadFiles($files)" ng-model="adjuntosModel" ngf-multiple="true" ngf-keep="'distinct'" ngf-accept="'image/*,.pdf,.doc,.docx'" ngf-max-files="20" ngf-pattern="'image/*,.pdf,.doc,.docx'" ngf-max-size="'100MB'" ngf-max-total-size="'200MB'">Selecciona archivos...</button>
             <div class="files-upload">
                 <ul class="list-inline">
-                    <li ng-repeat="documento in evento.documentos">
-                        <span class="label label-default label-lg">{{documento}} <button type="button" class="btn btn-danger btn-xs" ng-click="deleteFile(documento)"><i class="fa fa-times" aria-hidden="true"></i></button></span>
+                    <li ng-repeat="adjunto in adjuntos">
+                        <span class="label label-default label-lg">{{adjunto.filename}} <button type="button" class="btn btn-danger btn-xs" ng-click="deleteFile(adjunto)"><i class="fa fa-times" aria-hidden="true"></i></button></span>
                         <!-- <span ng-click="deleteFile(documento)"><i class="fa fa-times" aria-hidden="true"></i></span> -->
                     </li>
                 </ul>
@@ -168,6 +168,12 @@
         <button type="submit" class="btn btn-primary" ng-if="edit" ng-disabled="eventoForm.$invalid" ng-click="editar()">Editar evento</button>
     </form>
 
-    <!-- <br>
-    <pre>{{evento | json}}</pre> -->
+    <br>
+    <pre>{{evento | json}}</pre>
+    <br>
+    <pre>{{adjuntos | json}}</pre>
+    <br>
+    <pre>{{nuevosAdjuntos | json}}</pre>
+    <br>
+    <pre>{{progressPercentage}}</pre>
 </div>

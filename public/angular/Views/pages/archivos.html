@@ -75,7 +75,8 @@
 				</th>
 			</tr>
 			<!-- <tr ng-repeat="archivo in archivos | orderBy: propertyName: reverse"> -->
-			<tr ng-repeat="archivo in archivos | orderBy: propertyName: false: comparator">
+			<!-- <tr ng-repeat="archivo in archivos | orderBy: directoryFirstComparator: false"> -->
+			<tr ng-repeat="archivo in archivos">
 				<td>
 					<a href="{{'files/' + archivo.location + archivo.filename}}" target="_blank" ng-if="!archivo.directory">{{archivo.filename}}</a>
 					<a href="archivos?path={{archivo.location + archivo.filename + '/'}}" ng-if="archivo.directory">{{archivo.filename}}</a>
@@ -91,12 +92,21 @@
 					<button class="btn btn-default btn-xs" ng-show="archivo._id != editable" ng-click="enableEdit(archivo._id)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
 					<button class="btn btn-default btn-xs" ng-show="archivo._id === editable" ng-click="update()"><i class="fa fa-check" aria-hidden="true"></i></button>
 				</td>
-				<td><button class="btn btn-danger btn-xs" ng-click="delete(archivo._id); $event.stopPropagation();"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+				<!-- <td><button class="btn btn-danger btn-xs" ng-click="delete(archivo._id); $event.stopPropagation();"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td> -->
+				<td><button class="btn btn-danger btn-xs" ng-click="openModal(archivo); $event.stopPropagation();"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
 			</tr>
 		</table>
 	</div>
 
 	<!-- <br>
     <pre>{{uploadedFiles | json}}</pre> -->
+
+    <script type="text/ng-template" id="modal-template.html">
+    	<div class="modal-body" id="modal-body">
+    		<p>¿Seguro que deseas borrar <span ng-if="!archivo.directory">el archivo</span><span ng-if="archivo.directory">la carpeta</span> {{archivo.filename}} ?</p>
+    		<button class="btn btn-primary" type="button" ng-click="deleteConfirmed(archivo._id)">Borrar</button>
+    		<button class="btn btn-primary" type="button" ng-click="closeModal()">Cancelar</button>
+    	</div>
+    </script>
 
 </div>

@@ -14,8 +14,8 @@ DELETE http://localhost:8080/api/eventos/1234567890
 // Dependencias
 var express = require('express');
 var router = express.Router(); // para modularizar las rutas
+var mongoose = require('mongoose');
 var Evento = require('../models/evento'); // Modelo de la colección "Eventos"
-// var Lugar = require('../models/lugar'); // Modelo de la colección "Lugar"
 var verifyToken = require('./token'); // Función de verificación de token
 
 // Función a realizar siempre que se utilize esta API
@@ -31,9 +31,12 @@ router.use(function(req, res, next){
 // En peticiones a la raiz del API
 router.route('/')
 	// Obtener todos los eventos. Permite filtrar por tipo de evento, ejemplo:
+    // GET http://localhost:8080/api/eventos
     // GET http://localhost:8080/api/eventos?tipo=Docencia
 	.get(function(req, res){
-        Evento.find({tipo: {$regex: '.*' + (req.query.tipo || '') + '.*', $options: 'i'}}) // encontrar todos
+        // Crear objeto query de MongoDB si y solo si existe req.query.tipo, en caso contrario se crea objeto vacio (buscar todos)
+        var query = req.query.tipo ? {tipo: {$regex: '.*' + (req.query.tipo || '') + '.*', $options: 'i'}} : {};
+        Evento.find(query) // encontrar todos
         .sort({fecha: 'desc'})
         // .populate('lugar') // poblar la referencia a "lugar"
         .exec(function(err, eventos){
@@ -73,10 +76,10 @@ router.route('/')
             evento.notas = req.body.notas;
         if(req.body.documentos)
             evento.documentos = req.body.documentos;
-        if(req.body.creador)
-            evento.creador = req.body.creador;
         if(req.body.keywords)
             evento.keywords = req.body.keywords;
+        if(req.body.usuario)
+            evento.usuario = req.body.usuario;
 
         evento.save(function(err){
             if(err)
@@ -100,11 +103,27 @@ router.route('/news')
         })
     })
 
+// GET http://localhost:8080/api/eventos/search?attachment=58ac9a77b587bc3f9d63fcf7
+router.route('/search')
+    .get(function(req, res){
+        var query = {};
+        if(req.query.attachment){
+            var ObjectId = mongoose.Types.ObjectId;
+            query = {documentos: {$in: [ObjectId(req.query.attachment)]}};
+        }
+        Evento.find(query)
+        .exec(function(err, archivo){
+            if(err)
+                res.send(err);
+            res.json(archivo);
+        })
+    })
+
 // Obtener los eventos que contengan el query de búsqueda
 router.route('/find')
     .get(function(req, res){
         Evento.find()
-        //.populate('lugar')
+        .populate('documentos')
         .exec(function(err, eventos){
             if(err)
                 res.send(err);
@@ -126,7 +145,7 @@ router.route('/:evento_id')
 	// Obtener un evento particular (mediante el ID)
     .get(function(req, res){
         Evento.findById(req.params.evento_id)
-        // .populate('lugar')
+        .populate('documentos')
         .exec(function(err, evento){
             if(err)
                 res.send(err);
@@ -166,10 +185,10 @@ router.route('/:evento_id')
                 evento.notas = req.body.notas;
             if(req.body.documentos)
                 evento.documentos = req.body.documentos;
-            if(req.body.creador)
-                evento.creador = req.body.creador;
             if(req.body.keywords)
                 evento.keywords = req.body.keywords;
+            if(req.body.usuario)
+                evento.usuario = req.body.usuario;
 
             evento.save(function(err){
                 if(err)

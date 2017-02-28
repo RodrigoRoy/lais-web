@@ -1,8 +1,8 @@
 //Controlador que enlista todos los archivos
 
-angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($scope, $location, $routeParams, Archivo, Upload){
+angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($scope, $location, $routeParams, $uibModal, Archivo, Upload){
 	
-	$scope.propertyName = 'fechaCreacion'; // Propiedad usada por default para ordenar los archivos
+	$scope.propertyName = 'createdAt'; // Propiedad usada por default para ordenar los archivos
 	$scope.reverse = true; // Orden reversible por default
 	$scope.addingDirectory = false;
 	//$scope.directoryFile = {}; // Archivo que representa un directorio
@@ -25,7 +25,7 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
 
 	// Permite obtener/inicializar el arreglo de objetos 'Archivo' para mostrar en la vista
 	$scope.getFiles = function(){
-		setBreadcrumbs();
+		setBreadcrumbs(); // establece la ruta actual para mostrar en la vista
 		Archivo.getByLocation($scope.currentLocation)
 		.then(function(res){
 			if(res.statusText === 'OK'){
@@ -113,18 +113,21 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
 		$scope.propertyName = propertyName;
 	};
 
-	$scope.comparator = function(item1, item2){
-		if(item1.directory){
-			if(item2.directory)
-				return 0;
-			else
-				return 1;
-		}else{
-			if(item2.directory)
-				return -1;
-			else
-				return 0;
-		}
+	$scope.directoryFirstComparator = function(item1, item2){
+		// if(item1.directory){
+		// 	if(item2.directory)
+		// 		return 0;
+		// 	else
+		// 		return 1;
+		// }else{
+		// 	if(item2.directory)
+		// 		return -1;
+		// 	else
+		// 		return 0;
+		// }
+		var first = item1.directory ? 1 : 0,
+			second = item2.directory ? 1 : 0;
+		return first - second;
 	};
 
 	// Sube archivos al servidor
@@ -181,7 +184,12 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
             $scope.uploadedFiles = []; // En caso de que falle reload se vacia el arreglo
             $scope.getFiles(); // Reload de los archivos
         }, function(res){
-            console.log("Error de conexión con la base de datos para la creación del evento.", res);
+            if(!res.data.sucess && res.data.error){
+        		console.log(res.data.message, res.data.error);
+	            $scope.getFiles(); // Reload de los archivos
+        	}
+        	else
+            	console.log("Error de conexión con la base de datos para la creación del archivo.", res);
             $scope.uploadedFiles = []; // En caso de que falle en envio se limpia el formulario
         });
     };
@@ -202,7 +210,7 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
             $scope.getFiles();
             $scope.addingDirectory = false;
         }, function(res){
-            console.log("Error de conexión con la base de datos para la creación del evento.", res);
+            console.log("Error de conexión con la base de datos para la creación del directorio.", res);
         });
     };
 
@@ -224,7 +232,7 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
 						$scope.getFiles(); // Reload de los archivos
 					}, function(res){
 						if (res.status === 400) {
-							console.log('Error al borrar archivo del sistema');
+							console.log('Error al borrar archivo del sistema', res);
 						}
 						if(res.status === 404){ // res.statusText === 'Not Found'
 							//alert("Se ha eliminado el archivo de la lista");
@@ -232,10 +240,10 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
 						}
 					});
     		}, function(res){
-    			console.log('Error de conexión con la base de datos');
+    			console.log('Error de conexión con la base de datos', res);
     		});
 		}, function(res){
-			console.log('Error de conexión con la base de datos');
+			console.log('Error de conexión con la base de datos', res);
 		});
     };
 
@@ -258,6 +266,25 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
     			console.log('Error de conexión con la base de datos');
     		});
     };
+
+    $scope.openModal = function(archivo){
+    	$uibModal.open({
+    		ariaDescribedBy: 'modal-body',
+    		size: 'sm',
+    		templateUrl: 'modal-template.html',
+    		scope: $scope, // pasar el actual $scope (evitar 'crear' otro controlador)
+    		controller: function($uibModalInstance){
+    			$scope.archivo = archivo;
+    			$scope.closeModal = function(){
+    				$uibModalInstance.dismiss('cancel');
+    			};
+    			$scope.deleteConfirmed = function(archivoID){
+    				$scope.delete(archivoID);
+    				$uibModalInstance.close();
+    			};
+    		}
+    	});
+    }
 
     // Inicialización: Cargar la lista de archivos.
     $scope.getFiles();

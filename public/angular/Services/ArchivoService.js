@@ -39,6 +39,11 @@ angular.module('ArchivoService', []).factory('Archivo', ['$http', function($http
 		// El parámetro debe ser la concatenación de 'location' y 'filename' en el objeto Archivo
 		unlink: function(pathWithFilename){
 			return $http.delete('/api/files/' + pathWithFilename); // Por ejemplo: $http.delete('/api/files/Carpeta/Subcarpeta/foo.pdf');
+		},
+
+		// Busca la información completa de un archivo con base en su nombre (filename) y ubicación (location)
+		find: function(filename, location){
+			return $http.get('/api/archivos/search?filename=' + filename + '&location=' + location);
 		}
 
 	}

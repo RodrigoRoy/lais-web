@@ -7,8 +7,10 @@ angular.module('EventoService', []).factory('Evento', ['$http', function($http){
 		// Obtiene todos los eventos
 		// Permite filtrar por tipo de evento (Académico o Docencia)
 		all: function(tipoEvento){
-			var query = tipoEvento ? '?tipo='+tipoEvento : '';
-			return $http.get('/api/eventos' + query);
+			if(tipoEvento)
+				return $http.get('/api/eventos?tipo=' + tipoEvento);
+			else
+				return $http.get('/api/eventos');
 		},
 
 		// Obtiene el evento en particular con el eventoID
@@ -35,6 +37,10 @@ angular.module('EventoService', []).factory('Evento', ['$http', function($http){
 		//Obtiene los 4 eventos más recientes
 		news: function(){
 			return $http.get('/api/eventos/news');
+		},
+
+		attachment: function(archivoID){
+			return $http.get('/api/eventos/search?attachment=' + archivoID);
 		}
 	}
 }]);

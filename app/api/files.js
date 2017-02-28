@@ -45,7 +45,7 @@ router.route('/')
 		res.send({ // responder al cliente 
 			success: true,
 			message: 'Archivos subidos al servidor exitosamente',
-			location: 'files/' + path
+			location: path
 		});
 	})
 

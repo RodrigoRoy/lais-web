@@ -22,10 +22,10 @@ var EventoSchema = new Schema({
     coordinador: [{type: String}], // Reemplazo para "realizador"
     participantes: [{type: String}], // Personas importantes del evento
     lugar: {type: String}, // Google Maps ID
-    creador: {type: mongoose.Schema.Types.ObjectId, ref: 'Usuarios'},
     keywords: [{type: String}],
     notas: {type: String},
-    documentos: [{type: String}],
+    documentos: [{type: mongoose.Schema.Types.ObjectId, ref: 'Archivo'}],
+    usuario: {type: mongoose.Schema.Types.ObjectId, ref: 'Usuario'}
 }, { // Opciones:
     collection: 'eventos',
     timestamps: true //timestamps: {createdAt: 'creacion', updatedAt: 'actualizacion'}
