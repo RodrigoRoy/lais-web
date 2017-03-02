@@ -44,6 +44,10 @@ angular.module('ArchivoService', []).factory('Archivo', ['$http', function($http
 		// Busca la información completa de un archivo con base en su nombre (filename) y ubicación (location)
 		find: function(filename, location){
 			return $http.get('/api/archivos/search?filename=' + filename + '&location=' + location);
+		},
+
+		findMultiple: function(filenameArray, location){
+			return $http.post('/api/archivos/search', {filenames: filenameArray, location: location});
 		}
 
 	}

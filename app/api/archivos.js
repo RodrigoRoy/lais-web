@@ -64,12 +64,21 @@ router.route('/')
                 if(files[i].descripcion === '')
                     files[i].descripcion = undefined;
             }
-            Archivo.insertMany(files, {ordered: false}, function(err, archivos){ // Bulk insert
+            Archivo.insertMany(files, {ordered: false}, function(err, archivos){ // Bulk insert. ordered option ignora repetidos e inserta el resto
                 if(err){
                     if(err.code == 11000)
-                        return res.status(400).send({success: false, message: 'Nombre de archivo o carpeta duplicado.', error: err});
+                        return res.status(400).send({
+                            success: false, 
+                            message: 'Nombre de archivo o carpeta duplicado.', 
+                            error: err,
+                            files: archivos
+                        });
                     else
-                        return res.status(400).send({success: false, message: 'Error en la base de datos', error: err});
+                        return res.status(400).send({
+                            success: false, 
+                            message: 'Error en la base de datos', 
+                            error: err
+                        });
                 }
                 res.send({
                     success: true,
@@ -105,12 +114,12 @@ router.route('/')
                 });
             }
 
-            console.log("REQ: ", req);
+            //console.log("REQ: ", req);
             console.log("ARCHIVO: ", archivo);
             archivo.save(function(err){
                 if(err){
                     if(err.code == 11000)
-                        return res.status(400).send({success: false, message: 'Nombre de archivo o carpeta duplicado.'});
+                        return res.status(400).send({success: false, message: 'Nombre de archivo o carpeta duplicado.', error: err});
                     else
                         return res.status(400).send({success: false, message: 'Error al guardar archivo en la base de datos', error: err});
                 }
@@ -140,6 +149,22 @@ router.route('/search')
                 res.send(err);
             res.json(archivo);
         })
+    })
+
+    .post(function(req, res){
+        if(req.body.filenames && req.body.location){
+            var filenames = req.body.filenames,
+                location = req.body.location;
+            Archivo.find({
+                filename: {$in: filenames},
+                location: location
+            })
+            .exec(function(err, archivos){
+                if(err)
+                    res.send(err);
+                res.json(archivos);
+            })
+        }
     })
 
 // En peticiones con un ID

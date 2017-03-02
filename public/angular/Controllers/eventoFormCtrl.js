@@ -6,6 +6,7 @@
 angular.module('EventoFormCtrl', []).controller('EventoFormController', function ($scope, $location, $routeParams, $http, Evento, Archivo, Upload) {
     $scope.evento = {}; // Contiene los datos del evento
     $scope.evento.usuario = $scope.user.id || undefined; // Obtener Id de usuario
+    $scope.adjuntos = []; // Información completa de los archivos adjuntos (para la vista)
     $scope.maxLengthCoordinadores = 10; // Cantidad máxima de coordinadores
     $scope.coordinadores = [{nombre: ""}]; // Arreglo de "personas" (objetos con propiedad 'nombre')
     $scope.maxLengthParticipantes = 10; // Cantidad máxima de coordinadores
@@ -200,8 +201,10 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
         });
     };
 
-    $scope.adjuntos = [];
     // Sube archivos al servidor
+    // $scope.adjuntos          Es la lista de archivos con TODA la información correspondiente (se usa en la vista)
+    // $scope.evento.documentos Es la lista de ID's que se guarda en el Modelo de la base de datos
+    // $scope.nuevosAdjuntos    Es un auxiliar que incluye la lista de archivos NO repetidos en la base o en los arreglos anteriores
     $scope.uploadFiles = function(file){
         Upload.upload({
             url: 'api/files', // Ruta de Node (usando POST) para el manejo del almacenamiento de la imagen
@@ -219,80 +222,54 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
             // Asignación del nombre de la imagen a $scope.evento
             //$scope.evento.imagen = res.config.data.file.name;
 
-            // Estas tres lineas guardaban solo el nombre del archivo:
-            // $scope.evento.documentos = [];
-            // for(var i in res.config.data.file)
-            //     $scope.evento.documentos[i] = res.config.data.file[i].name;
-
-            console.log("res", res);
+            
+            // Obtener los adjuntos a agregar
             $scope.nuevosAdjuntos = [];
             for(var i in res.config.data.file)
-                $scope.nuevosAdjuntos.push({filename: res.config.data.file[i].name, location: res.data.location}); // '/' al final innecesario
-            
+                $scope.nuevosAdjuntos.push({filename: res.config.data.file[i].name, location: res.data.location, usuario: $scope.evento.usuario});
+            // Evitar repeticiones (porque cada vez que se vuelven a elegir archivos se ejecuta la subida de archivos)
             $scope.nuevosAdjuntos = $scope.nuevosAdjuntos.filter(function(item, index, array){
                 for(var i in $scope.adjuntos)
                     if(item.filename === $scope.adjuntos[i].filename)
                         return false;
                 return true;
             });
-
-            console.log("NUEVOS ADJUNTOS: ", $scope.nuevosAdjuntos);
-
-            for(var i in $scope.nuevosAdjuntos){
-                console.log("nuevosAdjunto: ", $scope.nuevosAdjuntos[i]);
-                Archivo.find($scope.nuevosAdjuntos[i].filename, $scope.nuevosAdjuntos[i].location)
+            // Si el (nombre de) archivo ya existe en la base de datos, rescatar y usar el mismo ID, para evitar repeticiones
+            var filenames = [];
+            for(var i in $scope.nuevosAdjuntos)
+                filenames.push($scope.nuevosAdjuntos[i].filename);
+            Archivo.findMultiple(filenames, 'eventos/') // consultar en la base de datos
                 .then(function(res){
-                    if(res.data && res.data.length > 0){
-                        console.log("ARCHIVOS REPETIDOS");
-                        if(!$scope.evento.documentos)
-                                $scope.evento.documentos = [];
-                        $scope.adjuntos.push(res.data[0]);
-                        $scope.evento.documentos.push(res.data[0]._id);
-                    }
-                    else{
-                        //Agregar a la base
-                        console.log("ARCHIVOS PARA AGREGAR ", $scope.nuevosAdjuntos);
-                        console.log("ARCHIVO PARA AGREGAR ", $scope.nuevosAdjuntos[i]);
-                        Archivo.create($scope.nuevosAdjuntos[i])
-                        .then(function(res){
+                    if(res.data && res.data.length > 0){ // si ya existen los archivos en la base de datos
+                        for(var i in res.data){
+                            $scope.adjuntos.push(res.data[i]); // agregar a $scope.adjuntos
                             if(!$scope.evento.documentos)
                                 $scope.evento.documentos = [];
-                            $scope.evento.documentos.push(res.data.id);
-                            $scope.adjuntos.push(res.data.file);
-                        }, function(res){
-                            if(res.status === 400 && !res.data.success)
-                                console.log('Error: ', res.data.message, res);
-                            else
-                                console.error('Error al registrar en la colección "Archivo" de la base de datos', res);
-                        })
+                            $scope.evento.documentos.push(res.data[i]._id); // agregar ID's a $scope.evento.documentos
+                            for(var j in $scope.nuevosAdjuntos){
+                                if($scope.nuevosAdjuntos[j].filename == res.data[i].filename)
+                                    $scope.nuevosAdjuntos.splice(j, 1); // borrar del arreglo $scope.nuevosAdjuntos
+                            }
+                        }
+                    }
+                    // Ahora sí!! $scope.nuevosAdjuntos ya han sido filtrados y verificados que NO están en base de datos
+                    if($scope.nuevosAdjuntos.length != 0){ // no enviar información vacia
+                        Archivo.create($scope.nuevosAdjuntos)
+                            .then(function(res){
+                                if(res.data && res.data.files && res.data.files.length > 0){ // agregar a $scope.adjuntos y $scope.evento.documentos
+                                    if(!$scope.evento.documentos)
+                                        $scope.evento.documentos = [];
+                                    for(var i in res.data.files)
+                                        $scope.evento.documentos.push(res.data.files[0]._id);
+                                    $scope.adjuntos = $scope.adjuntos.concat(res.data.files);
+                                }
+                            }, function(res){
+                                console.error('Error al guardar en base de datos', res);
+                            })
                     }
                 }, function(res){
-                    console.error('No se pudo realizar búsqueda de archivo en la base de datos: ', res);
-                })
-            }
-            //$scope.nuevosAdjuntos = [];
-
-            // if($scope.nuevosAdjuntos.length > 0)
-                //crear archivos
-            
-            // Crear un arreglo temporal con los nombres de los archivos y su ubicación (desde response de servidor)
-            // $scope.adjuntos = [];
-            // for(var i in res.config.data.file)
-            //     $scope.adjuntos.push({filename: res.config.data.file[i].name, location: res.data.location}); // '/' al final innecesario
-            // Agregarlos en la base de datos, en la colección "Archivos"
-            // Archivo.create($scope.adjuntos)
-            //     .then(function(res){
-            //         $scope.evento.documentos = [];
-            //         $scope.adjuntos = res.data.files; // Reusar la variable, ahora incluye Id's de los archivos
-            //         // Finalmente se puede obtener el arreglo que contiene solamente los Id's
-            //         for(var i in res.data.files)
-            //             $scope.evento.documentos[i] = res.data.files[i]._id;
-            //     }, function(res){
-            //         if(res.status === 400 && !res.data.success)
-            //             console.log('Error: ', res.data.message);
-            //         else
-            //             console.error('Error al registrar en la colección "Archivo" de la base de datos', res);
-            //     });
+                    console.log('Error buscando archivos', res);
+                });
         }, function (resp) { // Función para manejo de error
             console.log('Error status: ' + resp.status);
         }, function (evt) { // Función para notificar progreso
@@ -332,22 +309,18 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
             $scope.evento.documentos = undefined;
         
         // Verificar si al borrar es el único existente
-        Evento.attachment(archivo._id)
+        Evento.attachment(archivo._id) // existen eventos con este archivo como adjunto?
         .then(function(res){
-            console.log("attachment ", res);
             if(res.data && res.data.length === 1){
-                console.log("Verificando archivo antes de borrar");
                 // Borrar archivo del sistema:
                 Archivo.unlink(archivo.location + archivo.filename)
                 .then(function(res){
                     // if(res.data.success)
                     //     console.log('Operación exitosa. ', res.data.message);
-                    console.log("Unlinking (borrando en sistema)");
                     Archivo.delete(archivo._id)
                     .then(function(res){
                         // if(res.data.success)
                         //     console.log('Operación exitosa. ', res.data.message);
-                        console.log("Deleting (borrando en base de datos)");
                     }, function(res){
                         console.error('No se pudo borrar archivo en base de datos. ', res);
                     });
@@ -358,18 +331,6 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
         }, function(res){
             console.error('Error al revisar documentos adjuntos. ', res);
         });
-
-        // Archivo.unlink('/files/eventos/', filename)
-        //     .then(function(res){
-        //         console.log("Se ha borrado exitosamente el archivo del sistema");
-        //     }, function(res){
-        //         if (res.status === 400) {
-        //             console.log('Error al borrar archivo del sistema');
-        //         }
-        //         if(res.status === 404){ // res.statusText === 'Not Found'
-        //             console.log("El archivo ya ha sido borrado del sistema");
-        //         }
-        //     });
     };
 
     // Se ejecuta en clic al botón de envio. Manda la información del evento a la base de datos
