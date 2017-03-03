@@ -299,7 +299,6 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
 
     // Elimina un archivo adjunto
     $scope.deleteFile = function(archivo){
-        console.log("Delete file function", archivo);
         var index = $scope.evento.documentos.indexOf(archivo._id); // Buscar el indice
         if(index !== -1){ // Remover de manera segura en el arreglo (ambos arreglos)
             $scope.evento.documentos.splice(index, 1);

@@ -44,9 +44,26 @@
 		</div>
 		<div ng-if="evento.documentos && evento.documentos.length > 0">
 			<h4 class="subtitle">Archivos adjuntos</h4>
-			<ul>
-				<li ng-repeat="documento in evento.documentos"><a href="files/eventos/{{documento}}" target="_blank">{{documento}}</a></li>
-			</ul>
+			<div ng-if="evento.adjuntos.imagenes.length > 0">
+				<ul class="list-inline">
+					<li ng-repeat="archivo in evento.adjuntos.imagenes">
+						<a href="files/{{archivo.location + archivo.filename}}" target="_blank"><img src="files/{{archivo.location + archivo.filename}}" style="height: 150px; width: auto;"></a>
+					</li>
+				</ul>
+			</div>
+			<div ng-if="evento.adjuntos.videos.length > 0">
+				<video ng-repeat="archivo in evento.adjuntos.videos" controls style="width: 100%;">
+					<source src="{{'files/' + archivo.location + archivo.filename | trustUrl}}" type="video/mp4">
+					<a href="files/{{archivo.location + archivo.filename}}" target="_blank">{{archivo.filename}}</a>
+				</video>
+			</div>
+			<div ng-if="evento.adjuntos.documentos.length > 0">
+				<ul>
+					<li ng-repeat="archivo in evento.adjuntos.documentos">
+						<a href="files/{{archivo.location + archivo.filename}}" target="_blank">{{archivo.filename}}</a> <small><i class="fa fa-file-text-o" aria-hidden="true"> {{archivo.size}}</small></i>
+					</li>
+				</ul>
+			</div>
 		</div>
 		<div ng-if="evento.keywords && evento.keywords.length > 0">
 			<h4 class="subtitle">Palabras clave</h4>
@@ -55,7 +72,7 @@
 			</p>
 		</div>
 		<div>
-			<h4 class="subtitle">Comparte</h4>
+			<!-- <h4 class="subtitle">Comparte</h4> -->
 			<p>
 				<!-- FACEBOOK -->
 				<button class="btn btn-default" socialshare socialshare-provider="facebook" socialshare-url="{{url}}" socialshare-text="{{evento.titulo}}" socialshare-type="feed" socialshare-via="148770792254400"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</button>

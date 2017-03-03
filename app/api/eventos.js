@@ -20,7 +20,7 @@ var verifyToken = require('./token'); // Función de verificación de token
 
 // Función a realizar siempre que se utilize esta API
 router.use(function(req, res, next){
-    console.log('Usando el API de Usuarios.');
+    // console.log('Usando el API de Usuarios.');
     // Rutas que son excluidas de verificación de token:
     if(req.method === 'GET')
         return next();
@@ -84,7 +84,6 @@ router.route('/')
         evento.save(function(err){
             if(err)
                 res.send(err);
-            console.log("Id evento: ", evento._id);
             res.json({message: 'Evento creado', id: evento._id});
         })
     })

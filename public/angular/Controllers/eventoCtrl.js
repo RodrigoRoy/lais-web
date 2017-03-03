@@ -1,6 +1,12 @@
 /*Controlador que manda a llamar la información de un evento con su id */
 
-angular.module('EventoCtrl',[]).controller('EventoController', function ($scope, $routeParams, $location, Evento){
+angular.module('EventoCtrl',[])
+.filter("trustUrl", ['$sce', function($sce){
+	return function(recordingUrl){
+		return $sce.trustAsResourceUrl(recordingUrl);
+	};
+}])
+.controller('EventoController', function ($scope, $routeParams, $location, Evento){
 
 	// Carga síncrona (no recomendada) para mostrar correctamente el mapa en pantalla
 	// var initialize = function(){
@@ -22,152 +28,167 @@ angular.module('EventoCtrl',[]).controller('EventoController', function ($scope,
 			$scope.participantes = $scope.evento.participantes.join(", ");
 			$scope.url = $location.absUrl(); // URL completa de la página actual del evento (útil para social share)
 
-			// Reverse Geocoding para obtener dirección a partir de PlaceID ($scope.evento.lugar)
-			var geocoder = new google.maps.Geocoder;
-			geocoder.geocode({placeId: $scope.evento.lugar}, function(res, status){
-				if(status == google.maps.GeocoderStatus.OK){
-					$scope.$apply(function(){ // Actualiza binding en llamadas asíncronas
-						//$scope.direccion = res[0].formatted_address;
-						$scope.geocodeResult = res[0];
-					});
-				}
-			});
+			// Separar archivos por tipo
+			$scope.evento.adjuntos = {imagenes: [], videos: [], documentos: [], otros: []};
+			for(var i in $scope.evento.documentos){
+				if(/\.(jpe?g|gif|png|tiff|bmp|svg|webp)$/.test($scope.evento.documentos[i].filename)) // imagen
+					$scope.evento.adjuntos.imagenes.push($scope.evento.documentos[i]);
+				else if(/\.(mp4|avi|mkv|wmv|flv|3gp|ogv|webm)$/.test($scope.evento.documentos[i].filename)) // video
+					$scope.evento.adjuntos.videos.push($scope.evento.documentos[i]);
+				else if(/\.(pdf|docx?|f?odt|txt|pptx?|f?odp)$/.test($scope.evento.documentos[i].filename)) // documentos
+					$scope.evento.adjuntos.documentos.push($scope.evento.documentos[i]);
+				else
+					$scope.evento.adjuntos.otros.push($scope.evento.documentos[i]);
+			}
 
-			setTimeout(function(){
-				// Otras alternativas de estilos: PaleDown, ShadesOfGrey, LightDream
-				var mapSyle = [ // Subtle Grayscale
-				    {
-				        "featureType": "landscape",
-				        "stylers": [
-				            {
-				                "saturation": -100
-				            },
-				            {
-				                "lightness": 65
-				            },
-				            {
-				                "visibility": "on"
-				            }
-				        ]
-				    },
-				    {
-				        "featureType": "poi",
-				        "stylers": [
-				            {
-				                "saturation": -100
-				            },
-				            {
-				                "lightness": 51
-				            },
-				            {
-				                "visibility": "simplified"
-				            }
-				        ]
-				    },
-				    {
-				        "featureType": "road.highway",
-				        "stylers": [
-				            {
-				                "saturation": -100
-				            },
-				            {
-				                "visibility": "simplified"
-				            }
-				        ]
-				    },
-				    {
-				        "featureType": "road.arterial",
-				        "stylers": [
-				            {
-				                "saturation": -100
-				            },
-				            {
-				                "lightness": 30
-				            },
-				            {
-				                "visibility": "on"
-				            }
-				        ]
-				    },
-				    {
-				        "featureType": "road.local",
-				        "stylers": [
-				            {
-				                "saturation": -100
-				            },
-				            {
-				                "lightness": 40
-				            },
-				            {
-				                "visibility": "on"
-				            }
-				        ]
-				    },
-				    {
-				        "featureType": "transit",
-				        "stylers": [
-				            {
-				                "saturation": -100
-				            },
-				            {
-				                "visibility": "simplified"
-				            }
-				        ]
-				    },
-				    {
-				        "featureType": "administrative.province",
-				        "stylers": [
-				            {
-				                "visibility": "off"
-				            }
-				        ]
-				    },
-				    {
-				        "featureType": "water",
-				        "elementType": "labels",
-				        "stylers": [
-				            {
-				                "visibility": "on"
-				            },
-				            {
-				                "lightness": -25
-				            },
-				            {
-				                "saturation": -100
-				            }
-				        ]
-				    },
-				    {
-				        "featureType": "water",
-				        "elementType": "geometry",
-				        "stylers": [
-				            {
-				                "hue": "#ffff00"
-				            },
-				            {
-				                "lightness": -25
-				            },
-				            {
-				                "saturation": -97
-				            }
-				        ]
-				    }
-				];
-				var map = new google.maps.Map(document.getElementById('map'), {
-					center: {lat: 19.356751, lng: -99.166728}, // Mora Madrid (se actualiza al marker)
-					zoom: 15,
-					scrollwheel: false, // Evitar hacer zoom con el scroll del mouse
-					mapTypeControl: false, // Solo muestra el tipo de mapa "TERRAIN"
-					streetViewControl: false, // Oculta la opción "STREET VIEW"
-					styles: mapSyle
+			if($scope.evento.lugar){
+				// Reverse Geocoding para obtener dirección a partir de PlaceID ($scope.evento.lugar)
+				var geocoder = new google.maps.Geocoder;
+				geocoder.geocode({placeId: $scope.evento.lugar}, function(res, status){
+					if(status == google.maps.GeocoderStatus.OK){
+						$scope.$apply(function(){ // Actualiza binding en llamadas asíncronas
+							//$scope.direccion = res[0].formatted_address;
+							$scope.geocodeResult = res[0];
+						});
+					}
 				});
-				var marker = new google.maps.Marker({
-					position: $scope.geocodeResult.geometry.location,
-					map: map,
-					animation: google.maps.Animation.DROP,
-					clickable: false
-				});
-				map.setCenter($scope.geocodeResult.geometry.location); // Actualizar vista en mapa para marcar el lugar
-			}, 500);
+
+				setTimeout(function(){
+					// Otras alternativas de estilos: PaleDown, ShadesOfGrey, LightDream
+					var mapSyle = [ // Subtle Grayscale
+					    {
+					        "featureType": "landscape",
+					        "stylers": [
+					            {
+					                "saturation": -100
+					            },
+					            {
+					                "lightness": 65
+					            },
+					            {
+					                "visibility": "on"
+					            }
+					        ]
+					    },
+					    {
+					        "featureType": "poi",
+					        "stylers": [
+					            {
+					                "saturation": -100
+					            },
+					            {
+					                "lightness": 51
+					            },
+					            {
+					                "visibility": "simplified"
+					            }
+					        ]
+					    },
+					    {
+					        "featureType": "road.highway",
+					        "stylers": [
+					            {
+					                "saturation": -100
+					            },
+					            {
+					                "visibility": "simplified"
+					            }
+					        ]
+					    },
+					    {
+					        "featureType": "road.arterial",
+					        "stylers": [
+					            {
+					                "saturation": -100
+					            },
+					            {
+					                "lightness": 30
+					            },
+					            {
+					                "visibility": "on"
+					            }
+					        ]
+					    },
+					    {
+					        "featureType": "road.local",
+					        "stylers": [
+					            {
+					                "saturation": -100
+					            },
+					            {
+					                "lightness": 40
+					            },
+					            {
+					                "visibility": "on"
+					            }
+					        ]
+					    },
+					    {
+					        "featureType": "transit",
+					        "stylers": [
+					            {
+					                "saturation": -100
+					            },
+					            {
+					                "visibility": "simplified"
+					            }
+					        ]
+					    },
+					    {
+					        "featureType": "administrative.province",
+					        "stylers": [
+					            {
+					                "visibility": "off"
+					            }
+					        ]
+					    },
+					    {
+					        "featureType": "water",
+					        "elementType": "labels",
+					        "stylers": [
+					            {
+					                "visibility": "on"
+					            },
+					            {
+					                "lightness": -25
+					            },
+					            {
+					                "saturation": -100
+					            }
+					        ]
+					    },
+					    {
+					        "featureType": "water",
+					        "elementType": "geometry",
+					        "stylers": [
+					            {
+					                "hue": "#ffff00"
+					            },
+					            {
+					                "lightness": -25
+					            },
+					            {
+					                "saturation": -97
+					            }
+					        ]
+					    }
+					];
+					var map = new google.maps.Map(document.getElementById('map'), {
+						center: {lat: 19.356751, lng: -99.166728}, // Mora Madrid (se actualiza al marker)
+						zoom: 15,
+						scrollwheel: false, // Evitar hacer zoom con el scroll del mouse
+						mapTypeControl: false, // Solo muestra el tipo de mapa "TERRAIN"
+						streetViewControl: false, // Oculta la opción "STREET VIEW"
+						styles: mapSyle
+					});
+					var marker = new google.maps.Marker({
+						position: $scope.geocodeResult.geometry.location,
+						map: map,
+						animation: google.maps.Animation.DROP,
+						clickable: false
+					});
+					map.setCenter($scope.geocodeResult.geometry.location); // Actualizar vista en mapa para marcar el lugar
+				}, 500);
+			}
 		});
 })

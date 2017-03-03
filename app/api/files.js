@@ -22,7 +22,7 @@ var multipartMiddlewarePublicaciones = multipart({uploadDir: './public/files/pub
 
 // Función a realizar siempre que se utilize esta API
 router.use(function(req, res, next){
-    console.log('Usando el API Files.');
+    // console.log('Usando el API Files.');
     // Rutas que son excluidas de verificación de token:
     if(req.method === 'GET')
         return next();
@@ -82,8 +82,8 @@ router.route('/publicaciones')
 	// Obtener todos los archivos
 	.post(multipartMiddlewarePublicaciones, function(req, res){
 		//console.log("  req.body", req.body); // Datos adicionales enviados
-		console.log("Información de archivos");
-		console.log(req.files);
+		// console.log("Información de archivos");
+		// console.log(req.files);
 		for(var i in req.files.file){ // iterar en todos los archivos
 			fs.rename(req.files.file[i].path, 'public/files/publicaciones/' + req.files.file[i].name, function(err){ // renombrar archivo (usar el nombre original)
 				if(err)

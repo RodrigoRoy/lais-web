@@ -15,13 +15,11 @@ DELETE http://localhost:8080/api/archivos/1234567890
 var express = require('express');
 var router = express.Router(); // para modularizar las rutas
 var Archivo = require('../models/archivo'); // Modelo de la colección "Archivos"
-var fs = require('fs'); // File system utility
-var filesize = require('filesize'); // Human readable file size string from number
 var verifyToken = require('./token'); // Función de verificación de token
 
 // Función a realizar siempre que se utilize esta API
 router.use(function(req, res, next){
-    console.log('Usando el API de Archivos.');
+    // console.log('Usando el API de Archivos.');
     // Rutas que son excluidas de verificación de token:
     if(req.method === 'GET')
         return next();
@@ -33,24 +31,14 @@ router.use(function(req, res, next){
 router.route('/')
 	// Obtener todos archivos
 	.get(function(req, res){
-        var dirbase = 'public/files/';
         // Por ubicación en subdirectorios
         var path = req.query.path || '';
         Archivo.find({location: {$regex: '^' + path + '/?$', $options: 'im'}})
-        .lean()
+        // .lean()
         .sort({directory: 'desc', createdAt: 'desc', filename: 'desc'})
         .exec(function(err, archivos){
             if(err)
-                res.send(err);
-            for(var i in archivos){
-                try{
-                    // Verifica si existe el archivo, en caso contrario se dispara excepción (se maneja en catch)
-                    fs.accessSync(dirbase + archivos[i].location + archivos[i].filename, (fs.constants || fs).F_OK);
-                    archivos[i].size = filesize(fs.statSync(dirbase + archivos[i].location + archivos[i].filename).size, {round: 0});
-                }catch(err){
-                    archivos[i].size = filesize(0, {round: 0});
-                }
-            }
+                return res.send(err);
             res.send(archivos);
         });
     })
@@ -101,7 +89,7 @@ router.route('/')
             if(req.body.usuario)
                 archivo.usuario = req.body.usuario;
 
-            // TODO:
+            // El caso particular para directorios amerita crearlo en el sistema de archivos
             if(archivo.directory){
                 var path = archivo.location ? 'public/files/' + archivo.location : 'public/files/';
                 fs.access(path, (fs.constants || fs).F_OK, function(err){
@@ -114,8 +102,6 @@ router.route('/')
                 });
             }
 
-            //console.log("REQ: ", req);
-            console.log("ARCHIVO: ", archivo);
             archivo.save(function(err){
                 if(err){
                     if(err.code == 11000)
@@ -146,7 +132,7 @@ router.route('/search')
         Archivo.find(query)
         .exec(function(err, archivo){
             if(err)
-                res.send(err);
+                return res.send(err);
             res.json(archivo);
         })
     })
@@ -161,7 +147,7 @@ router.route('/search')
             })
             .exec(function(err, archivos){
                 if(err)
-                    res.send(err);
+                    return res.send(err);
                 res.json(archivos);
             })
         }
@@ -174,7 +160,7 @@ router.route('/:archivo_id')
         Archivo.findById(req.params.archivo_id)
         .exec(function(err, archivo){
             if(err)
-                res.send(err);
+                return res.send(err);
             res.json(archivo);
         })
     })
@@ -214,7 +200,7 @@ router.route('/:archivo_id')
             _id: req.params.archivo_id
         }, function(err, archivo){
             if(err)
-                res.send(err);
+                return res.send(err);
             res.json({
                 success: true, 
                 message: 'El archivo con Id: ' + archivo._id + ' ha sido eliminado'

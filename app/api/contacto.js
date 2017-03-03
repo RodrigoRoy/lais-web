@@ -15,7 +15,7 @@ var config = require('../../config'); // archivo de configuración
 
 // Función a realizar siempre que se utilize esta API
 router.use(function(req, res, next){
-    console.log('Usando el API de Contacto.');
+    // console.log('Usando el API de Contacto.');
     next(); // Pasar el control de las rutas a la siguiente coincidencia
 });
 

@@ -23,7 +23,7 @@ var verifyToken = require('./token'); // Función de verificación de token
 
 // Función a realizar siempre que se utilize esta API
 router.use(function(req, res, next){
-    console.log('Usando el API de Publicaciones');
+    // console.log('Usando el API de Publicaciones');
     // Rutas que son excluidas de verificación de token:
     if(req.method === 'GET')
         return next();
