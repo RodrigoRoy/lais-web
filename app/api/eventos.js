@@ -41,7 +41,7 @@ router.route('/')
         // .populate('lugar') // poblar la referencia a "lugar"
         .exec(function(err, eventos){
             if(err)
-                res.send(err);
+                return res.send(err);
             res.json(eventos);
         })
     })
@@ -83,7 +83,7 @@ router.route('/')
 
         evento.save(function(err){
             if(err)
-                res.send(err);
+                return res.send(err);
             res.json({message: 'Evento creado', id: evento._id});
         })
     })
@@ -97,7 +97,7 @@ router.route('/news')
         .select('titulo imagen')
         .exec(function(err, eventos){
             if(err)
-                res.send(err);
+                return res.send(err);
             res.json(eventos);
         })
     })
@@ -114,7 +114,7 @@ router.route('/search')
         Evento.find(query)
         .exec(function(err, eventos){
             if(err)
-                res.send(err);
+                return res.send(err);
             res.json(eventos);
         })
     })
@@ -126,7 +126,7 @@ router.route('/find')
         .populate('documentos')
         .exec(function(err, eventos){
             if(err)
-                res.send(err);
+                return res.send(err);
             // Filtrar resultados:
             var results = []; // Conjunto de resultados
             var patt = new RegExp('.*' + req.query.search + '.*', "i"); // patrón de búsqueda
@@ -148,7 +148,7 @@ router.route('/:evento_id')
         .populate('documentos')
         .exec(function(err, evento){
             if(err)
-                res.send(err);
+                return res.send(err);
             res.json(evento);
         })
     })
@@ -157,7 +157,7 @@ router.route('/:evento_id')
     .put(function(req, res){
         Evento.findById(req.params.evento_id, function(err, evento){
             if(err)
-                res.send(err);
+                return res.send(err);
             
             if(req.body.titulo)
                 evento.titulo = req.body.titulo;
@@ -192,7 +192,7 @@ router.route('/:evento_id')
 
             evento.save(function(err){
                 if(err)
-                    res.send(err);
+                    return res.send(err);
                 res.json({message: 'Evento actualizado'});
             });
         });
@@ -204,7 +204,7 @@ router.route('/:evento_id')
             _id: req.params.evento_id
         }, function(err, evento){
             if(err)
-                res.send(err);
+                return res.send(err);
             res.json({message: 'Evento borrado exitosamente'});
         });
     })

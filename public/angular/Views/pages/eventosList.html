@@ -1,6 +1,6 @@
 <div class="container my-container">
 	<h1>Lista de eventos</h1>
-	<button class="btn btn-default btn-lg" ng-click="new()">Crear evento</button>
+	<button class="btn btn-default btn-lg" ng-click="new()"><i class="fa fa-calendar-o" aria-hidden="true"></i> Nuevo evento</button>
 	<div class="table-responsive">
 		<table class="table">
 			<tr>
@@ -24,6 +24,8 @@
 					<a href="" ng-click="sortBy('createdAt')">Creado en</a> 
 					<i class="fa fa-sort-asc" aria-hidden="true" ng-show="propertyName === 'createdAt' && !reverse"></i><i class="fa fa-sort-desc" aria-hidden="true" ng-show="propertyName === 'createdAt' && reverse"></i>
 				</th>
+				<th></th>
+				<th></th>
 			</tr>
 			<tr ng-repeat="evento in eventos | orderBy: propertyName: reverse">
 				<td><a href="{{'/eventos/' + evento._id}}">{{evento.titulo}}</a></td>

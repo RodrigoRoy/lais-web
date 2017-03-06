@@ -22,10 +22,10 @@ angular.module('EventoCtrl',[])
 		.then(function(res){
 			$scope.evento = res.data;
 
-			//Join para guardar a los coordinadores en una cadena
-			$scope.coordinador = $scope.evento.coordinador.join(", ");
-			//Join para guardar a los participantes en una cadena
-			$scope.participantes = $scope.evento.participantes.join(", ");
+			//Join para guardar a los coordinadores en una cadena (solo si no es vacio)
+			$scope.coordinador = $scope.evento.coordinador && $scope.evento.coordinador.length > 0 ? $scope.evento.coordinador.join(", ") : '';
+			//Join para guardar a los participantes en una cadena (solo si no es vacio)
+			$scope.participantes = $scope.evento.participantes && $scope.evento.participantes.length > 0 ? $scope.evento.participantes.join(", ") : '';
 			$scope.url = $location.absUrl(); // URL completa de la página actual del evento (útil para social share)
 
 			// Separar archivos por tipo
@@ -190,5 +190,8 @@ angular.module('EventoCtrl',[])
 					map.setCenter($scope.geocodeResult.geometry.location); // Actualizar vista en mapa para marcar el lugar
 				}, 500);
 			}
+		}, function(res){
+			//error
+			console.error('Error al obtener la información del evento', res);
 		});
 })
