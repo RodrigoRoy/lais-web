@@ -7,8 +7,6 @@ Las rutas aqui definidas son un router que le antecede una ruta general de uso (
 Por ejemplo:
 POST   http://localhost:8080/api/files/archivos
 DELETE http://localhost:8080/api/files/Carpeta/Subcarpeta/archivo.jpg
-POST   http://localhost:8080/api/files/publicaciones
-DELETE http://localhost:8080/api/files/publicaciones?filename=foo.jpg
 */
 
 // Dependencias
@@ -74,26 +72,6 @@ router.route('/:folder*?/:filename')
 					message: 'Archivo ' + req.params.filename + ' borrado del servidor'
 				});
 			});
-		});
-	})
-
-// En peticiones a la raiz del API
-router.route('/publicaciones')
-	// Obtener todos los archivos
-	.post(multipartMiddlewarePublicaciones, function(req, res){
-		//console.log("  req.body", req.body); // Datos adicionales enviados
-		// console.log("Información de archivos");
-		// console.log(req.files);
-		for(var i in req.files.file){ // iterar en todos los archivos
-			fs.rename(req.files.file[i].path, 'public/files/publicaciones/' + req.files.file[i].name, function(err){ // renombrar archivo (usar el nombre original)
-				if(err)
-					throw err;
-			});
-		}
-		res.send({ // responder al cliente 
-			success: true,
-			message: 'Archivos subidos al servidor exitosamente',
-			location: 'files/publicaciones'
 		});
 	})
 

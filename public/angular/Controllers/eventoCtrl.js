@@ -31,11 +31,11 @@ angular.module('EventoCtrl',[])
 			// Separar archivos por tipo
 			$scope.evento.adjuntos = {imagenes: [], videos: [], documentos: [], otros: []};
 			for(var i in $scope.evento.documentos){
-				if(/\.(jpe?g|gif|png|tiff|bmp|svg|webp)$/.test($scope.evento.documentos[i].filename)) // imagen
+				if($scope.evento.documentos[i].filetype === 'image') // imagen
 					$scope.evento.adjuntos.imagenes.push($scope.evento.documentos[i]);
-				else if(/\.(mp4|avi|mkv|wmv|flv|3gp|ogv|webm)$/.test($scope.evento.documentos[i].filename)) // video
+				else if($scope.evento.documentos[i].filetype === 'video') // video
 					$scope.evento.adjuntos.videos.push($scope.evento.documentos[i]);
-				else if(/\.(pdf|docx?|f?odt|txt|pptx?|f?odp)$/.test($scope.evento.documentos[i].filename)) // documentos
+				else if($scope.evento.documentos[i].filetype === 'pdf' || $scope.evento.documentos[i].filetype === 'word' || $scope.evento.documentos[i].filetype === 'presentation' || $scope.evento.documentos[i].filetype === 'spreadsheet') // documentos
 					$scope.evento.adjuntos.documentos.push($scope.evento.documentos[i]);
 				else
 					$scope.evento.adjuntos.otros.push($scope.evento.documentos[i]);

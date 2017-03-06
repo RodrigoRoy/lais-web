@@ -43,6 +43,11 @@ angular.module('PublicacionService', []).factory('Publicacion', ['$http', functi
 		// Agrupar publicaciones por autor (en orden cronológico por default)
 		autor: function(autorID){
 			return $http.get('api/publicaciones?autor=' + autorID);
+		},
+
+		// Determina los eventos que contengan al archivoID como documento adjunto
+		attachment: function(archivoID){
+			return $http.get('/api/publicaciones/search?attachment=' + archivoID);
 		}
 	}
 }]);

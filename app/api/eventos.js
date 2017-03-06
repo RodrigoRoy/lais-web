@@ -102,6 +102,7 @@ router.route('/news')
         })
     })
 
+// Determina los eventos que contengan al archivoID como documento adjunto
 // GET http://localhost:8080/api/eventos/search?attachment=58ac9a77b587bc3f9d63fcf7
 router.route('/search')
     .get(function(req, res){
@@ -111,10 +112,10 @@ router.route('/search')
             query = {documentos: {$in: [ObjectId(req.query.attachment)]}};
         }
         Evento.find(query)
-        .exec(function(err, archivo){
+        .exec(function(err, eventos){
             if(err)
                 res.send(err);
-            res.json(archivo);
+            res.json(eventos);
         })
     })
 

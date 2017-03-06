@@ -7,6 +7,17 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
 	$scope.addingDirectory = false;
 	//$scope.directoryFile = {}; // Archivo que representa un directorio
 	$scope.archivos = []; // Lista de archivos en la base de datos
+	$scope.filetypeTranslate = {
+		directory: 'carpeta',
+		image: 'imagen',
+		audio: 'audio',
+		video: 'video',
+		pdf: 'pdf',
+		word: 'word',
+		presentation: 'powerpoint',
+		spreadsheet: 'excel',
+		other: 'archivo'
+	};
 	$scope.uploadedFiles = []; // Lista de archivos que en ese momento se suben al servidor
 	$scope.editable; // ID del evento que en ese momento es editable. También es el indicador de que se lleva a cabo una edición
 	$scope.tempFile = {}; // Objeto temporal para actualizar información (como la descripción)
@@ -32,42 +43,13 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
 				$scope.archivos = res.data;
 				for(var i in $scope.archivos){
 					// Incluir propiedades extras: tipo y icon
-					$scope.archivos[i].tipo = setFileType($scope.archivos[i]);
-					$scope.archivos[i].icon = setIcon($scope.archivos[i].tipo);
+					//$scope.archivos[i].tipo = setFileType($scope.archivos[i]);
+					$scope.archivos[i].icon = setIcon($scope.archivos[i].filetype);
 				}
 			}
 		}, function(res){
 			console.log('Error de conexión con la base de datos');
 		});
-	};
-
-	// Auxiliar que devuelve un texto que determinar el tipo de archivo en base a su extensión
-	// Los valores que devuelve son: 'file' (default), 'text', 'image', 'audio', 'video', 'word', 'excel', 'powerpoint', 'pdf' y 'unknown'
-	var setFileType = function(file){
-		if(file.directory)
-			return 'directory';
-		var myREarray = /\.[^\.]*$/.exec(file.filename); // Uso de expresión regular para obtener la extensión
-		if(myREarray === null)
-			return 'file'
-		var extension = myREarray[0];
-		if (extension === '.txt')
-			return 'text'
-		else if (extension === '.jpg' || extension === '.jpeg' || extension === '.gif' || extension === '.png' || extension === '.tiff' || extension === '.bmp' || extension === '.svg' || extension === '.webp')
-			return 'image'
-		else if (extension === '.ogg' || extension === '.mp3' || extension === '.wav' || extension === '.m4a' || extension === '.wma' || extension === '.aac' || extension === '.flac')
-			return 'audio'
-		else if (extension === '.mp4' || extension === '.avi' || extension === '.mkv' ||  extension === '.wmv' || extension === '.flv' || extension === '.3gp' || extension === '.ogv' || extension === '.webm')
-			return 'video'
-		else if (extension === '.doc' || extension === '.docx' || extension === '.odt' || extension === '.fodt')
-			return 'word'
-		else if (extension === '.xls' || extension === '.xlsx' || extension === '.ods' || extension === '.fods')
-			return 'excel'
-		else if (extension === '.ppt' || extension === '.pptx' || extension === '.odp' || extension === '.fodp')
-			return 'powerpoint'
-		else if (extension === '.pdf')
-			return 'pdf'
-		else
-			return 'unknown'
 	};
 
 	// Auxiliar para devolver un texto que representa un icono en formato de HTML (iconos de Font Awesome)
@@ -78,9 +60,6 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
 			case 'directory':
 				htmlIcon = '<i class="fa fa-folder-o fa-1-5x" aria-hidden="true"></i>';
 				break;
-			case 'text':
-				htmlIcon = '<i class="fa fa-file-text-o fa-1-5x" aria-hidden="true"></i>';
-				break;
 			case 'image':
 				htmlIcon = '<i class="fa fa-file-image-o fa-1-5x" aria-hidden="true"></i>';
 				break;
@@ -90,17 +69,20 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
 			case 'video':
 				htmlIcon = '<i class="fa fa-file-video-o fa-1-5x" aria-hidden="true"></i>';
 				break;
+			case 'pdf':
+				htmlIcon = '<i class="fa fa-file-pdf-o fa-1-5x" aria-hidden="true"></i>';
+				break;
 			case 'word':
 				htmlIcon = '<i class="fa fa-file-word-o fa-1-5x" aria-hidden="true"></i>';
 				break;
-			case 'excel':
-				htmlIcon = '<i class="fa fa-file-excel-o fa-1-5x" aria-hidden="true"></i>';
-				break;
-			case 'powerpoint':
+			// case 'text':
+			// 	htmlIcon = '<i class="fa fa-file-text-o fa-1-5x" aria-hidden="true"></i>';
+			// 	break;
+			case 'presentation':
 				htmlIcon = '<i class="fa fa-file-powerpoint-o fa-1-5x" aria-hidden="true"></i>';
 				break;
-			case 'pdf':
-				htmlIcon = '<i class="fa fa-file-pdf-o fa-1-5x" aria-hidden="true"></i>';
+			case 'spreadsheet':
+				htmlIcon = '<i class="fa fa-file-excel-o fa-1-5x" aria-hidden="true"></i>';
 				break;
 		}
 		return htmlIcon;
@@ -113,22 +95,11 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
 		$scope.propertyName = propertyName;
 	};
 
-	$scope.directoryFirstComparator = function(item1, item2){
-		// if(item1.directory){
-		// 	if(item2.directory)
-		// 		return 0;
-		// 	else
-		// 		return 1;
-		// }else{
-		// 	if(item2.directory)
-		// 		return -1;
-		// 	else
-		// 		return 0;
-		// }
-		var first = item1.directory ? 1 : 0,
-			second = item2.directory ? 1 : 0;
-		return first - second;
-	};
+	// $scope.directoryFirstComparator = function(item1, item2){
+	// 	var first = item1.directory ? 1 : 0,
+	// 		second = item2.directory ? 1 : 0;
+	// 	return first - second;
+	// };
 
 	// Sube archivos al servidor
     $scope.uploadFiles = function(file){
@@ -267,6 +238,7 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
     		});
     };
 
+    // Muestra un modal de advertencia al borrar un archivo
     $scope.openModal = function(archivo){
     	$uibModal.open({
     		ariaDescribedBy: 'modal-body',

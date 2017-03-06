@@ -186,7 +186,9 @@
                 <button type="button" class="btn btn-default full-width" name="adjuntos" id="adjuntos" ngf-select="uploadFiles($files)" ng-model="adjuntosModel" ngf-multiple="true" ngf-keep="'distinct'" ngf-accept="'image/*,.pdf,.doc,.docx'" ngf-max-files="10" ngf-pattern="'image/*,.pdf,.doc,.docx'" ngf-max-size="'100MB'" ngf-max-total-size="'200MB'">Selecciona archivos...</button>
                 <div class="files-upload">
                     <ul>
-                        <li ng-repeat="adjunto in adjuntos">{{adjunto.filename}}</li>
+                        <li ng-repeat="adjunto in adjuntos">
+                            {{adjunto.filename}} <button class="btn btn-danger btn-sm" ng-click="deleteFile(adjunto)"><i class="fa fa-times" aria-hidden="true"></i></button>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -198,5 +200,7 @@
     </form>
 
     <!-- <br>
-    <pre>{{publicacion | json}}</pre> -->
+    <pre>{{publicacion | json}}</pre>
+    <br>
+    <pre>{{adjuntos | json}}</pre> -->
 </div>

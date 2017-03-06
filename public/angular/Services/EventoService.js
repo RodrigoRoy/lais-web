@@ -39,6 +39,7 @@ angular.module('EventoService', []).factory('Evento', ['$http', function($http){
 			return $http.get('/api/eventos/news');
 		},
 
+		// Determina los eventos que contengan al archivoID como documento adjunto
 		attachment: function(archivoID){
 			return $http.get('/api/eventos/search?attachment=' + archivoID);
 		}

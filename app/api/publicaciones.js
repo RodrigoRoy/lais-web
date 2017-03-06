@@ -175,6 +175,23 @@ router.route('/tags')
         }
     })
 
+// Determina las publicaciones que contengan al archivoID como documento adjunto
+// GET http://localhost:8080/api/publicaciones/search?attachment=58ac9a77b587bc3f9d63fcf7
+router.route('/search')
+    .get(function(req, res){
+        var query = {};
+        if(req.query.attachment){
+            var ObjectId = mongoose.Types.ObjectId;
+            query = {documentos: {$in: [ObjectId(req.query.attachment)]}};
+        }
+        Publicacion.find(query)
+        .exec(function(err, publicaciones){
+            if(err)
+                res.send(err);
+            res.json(publicaciones);
+        })
+    })
+
 // En peticiones con un ID
 router.route('/:publicacion_id')
 	// Obtener un publicacion particular (mediante el ID)

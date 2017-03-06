@@ -201,6 +201,7 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
         });
     };
 
+    // $scope.adjuntos = [];
     // Sube archivos al servidor
     // $scope.adjuntos          Es la lista de archivos con TODA la información correspondiente (se usa en la vista)
     // $scope.evento.documentos Es la lista de ID's que se guarda en el Modelo de la base de datos
