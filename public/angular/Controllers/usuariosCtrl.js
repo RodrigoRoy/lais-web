@@ -27,7 +27,7 @@ angular.module('UsuariosCtrl',[]).controller('UsuariosController', function ($sc
 					$scope.usuarios = res.data;
 				}
 			}, function(res){
-				console.log('Error de conexión con la base de datos');
+				console.error('Error de conexión con la base de datos');
 			});
 	};
 
@@ -89,7 +89,7 @@ angular.module('UsuariosCtrl',[]).controller('UsuariosController', function ($sc
 			
 			$scope.serverMessage = res.data.message; // asignar el mensaje a mostrar
 			$scope.showAlert = true;
-			console.log("Error de conexión con la base de datos");
+			console.error("Error de conexión con la base de datos");
 		});
 	};
 
@@ -109,7 +109,7 @@ angular.module('UsuariosCtrl',[]).controller('UsuariosController', function ($sc
     			$scope.editable = undefined;
     			$scope.tempUser = {};
     		}, function(res){
-    			console.log('Error de conexión con la base de datos');
+    			console.error('Error de conexión con la base de datos');
     		});
     };
 

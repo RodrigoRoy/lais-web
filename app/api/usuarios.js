@@ -94,15 +94,15 @@ router.route('/:usuario_id')
                 res.send(err);
             
             // Actualizar todos los campos no-vacios
-            if(req.body.username)
+            if(req.body.username != usuario.username)
                 usuario.username = req.body.username;
-            if(req.body.password)
+            if(req.body.password != usuario.password)
                 usuario.password = req.body.password;
-            if(req.body.email)
+            if(req.body.email != usuario.email)
                 usuario.email = req.body.email;
-            if(req.body.permisos)
+            if(req.body.permisos != usuario.permisos)
                 usuario.permisos = req.body.permisos;
-            if(req.body.admin)
+            if(req.body.admin != usuario.admin)
                 usuario.admin = req.body.admin;
 
             usuario.save(function(err){

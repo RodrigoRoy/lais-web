@@ -1,6 +1,6 @@
 //Controlador que enlista todos los eventos
 
-angular.module('EventosListCtrl',[]).controller('EventosListController', function ($scope, $location, $route, Evento) {
+angular.module('EventosListCtrl',[]).controller('EventosListController', function ($scope, $location, $uibModal, Evento) {
 	
 	$scope.propertyName = 'createdAt';
 	$scope.reverse = true;
@@ -13,7 +13,7 @@ angular.module('EventosListCtrl',[]).controller('EventosListController', functio
 				$scope.eventos = res.data;
 			}
 		}, function(res){
-			console.log('Error de conexión con la base de datos');
+			console.error('Error de conexión con la base de datos');
 		});
 	};
 
@@ -37,12 +37,33 @@ angular.module('EventosListCtrl',[]).controller('EventosListController', functio
 	$scope.delete = function(eventoID){
 		Evento.delete(eventoID)
 			.then(function(res){
-				alert("Evento eliminado");
-            	$route.reload(); // Recargar la vista actual (no es una recarga completa de la página)
+				// alert("Evento eliminado");
+            	$scope.getEvents(); // Recargar la vista actual (no es una recarga completa de la página)
 			}, function(res){
 				alert("Error al eliminar. Por favor intentalo más tarde.");
+				console.error("Error al eliminar evento de la base de datos", res);
 			});
 	};
+
+	// Muestra un modal de advertencia al borrar un archivo
+    $scope.openModal = function(evento){
+    	$uibModal.open({
+    		ariaDescribedBy: 'modal-body',
+    		size: 'sm',
+    		templateUrl: 'modal-template.html',
+    		scope: $scope, // pasar el actual $scope (evitar 'crear' otro controlador)
+    		controller: function($uibModalInstance){
+    			$scope.evento = evento;
+    			$scope.closeModal = function(){
+    				$uibModalInstance.dismiss('cancel');
+    			};
+    			$scope.deleteConfirmed = function(eventoID){
+    				$scope.delete(eventoID);
+    				$uibModalInstance.close();
+    			};
+    		}
+    	});
+    }
 
 	// INICIALIZACION: Obtener eventos
 	$scope.getEvents();

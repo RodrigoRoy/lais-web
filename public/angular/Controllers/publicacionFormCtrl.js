@@ -139,7 +139,7 @@ angular.module('PublicacionFormCtrl',[]).controller('PublicacionFormController',
     };
     // Elimina un archivo adjunto
     $scope.deleteFile = function(archivo){
-    	console.log('Delete file');
+    	// console.log('Delete file');
         var index = $scope.publicacion.adjuntos.indexOf(archivo._id); // Buscar el indice
         if(index !== -1){ // Remover de manera segura en el arreglo (ambos arreglos)
             $scope.publicacion.adjuntos.splice(index, 1);
@@ -177,7 +177,7 @@ angular.module('PublicacionFormCtrl',[]).controller('PublicacionFormController',
         Publicacion.create($scope.publicacion) // Subir la información de la publicación a la base de datos
         .then(function(res){
             alert("Se ha guardado la información de la publicación.");
-            $location.url('/publicaciones/' + res.data.id); // Redirigir a la página de la publicación creada
+            $location.url('/publicaciones/' + res.data.publication._id); // Redirigir a la página de la publicación creada
         }, function(res){
             console.log("Error de conexión con la base de datos para la creación de la publicación.", res);
         });

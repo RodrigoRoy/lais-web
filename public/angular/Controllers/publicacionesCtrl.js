@@ -22,11 +22,11 @@ angular.module('PublicacionesCtrl',[]).controller('PublicacionesController', fun
 				.then(function(res){
 					$scope.autorObject = res.data;
 				}, function(res){
-					console.log('Error de conexión para obtener al autor: ', res);
+					console.error('Error de conexión para obtener al autor: ', res);
 				});
 			}, function(res){
 				// Fail
-				console.log('Error de conexión con la base de datos: ', res);
+				console.error('Error de conexión con la base de datos: ', res);
 			})
 		}else{
 			Publicacion.groupBy(groupType, matchRestriction)
@@ -35,7 +35,7 @@ angular.module('PublicacionesCtrl',[]).controller('PublicacionesController', fun
 				$scope.publicaciones = res.data;
 			}, function(res){
 				// Fail
-				console.log('Error de conexión con la base de datos: ', res);
+				console.error('Error de conexión con la base de datos: ', res);
 			});
 		}
 	};

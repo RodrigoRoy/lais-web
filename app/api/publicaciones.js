@@ -146,7 +146,11 @@ router.route('/')
         publicacion.save(function(err){
             if(err)
                 res.send(err);
-            res.json({success: true, message: "Información de la publicación guardado", id: publicacion._id});
+            res.json({
+                success: true, 
+                message: "Información de la publicación guardado", 
+                publication: publicacion
+            });
         })
     })
 
@@ -212,43 +216,43 @@ router.route('/:publicacion_id')
             if(err)
                 res.send(err);
             
-            if(req.body.titulo)
+            if(req.body.titulo != publicacion.titulo)
                 publicacion.titulo = req.body.titulo;
-            if(req.body.autor)
+            if(req.body.autor != publicacion.autor)
                 publicacion.autor = req.body.autor;
-            if(req.body.tipo)
+            if(req.body.tipo != publicacion.tipo)
                 publicacion.tipo = req.body.tipo;
-            if(req.body.fecha)
+            if(req.body.fecha != publicacion.fecha)
                 publicacion.fecha = req.body.fecha;
-            if(req.body.coleccion)
+            if(req.body.coleccion != publicacion.coleccion)
                 publicacion.coleccion = req.body.coleccion;
-            if(req.body.publisher)
+            if(req.body.publisher != publicacion.publisher)
                 publicacion.publisher = req.body.publisher;
-            if(req.body.journal)
+            if(req.body.journal != publicacion.journal)
                 publicacion.journal = req.body.journal;
-            if(req.body.volumen)
+            if(req.body.volumen != publicacion.volumen)
                 publicacion.volumen = req.body.volumen;
-            if(req.body.paginas)
+            if(req.body.paginas != publicacion.paginas)
                 publicacion.paginas = req.body.paginas;
-            if(req.body.numero)
+            if(req.body.numero != publicacion.numero)
                 publicacion.numero = req.body.numero;
-            if(req.body.booktitle)
+            if(req.body.booktitle != publicacion.booktitle)
                 publicacion.booktitle = req.body.booktitle;
-            if(req.body.descripcion)
+            if(req.body.descripcion != publicacion.descripcion)
                 publicacion.descripcion = req.body.descripcion;
-            if(req.body.isbn)
+            if(req.body.isbn != publicacion.isbn)
                 publicacion.isbn = req.body.isbn;
-            if(req.body.abstract)
+            if(req.body.abstract != publicacion.abstract)
                 publicacion.abstract = req.body.abstract;
-            if(req.body.url)
+            if(req.body.url != publicacion.url)
                 publicacion.url = req.body.url;
-            if(req.body.keywords)
+            if(req.body.keywords != publicacion.keywords)
                 publicacion.keywords = req.body.keywords;
-            if(req.body.notas)
+            if(req.body.notas != publicacion.notas)
                 publicacion.notas = req.body.notas;
-            if(req.body.usuario)
+            if(req.body.usuario != publicacion.usuario)
                 publicacion.usuario = req.body.usuario;
-            if(req.body.adjuntos)
+            if(req.body.adjuntos != publicacion.adjuntos)
                 publicacion.adjuntos = req.body.adjuntos;
 
             publicacion.save(function(err){

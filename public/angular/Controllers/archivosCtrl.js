@@ -48,7 +48,7 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
 				}
 			}
 		}, function(res){
-			console.log('Error de conexión con la base de datos');
+			console.error('Error de conexión con la base de datos');
 		});
 	};
 
@@ -118,7 +118,7 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
                 	directory: false
                 };
         }, function (resp) { // Función para manejo de error
-            console.log('Error status: ' + resp.status);
+            console.error('Error status: ' + resp.status);
         }, function (evt) { // Función para notificar progreso
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
             console.log('progress: ' + progressPercentage + '% ');
@@ -140,7 +140,7 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
 				then(function(res){
 					// console.log("Archivo " + filename + " borrado del sistema");
 				}, function(res){
-					// console.log("Error al borrar archivo en el sistema");
+					// console.error("Error al borrar archivo en el sistema");
 				});
         }
         if($scope.uploadedFiles.length < 1) // Si no hay más documentos por borrar, eliminar el arreglo vacio
@@ -156,11 +156,11 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
             $scope.getFiles(); // Reload de los archivos
         }, function(res){
             if(!res.data.sucess && res.data.error){
-        		console.log(res.data.message, res.data.error);
+        		// console.log(res.data.message, res.data.error);
 	            $scope.getFiles(); // Reload de los archivos
         	}
         	else
-            	console.log("Error de conexión con la base de datos para la creación del archivo.", res);
+            	console.error("Error de conexión con la base de datos para la creación del archivo.", res);
             $scope.uploadedFiles = []; // En caso de que falle en envio se limpia el formulario
         });
     };
@@ -181,7 +181,7 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
             $scope.getFiles();
             $scope.addingDirectory = false;
         }, function(res){
-            console.log("Error de conexión con la base de datos para la creación del directorio.", res);
+            console.error("Error de conexión con la base de datos para la creación del directorio.", res);
         });
     };
 
@@ -203,7 +203,7 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
 						$scope.getFiles(); // Reload de los archivos
 					}, function(res){
 						if (res.status === 400) {
-							console.log('Error al borrar archivo del sistema', res);
+							console.error('Error al borrar archivo del sistema', res);
 						}
 						if(res.status === 404){ // res.statusText === 'Not Found'
 							//alert("Se ha eliminado el archivo de la lista");
@@ -211,10 +211,10 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
 						}
 					});
     		}, function(res){
-    			console.log('Error de conexión con la base de datos', res);
+    			console.error('Error de conexión con la base de datos', res);
     		});
 		}, function(res){
-			console.log('Error de conexión con la base de datos', res);
+			console.error('Error de conexión con la base de datos', res);
 		});
     };
 
@@ -234,7 +234,7 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
     			$scope.editable = undefined;
     			$scope.tempFile = {};
     		}, function(res){
-    			console.log('Error de conexión con la base de datos');
+    			console.error('Error de conexión con la base de datos');
     		});
     };
 

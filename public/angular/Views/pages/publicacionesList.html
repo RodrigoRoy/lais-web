@@ -29,8 +29,20 @@
 				<td>{{publicacion.fecha | date : 'yyyy'}}</td>
 				<td>{{publicacion.createdAt | date : 'dd/MM/yy'}}</td>
 				<td><button class="btn btn-default btn-xs" ng-click="edit(publicacion._id)"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>
-				<td><button class="btn btn-danger btn-xs" ng-click="delete(publicacion._id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+				<td><button class="btn btn-danger btn-xs" ng-click="openModal(publicacion)"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
 			</tr>
 		</table>
 	</div>
+
+	<!-- Script para usar en Modal -->
+    <script type="text/ng-template" id="modal-template.html">
+    	<div class="modal-body text-center" id="modal-body">
+    		<p>
+    			<i class="fa fa-exclamation-triangle fa-2x" aria-hidden="true"></i>
+    			<br>
+    			¿Seguro que deseas borrar la publicación {{publicacion.titulo}} ?
+    		</p>
+    		<button class="btn btn-primary" type="button" ng-click="deleteConfirmed(publicacion._id)">Borrar</button>
+    	</div>
+    </script>
 </div>

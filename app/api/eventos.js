@@ -41,7 +41,7 @@ router.route('/')
         // .populate('lugar') // poblar la referencia a "lugar"
         .exec(function(err, eventos){
             if(err)
-                return res.send(err);
+                res.send(err);
             res.json(eventos);
         })
     })
@@ -83,8 +83,12 @@ router.route('/')
 
         evento.save(function(err){
             if(err)
-                return res.send(err);
-            res.json({message: 'Evento creado', id: evento._id});
+                res.send(err);
+            res.json({
+                success: true,
+                message: 'Evento creado',
+                event: evento
+            });
         })
     })
 
@@ -97,7 +101,7 @@ router.route('/news')
         .select('titulo imagen')
         .exec(function(err, eventos){
             if(err)
-                return res.send(err);
+                res.send(err);
             res.json(eventos);
         })
     })
@@ -114,7 +118,7 @@ router.route('/search')
         Evento.find(query)
         .exec(function(err, eventos){
             if(err)
-                return res.send(err);
+                res.send(err);
             res.json(eventos);
         })
     })
@@ -126,7 +130,7 @@ router.route('/find')
         .populate('documentos')
         .exec(function(err, eventos){
             if(err)
-                return res.send(err);
+                res.send(err);
             // Filtrar resultados:
             var results = []; // Conjunto de resultados
             var patt = new RegExp('.*' + req.query.search + '.*', "i"); // patrón de búsqueda
@@ -148,7 +152,7 @@ router.route('/:evento_id')
         .populate('documentos')
         .exec(function(err, evento){
             if(err)
-                return res.send(err);
+                res.send(err);
             res.json(evento);
         })
     })
@@ -157,43 +161,47 @@ router.route('/:evento_id')
     .put(function(req, res){
         Evento.findById(req.params.evento_id, function(err, evento){
             if(err)
-                return res.send(err);
+                res.send(err);
             
-            if(req.body.titulo)
+            if(req.body.titulo != evento.titulo)
                 evento.titulo = req.body.titulo;
-            if(req.body.contenidoHTML)
+            if(req.body.contenidoHTML != evento.contenidoHTML)
                 evento.contenidoHTML = req.body.contenidoHTML;
-            if(req.body.fecha)
+            if(req.body.fecha != evento.fecha)
                 evento.fecha = req.body.fecha;
-            if(req.body.fechaFin)
+            if(req.body.fechaFin != evento.fechaFin)
              evento.fechaFin = req.body.fechaFin;
-            if(req.body.horario)
+            if(req.body.horario != evento.horario)
                 evento.horario = req.body.horario;
-            if(req.body.horarioFin)
+            if(req.body.horarioFin != evento.horarioFin)
              evento.horarioFin = req.body.horarioFin;
-            if(req.body.tipo)
+            if(req.body.tipo != evento.tipo)
                 evento.tipo = req.body.tipo;
-            if(req.body.imagen)
+            if(req.body.imagen != evento.imagen)
                 evento.imagen = req.body.imagen;
-            if(req.body.coordinador)
+            if(req.body.coordinador != evento.coordinador)
                 evento.coordinador = req.body.coordinador;
-            if(req.body.participantes)
+            if(req.body.participantes != evento.participantes)
                 evento.participantes = req.body.participantes;
-            if(req.body.lugar)
+            if(req.body.lugar != evento.lugar)
                 evento.lugar = req.body.lugar; // id del lugar
-            if(req.body.notas)
+            if(req.body.notas != evento.notas)
                 evento.notas = req.body.notas;
-            if(req.body.documentos)
+            if(req.body.documentos != evento.documentos)
                 evento.documentos = req.body.documentos;
-            if(req.body.keywords)
+            if(req.body.keywords != evento.keywords)
                 evento.keywords = req.body.keywords;
-            if(req.body.usuario)
+            if(req.body.usuario != evento.usuario)
                 evento.usuario = req.body.usuario;
 
             evento.save(function(err){
                 if(err)
-                    return res.send(err);
-                res.json({message: 'Evento actualizado'});
+                    res.send(err);
+                res.json({
+                    success: true,
+                    message: 'Evento actualizado',
+                    event: evento
+                });
             });
         });
     })
@@ -204,8 +212,11 @@ router.route('/:evento_id')
             _id: req.params.evento_id
         }, function(err, evento){
             if(err)
-                return res.send(err);
-            res.json({message: 'Evento borrado exitosamente'});
+                res.send(err);
+            res.json({
+                success: true,
+                message: 'Evento borrado exitosamente'
+            });
         });
     })
 

@@ -12,7 +12,7 @@ angular.module('PublicacionCtrl',[]).controller('PublicacionController', functio
 			$scope.publicacion = res.data;
 		}, function(res){
 			// Fail
-			console.log('Error de conexión con la base de datos: ', res);
+			console.error('Error de conexión con la base de datos: ', res);
 		});
 	};
 

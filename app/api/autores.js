@@ -95,13 +95,13 @@ router.route('/:autor_id')
             if(err)
                 res.send(err);
             
-            if(req.body.nombre)
+            if(req.body.nombre != autor.nombre)
                 autor.nombre = req.body.nombre;
-            if(req.body.apellido)
+            if(req.body.apellido != autor.apellido)
                 autor.apellido = req.body.apellido;
-            if(req.body.procedencia)
+            if(req.body.procedencia != autor.procedencia)
                 autor.procedencia = req.body.procedencia;
-            if(req.body.email)
+            if(req.body.email != autor.email)
                 autor.email = req.body.email;
 
             autor.save(function(err){

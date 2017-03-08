@@ -172,15 +172,15 @@ router.route('/:archivo_id')
                 return res.send(err);
             
             // El nombre del archivo no se debe cambiar para no perder la referencia en sistema de archivos
-            // if(req.body.filename)
+            // if(req.body.filename != archivo.filename)
             //     archivo.filename = req.body.filename;
-            if(req.body.descripcion)
+            if(req.body.descripcion != archivo.descripcion)
                 archivo.descripcion = req.body.descripcion;
-            if(req.body.location)
+            if(req.body.location != archivo.location)
                 archivo.location = req.body.location;
-            if(req.body.directory)
+            if(req.body.directory != archivo.directory)
                 archivo.directory = req.body.directory;
-            if(req.body.usuario)
+            if(req.body.usuario != archivo.usuario)
                 archivo.usuario = req.body.usuario;
 
             archivo.save(function(err){

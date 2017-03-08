@@ -194,10 +194,10 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
             $scope.evento.imagen = resp.config.data.file.name;
             $scope.imageContainer = false;
         }, function (resp) { // Función para manejo de error
-            console.log('Error status: ' + resp.status);
+            console.error('Error status: ' + resp.status);
         }, function (evt) { // Función para notificar progreso
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+            console.error('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
         });
     };
 
@@ -269,10 +269,10 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
                             })
                     }
                 }, function(res){
-                    console.log('Error buscando archivos', res);
+                    console.error('Error buscando archivos', res);
                 });
         }, function (resp) { // Función para manejo de error
-            console.log('Error status: ' + resp.status);
+            console.error('Error status: ' + resp.status);
         }, function (evt) { // Función para notificar progreso
             $scope.progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
             console.log('progress: ' + $scope.progressPercentage + '% ');
@@ -287,13 +287,13 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
         // Borrar archivo del sistema:
         Archivo.unlink('/imgs/eventos/', filename).
             then(function(res){
-                console.log("Se ha borrado exitosamente el archivo del sistema");
+                // console.log("Se ha borrado exitosamente el archivo del sistema");
             }, function(res){
                 if (res.status === 400) {
-                    console.log('Error al borrar archivo del sistema');
+                    console.error('Error al borrar archivo del sistema');
                 }
                 if(res.status === 404){ // res.statusText === 'Not Found'
-                    console.log("El archivo ya ha sido borrado del sistema");
+                    console.error("El archivo ya ha sido borrado del sistema");
                 }
             });
     };
@@ -301,6 +301,8 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
     // Elimina un archivo adjunto
     $scope.deleteFile = function(archivo){
         var index = $scope.evento.documentos.indexOf(archivo._id); // Buscar el indice
+        // console.log("Borrando archivo: ", archivo);
+        // console.log("Con indice: ", index);
         if(index !== -1){ // Remover de manera segura en el arreglo (ambos arreglos)
             $scope.evento.documentos.splice(index, 1);
             $scope.adjuntos.splice(index, 1);
@@ -311,22 +313,27 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
         // Verificar si al borrar es el único existente
         Evento.attachment(archivo._id) // existen eventos con este archivo como adjunto?
         .then(function(res){
+            // console.log('Comprobando si existe archivo adjunto', res);
             if(res.data && res.data.length === 1){
                 // Borrar archivo del sistema:
+                // console.log('Intentando borrar del sistema de archivo', archivo.location + archivo.filename);
                 Archivo.unlink(archivo.location + archivo.filename)
                 .then(function(res){
                     // if(res.data.success)
-                    //     console.log('Operación exitosa. ', res.data.message);
+                    //     console.log('Borrado en sistema exitoso!', res.data.message);
                     Archivo.delete(archivo._id)
                     .then(function(res){
                         // if(res.data.success)
-                        //     console.log('Operación exitosa. ', res.data.message);
+                        //     console.log('Borrado en base de datos exitoso!', res.data.message);
                     }, function(res){
                         console.error('No se pudo borrar archivo en base de datos. ', res);
                     });
                 }, function(res){
                     console.error('No se pudo borrar archivo en servidor. ', res);
                 });
+            }
+            else{
+                // console.log('Este archivo es adjunto en otro evento. Se ha borrado únicamente la referencia.');
             }
         }, function(res){
             console.error('Error al revisar documentos adjuntos. ', res);
@@ -337,11 +344,11 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
     $scope.enviar = function(){
         Evento.create($scope.evento) // Subir la información del evento a la base de datos
         .then(function(res){
-            // console.log("Evento creado exitosamente", res.data.id);
+            // console.log("Evento creado exitosamente", res.data.event._id);
             alert("Se ha guardado la información del evento.");
-            $location.url('/eventos/' + res.data.id); // Redirigir a la página del evento creado
+            $location.url('/eventos/' + res.data.event._id); // Redirigir a la página del evento creado
         }, function(res){
-            console.log("Error de conexión con la base de datos para la creación del evento.", res);
+            console.error("Error de conexión con la base de datos para la creación del evento.", res);
         });
     };
 
@@ -349,11 +356,11 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
     $scope.editar = function(){
         Evento.update($routeParams.id, $scope.evento) // Subir la información del evento a la base de datos
         .then(function(res){
-            // console.log("Evento creado exitosamente", res.data.id);
+            // console.log("Evento creado exitosamente", res.data.event._id);
             alert("Se ha actualizado la información del evento.");
             $location.url('/eventos/' + $routeParams.id); // Redirigir a la página del evento actualizado
         }, function(res){
-            console.log("Error de conexión con la base de datos en la edición del evento.", res);
+            console.error("Error de conexión con la base de datos en la edición del evento.", res);
         });
     };
 
@@ -380,7 +387,7 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
             // Parse para "keywords":
             if($scope.evento.keywords && $scope.evento.keywords.length > 0){
                 $scope.keywords = [];
-                console.log($scope.evento.keywords);
+                // console.log($scope.evento.keywords);
                 for(var i in $scope.evento.keywords)
                     $scope.keywords.push({"text": $scope.evento.keywords[i]});
             }
@@ -408,7 +415,7 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
                 }
             });
         }, function(res){
-            console.log("Error de conexión con la base de datos para obtener información del evento.", res);
+            console.error("Error de conexión con la base de datos para obtener información del evento.", res);
         });
     } // FIN EDICION
 });

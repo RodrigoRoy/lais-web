@@ -106,11 +106,16 @@
 	<!-- <br>
     <pre>{{uploadedFiles | json}}</pre> -->
 
+    <!-- Script para usar en Modal -->
     <script type="text/ng-template" id="modal-template.html">
-    	<div class="modal-body" id="modal-body">
-    		<p>¿Seguro que deseas borrar <span ng-if="!archivo.directory">el archivo</span><span ng-if="archivo.directory">la carpeta</span> {{archivo.filename}} ?</p>
+    	<div class="modal-body text-center" id="modal-body">
+    		<p>
+    			<i class="fa fa-exclamation-triangle fa-2x" aria-hidden="true"></i>
+    			<br>
+    			¿Seguro que deseas borrar <span ng-if="!archivo.directory">el archivo</span><span ng-if="archivo.directory">la carpeta</span> {{archivo.filename}} ?
+    		</p>
     		<button class="btn btn-primary" type="button" ng-click="deleteConfirmed(archivo._id)">Borrar</button>
-    		<button class="btn btn-primary" type="button" ng-click="closeModal()">Cancelar</button>
+    		<!-- <button class="btn btn-primary" type="button" ng-click="closeModal()">Cancelar</button> -->
     	</div>
     </script>
 
