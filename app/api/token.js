@@ -9,9 +9,17 @@ module.exports = function(req, res, next){
         // verifica con secret y checa expiración
         jwt.verify(token, secret, function(err, decoded){
             if(err){
-                return res.status(403).send({
+                if(err.name === 'TokenExpiredError'){
+                    return res.send({
+                        success: false,
+                        message: 'JWT expirado',
+                        error: err
+                    });
+                }
+                return res.send({
                     success: false,
-                    message: 'Error en autentificación de token.'
+                    message: 'Error en autentificación de token',
+                    error: err
                 });
             }
             else{

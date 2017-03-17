@@ -25,13 +25,12 @@ angular.module('IndexCtrl',[]).controller('IndexController', function ($scope, $
 			.then(function(res){
 				$scope.user = res.data;
 				$scope.loggedIn = !angular.equals($scope.user, {});
-				//console.log("LoggedIn? ", $scope.loggedIn);
+				// console.log("LoggedIn? ", $scope.loggedIn);
 				console.log("User: ", $scope.user);
 			}, function(res){
-				// console.error("User data can't found: ", res);
 				$scope.user = {};
 				$scope.loggedIn = !angular.equals($scope.user, {});
-				console.error("LoggedIn? ", $scope.loggedIn);
+				// console.error("LoggedIn? ", $scope.loggedIn);
 				console.error("User: ", $scope.user);
 			});
 	});
