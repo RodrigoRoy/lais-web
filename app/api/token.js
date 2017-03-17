@@ -10,13 +10,13 @@ module.exports = function(req, res, next){
         jwt.verify(token, secret, function(err, decoded){
             if(err){
                 if(err.name === 'TokenExpiredError'){
-                    return res.send({
+                    return res.status(403).send({
                         success: false,
                         message: 'JWT expirado',
                         error: err
                     });
                 }
-                return res.send({
+                return res.status(403).send({
                     success: false,
                     message: 'Error en autentificación de token',
                     error: err
@@ -36,7 +36,7 @@ module.exports = function(req, res, next){
         // devolver respuesta HTTP 403 (acceso prohibido) y un mensaje de error
         return res.status(403).send({
             success: false,
-            message: 'No hay token.'
+            message: 'No hay token'
         });
     }
 }

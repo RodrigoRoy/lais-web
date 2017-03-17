@@ -32,6 +32,7 @@ angular.module('IndexCtrl',[]).controller('IndexController', function ($scope, $
 				$scope.loggedIn = !angular.equals($scope.user, {});
 				// console.error("LoggedIn? ", $scope.loggedIn);
 				console.error("User: ", $scope.user);
+				Auth.logout(); // Borra token en localStorage (evita errores al tener un token expirado)
 			});
 	});
 
