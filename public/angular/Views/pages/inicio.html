@@ -1,19 +1,39 @@
-<div>
+<div class="bicolor-sections">
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary">
+                            <center>
+                                <img id="iconoLAIS" class="img-responsive" src="imgs/lais_logo.png">
+                            </center>
+                        </i>
+                    </span>
+                    <p>
+                        El <strong>Laboratorio Audiovisual de Investigación Social (LAIS)</strong> es un espacio colectivo e interdisciplinario dedicado a la investigación social con imágenes. Creado en 2002, el LAIS realiza estudios que incorporan imágenes, tanto fijas como en movimiento, como fuentes primarias, ya sea procedentes de archivo o generadas desde la misma investigación; y como medio de divulgación de las investigaciones sociales.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Seccion de carrusel/inicio -->
     <section id="secCarrusel">
         <center>
-            <hr>
+            <!-- <hr>
             <h1 style="color:white;">Noticias</h1>
-            <hr>
+            <hr> -->
             <div uib-carousel interval="myInterval">
                 <div uib-slide ng-repeat="slide in slides" index="$index">
-                    <a href="eventos/{{slide._id}}">
-                    <img class="slide-img" ng-src="imgs/eventos/{{slide.imagen}}">
-                    <div class="carousel-caption" style="font-family: 'Roboto Slab', serif;">
-                        <h4>{{slide.titulo}}</h4>
-                        <!-- <p>{{slide.descripcion}}</p> -->
-                    </div>
-                    </a>
+                    <!-- <a href="eventos/{{slide._id}}"> -->
+                        <!-- <img class="slide-img" ng-src="imgs/carrusel/{{slide.imagen}}"> -->
+                        <img class="slide-img" ng-src="imgs/carrusel/{{slide}}">
+                        <div class="carousel-caption" style="font-family: 'Roboto Slab', serif;">
+                            <h4>{{slide.titulo}}</h4>
+                            <!-- <p>{{slide.descripcion}}</p> -->
+                        </div>
+                    <!-- </a> -->
                 </div>
             </div>
         </center>
@@ -24,19 +44,21 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center" id="headerIcon">
-                    <span class="fa-stack fa-4x">
+                    <!-- <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary">
                             <center>
                                 <img id="iconoLAIS" class="img-responsive" src="imgs/lais_logo.png">
                             </center>
                         </i>
-                    </span>
+                    </span> -->
                     <h2 class="section-heading">Trayectoria</h2>
-                    <h3 class="section-subheading text-muted">Laboratorio Audiovisual de Investigación Social</h3>
+                    <!-- <h3 class="section-subheading text-muted">Laboratorio Audiovisual de Investigación Social</h3> -->
                 </div>
             </div>
             <div class="row text-center">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                <p>
+                    <!-- Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. -->
+                    <iframe src='https://cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1iTb_62FbhEvvrsr0d7NRzJe6ywHEwtgsoWoumVKb6J4&font=OpenSans-GentiumBook&lang=en&hash_bookmark=true&initial_zoom=2&height=650' width='100%' height='650' webkitallowfullscreen mozallowfullscreen allowfullscreen frameborder='0'></iframe>
                 </p>
             </div>
         </div>
@@ -57,21 +79,33 @@
                         <img src="imgs/huellas.png" class="img-responsive img-circle imagen">
                     </a>
                     <h4 class="service-heading">Huellaz de Luz</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <p class="text-muted">
+                        Da acceso a <strong>imágenes</strong> de América Latina, siglos XIX y XX.
+                        <br>
+                        Incluye documentación que permite ir más allá de las imágenes y conocer acerca de sus contextos de producción.
+                        <br>
+                        Vincula con archivos de imágenes de diversos países latinoamericanos y quienes las estudian.
+                    </p>
                 </div>
                 <div class="col-md-4">
                     <a href="http://lais.mora.edu.mx/metadoc/#/" target="_blank">
                         <img src="imgs/metaDoc.png" class="img-responsive img-circle imagen">
                     </a>
                     <h4 class="service-heading">metaDOC</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <p class="text-muted">
+                        Sitio web que pone a disposición la catalogación de la colección de <strong>documentales</strong> del Laboratorio Audiovisual de Investigación Social del Instituto Mora, con la intención de impulsar el análisis e investigación sobre este tipo de documentos.
+                    </p>
                 </div>
                 <div class="col-md-4">
                     <a href="http://www.mora.edu.mx/Inicio.html" target="_blank">
                         <img src="imgs/exposicion.png" class="img-responsive img-circle imagen">
                     </a>
                     <h4 class="service-heading">Exposición Interactiva</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <p class="text-muted">
+                        Interactivo ¿Cómo la ves? Infancia y Televisión.
+                        <br>
+                        Diseñado para los padres, tutores y maestros que estamos interesados en reflexionar sobre el consumo indiscriminado y excesivo de la <strong>televisión comercial</strong> por parte de nuestros hijos y alumnos.
+                    </p>
                 </div>
             </div>
         </div>

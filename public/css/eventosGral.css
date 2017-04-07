@@ -10,6 +10,7 @@
 
 .thumbnail{
 	background-color: #eee;
+	border: 0; /*Default border: 1px solid #ddd;*/
 }
 
 /*Imagen que se muestra en grid de eventos*/
@@ -24,7 +25,50 @@
 
 /*Texto que se muestra en grid de eventos*/
 .thumbnail-text{
-	height: 220px;
+	--verticalPadSize: 4px;
+	padding: 4px 0; /*compatibilidad sin variables CSS en IE, Edge*/
+	padding: var(--verticalPadSize) 0;
+	/*height: 2.4em;*/
+	height: calc(2.4em + 8px); /*compatibilidad sin variables CSS en IE, Edge*/
+	height: calc(2.4em + (var(--verticalPadSize) * 2));
+	overflow: hidden;
+	color: #333;
+	text-align: center;
+}
+
+/* Ellipsis (.block-with-text)*/ 
+/* Source: http://hackingui.com/front-end/a-pure-css-solution-for-multiline-text-truncation/*/
+/* No funciona para este caso porque los títulos pueden ser cortos y CSS espera textos más largos*/
+
+/* Permite agregar ellipsis (puntos suspensivos) cuando el texto es muy largo */
+/* Comentario en: http://dev.mobify.com/blog/multiline-ellipsis-in-pure-css/*/
+/* Ejemplo y uso en: http://codepen.io/anon/pen/htbxA*/
+/* NOTA: No funciona en Firefox */
+.vertically-centered {
+	--verticalPadSize: 4px;
+	padding: 4px 0; /*compatibilidad sin variables CSS en IE, Edge*/
+	padding: var(--verticalPadSize) 0;
+    height: calc(2.4em + 8px + 3px); /*compatibilidad sin variables CSS en IE, Edge*/
+	height: calc(2.4em + (var(--verticalPadSize) * 2) + 3px);
+    overflow: hidden;
+    font-size: 1.4em;
+    max-width: 100%;
+    color: #333;
+    text-align: center;
+}
+.vertically-centered:after {
+    content: "";
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+.vertically-centered div {
+    display: inline-block;
+    display: -webkit-inline-box;
+    max-height: 100%;
+    vertical-align: middle;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 /*Efecto(s) al estar sobre el thumbnail de un evento*/
@@ -34,6 +78,14 @@ a.thumbnail-link:hover{
 a.thumbnail-link:hover .thumbnail{
 	background: rgba(238,238,238,0.85);
 	background: linear-gradient(rgba(238,238,238,0.6) 0%, rgba(238,238,238,1) 80%);
+}
+
+/* Efecto "Reveal" de Hover con personalización */
+.hvr-reveal{
+	display: block;
+}
+.hvr-reveal:before{
+	border-color: #c85c2d;
 }
 
 /*Para uso de eventos que aún son disponibles (no han ocurrido aún)*/

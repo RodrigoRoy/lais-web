@@ -28,20 +28,23 @@
 	<hr>
 	<div class="row">
 		<div class="col-sm-6 col-md-4" ng-repeat="evento in eventos.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
-			<a href="/eventos/{{evento._id}}" class="thumbnail-link">
-				<div class="thumbnail"> <!-- ng-class="{available: isAvaliable(evento.fecha)}" -->
+			<a href="/eventos/{{evento._id}}">
+				<div class="thumbnail hvr-reveal"> <!-- ng-class="{available: isAvaliable(evento.fecha)}" -->
 			  		<img class="thumbnail-image" src="imgs/eventos/{{evento.imagen}}" alt="imagen-{{evento.titulo}}">
-		  			<div class="caption thumbnail-text">
-		    			<h3>{{evento.titulo}}</h3>
-	    				<p>{{evento.descripcion}}</p>
+		  			<div class="vertically-centered">
+		    			<div>{{evento.titulo}}</div>
+	    				<!-- <p>{{evento.descripcion}}</p> -->
 		  			</div>
 		  			<div class="available-label" ng-show="isAvaliable(evento.fecha)">Próximamente</div>
 				</div>
 			</a>
 		</div>
 	</div>
-	<center>
+	<center class="hidden-xs">
 		<ul uib-pagination boundary-link-numbers="true" direction-links="true" boundary-links="true" first-text="Inicio" previous-text="Anterior" next-text="Siguiente" last-text="Último" total-items="eventos.length" ng-model="currentPage" rotate="true" max-size="maxSize" class="pagination" items-per-page="itemsPerPage"></ul>
+	</center>
+	<center class="visible-xs-block">
+		<ul uib-pagination boundary-link-numbers="true" direction-links="false" boundary-links="false" first-text="<<" previous-text="<" next-text=">" last-text=">>" total-items="eventos.length" ng-model="currentPage" rotate="true" max-size="maxSize" class="pagination" items-per-page="itemsPerPage"></ul>
 	</center>
 </div>
 

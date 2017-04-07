@@ -2,22 +2,18 @@
 .slide-img{
 	/*display: block;*/
 	margin: auto;
-	height: 550px !important;
+	/*height: 550px !important;*/ /*<-- Ya no es necesario*/
+	max-width: 100%; /*Para imagenes responsivas*/
 }
 
 /*controla la separación del margin-top con la sección del carusel con respecto del navbar*/
-#secCarrusel{
+/*#secCarrusel{
 	margin-top: -7%;
-}
+}*/
 
 /*Tipografía utilizado en los textos de cada slide*/
 .carousel-caption{
 	font-family: 'Roboto Slab', serif;
-}
-
-/*Cambiar el background de la seccion de historia*/
-#historia{
-	background-color: white;
 }
 
 /* Controla el tamaño de las imagenes de recursos en linea(metadoc, huellas de luz,..)*/
@@ -32,5 +28,24 @@
 }
 
 #iconoLAIS{
-	margin-top: -91%;
+	/*margin-top: -91%;*/
+	margin-top: calc(23px - 100%);
+}
+
+/*Secciones principales que alternan el color de fondo y color de texto*/
+.bicolor-sections section:nth-child(even){
+	background-color: #222222;
+	color: #eee;
+}
+.bicolor-sections section:nth-child(odd){
+	background-color: #eee;
+	color: #333;
+}
+.bicolor-sections section:first-child{
+	padding: 100px 0;
+	font-size: 1.25em;
+}
+.bicolor-sections p{
+	font-family: 'Roboto Slab', serif;
+	font-size: 1.25em;
 }

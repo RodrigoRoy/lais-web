@@ -40,7 +40,7 @@ footer{
 }
 
 /*Estilo a usar en dispositivos no-móviles (ancho > 768px)*/
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
 	/*Correccion para que el lado derecho del menu no quede pegado al borde*/
 	.nav{
 		padding-right: 15px;
