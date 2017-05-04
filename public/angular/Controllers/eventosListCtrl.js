@@ -1,7 +1,10 @@
 //Controlador que enlista todos los eventos
 
 angular.module('EventosListCtrl',[]).controller('EventosListController', function ($scope, $location, $uibModal, Evento) {
-	
+	// No permitir ingresar a la página de este controlador sin sesión iniciada
+    if(!$scope.loggedIn)
+        $location.path('/');
+    
 	$scope.propertyName = 'createdAt';
 	$scope.reverse = true;
 

@@ -1,6 +1,9 @@
 //Controlador para un usuario registrado (administrador)
 
-angular.module('UsuariosCtrl',[]).controller('UsuariosController', function ($scope, Usuario, $route) {
+angular.module('UsuariosCtrl',[]).controller('UsuariosController', function ($scope, Usuario, $location, $route) {
+	// No permitir ingresar a la página de este controlador sin sesión iniciada
+	if(!$scope.loggedIn)
+		$location.path('/');
 	
 	// Valores por default para un nuevo usuario
 	var defaultPermissions = {

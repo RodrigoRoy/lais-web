@@ -4,6 +4,10 @@
 */
 
 angular.module('EventoFormCtrl', []).controller('EventoFormController', function ($scope, $location, $routeParams, $http, Evento, Archivo, Upload) {
+    // No permitir ingresar a la página de este controlador sin sesión iniciada
+    if(!$scope.loggedIn)
+        $location.path('/');
+    
     $scope.evento = {}; // Contiene los datos del evento
     $scope.evento.usuario = $scope.user.id || undefined; // Obtener Id de usuario
     $scope.adjuntos = []; // Información completa de los archivos adjuntos (para la vista)

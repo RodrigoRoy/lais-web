@@ -2,6 +2,10 @@
 
 angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($scope, $location, $routeParams, $uibModal, Archivo, Upload){
 	
+    // No permitir ingresar a la página de este controlador sin sesión iniciada
+    if(!$scope.loggedIn)
+        $location.path('/');
+
 	$scope.propertyName = 'createdAt'; // Propiedad usada por default para ordenar los archivos
 	$scope.reverse = true; // Orden reversible por default
 	$scope.addingDirectory = false;

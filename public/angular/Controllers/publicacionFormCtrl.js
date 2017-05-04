@@ -2,7 +2,11 @@
 
 angular.module('PublicacionFormCtrl',[]).controller('PublicacionFormController', function ($scope, $location, $routeParams, Publicacion, Autor, Archivo, Upload){
 
-	// Variables
+	// No permitir ingresar a la página de este controlador sin sesión iniciada
+    if(!$scope.loggedIn)
+        $location.path('/');
+    
+    // Variables
 	$scope.publicacion = {}; // Representa al objeto que se ingresa en la base de datos
 	$scope.adjuntos = []; // Información completa de los archivos adjuntos (para la vista)
 	$scope.edit = false; // Determina si se está realizando nuevo ingreso o edición de una publicación existente

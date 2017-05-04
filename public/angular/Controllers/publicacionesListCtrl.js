@@ -1,6 +1,9 @@
 //Controlador que enlista todos los eventos
 
 angular.module('PublicacionesListCtrl',[]).controller('PublicacionesListController', function ($scope, $location, $uibModal, Publicacion) {
+	// No permitir ingresar a la página de este controlador sin sesión iniciada
+	if(!$scope.loggedIn)
+		$location.path('/');
 	
 	$scope.propertyName = 'fecha';
 	$scope.reverse = true;
