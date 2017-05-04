@@ -16,10 +16,11 @@ angular.module('EventosCtrl', []).controller('EventosController', function ($sco
 		});
 	};
 
-	$scope.buscar = function (query){
-		if(query)
-			$location.url('/eventos/busqueda/'+query)
-	}
+	// Auxiliar para realizar 
+	// $scope.buscar = function(query){
+	// 	if(query)
+	// 		$location.url('/eventos/busqueda/'+query)
+	// }
 
 	// Determina si una fecha es menor que el día de hoy (en tiempo de ejecución)
 	$scope.isAvaliable = function(fechaStr){

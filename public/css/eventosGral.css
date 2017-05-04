@@ -8,6 +8,7 @@
 	margin-top: 5%;
 }
 
+/*Representa el espacio destinado para mostrar imagen y título de un evento*/
 .thumbnail{
 	background-color: #eee;
 	border: 0; /*Default border: 1px solid #ddd;*/
@@ -21,6 +22,27 @@
 .thumbnail > img.thumbnail-image{
 	height: 240px;
 	width: auto;
+}
+
+/*Cuando no hay imagen para un evento, se colorea un div y se escribe el título centrado. 
+Esto reeplaza a la imagen faltante*/
+.image-replacement{
+	height: 240px;
+	width: auto;
+	background: #30499B;
+	background: -webkit-linear-gradient(#367ABD, #30499B);
+	background: -o-linear-gradient(#367ABD, #30499B);
+	background: -moz-linear-gradient(#367ABD, #30499B);
+	background: linear-gradient(#367ABD, #30499B);
+	display: flex;
+    align-items: center;
+    font-size: 1.5em;
+    color: white;
+    text-align: center;
+}
+/*Evita que un texto (normalmente un link) no se decore con una linea bajo el texto en ningún momento*/
+.no-text-decoration:active, .no-text-decoration:focus, .no-text-decoration:hover, .no-text-decoration:visited, .no-text-decoration{
+    text-decoration: none;
 }
 
 /*Texto que se muestra en grid de eventos*/
@@ -72,13 +94,14 @@
 }
 
 /*Efecto(s) al estar sobre el thumbnail de un evento*/
-a.thumbnail-link:hover{
+/*DEPRECATED. Reemplazado por hvr-reveal*/
+/*a.thumbnail-link:hover{
 	text-decoration: none;
 }
 a.thumbnail-link:hover .thumbnail{
 	background: rgba(238,238,238,0.85);
 	background: linear-gradient(rgba(238,238,238,0.6) 0%, rgba(238,238,238,1) 80%);
-}
+}*/
 
 /* Efecto "Reveal" de Hover con personalización */
 .hvr-reveal{
@@ -92,7 +115,7 @@ a.thumbnail-link:hover .thumbnail{
 .available-label{
 	position: absolute;
     top: 6px;
-    right: 20px;
+    right: 6px;
     background-color: rgba(45, 136, 45, 0.80);
     padding: 3px 5px;
     color: #ccc;
