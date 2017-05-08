@@ -47,11 +47,13 @@ angular.module('IndexCtrl',[]).controller('IndexController', function ($scope, $
 
 	// Determina si el usuario tiene permisos para realizar determinada operación
 	// Recibe como parámetro un string con la operación deseada:
-	// "create", "read", "update", "delete"
+	// "create", "read", "update", "delete", "admin"
 	// Devuelve true en caso de que el usuario tenga permisos suficientes, false en otro caso.
 	$scope.can = function(permission){
 		if(!$scope.user.permisos)
 			return false;
+		if(permission === 'admin' && $scope.user.admin)
+			return true;
 		var binaryPermission = $scope.user.permisos.toString(2); // Conversión decimal a binario
 		while(binaryPermission.length < 4) // Forzar la notación a 4 dígitos
 			binaryPermission = '0' + binaryPermission; // Ceros a la izquierda

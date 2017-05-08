@@ -36,6 +36,7 @@ router.post('/authenticate', function(req, res){
                 // crear token
                 var token = jwt.sign({
                     username: usuario.username,
+                    admin: usuario.admin,
                     permisos: usuario.permisos,
                     id: usuario._id
                 }, secret, {

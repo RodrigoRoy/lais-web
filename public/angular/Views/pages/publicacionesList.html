@@ -1,6 +1,6 @@
 <div class="container my-container">
 	<h1>Lista de publicaciones</h1>
-	<button class="btn btn-default btn-lg" ng-click="new()"><i class="fa fa-book" aria-hidden="true"></i> Nueva publicación</button>
+	<button class="btn btn-default btn-lg" ng-click="new()" ng-show="can('create')"><i class="fa fa-book" aria-hidden="true"></i> Nueva publicación</button>
 	<div class="table-responsive">
 		<table class="table">
 			<tr>
@@ -20,16 +20,34 @@
 					<a href="" ng-click="sortBy('createdAt')">Creado en</a> 
 					<i class="fa fa-sort-asc" aria-hidden="true" ng-show="propertyName === 'createdAt' && !reverse"></i><i class="fa fa-sort-desc" aria-hidden="true" ng-show="propertyName === 'createdAt' && reverse"></i>
 				</th>
-				<th></th>
-				<th></th>
+				<th ng-show="can('update')"></th> <!-- Icono actualizar -->
+				<th ng-show="can('delete')"></th> <!-- Icono borrar -->
 			</tr>
 			<tr ng-repeat="publicacion in publicaciones | orderBy: propertyName: reverse">
-				<td><a href="{{'/publicaciones/' + publicacion._id}}">{{publicacion.titulo}}</a></td>
-				<!-- <td>{{publicacion.tipo}}</td> -->
-				<td>{{publicacion.fecha | date : 'yyyy'}}</td>
-				<td>{{publicacion.createdAt | date : 'dd/MM/yy'}}</td>
-				<td><button class="btn btn-default btn-xs" ng-click="edit(publicacion._id)"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>
-				<td><button class="btn btn-danger btn-xs" ng-click="openModal(publicacion)"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+				<!-- TITULO -->
+				<td>
+					<a href="{{'/publicaciones/' + publicacion._id}}">{{publicacion.titulo}}</a>
+				</td>
+				<!-- TIPO -->
+				<!-- <td>
+					{{publicacion.tipo}}
+				</td> -->
+				<!-- FECHA -->
+				<td>
+					{{publicacion.fecha | date : 'yyyy'}}
+				</td>
+				<!-- FECHA CREACION -->
+				<td>
+					{{publicacion.createdAt | date : 'dd/MM/yy'}}
+				</td>
+				<!-- ACTUALIZAR PUBLICACION -->
+				<td ng-show="can('update')">
+					<button class="btn btn-default btn-xs" ng-click="edit(publicacion._id)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+				</td>
+				<!-- BORRAR PUBLICACION -->
+				<td ng-show="can('delete')">
+					<button class="btn btn-danger btn-xs" ng-click="openModal(publicacion)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+				</td>
 			</tr>
 		</table>
 	</div>

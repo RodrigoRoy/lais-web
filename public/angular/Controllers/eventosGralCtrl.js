@@ -16,7 +16,7 @@ angular.module('EventosCtrl', []).controller('EventosController', function ($sco
 		});
 	};
 
-	// Auxiliar para realizar 
+	// Auxiliar para realizar busquedas (está deshabilitada esta opción)
 	// $scope.buscar = function(query){
 	// 	if(query)
 	// 		$location.url('/eventos/busqueda/'+query)

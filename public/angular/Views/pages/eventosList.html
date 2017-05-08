@@ -1,6 +1,6 @@
 <div class="container my-container">
 	<h1>Lista de eventos</h1>
-	<button class="btn btn-default btn-lg" ng-click="new()"><i class="fa fa-calendar-o" aria-hidden="true"></i> Nuevo evento</button>
+	<button class="btn btn-default btn-lg" ng-click="new()" ng-show="can('create')"><i class="fa fa-calendar-o" aria-hidden="true"></i> Nuevo evento</button>
 	<div class="table-responsive">
 		<table class="table">
 			<tr>
@@ -8,14 +8,6 @@
 					<a href="" ng-click="sortBy('titulo')">Título</a> 
 					<i class="fa fa-sort-asc" aria-hidden="true" ng-show="propertyName === 'titulo' && !reverse"></i><i class="fa fa-sort-desc" aria-hidden="true" ng-show="propertyName === 'titulo' && reverse"></i>
 				</th>
-				<!-- <th>
-					<a href="" ng-click="sortBy('descripcion')">Descripción</a> 
-					<i class="fa fa-sort-asc" aria-hidden="true" ng-show="propertyName === 'descripcion' && !reverse"></i><i class="fa fa-sort-desc" aria-hidden="true" ng-show="propertyName === 'descripcion' && reverse"></i>
-				</th> -->
-				<!-- <th>
-					<a href="" ng-click="sortBy('tipo')">Tipo</a> 
-					<i class="fa fa-sort-asc" aria-hidden="true" ng-show="propertyName === 'tipo' && !reverse"></i><i class="fa fa-sort-desc" aria-hidden="true" ng-show="propertyName === 'tipo' && reverse"></i>
-				</th> -->
 				<th>
 					<a href="" ng-click="sortBy('fecha')">Fecha</a> 
 					<i class="fa fa-sort-asc" aria-hidden="true" ng-show="propertyName === 'fecha' && !reverse"></i><i class="fa fa-sort-desc" aria-hidden="true" ng-show="propertyName === 'fecha' && reverse"></i>
@@ -24,18 +16,30 @@
 					<a href="" ng-click="sortBy('createdAt')">Creado en</a> 
 					<i class="fa fa-sort-asc" aria-hidden="true" ng-show="propertyName === 'createdAt' && !reverse"></i><i class="fa fa-sort-desc" aria-hidden="true" ng-show="propertyName === 'createdAt' && reverse"></i>
 				</th>
-				<th></th>
-				<th></th>
+				<th ng-show="can('update')"></th> <!-- Icono actualizar -->
+				<th ng-show="can('delete')"></th> <!-- Icono borrar -->
 			</tr>
 			<tr ng-repeat="evento in eventos | orderBy: propertyName: reverse">
-				<td><a href="{{'/eventos/' + evento._id}}">{{evento.titulo}}</a></td>
-				<!-- <td>{{evento.descripcion}}</td> -->
-				<!-- <td>{{evento.tipo}}</td> -->
-				<td>{{evento.fecha | date : 'dd/MM/yy'}}</td>
-				<td>{{evento.createdAt | date : 'dd/MM/yy'}}</td>
-				<td><button class="btn btn-default btn-xs" ng-click="edit(evento._id)"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>
-				<!-- <td><button class="btn btn-danger btn-xs" ng-click="delete(evento._id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td> -->
-				<td><button class="btn btn-danger btn-xs" ng-click="openModal(evento)"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+				<!-- TITULO -->
+				<td>
+					<a href="{{'/eventos/' + evento._id}}">{{evento.titulo}}</a>
+				</td>
+				<!-- FECHA -->
+				<td>
+					{{evento.fecha | date : 'dd/MM/yy'}}
+				</td>
+				<!-- FECHA CREACION -->
+				<td>
+					{{evento.createdAt | date : 'dd/MM/yy'}}
+				</td>
+				<!-- ACTUALIZAR EVENTO -->
+				<td ng-show="can('update')">
+					<button class="btn btn-default btn-xs" ng-click="edit(evento._id)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+				</td>
+				<!-- BORRAR EVENTO -->
+				<td ng-show="can('delete')">
+					<button class="btn btn-danger btn-xs" ng-click="openModal(evento)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+				</td>
 			</tr>
 		</table>
 	</div>

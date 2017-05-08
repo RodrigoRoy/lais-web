@@ -15,7 +15,7 @@
 
 	<!-- Formulario para agregar nuevo(s) archivo(s) a la base de datos -->
     <div class="spacing-block"> <!-- ng-show="sesion" -->
-	    <button type="button" class="btn btn-default full-width" ng-click="creatingUser = true" ng-show="!creatingUser"><i class="fa fa-user-plus" aria-hidden="true"></i> Nuevo usuario</button>
+	    <button type="button" class="btn btn-default full-width" ng-click="creatingUser = true" ng-show="!creatingUser && can('create')"><i class="fa fa-user-plus" aria-hidden="true"></i> Nuevo usuario</button>
 
 	    <form name="userForm" id="userForm" role="form" novalidate ng-show="creatingUser">
 	        <div class="form-group" ng-class="{'has-error': userForm.username.$dirty && userForm.username.$invalid}">
@@ -95,36 +95,49 @@
 			</thead>
 			<tbody>
 				<tr ng-repeat="usuario in usuarios">
-					<td>{{usuario.username}}</td>
+					<!-- NOMBRE -->
+					<td>
+						{{usuario.username}}
+					</td>
+					<!-- CORREO -->
 					<td>
 						<span ng-show="usuario._id != editable">{{usuario.email}}</span>
 						<input type="text" ng-show="usuario._id === editable" ng-model="tempUser.email">
 					</td>
+					<!-- LECTURA -->
 					<td>
 						<i class="fa fa-check" aria-hidden="true" ng-show="usuario._id != editable" ng-if="usuario.permissions.read"></i>
 						<input type="checkbox" ng-show="usuario._id === editable" ng-model="tempUser.permissions.read" ng-change="convertTempPermissions()">
 					</td>
+					<!-- CREACION -->
 					<td>
 						<i class="fa fa-check" aria-hidden="true" ng-show="usuario._id != editable" ng-if="usuario.permissions.create"></i>
 						<input type="checkbox" ng-show="usuario._id === editable" ng-model="tempUser.permissions.create" ng-change="convertTempPermissions()">
 					</td>
+					<!-- EDICION -->
 					<td>
 						<i class="fa fa-check" aria-hidden="true" ng-show="usuario._id != editable" ng-if="usuario.permissions.update"></i>
 						<input type="checkbox" ng-show="usuario._id === editable" ng-model="tempUser.permissions.update" ng-change="convertTempPermissions()">
 					</td>
+					<!-- BORRADO -->
 					<td>
 						<i class="fa fa-check" aria-hidden="true" ng-show="usuario._id != editable" ng-if="usuario.permissions.delete"></i>
 						<input type="checkbox" ng-show="usuario._id === editable" ng-model="tempUser.permissions.delete" ng-change="convertTempPermissions()">
 					</td>
+					<!-- ADMINISTRADOR -->
 					<td>
 						<i class="fa fa-star" aria-hidden="true" ng-show="usuario._id != editable" ng-if="usuario.admin"></i>
 						<input type="checkbox" ng-show="usuario._id === editable" ng-model="tempUser.admin">
 					</td>
-					<td>
+					<!-- EDITAR USUARIO -->
+					<td ng-show="can('update')">
 						<button class="btn btn-default btn-xs" ng-show="usuario._id != editable" ng-click="enableEdit(usuario)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
 						<button class="btn btn-default btn-xs" ng-show="usuario._id === editable" ng-click="updateUser()"><i class="fa fa-check" aria-hidden="true"></i></button>
 					</td>
-					<td><button class="btn btn-danger btn-xs"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+					<!-- BORRAR USUARIO -->
+					<td ng-show="can('delete')">
+						<button class="btn btn-danger btn-xs"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+					</td>
 				</tr>
 			</tbody>
 		</table>
