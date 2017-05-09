@@ -67,68 +67,88 @@ BRINDAN LA SENSACIÓN DE UN TEMA BASADO EN LOS SIGUIENTES COLORES:*/
 /*Tono más oscuro: #782400*/
 /*Auxiliares en botones: #b34d23 (oscuro), #cc724d (claro)*/
 
+/*Color primario: #294f6d (azul)*/
+/*Tono claro: #496d89*/
+/*Tono oscuro: #123652*/
+/*Tono más oscuro: #040237*/
+
 /*Pseudo elemento en selección de texto*/
 ::-moz-selection{ /*Firefox*/
-	background: #de7d54;
+	background: #496d89;
 }
 ::selection{
-	background: #de7d54;
+	background: #496d89;
 }
 /*Navbar background de sección activa*/
 .navbar-default .navbar-nav>.active>a {
-	background-color: #c85c2d;
+	background-color: #294f6d;
 }
 /*Navbar background de sección activa (hover) - tono claro*/
 .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus{
-	background-color: #de7d54;
+	background-color: #496d89;
 }
 /*Navbar texto de sección no-activa (hover)*/
 .navbar-default .nav li a:hover, .navbar-default .nav li a:focus{
-	color: #c85c2d;
+	color: #294f6d;
 }
 /*Cuadro de navbar activo en menu*/
 .navbar-default .navbar-toggle, .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{
-	background-color: #c85c2d;
-	border-color: #a13f16;
+	background-color: #294f6d;
+	border-color: #123652;
 }
 /*SOBREESCRIBIR estilo de .btn-primary de bootstrap para un botón*/
 .btn-primary{
-	background-color: #c85c2d;
-	border-color: #a13f16;
+	background-color: #294f6d;
+	border-color: #123652;
 }
 .btn-primary:hover, .btn-primary:focus{
-	background-color: #b34d23; /*<--- Color auxiliar entre color primario y oscuro*/
-	border-color: #782400;
+	/*background-color: #b34d23; /*<--- Color auxiliar (oscuro) entre color primario y oscuro*/
+	background-color: #123652;
+	border-color: #040237;
 }
 .btn-primary[disabled], .btn-primary.disabled{
-	background-color: #de7d54;
-	border-color: #a13f16;
+	background-color: #496d89;
+	border-color: #123652;
 }
 .btn-primary[disabled]:hover, .btn-primary[disabled]:focus, .btn-primary.disabled:hover, .btn-primary.disabled:focus{
-	background-color: #cc724d; /*<--- Color auxiliar entre color primario y claro*/
-	border-color: #a13f16;
+	/*background-color: #cc724d; /*<--- Color auxiliar (claro) entre color primario y claro*/
+	background-color: #496d89;
+	border-color: #123652;
 }
 /*Ejemplos: Fondo de ícono LAIS en Inicio*/
 .text-primary{
-	color: #c85c2d;
+	color: #294f6d;
 }
 /*Enlaces*/
 a{
-	color: #c85c2d;
+	color: #294f6d;
 }
 /*Enlaces seleccionados*/
 a:hover, a:focus, a:active, a.active{
-	color: #c85c2d;
+	color: #294f6d;
 }
 /*Botones de redes sociales*/
 ul.social-buttons li a:hover, ul.social-buttons li a:focus, ul.social-buttons li a:active{
-	background-color: #c85c2d;
+	background-color: #294f6d;
 }
 /*Encabezados - tono oscuro*/
 .section-heading{
-	color: #a13f16;
+	color: #123652;
 }
 /*Subtítulos en inicio y encabezados (de formulario)*/
 .service-heading, .color-title{
-	color: #c85c2d;
+	color: #294f6d;
+}
+
+/*Alternativa de color para enlaces (el color es más oscuro)*/
+a.strong-color{
+	color: #123652;
+}
+/*Efecto "Reveal" de Hover.css*/
+.hvr-reveal:before{
+	border-color: #294f6d;
+}
+/*Subtítulos en la descripción completa de un evento*/
+.subtitle-color{
+	color: #123652;
 }

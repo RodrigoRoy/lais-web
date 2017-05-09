@@ -19,6 +19,7 @@
     "ng-tags-input": "3.1.1",
     "angular-socialshare": "angularjs-socialshare#^2.3.1",
     "angular-ui-validate": "^1.2.2",
-    "hover": "Hover#^2.1.1"
+    "hover": "Hover#^2.1.1",
+    "jquery.easing": "jquery-easing-original#^1.4.1"
   }
 }

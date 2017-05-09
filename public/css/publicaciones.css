@@ -1,0 +1,7 @@
+/* ########## PARA VISUALIZAR PUBLICACIONES ########## */
+
+/*Decoración de fondo en cada año*/
+.blockquote-decoration{
+	border-left: 5px solid #666;
+	background-color: #ddd;
+}

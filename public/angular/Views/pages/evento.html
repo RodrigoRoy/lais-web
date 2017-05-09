@@ -1,22 +1,26 @@
 <!--Página que muestra toda la información referente a un evento en particular-->
 
-<div class="container">
+<div class="container"><!-- class="my-container" no define el tamaño de fuente apropiadamente -->
 	<!-- <hr> -->
 	<div class="jumbotron">
+		<!-- TITULO E IMAGEN -->
 		<center>
 			<h1 class="title">{{evento.titulo}}</h1>
 			<img class="img-responsive img-rounded" src="imgs/eventos/{{evento.imagen}}">
 		</center>
 		<hr>
+		<!-- CONTENIDO (HTML) -->
 		<p class="html-container" ng-bind-html="evento.contenidoHTML"></p>
 		<hr>
+		<!-- MAPA -->
 		<div class="geocode-direction" ng-show="geocodeResult">
-			<h4 class="subtitle">Dirección</h4>
+			<h4 class="subtitle-color">Dirección</h4>
 			<p>{{geocodeResult.formatted_address}}</p>
 			<div id="map"></div>
 		</div>
+		<!-- FECHA Y HORARIO -->
 		<div ng-if="evento.fecha">
-			<h4 class="subtitle">Fecha <span ng-show="evento.horario">y hora</span></h4>
+			<h4 class="subtitle-color">Fecha <span ng-show="evento.horario">y hora</span></h4>
 			<p class="capitalize">
 				{{evento.fecha | date : 'fullDate'}}
 				<span ng-show="evento.fechaFin"> &ndash; {{evento.fechaFin | date : 'fullDate'}}</span>
@@ -26,24 +30,30 @@
 				</span>
 			</p>
 		</div>
+		<!-- COORDINADOR DEL EVENTO -->
 		<div ng-if="evento.coordinador && evento.coordinador.length > 0">
-			<h4 class="subtitle">Coordinador<span ng-if="evento.coordinador.length > 1">es</span> del evento</h4>
+			<h4 class="subtitle-color">Coordinador<span ng-if="evento.coordinador.length == 1">(a)</span><span ng-if="evento.coordinador.length > 1">es</span> del evento</h4>
 			<p>{{coordinador}}</p>
 		</div>
+		<!-- PARTICIPANTES DESTACADOS -->
 		<div ng-if="evento.participantes && evento.participantes.length > 0">
-			<h4 class="subtitle">Participante<span ng-if="evento.participantes.length > 1">s</span> destacado<span ng-if="evento.participantes.length > 1">s</span></h4>
+			<h4 class="subtitle-color">Participante<span ng-if="evento.participantes.length > 1">s</span> destacado<span ng-if="evento.participantes.length > 1">s</span></h4>
 			<p>{{participantes}}</p>
 		</div>
+		<!-- TIPO DE EVENTO -->
 		<div ng-if="evento.tipo">
-			<h4 class="subtitle">Tipo de evento</h4>
+			<h4 class="subtitle-color">Tipo de evento</h4>
 			<p class="capitalize">{{evento.tipo}}</p>
 		</div>
+		<!-- NOTAS -->
 		<div ng-if="evento.notas">
-			<h4 class="subtitle">Notas</h4>
+			<h4 class="subtitle-color">Notas</h4>
 			<p>{{evento.notas}}</p>
 		</div>
+		<!-- ARCHIVOS ADJUNTOS -->
 		<div ng-if="evento.documentos && evento.documentos.length > 0">
-			<h4 class="subtitle">Archivos adjuntos</h4>
+			<h4 class="subtitle-color">Archivos adjuntos</h4>
+			<!-- IMAGENES -->
 			<div ng-if="evento.adjuntos.imagenes.length > 0">
 				<ul class="list-inline">
 					<li ng-repeat="archivo in evento.adjuntos.imagenes">
@@ -51,12 +61,14 @@
 					</li>
 				</ul>
 			</div>
+			<!-- VIDEOS -->
 			<div ng-if="evento.adjuntos.videos.length > 0">
 				<video ng-repeat="archivo in evento.adjuntos.videos" controls style="width: 100%;">
 					<source src="{{'files/' + archivo.location + archivo.filename | trustUrl}}" type="video/mp4">
 					<a href="files/{{archivo.location + archivo.filename}}" target="_blank">{{archivo.filename}}</a>
 				</video>
 			</div>
+			<!-- DOCUMENTOS DE TEXTO -->
 			<div ng-if="evento.adjuntos.documentos.length > 0">
 				<ul>
 					<li ng-repeat="archivo in evento.adjuntos.documentos">
@@ -65,14 +77,15 @@
 				</ul>
 			</div>
 		</div>
+		<!-- KEYWORDS -->
 		<div ng-if="evento.keywords && evento.keywords.length > 0">
-			<h4 class="subtitle">Palabras clave</h4>
+			<h4 class="subtitle-color">Palabras clave</h4>
 			<p>
 				<span class="label label-default label-spacing" ng-repeat="keyword in evento.keywords">{{keyword}}</span>
 			</p>
 		</div>
+		<!-- REDES SOCIALES -->
 		<div>
-			<!-- <h4 class="subtitle">Comparte</h4> -->
 			<p>
 				<!-- FACEBOOK -->
 				<button class="btn btn-default" socialshare socialshare-provider="facebook" socialshare-url="{{url}}" socialshare-text="{{evento.titulo}}" socialshare-type="feed" socialshare-via="148770792254400"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</button>

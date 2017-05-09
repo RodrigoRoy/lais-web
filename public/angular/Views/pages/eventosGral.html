@@ -26,7 +26,6 @@
 			  		<img class="thumbnail-image" src="imgs/eventos/{{evento.imagen}}" alt="imagen-{{evento.titulo}}" ng-show="evento.imagen">
 			  		<div class="image-replacement" ng-show="!evento.imagen">
 			  			<span>{{evento.titulo}}</span>
-			  			<!-- <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse viverra est at condimentum interdum.</span> -->
 			  		</div>
 		  			<div class="vertically-centered">
 		    			<div>{{evento.titulo}}</div>
@@ -38,6 +37,7 @@
 		</div>
 	</div>
 	
+	<!-- PAGINATION -->
 	<center class="hidden-xs">
 		<ul uib-pagination boundary-link-numbers="true" direction-links="true" boundary-links="true" first-text="Inicio" previous-text="Anterior" next-text="Siguiente" last-text="Último" total-items="eventos.length" ng-model="currentPage" rotate="true" max-size="maxSize" class="pagination" items-per-page="itemsPerPage"></ul>
 	</center>

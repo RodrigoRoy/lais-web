@@ -93,23 +93,13 @@ Esto reeplaza a la imagen faltante*/
     -webkit-line-clamp: 2;
 }
 
-/*Efecto(s) al estar sobre el thumbnail de un evento*/
-/*DEPRECATED. Reemplazado por hvr-reveal*/
-/*a.thumbnail-link:hover{
-	text-decoration: none;
-}
-a.thumbnail-link:hover .thumbnail{
-	background: rgba(238,238,238,0.85);
-	background: linear-gradient(rgba(238,238,238,0.6) 0%, rgba(238,238,238,1) 80%);
-}*/
-
 /* Efecto "Reveal" de Hover con personalización */
 .hvr-reveal{
 	display: block;
 }
-.hvr-reveal:before{
+/*.hvr-reveal:before{
 	border-color: #c85c2d;
-}
+}*/
 
 /*Para uso de eventos que aún son disponibles (no han ocurrido aún)*/
 .available-label{
