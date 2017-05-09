@@ -93,13 +93,10 @@ Esto reeplaza a la imagen faltante*/
     -webkit-line-clamp: 2;
 }
 
-/* Efecto "Reveal" de Hover con personalización */
+/* Efecto "Reveal" de Hover con personalización (el color está definido en index.css) */
 .hvr-reveal{
 	display: block;
 }
-/*.hvr-reveal:before{
-	border-color: #c85c2d;
-}*/
 
 /*Para uso de eventos que aún son disponibles (no han ocurrido aún)*/
 .available-label{

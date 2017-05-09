@@ -74,10 +74,12 @@ BRINDAN LA SENSACIÓN DE UN TEMA BASADO EN LOS SIGUIENTES COLORES:*/
 
 /*Pseudo elemento en selección de texto*/
 ::-moz-selection{ /*Firefox*/
-	background: #496d89;
+	color: #eee;
+	background: #294f6d;
 }
 ::selection{
-	background: #496d89;
+	color: #eee;
+	background: #294f6d;
 }
 /*Navbar background de sección activa*/
 .navbar-default .navbar-nav>.active>a {

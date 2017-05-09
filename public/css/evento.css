@@ -10,11 +10,6 @@
 	font-size: 3em !important;
 }
 
-/*Subtítulo para evento*/
-/*.subtitle{
-	color: #a13f16;
-}*/
-
 /*Evita que dos componentes "label" de Bootstrap queden pegados*/
 .label-spacing{
 	margin-right: 1em;
