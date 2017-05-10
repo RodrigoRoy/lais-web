@@ -1,18 +1,46 @@
 <!-- Página con las publicaciones del LAIS -->
 
 <div class="container my-container">
-    <h1 class="color-title">Publicaciones</h1>
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 class="color-title title-style">Publicaciones</h1>
+        </div>
+    </div>
 
-    <h3 ng-if="autorObject">{{autorObject.nombre + ' ' + autorObject.apellido}}</h3>
+    <div class="row">
+        <div class="col-xs-12">
+            <h3 ng-if="autorObject">{{autorObject.nombre + ' ' + autorObject.apellido}}</h3> <!-- De un autor especifico -->
+        </div>
+    </div>
 
-    <div ng-repeat="agrupacion in publicaciones">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="publicacion in publicaciones">
+            <div class="publication-thumbnail hvr-reveal" ng-class="{'color-article': publicacion.tipo === 'Artículo', 'color-book': publicacion.tipo === 'Libro', 'color-documentary': publicacion.tipo === 'Documental', 'color-lecture': publicacion.tipo === 'Ponencia', 'color-website': publicacion.tipo === 'Página web', 'color-default': !publicacion.tipo}">
+                <a href="publicaciones/{{publicacion._id}}" class="no-text-decoration">
+                    <p>
+                        <span class="publication-title" ng-class="{'color-article-title': publicacion.tipo === 'Artículo', 'color-book-title': publicacion.tipo === 'Libro', 'color-documentary-title': publicacion.tipo === 'Documental', 'color-lecture-title': publicacion.tipo === 'Ponencia', 'color-website-title': publicacion.tipo === 'Página web', 'color-default-title': !publicacion.tipo}">{{publicacion.titulo}}</span>
+                        <br>
+                        <span ng-repeat="autor in publicacion.autor" class="publication-autor" ng-class="{'color-article-autor': publicacion.tipo === 'Artículo', 'color-book-autor': publicacion.tipo === 'Libro', 'color-documentary-autor': publicacion.tipo === 'Documental', 'color-lecture-autor': publicacion.tipo === 'Ponencia', 'color-website-autor': publicacion.tipo === 'Página web', 'color-default-autor': !publicacion.tipo}">
+                            {{stylizeName(autor.nombre, autor.apellido)}}<span ng-if="!$last">, </span>
+                        </span>
+                        <br>
+                        <span class="publication-date" ng-class="{'color-article-date': publicacion.tipo === 'Artículo', 'color-book-date': publicacion.tipo === 'Libro', 'color-documentary-date': publicacion.tipo === 'Documental', 'color-lecture-date': publicacion.tipo === 'Ponencia', 'color-website-date': publicacion.tipo === 'Página web', 'color-default-date': !publicacion.tipo}">{{publicacion.fecha | date: 'yyyy'}}</span>
+                        <!-- <br>
+                        <span>{{publicacion.tipo}}</span> -->
+                    </p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- <div ng-repeat="agrupacion in publicaciones">
         <blockquote class="blockquote-decoration">
             {{agrupacion._id | date: 'yyyy'}}
         </blockquote>
         
         <ul class="list-unstyled" ng-repeat="publicacion in agrupacion.publicaciones">
             <li>
-                <!-- DOCUMENTAL, PONENCIA O PAGINA WEB -->
                 <span ng-if="publicacion.tipo === 'Documental' || publicacion.tipo === 'Ponencia' || publicacion.tipo === 'Página web'">
                     <span ng-repeat="autor in publicacion.autor"><a href="publicaciones?autor={{autor._id}}">{{stylizeName(autor.nombre, autor.apellido)}}</a><span ng-if="!$last">, </span></span> 
                     ({{publicacion.fecha | date: 'yyyy'}}).
@@ -21,7 +49,6 @@
                     <a href="/publicaciones?group=tipo&match={{publicacion.tipo}}"><span class="label label-default">{{publicacion.tipo}}</span></a>
                 </span>
 
-                <!-- ARTICULOS -->
                 <span ng-if="publicacion.tipo === 'Artículo'">
                     <span ng-repeat="autor in publicacion.autor"><a href="publicaciones?autor={{autor._id}}">{{stylizeName(autor.nombre, autor.apellido)}}</a><span ng-if="!$last">, </span></span> 
                     ({{publicacion.fecha | date: 'yyyy'}}).
@@ -36,7 +63,6 @@
                     <a href="/publicaciones?group=tipo&match={{publicacion.tipo}}"><span class="label label-default">{{publicacion.tipo}}</span></a>
                 </span>
 
-                <!-- LIBROS -->
                 <span ng-if="publicacion.tipo === 'Libro'">
                     <span ng-repeat="autor in publicacion.autor"><a href="publicaciones?autor={{autor._id}}">{{stylizeName(autor.nombre, autor.apellido)}}</a><span ng-if="!$last">, </span></span> 
                     ({{publicacion.fecha | date: 'yyyy'}}).
@@ -47,5 +73,7 @@
                 </span>
             </li>
         </ul>
-    </div>
+    </div> -->
+
+
 </div>

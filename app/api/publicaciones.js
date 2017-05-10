@@ -67,27 +67,39 @@ router.route('/')
                     res.send(populatedPublicaciones);
                 });
             });
-        // En caso de pedir las publicaciones de un autor en particular, agrupadas por fecha
+        // En caso de pedir las publicaciones de un autor en particular
         // GET api/publicaciones?autor=1234567890
         }else if(req.query.autor){
-            Publicacion.aggregate([
-                {$match: {autor: mongoose.Types.ObjectId(req.query.autor)}},
-                {$group: {
-                    _id: '$fecha',
-                    publicaciones: {$push: '$$ROOT'}}},
-                {$sort: {_id: -1}}
-            ])
+            // PARA AGRUPAR LAS PUBLICACIONES POR fecha:
+            // Publicacion.aggregate([
+            //     {$match: {autor: mongoose.Types.ObjectId(req.query.autor)}},
+            //     {$group: {
+            //         _id: '$fecha',
+            //         publicaciones: {$push: '$$ROOT'}}},
+            //     {$sort: {_id: -1}}
+            // ])
+            // .exec(function(err, publicaciones){
+            //     if(err)
+            //         res.send(err);
+            //     Autor.populate(publicaciones, {path: 'publicaciones.autor'}, function(err, populatedPublicaciones){
+            //         if(err)
+            //             res.send(err);
+            //         res.send(populatedPublicaciones);
+            //     });
+            // });
+            Publicacion.find({autor: mongoose.Types.ObjectId(req.query.autor)})
+            .sort({fecha: 'desc'})
+            .populate('autor')
+            .populate('adjuntos')
+            .populate('usuario')
             .exec(function(err, publicaciones){
                 if(err)
                     res.send(err);
-                Autor.populate(publicaciones, {path: 'publicaciones.autor'}, function(err, populatedPublicaciones){
-                    if(err)
-                        res.send(err);
-                    res.send(populatedPublicaciones);
-                });
+                res.send(publicaciones);
             });
         }else{
             Publicacion.find() // encontrar todos
+            .sort({fecha: 'desc'})
             .populate('autor')
             .populate('adjuntos')
             .populate('usuario')

@@ -14,8 +14,7 @@ angular.module('PublicacionesCtrl',[]).controller('PublicacionesController', fun
 	$scope.getPublicaciones = function(){
 		if(autorId){ // Si se desean las publicaciones de un autor específico
 			Publicacion.autor(autorId)
-			.then(function(res){
-				// Success
+			.then(function(res){ // Success
 				$scope.publicaciones = res.data;
 				// Obtener los datos del autor (e.g. nombre)
 				Autor.get(autorId)
@@ -24,17 +23,21 @@ angular.module('PublicacionesCtrl',[]).controller('PublicacionesController', fun
 				}, function(res){
 					console.error('Error de conexión para obtener al autor: ', res);
 				});
-			}, function(res){
-				// Fail
+			}, function(res){ // Fail
 				console.error('Error de conexión con la base de datos: ', res);
 			})
 		}else{
-			Publicacion.groupBy(groupType, matchRestriction)
-			.then(function(res){
-				// Success
+			// Si se desean agrupar por año
+			// Publicacion.groupBy(groupType, matchRestriction)
+			// .then(function(res){ // Success
+			// 	$scope.publicaciones = res.data;
+			// }, function(res){ // Fail
+			// 	console.error('Error de conexión con la base de datos: ', res);
+			// });
+			Publicacion.all()
+			.then(function(res){ // Success
 				$scope.publicaciones = res.data;
-			}, function(res){
-				// Fail
+			}, function(res){ // Fail
 				console.error('Error de conexión con la base de datos: ', res);
 			});
 		}

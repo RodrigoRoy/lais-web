@@ -1,7 +1,166 @@
 /* ########## PARA VISUALIZAR PUBLICACIONES ########## */
 
+/*Estilo en el título (centrar el texto)*/
+.title-style{
+	text-align: center;
+}
+
 /*Decoración de fondo en cada año*/
 .blockquote-decoration{
 	border-left: 5px solid #666;
 	background-color: #ddd;
+}
+
+/*Definir tamaños, espacios y alineación de cada recuardo.
+También se define el tamaño individual del título, autor, fecha*/
+.publication-thumbnail{
+	height: 240px;
+	width: 100%;
+	padding: 1em;
+	margin: auto;
+	margin-bottom: 20px;
+	text-align: center;
+}
+.publication-title{
+	font-size: 1.3em;
+	font-weight: bold;
+}
+.publication-autor{
+	font-size: 1em;
+}
+.publication-date{
+	font-size: 1.2em;
+}
+
+/*Color de fondo y de texto si la publicación es un ARTICULO*/
+.color-article{
+	background: #133175;
+	background: -webkit-linear-gradient(#133175, #0E4671);
+	background: -o-linear-gradient(#133175, #0E4671);
+	background: -moz-linear-gradient(#133175, #0E4671);
+	background: linear-gradient(#133175, #0E4671);
+}
+.color-article-title{
+	color: #F0A32F;
+}
+.color-article-autor{
+	color: #FFF;
+}
+.color-article-date{
+	color: #BBB;
+}
+
+/*Color de fondo y de texto si la publicación es un LIBRO*/
+.color-book{
+	background: #19197B;
+	background: -webkit-linear-gradient(#19197B, #132F76);
+	background: -o-linear-gradient(#19197B, #132F76);
+	background: -moz-linear-gradient(#19197B, #132F76);
+	background: linear-gradient(#19197B, #132F76);
+}
+.color-book-title{
+	color: #F0A32F;
+}
+.color-book-autor{
+	color: #FFF;
+}
+.color-book-date{
+	color: #BBB;
+}
+
+/*Color de fondo y de texto si la publicación es un DOCUMENTAL*/
+.color-documentary{
+	background: #0E4671;
+	background: -webkit-linear-gradient(#0E4671, #07666A);
+	background: -o-linear-gradient(#0E4671, #07666A);
+	background: -moz-linear-gradient(#0E4671, #07666A);
+	background: linear-gradient(#0E4671, #07666A);
+}
+.color-documentary-title{
+	color: #F0A32F;
+}
+.color-documentary-autor{
+	color: #FFF;
+}
+.color-documentary-date{
+	color: #BBB;
+}
+
+/*Color de fondo y de texto si la publicación es una PONENCIA*/
+.color-lecture{
+	background: #2C1479;
+	background: -webkit-linear-gradient(#2C1479, #1B197A);
+	background: -o-linear-gradient(#2C1479, #1B197A);
+	background: -moz-linear-gradient(#2C1479, #1B197A);
+	background: linear-gradient(#2C1479, #1B197A);
+}
+.color-lecture-title{
+	color: #F0A32F;
+}
+.color-lecture-autor{
+	color: #FFF;
+}
+.color-lecture-date{
+	color: #BBB;
+}
+
+/*Color de fondo y de texto si la publicación es una PAGINA WEB*/
+.color-website{
+	background: #076969;
+	background: -webkit-linear-gradient(#076969, #07774A);
+	background: -o-linear-gradient(#076969, #07774A);
+	background: -moz-linear-gradient(#076969, #07774A);
+	background: linear-gradient(#076969, #07774A);
+}
+.color-website-title{
+	color: #F0A32F;
+}
+.color-website-autor{
+	color: #FFF;
+}
+.color-website-date{
+	color: #BBB;
+}
+
+/*Color de fondo y de texto si la publicación no tiene un tipo definido*/
+.color-default{
+	background: #666;
+	background: -webkit-linear-gradient(#666, #999);
+	background: -o-linear-gradient(#666, #999);
+	background: -moz-linear-gradient(#666, #999);
+	background: linear-gradient(#666, #999);
+}
+.color-default-title{
+	color: #EEE;
+}
+.color-default-autor{
+	color: #FFF;
+}
+.color-default-date{
+	color: #BBB;
+}
+
+/*Estilo a usar en tamaño xs (poco antes de convertirse en sm)*/
+@media screen and (min-width: 512px) and (max-width: 767px) {
+	/*Brinda un pequeño margen lateral*/
+	.publication-thumbnail{
+		width: 90%;
+	}
+}
+/*Estilo a usar en tamaño sm, md, lg*/
+@media screen and (min-width: 768px){
+	/*Restaurar ancho al 100%*/
+	.publication-thumbnail{
+		width: 100%;
+	}
+	/*Se disminuye ligeramente el tamaño de fuente*/
+	.publication-title{
+		font-size: 1.2em;
+	}
+	.publication-autor{
+		font-size: 0.9em;
+	}
+	.publication-date{
+		font-size: 1em;
+	}
 }
