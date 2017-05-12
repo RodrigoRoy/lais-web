@@ -92,6 +92,7 @@ img.preview{
 .my-container{
 	background-color: #eee;
 	border-radius: 6px;
+	padding-bottom: 1em;
 }
 
 /*Estilo a usar en dispositivos no-móviles (ancho > 768px)*/

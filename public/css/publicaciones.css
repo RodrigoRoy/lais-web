@@ -1,8 +1,26 @@
-/* ########## PARA VISUALIZAR PUBLICACIONES ########## */
+/* ########## PARA VISUALIZAR Y REGISTRAR PUBLICACIONES ########## */
 
 /*Estilo en el título (centrar el texto)*/
 .title-style{
 	text-align: center;
+}
+
+/*Color para icono de borrado en autores*/
+.btn-delete-color{
+	color: #d9534f;
+}
+
+/*Espaciado superior e inferior en mensaje de alerta (no hay resultados de autor)*/
+.spacing-text-alert{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+/*Margen, espaciado y color para el formulario "Registrar autor"*/
+.subform-autor{
+	background-color: #dedede;
+	padding: 15px;
+	margin-bottom: 1em;
 }
 
 /*Decoración de fondo en cada año*/

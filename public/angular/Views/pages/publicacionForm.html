@@ -35,8 +35,10 @@
             <input class="form-control" type="text" name="autor" id="autor" placeholder="" ng-model="asyncAutorInput" uib-typeahead="autor.apellido + ', ' + autor.nombre for autor in getAutor($viewValue)" typeahead-loading="loadingAutores" typeahead-no-results="noResults" typeahead-template-url="customTemplate.html" typeahead-on-select="onSelectAutor($item, $model, $label, $event)">
             <i class="fa fa-spinner fa-spin fa-fw" ng-show="loadingAutores"></i>
             <div ng-show="noResults">
-                <i class="fa fa-times" aria-hidden="true"></i> No se encontraron resultados. <a href="" ng-click="showAutorForm()">Registra al autor</a>
-                <div class="container-fluid" ng-show="addingAuthor">
+                <p class="spacing-text-alert">
+                    <i class="fa fa-times" aria-hidden="true"></i> No se encontraron resultados. <a href="" ng-click="showAutorForm()">Registra al autor</a>
+                </p>
+                <div class="container-fluid subform-autor" ng-show="addingAuthor">
                     <div class="row">
                         <div class="col-xs-12 col-md-5">
                             <input type="text" class="form-control" ng-model="autor.nombre" placeholder="Nombre(s) del autor">
@@ -50,16 +52,23 @@
                     </div>
                 </div>
             </div>
-            <ul ng-show="autores && autores.length > 0">
-                <li ng-repeat="autor in autores">{{autor.apellido}}, {{autor.nombre}}</li>
-            </ul>
+            <ol ng-show="autores && autores.length > 0">
+                <li ng-repeat="autor in autores">
+                    <span ng-show="autor.apellido">{{autor.apellido}}, </span>{{autor.nombre}} 
+                    <span ng-show="autores && autores.length > 1">
+                        <button class="btn btn-link" ng-show="!$first" ng-click="orderUpAutor($index)" alt="Subir autor"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
+                        <button class="btn btn-link" ng-show="!$last" ng-click="orderDownAutor($index)" alt="Bajar autor"><i class="fa fa-angle-down" aria-hidden="true"></i></button>
+                        <button class="btn btn-link btn-delete-color" ng-click="removeAutor($index)" alt="Quitar autor"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                    </span>
+                </li>
+            </ol>
         </div>
 
         <!-- TIPO -->
         <div class="form-group" ng-class="{'has-error': publicacionForm.tipo.$dirty && publicacionForm.tipo.$invalid}">
             <label class="control-label color-title format-title" for="tipo">Tipo</label>
             <select class="form-control" id="tipo" ng-model="publicacion.tipo" required>
-                <option value=""></option>
+                <!-- <option value=""></option> -->
                 <option value="Documental">Documental</option>
                 <option value="Artículo">Artículo</option>
                 <option value="Libro">Libro</option>

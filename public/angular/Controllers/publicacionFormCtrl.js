@@ -43,20 +43,50 @@ angular.module('PublicacionFormCtrl',[]).controller('PublicacionFormController',
 		}
 		$scope.asyncAutorInput = ""; // Borrar el input text para buscar otro autor
 	};
-	// Mostrar inputs para registrar autor
-	$scope.showAutorForm = function(){
-		$scope.addingAuthor = true;
-	};
-	// Agrega nombre y apellido de un nuevo autor
-	$scope.addAutor = function(){
-		Autor.create($scope.autor).
-			then(function(res){
-				$scope.addingAuthor = false;
-				$scope.autor = {};
-				$scope.asyncAutorInput = ""; // Borrar el input text
-				alert("Autor registrado. Ahora puedes agregarlo como autor de la publicación");
-			});
-	};
+    // Realiza swap de los indices dados como parámetros 
+    // en el arreglo de Id's $scope.publicacion.autor y en el arreglo de objetos $scope.autores
+    $scope.swapAutors = function(index1, index2){
+        if(index1 >= 0 && index2 >= 0 && index1 < $scope.autores.length && index2 < $scope.autores.length){
+            // Auxiliar temporal para realizar swap
+            var tempAutorId = $scope.publicacion.autor[index1];
+            var tempAutorObj = $scope.autores[index1];
+            // Duplicar valor en el índice del parámetro
+            $scope.publicacion.autor[index1] = $scope.publicacion.autor[index2];
+            $scope.autores[index1] = $scope.autores[index2];
+            // Copiar valor auxiliar en nuevo índice
+            $scope.publicacion.autor[index2] = tempAutorId;
+            $scope.autores[index2] = tempAutorObj;
+        }
+    }
+    // Cambia el orden de los autores. Sube en orden al autor con el indice dado como parámetro
+    $scope.orderUpAutor = function(index){
+        $scope.swapAutors(index, index - 1);
+    }
+    // Cambia el orden de los autores. Baja en orden al autor con el indice dado como parámetro
+    $scope.orderDownAutor = function(index){
+        $scope.swapAutors(index, index + 1);
+    }
+    // Elimina un autor de la lista de autores ($scope.publicacion.autor y $scope.autores)
+    $scope.removeAutor = function(index){
+        if(index >= 0 && index < $scope.autores.length){
+            $scope.publicacion.autor.splice(index, 1);
+            $scope.autores.splice(index, 1);
+        }
+    }
+    // Mostrar inputs para registrar autor
+    $scope.showAutorForm = function(){
+        $scope.addingAuthor = true;
+    };
+    // Agrega nombre y apellido de un nuevo autor
+    $scope.addAutor = function(){
+        Autor.create($scope.autor).
+            then(function(res){
+                $scope.addingAuthor = false;
+                $scope.autor = {};
+                $scope.asyncAutorInput = ""; // Borrar el input text
+                alert("Autor registrado. Ahora puedes agregarlo como autor de la publicación");
+            });
+    };
 	// Abrir el calendario al dar clic en el botón con icono
 	$scope.openCalendar = function(event){
 		$scope.calendar.open = true;
