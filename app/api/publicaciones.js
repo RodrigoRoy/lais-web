@@ -150,6 +150,8 @@ router.route('/')
             publicacion.keywords = req.body.keywords;
         if(req.body.notas)
             publicacion.notas = req.body.notas;
+        if(req.body.imagen)
+            publicacion.imagen = req.body.imagen;
         if(req.body.usuario)
             publicacion.usuario = req.body.usuario;
         if(req.body.adjuntos)
@@ -262,6 +264,8 @@ router.route('/:publicacion_id')
                 publicacion.keywords = req.body.keywords;
             if(req.body.notas != publicacion.notas)
                 publicacion.notas = req.body.notas;
+            if(req.body.imagen != publicacion.imagen)
+                publicacion.imagen = req.body.imagen;
             if(req.body.usuario != publicacion.usuario)
                 publicacion.usuario = req.body.usuario;
             if(req.body.adjuntos != publicacion.adjuntos)

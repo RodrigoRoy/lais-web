@@ -87,14 +87,6 @@ img.preview{
   animation:0.5s fadeIn linear;
 }*/
 
-/* ########## PARA USAR EN ADMIN ########## */
-/*Contenedor en páginas generales*/
-.my-container{
-	background-color: #eee;
-	border-radius: 6px;
-	padding-bottom: 1em;
-}
-
 /*Estilo a usar en dispositivos no-móviles (ancho > 768px)*/
 @media (min-width: 768px) {
 	/*Vista previa de una imagen*/

@@ -25,6 +25,7 @@ var PublicacionSchema = new Schema({
 	url: {type: String, match: [/https?.*/, 'URL debe comenzar con "http(s)://"']}, // necesario en "Página web"
 	keywords: [{type: String}], 
 	notas: {type: String},
+	imagen: {type: String},
 	adjuntos: [{type: mongoose.Schema.Types.ObjectId, ref: 'Archivo'}],
 	usuario: {type: mongoose.Schema.Types.ObjectId, ref: 'Usuario'}
 	// timestamp: {type: Date, default: Date.now},

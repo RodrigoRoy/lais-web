@@ -58,19 +58,33 @@ app.post('/api/upload', multipartMiddleware, function(req, res){ // definir ruta
 		res.json({"status": "OK"}); // responder al cliente 
 	});
 });
-var multipartMiddleware = multipart({uploadDir: './public/files/eventos'}); // definir ruta para archivos
-app.post('/api/uploadFiles', multipartMiddleware, function(req, res){ // definir ruta para HTTP POST
+
+var multipartMiddleware = multipart({uploadDir: './public/imgs/publicaciones' }); // definir ruta para archivos
+app.post('/api/upload2', multipartMiddleware, function(req, res){ // definir ruta para HTTP POST
 	//console.log("  req.body", req.body); // Datos adicionales enviados
-	console.log("Información de archivos");
+	console.log("Información del archivo");
 	console.log(req.files);
-	for(var i in req.files.file){ // iterar en todos los archivos
-		fs.rename(req.files.file[i].path, 'public/files/eventos/' + req.files.file[i].name, function(err){ // renombrar archivo (usar el nombre original)
-			if(err)
-				throw err;
-		})
-	}
-	res.json({"status": "OK"}); // responder al cliente 
+	fs.rename(req.files.file.path, 'public/imgs/publicaciones/' + req.files.file.name, function (err){ // renombrar archivo (usar el nombre original)
+		if(err)
+			throw err;
+		res.json({"status": "OK"}); // responder al cliente 
+	});
 });
+
+// var multipartMiddleware = multipart({uploadDir: './public/files/eventos'}); // definir ruta para archivos
+// app.post('/api/uploadFiles', multipartMiddleware, function(req, res){ // definir ruta para HTTP POST
+// 	//console.log("  req.body", req.body); // Datos adicionales enviados
+// 	console.log("Información de archivos");
+// 	console.log(req.files);
+// 	for(var i in req.files.file){ // iterar en todos los archivos
+// 		fs.rename(req.files.file[i].path, 'public/files/eventos/' + req.files.file[i].name, function(err){ // renombrar archivo (usar el nombre original)
+// 			if(err)
+// 				throw err;
+// 		})
+// 	}
+// 	res.json({"status": "OK"}); // responder al cliente 
+// });
+
 // var multipartMiddleware = multipart({uploadDir: './public/files'}); // definir ruta para archivos
 // app.post('/api/uploadMultiFiles', multipartMiddleware, function(req, res){ // definir ruta para HTTP POST
 // 	//console.log("  req.body", req.body); // Datos adicionales enviados
@@ -130,25 +144,25 @@ app.post('/api/uploadFiles', multipartMiddleware, function(req, res){ // definir
 // });
 
 // Elimina el archivo indicado dentro de la carpeta 'files/eventos/'. Útil para borrar archivos adjuntos de los eventos
-app.delete('/imgs/eventos/:filename', function(req, res){
-	// Verificar si el archivo existe
-	fs.access('public/imgs/eventos/' + req.params.filename, fs.constants.F_OK, function(err){
-		if(err) // Error si el archivo que se quiere eliminar no existe
-			return res.status(404).send({
-				success: false,
-				message: "File " + req.params.filename + " don't exist"
-			});
-		// Eliminar el archivo (indicando la ruta)
-		fs.unlink('public/imgs/eventos/' + req.params.filename, function(err){
-			if(err)
-				throw err;
-			res.send({
-				success: true,
-				message: 'File ' + req.params.filename + ' deleted'
-			});
-		});
-	});
-});
+// app.delete('/imgs/eventos/:filename', function(req, res){
+// 	// Verificar si el archivo existe
+// 	fs.access('public/imgs/eventos/' + req.params.filename, fs.constants.F_OK, function(err){
+// 		if(err) // Error si el archivo que se quiere eliminar no existe
+// 			return res.status(404).send({
+// 				success: false,
+// 				message: "File " + req.params.filename + " don't exist"
+// 			});
+// 		// Eliminar el archivo (indicando la ruta)
+// 		fs.unlink('public/imgs/eventos/' + req.params.filename, function(err){
+// 			if(err)
+// 				throw err;
+// 			res.send({
+// 				success: true,
+// 				message: 'File ' + req.params.filename + ' deleted'
+// 			});
+// 		});
+// 	});
+// });
 // ***** END TESTING UPLOAD *****
 
 // RUTAS PARA EL API

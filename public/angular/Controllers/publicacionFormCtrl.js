@@ -19,7 +19,8 @@ angular.module('PublicacionFormCtrl',[]).controller('PublicacionFormController',
 		formatYear: 'yyyy',
 	    minMode: 'year' // Usar esta propiedad en vez de 'dateMode' evita errores al ingresar el año
 	};
-	$scope.publicacion.usuario = $scope.user.id || undefined; // Obtener Id de usuario
+    $scope.imageContainer = true; // Bandera para mostrar/ocultar elemento DIV para cargar una imagen
+    $scope.publicacion.usuario = $scope.user.id || undefined; // Obtener Id de usuario
 	
 	// Promise para autocompletar el input 'typeahead' de Autor
 	$scope.getAutor = function(query){
@@ -107,6 +108,39 @@ angular.module('PublicacionFormCtrl',[]).controller('PublicacionFormController',
                 $scope.publicacion.keywords[i] = $scope.keywords[i].text; // NOTA: la propiedad "text" contiene el nombre del tag/keyword
         }
 	};
+    // Sube archivo (imagen) al servidor
+    $scope.uploadImage = function(file){
+        Upload.upload({
+            url: 'api/upload2', // Ruta de Node (usando POST) para el manejo del almacenamiento de la imagen
+            data: {file: file} // Se pueden incluir datos adicionales (ej. {file: file, 'username': 'Roy'})
+        }).then(function (resp) { // Función cuando el archivo es subido exitosamente
+            $scope.publicacion.imagen = resp.config.data.file.name;
+            $scope.imageContainer = false;
+        }, function (resp) { // Función para manejo de error
+            console.error('Error status: ' + resp.status);
+        }, function (evt) { // Función para notificar progreso
+            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+            console.error('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+        });
+    };
+    // Elimina imagen del evento
+    $scope.deleteImage = function(){
+        var filename = $scope.publicacion.imagen; // auxiliar para guardar el nombre de la imagen
+        $scope.publicacion.imagen = undefined;
+        $scope.imageContainer = true;
+        // Borrar archivo del sistema:
+        Archivo.unlink('/imgs/publicaciones/', filename).
+            then(function(res){
+                // console.log("Se ha borrado exitosamente el archivo del sistema");
+            }, function(res){
+                if (res.status === 400) {
+                    console.error('Error al borrar archivo del sistema');
+                }
+                if(res.status === 404){ // res.statusText === 'Not Found'
+                    console.error("El archivo ya ha sido borrado del sistema");
+                }
+            });
+    };
 	//$scope.adjuntos = [];
 	// Sube archivos al servidor
     // $scope.adjuntos          Es la lista de archivos con TODA la información correspondiente (se usa en la vista)

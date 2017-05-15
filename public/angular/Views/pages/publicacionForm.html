@@ -58,7 +58,7 @@
                     <span ng-show="autores && autores.length > 1">
                         <button class="btn btn-link" ng-show="!$first" ng-click="orderUpAutor($index)" alt="Subir autor"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
                         <button class="btn btn-link" ng-show="!$last" ng-click="orderDownAutor($index)" alt="Bajar autor"><i class="fa fa-angle-down" aria-hidden="true"></i></button>
-                        <button class="btn btn-link btn-delete-color" ng-click="removeAutor($index)" alt="Quitar autor"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                        <button class="btn btn-link btn-delete-color" ng-click="removeAutor($index)" alt="Quitar autor"><i class="fa fa-times" aria-hidden="true"></i></button>
                     </span>
                 </li>
             </ol>
@@ -187,6 +187,16 @@
                 <label class="control-label color-title format-title" for="notas">Notas</label>
                 <textarea class="form-control" name="notas" id="notas" rows="2" placeholder="" ng-model="publicacion.notas" ng-trim></textarea>
                 <div ng-messages="publicacionForm.notas.$error" ng-show="publicacionForm.notas.$dirty && publicacionForm.notas.$invalid"><div ng-messages-include="error-messages"></div></div>
+            </div>
+
+            <!-- IMAGEN -->
+            <div class="form-group">
+                <label class="control-label color-title format-title" for="imagen">Imagen</label>
+                <!-- Detalles del componente: https://github.com/danialfarid/ng-file-upload -->
+                <div class="drag-drop-area" ngf-select="uploadImage($file)" ngf-drop="uploadImage($file)" ng-model="imagen" ng-show="imageContainer" name="imagen" id="imagen" ngf-capture="'camera'" ngf-accept="'image/*'" ngf-pattern="'image/*'"><i class="fa fa-file-image-o"></i> Selecciona o arrastra imagen</div>
+                <!--Previsualización de imagen-->
+                <img class="preview full-width" ng-show="publicacion.imagen" src="imgs/publicaciones/{{publicacion.imagen}}">
+                <button type="button" class="btn btn-danger" ng-show="publicacion.imagen" ng-click="deleteImage()">Eliminar <i class="fa fa-times" aria-hidden="true"></i></button>
             </div>
 
             <!-- ARCHIVOS ADJUNTOS -->

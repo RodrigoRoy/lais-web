@@ -33,6 +33,13 @@ footer{
 	font-weight: 700;
 }
 
+/*Contenedor en páginas generales*/
+.my-container{
+	background-color: #eee;
+	border-radius: 6px;
+	padding-bottom: 1em;
+}
+
 /*Ajustes de tipografía en botones*/
 .btn-custom{
 	font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
