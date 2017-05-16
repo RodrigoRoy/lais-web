@@ -29,10 +29,35 @@
 	background-color: #ddd;
 }
 
+/*Espacio para mostrar publicación con imagen
+Se emplean publication-container, publication-cover y publication-info*/
+.publication-container{ /*contenedor principal*/
+	height: 305px;
+	width: 100%;
+	margin-bottom: 20px;
+}
+.publication-cover{ /*espacio para portada*/
+	height: 100%;
+	overflow: hidden;
+}
+.publication-cover img{
+	width: 100%;
+}
+.publication-info{ /*espacio para texto*/
+	height: 30%;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	font-size: 1.2em;
+	text-align: center;
+	background-color: rgba(0,0,0,0.5);
+	color: #eee;
+}
+
 /*Definir tamaños, espacios y alineación de cada recuardo.
 También se define el tamaño individual del título, autor, fecha*/
 .publication-thumbnail{
-	height: 240px;
+	height: 305px;
 	width: 100%;
 	padding: 1em;
 	margin: auto;
@@ -158,19 +183,8 @@ También se define el tamaño individual del título, autor, fecha*/
 	color: #BBB;
 }
 
-/*Estilo a usar en tamaño xs (poco antes de convertirse en sm)*/
-@media screen and (min-width: 512px) and (max-width: 767px) {
-	/*Brinda un pequeño margen lateral*/
-	.publication-thumbnail{
-		width: 90%;
-	}
-}
 /*Estilo a usar en tamaño sm, md, lg*/
 @media screen and (min-width: 768px){
-	/*Restaurar ancho al 100%*/
-	.publication-thumbnail{
-		width: 100%;
-	}
 	/*Se disminuye ligeramente el tamaño de fuente*/
 	.publication-title{
 		font-size: 1.2em;

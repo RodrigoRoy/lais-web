@@ -15,21 +15,32 @@
 
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="publicacion in publicaciones">
-            <div class="publication-thumbnail hvr-reveal" ng-class="{'color-article': publicacion.tipo === 'Artículo', 'color-book': publicacion.tipo === 'Libro', 'color-documentary': publicacion.tipo === 'Documental', 'color-lecture': publicacion.tipo === 'Ponencia', 'color-website': publicacion.tipo === 'Página web', 'color-default': !publicacion.tipo}">
-                <a href="publicaciones/{{publicacion._id}}" class="no-text-decoration">
-                    <p>
-                        <span class="publication-title" ng-class="{'color-article-title': publicacion.tipo === 'Artículo', 'color-book-title': publicacion.tipo === 'Libro', 'color-documentary-title': publicacion.tipo === 'Documental', 'color-lecture-title': publicacion.tipo === 'Ponencia', 'color-website-title': publicacion.tipo === 'Página web', 'color-default-title': !publicacion.tipo}">{{publicacion.titulo}}</span>
+            <a href="publicaciones/{{publicacion._id}}" class="no-text-decoration">
+                
+                <div class="publication-container hvr-border-fade" ng-show="publicacion.imagen">
+                    <div class="publication-cover">
+                        <img src="imgs/publicaciones/{{publicacion.imagen}}">
+                    </div>
+                    <div class="publication-info">
+                        {{publicacion.titulo}}
                         <br>
-                        <span ng-repeat="autor in publicacion.autor" class="publication-autor" ng-class="{'color-article-autor': publicacion.tipo === 'Artículo', 'color-book-autor': publicacion.tipo === 'Libro', 'color-documentary-autor': publicacion.tipo === 'Documental', 'color-lecture-autor': publicacion.tipo === 'Ponencia', 'color-website-autor': publicacion.tipo === 'Página web', 'color-default-autor': !publicacion.tipo}">
-                            {{stylizeName(autor.nombre, autor.apellido)}}<span ng-if="!$last">, </span>
-                        </span>
-                        <br>
-                        <span class="publication-date" ng-class="{'color-article-date': publicacion.tipo === 'Artículo', 'color-book-date': publicacion.tipo === 'Libro', 'color-documentary-date': publicacion.tipo === 'Documental', 'color-lecture-date': publicacion.tipo === 'Ponencia', 'color-website-date': publicacion.tipo === 'Página web', 'color-default-date': !publicacion.tipo}">{{publicacion.fecha | date: 'yyyy'}}</span>
-                        <!-- <br>
-                        <span>{{publicacion.tipo}}</span> -->
-                    </p>
-                </a>
-            </div>
+                        {{publicacion.fecha | date: 'yyyy'}}
+                    </div>
+                </div>
+
+                <div class="publication-thumbnail" ng-class="{'color-article': publicacion.tipo === 'Artículo', 'color-book': publicacion.tipo === 'Libro', 'color-documentary': publicacion.tipo === 'Documental', 'color-lecture': publicacion.tipo === 'Ponencia', 'color-website': publicacion.tipo === 'Página web', 'color-default': !publicacion.tipo}" ng-show="!publicacion.imagen"> <!-- class="hvr-reveal" -->
+                    <span class="publication-title" ng-class="{'color-article-title': publicacion.tipo === 'Artículo', 'color-book-title': publicacion.tipo === 'Libro', 'color-documentary-title': publicacion.tipo === 'Documental', 'color-lecture-title': publicacion.tipo === 'Ponencia', 'color-website-title': publicacion.tipo === 'Página web', 'color-default-title': !publicacion.tipo}">{{publicacion.titulo}}</span>
+                    <br>
+                    <span ng-repeat="autor in publicacion.autor" class="publication-autor" ng-class="{'color-article-autor': publicacion.tipo === 'Artículo', 'color-book-autor': publicacion.tipo === 'Libro', 'color-documentary-autor': publicacion.tipo === 'Documental', 'color-lecture-autor': publicacion.tipo === 'Ponencia', 'color-website-autor': publicacion.tipo === 'Página web', 'color-default-autor': !publicacion.tipo}">
+                        {{stylizeName(autor.nombre, autor.apellido)}}<span ng-if="!$last">, </span>
+                    </span>
+                    <br>
+                    <span class="publication-date" ng-class="{'color-article-date': publicacion.tipo === 'Artículo', 'color-book-date': publicacion.tipo === 'Libro', 'color-documentary-date': publicacion.tipo === 'Documental', 'color-lecture-date': publicacion.tipo === 'Ponencia', 'color-website-date': publicacion.tipo === 'Página web', 'color-default-date': !publicacion.tipo}">{{publicacion.fecha | date: 'yyyy'}}</span>
+                    <!-- <br>
+                    <span>{{publicacion.tipo}}</span> -->
+                </div>
+                
+            </a>
         </div>
     </div>
 
