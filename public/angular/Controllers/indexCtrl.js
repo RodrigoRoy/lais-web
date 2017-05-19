@@ -36,6 +36,18 @@ angular.module('IndexCtrl',[]).controller('IndexController', function ($scope, $
 			});
 	});
 
+	// Activa la palabra del menu dada como parámetro (class="active") y desactiva la anterior selección
+	// TODO: Revisar scroll porque al llegar al final de la página puede borrar la clase "active"
+	$scope.setActive = function(listName){
+		var li_elems = document.getElementById("main-navbar").getElementsByTagName("li");
+		for(var i=0; i<li_elems.length; i++){
+			if(li_elems[i].className == 'active')
+				li_elems[i].className = '';
+			if(li_elems[i].textContent.trim() == listName)
+				li_elems[i].className = 'active';
+		}
+	};
+
 	//Función que inicializa y abre el modal con su respectivo template, asociado a un controlador
 	$scope.openModal = function() {
 		var modalInstance = $uibModal.open({
