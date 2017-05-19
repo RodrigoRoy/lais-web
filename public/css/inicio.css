@@ -33,13 +33,13 @@
 }
 
 /*Secciones principales que alternan el color de fondo y color de texto*/
-.bicolor-sections section:nth-child(even){
-	background-color: #222222;
-	color: #eee;
-}
 .bicolor-sections section:nth-child(odd){
 	background-color: #eee;
 	color: #333;
+}
+.bicolor-sections section:nth-child(even){
+	background-color: #222222;
+	color: #eee;
 }
 .bicolor-sections section:first-child{
 	padding: 100px 0;
@@ -48,4 +48,7 @@
 .bicolor-sections p{
 	font-family: 'Roboto Slab', serif;
 	font-size: 1.25em;
+}
+.bicolor-sections section:nth-child(even) .section-heading{
+	color: #bbb; /*Titulos blancos donde el fondo es negro*/
 }
