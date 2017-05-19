@@ -6,6 +6,7 @@ lib-cov
 *.out
 *.pid
 *.gz
+*.directory
 
 pids
 logs
@@ -13,10 +14,10 @@ results
 
 npm-debug.log
 node_modules
+public/libs
 
 config.js
 app/dataset
-public/libs
 public/files
 public/imgs/eventos
 public/imgs/publicaciones

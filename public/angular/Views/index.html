@@ -100,31 +100,17 @@
         <footer>
 	        <div class="container">
 	            <div class="row">
-	                <div class="col-md-4 col-sm-12 col-md-push-4">
-	                    <ul class="list-inline social-buttons">
-	                        <li><a href="https://www.facebook.com/lais.mora.1" target="_blank"><i class="fa fa-facebook"></i></a>
-	                        </li>
-	                        <li><a href="https://www.youtube.com/user/laismora" target="_blank"><i class="fa fa-youtube-play"></i></a>
-	                        </li>
-	                        <li><a href="https://twitter.com/LAIS_IMORA" target="_blank"><i class="fa fa-twitter"></i></a>
-	                        </li>
-	                    </ul>
-	                    <h6>Madrid #82 Col. Del Carmen Coyoacán C.P. 04100 México CDMX</h6>
-	                    <h6>Tel. Conmutador 5554 8946 y 55963777</h6>
-	                    <h6><small>INSTITUTO MORA {{today | date: 'yyyy'}}</small></h6>
+	                <div class="col-xs-12 col-sm-6 col-md-4">
+	                    <a href="http://www.mora.edu.mx"><img src="imgs/Mora_logo.png" class="footer-logo"></a>
+	                    <a href="http://www.conacyt.mx/"><img src="imgs/Conacyt_logo.png" class="footer-logo"></a>
 	                </div>
-	                <div class="col-md-4 col-sm-6 col-md-pull-4"> <!-- col-xs-6 -->
-	                    <!-- <span class="copyright">Rodrigo &amp; Sergio</span> -->
+	                <div class="col-xs-12 col-sm-6 col-md-4 col-md-push-4">
 	                    <ul class="list-unstyled quicklinks">
-	                        <li><a href="#">Mapa del sitio</a>
+	                    	<li>
+	                    		<a href="/contacto">Contacto</a>
 	                        </li>
-	                        <li><a href="/contacto">Contacto</a>
-	                        </li>
-	                    </ul>
-	                </div>
-	                <div class="col-md-4 col-sm-6"> <!-- col-xs-6 -->
-	                    <ul class="list-unstyled quicklinks">
-	                        <li><a href="#">Ligas de Interes</a>
+	                        <li>
+	                        	<a href="#">Ligas de Interés</a>
 	                        </li>
 	                        <li ng-show="!loggedIn">
 	                        	<a href="" ng-click="openModal()">Login LAIS</a>
@@ -133,6 +119,17 @@
 	                        	<a href="/admin">Administración del sitio</a>
 	                        </li>
 	                    </ul>
+	                </div>
+	                <div class="col-xs-12 col-sm-12 col-md-4 col-md-pull-4">
+	                    <ul class="list-inline social-buttons">
+	                        <li><a href="https://www.facebook.com/lais.mora.1" target="_blank"><i class="fa fa-facebook"></i></a></li>
+	                        <li><a href="https://www.youtube.com/user/laismora" target="_blank"><i class="fa fa-youtube-play"></i></a></li>
+	                        <!-- <li><a href="https://twitter.com/LAIS_IMORA" target="_blank"><i class="fa fa-twitter"></i></a></li> -->
+	                    </ul>
+	                    <h6>Poussin #45 Col. Col. Mixcoac C.P. 03730 México CDMX</h6>
+	                    <h6>Tel. Conmutador 5554 8946 y 55963777</h6>
+	                    <h6><a href="https://www.google.com.mx/maps/place/Calle+Poussin+45,+San+Juan,+03730+San+Juan,+CDMX/@19.376246,-99.1851294,19z/data=!4m5!3m4!1s0x85d1ff86bd815619:0xcbaa008f0a136e18!8m2!3d19.3763093!4d-99.1852528" target="_blank">Ver en Google Maps <i class="fa fa-map-marker" aria-hidden="true"></i></a></h6>
+	                    <h6><small>INSTITUTO MORA {{today | date: 'yyyy'}}</small></h6>
 	                </div>
 	            </div>
 	        </div>
@@ -207,6 +204,7 @@
 	    <script type="text/javascript" src='libs/jquery.easing/jquery.easing.min.js'></script>
 		<script type="text/javascript" src="js/classie.js"></script>
 		<script type="text/javascript" src="js/cbpAnimatedHeader.js"></script>
+		<!-- <script type="text/javascript" src="js/cbpAnimatedHeader.min.js"></script> -->
     	<script type="text/javascript" src="js/parallax.js"></script>
 
     	<!--Angular Services -->

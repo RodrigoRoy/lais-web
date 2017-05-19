@@ -46,6 +46,12 @@ footer{
 	text-transform: uppercase;
 }
 
+/*Tamaño y margen para logos al fondo de la página*/
+.footer-logo{
+	height: 80px;
+	margin: 1em;
+}
+
 /*Estilo a usar en dispositivos no-móviles (ancho > 768px)*/
 @media screen and (min-width: 768px) {
 	/*Correccion para que el lado derecho del menu no quede pegado al borde*/
@@ -62,6 +68,13 @@ footer{
 	/*Secciones de las etiquestas de los dropdowns menu*/
 	#dropdown-label{
 		color: black;
+	}
+
+	/*Tamaño y margen para logos al fondo de la página*/
+	.footer-logo{
+		width: 35%;
+		height: initial;
+		margin: 1em;
 	}
 }
 
@@ -98,7 +111,8 @@ BRINDAN LA SENSACIÓN DE UN TEMA BASADO EN LOS SIGUIENTES COLORES:*/
 }
 /*Navbar texto de sección no-activa (hover)*/
 .navbar-default .nav li a:hover, .navbar-default .nav li a:focus{
-	color: #294f6d;
+	/*color: #294f6d;*/
+	color: #eee;
 }
 /*Cuadro de navbar activo en menu*/
 .navbar-default .navbar-toggle, .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus{
