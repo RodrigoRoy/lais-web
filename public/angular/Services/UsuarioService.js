@@ -26,6 +26,10 @@ angular.module('UsuarioService', []).factory('Usuario', ['$http', function($http
 
 		update: function(userID, userData){
 			return $http.put('api/usuarios/' + userID, userData);
+		},
+
+		delete: function(userID){
+			return $http.delete('api/usuarios/' + userID);
 		}
 	}
 }]);

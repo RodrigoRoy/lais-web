@@ -36,7 +36,7 @@ angular.module('EventosListCtrl',[]).controller('EventosListController', functio
 		$scope.propertyName = propertyName;
 	};
 
-	// Elimnia un evento de la base de datos
+	// Elimina un evento de la base de datos
 	$scope.delete = function(eventoID){
 		Evento.delete(eventoID)
 			.then(function(res){

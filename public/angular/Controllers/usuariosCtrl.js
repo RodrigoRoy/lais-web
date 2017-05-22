@@ -1,6 +1,6 @@
 //Controlador para un usuario registrado (administrador)
 
-angular.module('UsuariosCtrl',[]).controller('UsuariosController', function ($scope, Usuario, $location, $route) {
+angular.module('UsuariosCtrl',[]).controller('UsuariosController', function ($scope, Usuario, $location, $route, $uibModal) {
 	// No permitir ingresar a la página de este controlador sin sesión iniciada
 	if(!$scope.loggedIn)
 		$location.path('/');
@@ -115,6 +115,38 @@ angular.module('UsuariosCtrl',[]).controller('UsuariosController', function ($sc
     			console.error('Error de conexión con la base de datos');
     		});
     };
+
+    // Elimina un usuario de la base de datos
+	$scope.delete = function(usuarioID){
+		Usuario.delete(usuarioID)
+			.then(function(res){
+				// alert("Usuario eliminado");
+            	$scope.getUsers(); // Recargar la vista actual (no es una recarga completa de la página)
+			}, function(res){
+				alert("Error al eliminar. Por favor intentalo más tarde.");
+				console.error("Error al eliminar usuario de la base de datos", res);
+			});
+	};
+
+    // Muestra un modal de advertencia al borrar un usuario
+    $scope.openModal = function(usuario){
+    	$uibModal.open({
+    		ariaDescribedBy: 'modal-body',
+    		size: 'sm',
+    		templateUrl: 'modal-template.html',
+    		scope: $scope, // pasar el actual $scope (evitar 'crear' otro controlador)
+    		controller: function($uibModalInstance){
+    			$scope.usuario = usuario;
+    			$scope.closeModal = function(){
+    				$uibModalInstance.dismiss('cancel');
+    			};
+    			$scope.deleteConfirmed = function(usuarioID){
+    				$scope.delete(usuarioID);
+    				$uibModalInstance.close();
+    			};
+    		}
+    	});
+    }
 
     // *** INICIALIZACIÓN ***
 	$scope.getUsers();

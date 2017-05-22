@@ -136,11 +136,23 @@
 					</td>
 					<!-- BORRAR USUARIO -->
 					<td ng-show="can('delete')">
-						<button class="btn btn-danger btn-xs"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+						<button class="btn btn-danger btn-xs" ng-click="openModal(usuario)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
 					</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
-</div>
+	
+	<!-- Script para usar en Modal -->
+    <script type="text/ng-template" id="modal-template.html">
+    	<div class="modal-body text-center" id="modal-body">
+    		<p>
+    			<i class="fa fa-exclamation-triangle fa-2x" aria-hidden="true"></i>
+    			<br>
+    			¿Seguro que deseas borrar al usuario {{usuario.username}}?
+    		</p>
+    		<button class="btn btn-primary" type="button" ng-click="deleteConfirmed(usuario._id)">Borrar</button>
+    	</div>
+    </script>
 
+</div>
