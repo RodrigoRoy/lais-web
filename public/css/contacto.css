@@ -1,0 +1,39 @@
+/*Titulo principal "Contacto"*/
+.main-title{
+	text-align: center;
+	font-size: 2em;
+}
+
+/*Subtitulos*/
+.sub-title{
+	font-size: 1.5em;
+}
+
+/*Texto sobresaliente del correo del LAIS*/
+.mail-text{
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+/*Titulares del formulario*/
+.form-text{
+	font-size: 1em;
+}
+
+/*Espaciado superior del encabezado para correo (para móviles)*/
+.mail-spacing{
+	margin-top: 2em;
+}
+
+/*Espaciado superior del encabezado del formulario*/
+.message-spacing{
+	margin-top: 2em;
+}
+
+/*Estilos a usar cuando se deja de emplear un dispositivo móvil*/
+@media screen and (min-width: 992px){
+	/*Espaciado del encabezado para correo (para desktops)*/
+	.mail-spacing{
+		margin-top: 0;
+	}	
+}

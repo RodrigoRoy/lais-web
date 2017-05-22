@@ -71,16 +71,16 @@ router.route('/')
         // send mail with defined transport object
         transporter.sendMail(mailOptions, function(error, info){
             if(error){
-                console.log(error);
+                // console.error(error);
                 return res.status(500).send({
                     success: false,
                     message: 'Forwarding mail service error (Gmail not respond)'
                 });
             }
-            console.log('Message sent: ' + info.response);
+            // console.log('Message sent: ' + info.response);
             res.send({
                 success: true,
-                message: 'Prueba exitosa'
+                message: 'Mensaje enviado exitosamente'
             });
         });
     })
