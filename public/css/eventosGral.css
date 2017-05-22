@@ -40,10 +40,6 @@ Esto reeplaza a la imagen faltante*/
     color: white;
     text-align: center;
 }
-/*Evita que un texto (normalmente un link) no se decore con una linea bajo el texto en ningún momento*/
-.no-text-decoration:active, .no-text-decoration:focus, .no-text-decoration:hover, .no-text-decoration:visited, .no-text-decoration{
-    text-decoration: none;
-}
 
 /*Texto que se muestra en grid de eventos*/
 .thumbnail-text{
@@ -91,11 +87,6 @@ Esto reeplaza a la imagen faltante*/
     vertical-align: middle;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
-}
-
-/* Efecto "Reveal" de Hover con personalización (el color está definido en index.css) */
-.hvr-reveal{
-	display: block;
 }
 
 /*Para uso de eventos que aún son disponibles (no han ocurrido aún)*/

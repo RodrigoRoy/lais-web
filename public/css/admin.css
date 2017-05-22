@@ -1,0 +1,12 @@
+/*Enmarcar cada opción de la sección "admin"*/
+.admin-menu-item{
+	height: 8em;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	padding: 0 1em;
+	margin-bottom: 1em;
+}
+/*Recolorear links en negro*/
+.link-uncolor{
+	color: #333;
+}

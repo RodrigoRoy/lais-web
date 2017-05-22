@@ -52,6 +52,25 @@ footer{
 	margin: 1em;
 }
 
+
+/*########## ESTILOS COMPARTIDOS EN VARIAS PAGINAS*/
+/*Evita que un texto (normalmente un link) no se decore con una linea bajo el texto en ningún momento*/
+.no-text-decoration:active, .no-text-decoration:focus, .no-text-decoration:hover, .no-text-decoration:visited, .no-text-decoration{
+    text-decoration: none;
+}
+
+/* Efecto "Reveal" de Hover con personalización (el color está definido en index.css) */
+.hvr-reveal, .hvr-fade{
+	display: block;
+}
+/*Color de fondo y texto en efecto "Fade" de Hover*/
+.hvr-fade:hover{
+	background-color: #ddd;
+	color: initial;
+}
+/*##########*/
+
+
 /*Estilo a usar en dispositivos no-móviles (ancho > 768px)*/
 @media screen and (min-width: 768px) {
 	/*Correccion para que el lado derecho del menu no quede pegado al borde*/

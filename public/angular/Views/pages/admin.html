@@ -1,34 +1,58 @@
 <div class="container my-container">
 	<h1>Administración y configuración</h1>
-	<p>Estás conectado como <strong>{{user.username || "Anónimo"}}</strong></p>
+	<p>Conectado como <strong>{{user.username || "Anónimo"}}</strong></p>
 
-	<h3><i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; <a href="/admin/eventos">Eventos</a></h3>
-	<p>
-		Listado con todos los eventos relacionados al Laboratorio Audiovisual de Investigación Social y de interés para la investigación social. Se presenta un listado que puede ser ordenado mediante algún campo específico, además de crear, editar o borrar un evento.
-	</p>
+	<div class="row">
+		<div class="col-xs-12 col-sm-4">
+			<div class="admin-menu-item hvr-fade">
+				<a href="/admin/eventos" class="no-text-decoration link-uncolor">
+					<h3><i class="fa fa-calendar-o" aria-hidden="true"></i>&nbsp; Eventos</h3>
+					<p>Ver todos los eventos relacionados al LAIS.</p>
+				</a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<div class="admin-menu-item hvr-fade">
+				<a href="/admin/publicaciones" class="no-text-decoration link-uncolor">
+					<h3><i class="fa fa-book" aria-hidden="true"></i>&nbsp; Publicaciones</h3>
+					<p>Ver todas las publicaciones hechas por los integrantes del LAIS.</p>
+				</a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<div class="admin-menu-item hvr-fade">
+				<a href="/archivos" class="no-text-decoration link-uncolor">
+					<h3><i class="fa fa-files-o" aria-hidden="true"></i>&nbsp; Archivos</h3>
+					<p>Ver los archivos almacenados en el servidor interno del LAIS.</p>
+				</a>
+			</div>
+		</div>
+	</div>
 
-	<h3><i class="fa fa-book" aria-hidden="true"></i>&nbsp; <a href="/admin/publicaciones">Publicaciones</a></h3>
-	<p>
-		Listado con las publicaciones o menciones de documentos producidos en el LAIS a través de medios como la imprenta, radio, medios digitales, etc.
-	</p>
-
-	<h3><i class="fa fa-files-o" aria-hidden="true"></i>&nbsp; <a href="/archivos">Archivos</a></h3>
-	<p>
-		Lista de archivos auxiliares que pueden ser consultados en línea. Incluye un área para subir nuevo material al servidor y editar o borrar archivos existentes.
-	</p>
-
-	<h3><i class="fa fa-users" aria-hidden="true"></i>&nbsp; <a href="/admin/usuarios">Usuarios registrados</a></h3>
-	<p>
-		Lista de personas registradas como usuarios internos que pueden administrar contenido en la página. Se pueden revocar o limitar los permisos a determinados usuarios y además se muestran solicitudes pendientes de usuarios que solicitan ingreso.
-	</p>
-
-	<h3><i class="fa fa-camera" aria-hidden="true"></i>&nbsp; <a href="http://lais-interno.mora.edu.mx/moodle/">Seminario interno</a></h3>
-	<p>
-		Enlace externo a la página que contiene el material con el que se discute en las reuniones mensuales del seminario interno del LAIS donde se aborda el tema de la investigación con documentos audiovisuales.
-	</p>
-
-	<h3><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp; <a href="" ng-click="cerrarSesion()">Cerrar sesión</a></h3>
-	<p>
-		Al terminar la sesión se termina la edición del contenido de la página.
-	</p>
+	<div class="row">
+		<div class="col-xs-12 col-sm-4">
+			<div class="admin-menu-item hvr-fade">
+				<a href="/admin/usuarios" class="no-text-decoration link-uncolor">
+					<h3><i class="fa fa-users" aria-hidden="true"></i>&nbsp; Usuarios</h3>
+					<p>Lista de usuarios registrados para modificar contenido.</p>
+				</a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<div class="admin-menu-item hvr-fade">
+				<a href="http://lais-interno.mora.edu.mx/moodle/" class="no-text-decoration link-uncolor">
+					<h3><i class="fa fa-camera" aria-hidden="true"></i>&nbsp; Seminario LAIS</h3>
+					<p>Página del Moodle con información y material del seminario interno del LAIS.</p>
+				</a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<div class="admin-menu-item hvr-fade" ng-click="cerrarSesion()">
+				<a href="" class="no-text-decoration link-uncolor">
+					<h3><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp; Cerrar sesión</h3>
+					<p>Concluir la edición del sitio.</p>
+				</a>
+			</div>
+		</div>
+	</div>
 </div>
