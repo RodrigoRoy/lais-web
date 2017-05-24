@@ -1,7 +1,11 @@
 <!-- Página individual para una publicación del LAIS -->
 
 <div class="container my-container">
-    <h1 class="color-title">{{publicacion.titulo}}</h1>
+    <h1 class="color-title">
+    	{{publicacion.titulo}} 
+    	<span ng-if="can('update')"><a href="publicaciones/{{publicacion._id}}/edit" class="secret-icon"><i class="fa fa-pencil" aria-hidden="true"></i></a></span> 
+		<span ng-if="can('delete')"><a href="" class="secret-icon" ng-click="openModal(publicacion)"><i class="fa fa-trash-o" aria-hidden="true"></i></a></span>
+    </h1>
 
     <div class="table-responsive">
 	    <table class="table">
@@ -92,4 +96,16 @@
 
     <!-- <br>
     <pre>{{publicacion | json}}</pre> -->
+
+    <!-- Script para usar en Modal -->
+    <script type="text/ng-template" id="modal-template.html">
+    	<div class="modal-body text-center" id="modal-body">
+    		<p>
+    			<i class="fa fa-exclamation-triangle fa-2x" aria-hidden="true"></i>
+    			<br>
+    			¿Seguro que deseas borrar la publicación "{{publicacion.titulo}}"?
+    		</p>
+    		<button class="btn btn-primary" type="button" ng-click="deleteConfirmed(publicacion._id)">Borrar</button>
+    	</div>
+    </script>
 </div>

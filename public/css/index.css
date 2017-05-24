@@ -68,6 +68,11 @@ footer{
 	background-color: #ddd;
 	color: initial;
 }
+
+/*Color transparente de icono oculto*/
+.secret-icon, .secret-icon:hover, .secret-icon:focus, .secret-icon:visited{
+	color: rgba(51,51,51,0.5);
+}
 /*##########*/
 
 
@@ -94,6 +99,23 @@ footer{
 		width: 35%;
 		height: initial;
 		margin: 1em;
+	}
+
+	/*Animación para hacer aparecer texto/icono*/
+	@keyframes my-fade-in{
+		from {color: rgba(51,51,51,0.2);}
+		to {color: rgba(51,51,51,1.0);}
+	}
+	/*Color transparente de icono oculto*/
+	.secret-icon, .secret-icon:active{
+		color: rgba(51,51,51,0.2);
+		font-size: 0.8em;
+	}
+	/*Animación y color que revela el icono*/
+	.secret-icon:hover{
+		animation-name: my-fade-in;
+		animation-duration: 1s;
+		color: rgba(51,51,51,1.0);
 	}
 }
 

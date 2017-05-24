@@ -5,7 +5,11 @@
 	<div class="jumbotron">
 		<!-- TITULO E IMAGEN -->
 		<center>
-			<h1 class="title">{{evento.titulo}}</h1>
+			<h1 class="title"> 
+				{{evento.titulo}} 
+				<span ng-if="can('update')"><a href="eventos/{{evento._id}}/edit" class="secret-icon"><i class="fa fa-pencil" aria-hidden="true"></i></a></span> 
+				<span ng-if="can('delete')"><a href="" class="secret-icon" ng-click="openModal(evento)"><i class="fa fa-trash-o" aria-hidden="true"></i></a></span>
+			</h1>
 			<img class="img-responsive img-rounded" src="imgs/eventos/{{evento.imagen}}">
 		</center>
 		<hr>
@@ -99,4 +103,16 @@
 		<!-- <br>
     	<pre>{{evento | json}}</pre> -->
 	</div>
+
+	<!-- Script para usar en Modal -->
+    <script type="text/ng-template" id="modal-template.html">
+    	<div class="modal-body text-center" id="modal-body">
+    		<p>
+    			<i class="fa fa-exclamation-triangle fa-2x" aria-hidden="true"></i>
+    			<br>
+    			¿Seguro que deseas borrar el evento "{{evento.titulo}}"?
+    		</p>
+    		<button class="btn btn-primary" type="button" ng-click="deleteConfirmed(evento._id)">Borrar</button>
+    	</div>
+    </script>
 </div>

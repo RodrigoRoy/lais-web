@@ -8,6 +8,18 @@
 	margin-top: 5%;
 }
 
+/*Titulo principal con lineas decorativas*/
+.event-main-title{
+	text-align: center;
+    width: 100%;
+    height: 2em;
+    margin: 16px 0;
+    padding: 15px 0;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    color: #ccc;
+}
+
 /*Representa el espacio destinado para mostrar imagen y título de un evento*/
 .thumbnail{
 	background-color: #eee;

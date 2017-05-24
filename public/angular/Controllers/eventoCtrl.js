@@ -6,7 +6,7 @@ angular.module('EventoCtrl',[])
 		return $sce.trustAsResourceUrl(recordingUrl);
 	};
 }])
-.controller('EventoController', function ($scope, $routeParams, $location, Evento){
+.controller('EventoController', function ($scope, $routeParams, $location, $uibModal, Evento){
 
 	// Carga síncrona (no recomendada) para mostrar correctamente el mapa en pantalla
 	// var initialize = function(){
@@ -18,7 +18,8 @@ angular.module('EventoCtrl',[])
 	// google.maps.event.addDomListenerOnce(window, 'load', initialize);
 
 	//Obtiene el evento con su ID
-	Evento.get($routeParams.id)
+	$scope.getEvent = function(){
+		Evento.get($routeParams.id)
 		.then(function(res){
 			$scope.evento = res.data;
 
@@ -190,8 +191,43 @@ angular.module('EventoCtrl',[])
 					map.setCenter($scope.geocodeResult.geometry.location); // Actualizar vista en mapa para marcar el lugar
 				}, 500);
 			}
-		}, function(res){
-			//error
+		}, function(res){ //error
 			console.error('Error al obtener la información del evento', res);
 		});
+	}
+
+	// Elimina un evento de la base de datos
+	$scope.delete = function(eventoID){
+		Evento.delete(eventoID)
+			.then(function(res){
+				alert("Evento eliminado");
+				$location.url('/eventos'); // Redirigin a página de eventos
+			}, function(res){
+				alert("Error al eliminar. Por favor intentalo más tarde.");
+				console.error("Error al eliminar evento de la base de datos", res);
+			});
+	};
+
+	// Muestra un modal de advertencia al borrar un archivo
+    $scope.openModal = function(evento){
+    	$uibModal.open({
+    		ariaDescribedBy: 'modal-body',
+    		size: 'sm',
+    		templateUrl: 'modal-template.html',
+    		scope: $scope, // pasar el actual $scope (evitar 'crear' otro controlador)
+    		controller: function($uibModalInstance){
+    			$scope.evento = evento;
+    			$scope.closeModal = function(){
+    				$uibModalInstance.dismiss('cancel');
+    			};
+    			$scope.deleteConfirmed = function(eventoID){
+    				$uibModalInstance.close();
+    				$scope.delete(eventoID);
+    			};
+    		}
+    	});
+    }
+
+    // Inicialización
+    $scope.getEvent();
 })
