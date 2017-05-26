@@ -4,7 +4,7 @@ angular.module('EventosCtrl', []).controller('EventosController', function ($sco
 	
 	$scope.currentPage = 1; //Indica el número de página actual
 	$scope.maxSize = 10; //Maximo numero de páginas a mostrar para escojer
-	$scope.itemsPerPage = 9; //Maximo numero de eventos a mostrar por página, lo cuál son 9
+	$scope.itemsPerPage = 12; //Maximo numero de eventos a mostrar por página, lo cuál son 9
 
 	// Obtiene la información de todos los eventos
 	$scope.getEvents = function(){

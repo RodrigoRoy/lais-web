@@ -17,7 +17,8 @@
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="publicacion in publicaciones">
             <a href="publicaciones/{{publicacion._id}}" class="no-text-decoration">
                 
-                <div class="publication-container hvr-border-fade" ng-show="publicacion.imagen">
+                <!-- CON IMAGEN COMO PORTADA -->
+                <div class="publication-container" ng-show="publicacion.imagen"> <!-- hvr-border-fade -->
                     <div class="publication-cover">
                         <img src="imgs/publicaciones/{{publicacion.imagen}}">
                     </div>
@@ -28,6 +29,7 @@
                     </div>
                 </div>
 
+                <!-- SIN IMAGEN, TEXTO COMO PORTADA -->
                 <div class="publication-thumbnail" ng-class="{'color-article': publicacion.tipo === 'Artículo', 'color-book': publicacion.tipo === 'Libro', 'color-documentary': publicacion.tipo === 'Documental', 'color-lecture': publicacion.tipo === 'Ponencia', 'color-website': publicacion.tipo === 'Página web', 'color-default': !publicacion.tipo}" ng-show="!publicacion.imagen"> <!-- class="hvr-reveal" -->
                     <span class="publication-title" ng-class="{'color-article-title': publicacion.tipo === 'Artículo', 'color-book-title': publicacion.tipo === 'Libro', 'color-documentary-title': publicacion.tipo === 'Documental', 'color-lecture-title': publicacion.tipo === 'Ponencia', 'color-website-title': publicacion.tipo === 'Página web', 'color-default-title': !publicacion.tipo}">{{publicacion.titulo}}</span>
                     <br>

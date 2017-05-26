@@ -35,10 +35,16 @@ Se emplean publication-container, publication-cover y publication-info*/
 	height: 305px;
 	width: 100%;
 	margin-bottom: 20px;
+	position: relative; /*para alinear texto posteriormente*/
 }
 .publication-cover{ /*espacio para portada*/
 	height: 100%;
+	width: 100%;
 	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #333;
 }
 .publication-cover img{
 	width: 100%;
