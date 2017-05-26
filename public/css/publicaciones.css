@@ -189,6 +189,21 @@ También se define el tamaño individual del título, autor, fecha*/
 	color: #BBB;
 }
 
+
+/*Cada una de las propiedades de la publicación (en tamaño xs)*/
+.row-property{
+	margin-bottom: 0.5em;
+	margin-top: 0.5em;
+	padding-top: 0.5em;
+	border-top-style: solid;
+	border-top-color: rgba(0,0,0,0.1);
+	border-top-width: 1px;
+}
+/*Imagen responsiva (max-width: 100% está en estilo de <img>)*/
+.imagen-portada{
+	max-height: 400px;
+}
+
 /*Estilo a usar en tamaño sm, md, lg*/
 @media screen and (min-width: 768px){
 	/*Se disminuye ligeramente el tamaño de fuente*/

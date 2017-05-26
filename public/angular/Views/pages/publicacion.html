@@ -2,16 +2,20 @@
 
 <div class="container my-container">
     <h1 class="color-title">
-    	{{publicacion.titulo}} 
-    	<span ng-if="can('update')"><a href="publicaciones/{{publicacion._id}}/edit" class="secret-icon"><i class="fa fa-pencil" aria-hidden="true"></i></a></span> 
-		<span ng-if="can('delete')"><a href="" class="secret-icon" ng-click="openModal(publicacion)"><i class="fa fa-trash-o" aria-hidden="true"></i></a></span>
+    	<center>
+    		{{publicacion.titulo}}
+	    	<span ng-if="can('update')"><a href="publicaciones/{{publicacion._id}}/edit" class="secret-icon"><i class="fa fa-pencil" aria-hidden="true"></i></a></span> 
+			<span ng-if="can('delete')"><a href="" class="secret-icon" ng-click="openModal(publicacion)"><i class="fa fa-trash-o" aria-hidden="true"></i></a></span>
+		</center>
     </h1>
 
-    <div class="table-responsive">
+    <!-- TABLA PARA MOSTRAR EN DISPOSITIVOS NO-MOVILES (XS) -->
+    <!-- Una tabla responsiva no se ve bien en pantalla pequeña (hay scroll horizontal) -->
+    <div class="table-responsive visible-sm-block visible-md-block visible-lg-block hidden-xs">
 	    <table class="table">
 	    	<tbody>
 	    		<tr>
-	    			<td>Título </td>
+	    			<td>Título</td>
 	    			<td>{{publicacion.titulo}}</td>
 	    		</tr>
 	    		<tr ng-show="publicacion.booktitle">
@@ -90,8 +94,102 @@
 	    			<td>Palabras clave</td>
 	    			<td>{{publicacion.keywords.join(', ')}}</td>
 	    		</tr>
+	    		<tr ng-show="publicacion.imagen">
+	    			<td>Imagen</td>
+	    			<td><img src="imgs/publicaciones/{{publicacion.imagen}}" class="imagen-portada"></td>
+	    		</tr>
 	    	</tbody>
 	    </table>
+    </div>
+
+    <!-- CONTENEDOR PARA MOSTRAR CONTENIDO EN PANTALLA AMPLIA (NO XS) -->
+    <div class="container visible-xs-block hidden-sm hidden-md hidden-lg">
+    	<div class="row row-property">
+    		<div class="col-xs-12 col-sm-2"><strong>Título</strong></div>
+    		<div class="col-xs-12 col-sm-10">{{publicacion.titulo}}</div>
+    	</div>
+    	<div class="row row-property" ng-show="publicacion.booktitle">
+    		<div class="col-xs-12 col-sm-2"><strong>Título dentro de publicación</strong></div>
+    		<div class="col-xs-12 col-sm-10">{{publicacion.booktitle}}</div>
+    	</div>
+    	<div class="row row-property" ng-show="publicacion.autor && publicacion.autor.length > 0">
+    		<div class="col-xs-12 col-sm-2">
+    			<strong>Autor<span ng-show="publicacion.autor.length > 1">es</span></strong>
+    		</div>
+    		<div class="col-xs-12 col-sm-10">
+    			<ul class="list-unstyled">
+					<li ng-repeat="autor in publicacion.autor"><a href="/publicaciones?autor={{autor._id}}">{{autor.nombre}} {{autor.apellido}}</a></li>
+				</ul>
+    		</div>
+    	</div>
+    	<div class="row row-property" ng-show="publicacion.fecha">
+    		<div class="col-xs-12 col-sm-2"><strong>Año</strong></div>
+    		<div class="col-xs-12 col-sm-10">{{publicacion.fecha | date: 'yyyy'}}</div>
+    	</div>
+    	<div class="row row-property">
+    		<div class="col-xs-12 col-sm-2"><strong>Tipo de publicación</strong></div>
+    		<div class="col-xs-12 col-sm-10">{{publicacion.tipo}}</div>
+    	</div>
+    	<div class="row row-property" ng-show="publicacion.publisher">
+    		<div class="col-xs-12 col-sm-2"><strong>Publisher</strong></div>
+    		<div class="col-xs-12 col-sm-10">{{publicacion.publisher}}</div>
+    	</div>
+    	<div class="row row-property" ng-show="publicacion.journal">
+    		<div class="col-xs-12 col-sm-2"><strong>Journal</strong></div>
+    		<div class="col-xs-12 col-sm-10">{{publicacion.journal}}</div>
+    	</div>
+    	<div class="row row-property" ng-show="publicacion.numero">
+    		<div class="col-xs-12 col-sm-2"><strong>Número</strong></div>
+    		<div class="col-xs-12 col-sm-10">{{publicacion.numero}}</div>
+    	</div>
+    	<div class="row row-property" ng-show="publicacion.volumen">
+    		<div class="col-xs-12 col-sm-2"><strong>Volumen</strong></div>
+    		<div class="col-xs-12 col-sm-10">{{publicacion.volumen}}</div>
+    	</div>
+    	<div class="row row-property" ng-show="publicacion.paginas">
+    		<div class="col-xs-12 col-sm-2"><strong>Páginas</strong></div>
+    		<div class="col-xs-12 col-sm-10">{{publicacion.paginas}}</div>
+    	</div>
+    	<div class="row row-property" ng-show="publicacion.coleccion">
+    		<div class="col-xs-12 col-sm-2"><strong>Colección a la que pertenece</strong></div>
+    		<div class="col-xs-12 col-sm-10">{{publicacion.coleccion}}</div>
+    	</div>
+    	<div class="row row-property" ng-show="publicacion.isbn">
+    		<div class="col-xs-12 col-sm-2"><strong>ISBN</strong></div>
+    		<div class="col-xs-12 col-sm-10">{{publicacion.isbn}}</div>
+    	</div>
+    	<div class="row row-property" ng-show="publicacion.descripcion">
+    		<div class="col-xs-12 col-sm-2"><strong>Descripción</strong></div>
+    		<div class="col-xs-12 col-sm-10">{{publicacion.descripcion}}</div>
+    	</div>
+    	<div class="row row-property" ng-show="publicacion.abstract">
+    		<div class="col-xs-12 col-sm-2"><strong>Abstract</strong></div>
+    		<div class="col-xs-12 col-sm-10">{{publicacion.abstract}}</div>
+    	</div>
+    	<div class="row row-property" ng-show="publicacion.url">
+    		<div class="col-xs-12 col-sm-2"><strong>URL</strong></div>
+    		<div class="col-xs-12 col-sm-10"><a href="{{publicacion.url}}" target="_blank">{{publicacion.url}}</a></div>
+    	</div>
+    	<div class="row row-property" ng-show="publicacion.notas">
+    		<div class="col-xs-12 col-sm-2"><strong>Notas</strong></div>
+    		<div class="col-xs-12 col-sm-10">{{publicacion.notas}}</div>
+    	</div>
+    	<div class="row row-property" ng-show="publicacion.adjuntos && publicacion.adjuntos.length > 0">
+    		<div class="col-xs-12 col-sm-2"><strong>Archivos adjuntos</strong></div>
+    		<div class="col-xs-12 col-sm-10">
+    			<ul class="list-unstyled">
+					<li ng-repeat="adjunto in publicacion.adjuntos"><a href="files/{{adjunto.location + adjunto.filename}}" target="_blank">{{adjunto.filename}}</a></li>
+				</ul>
+    		</div>
+    	</div>
+    	<div class="row row-property" ng-show="publicacion.keywords && publicacion.keywords.length > 0">
+    		<div class="col-xs-12 col-sm-2"><strong>Palabras clave</strong></div>
+    		<div class="col-xs-12 col-sm-10">{{publicacion.keywords.join(', ')}}</div>
+    	</div>
+    	<div class="row row-property" ng-show="publicacion.imagen">
+    		<div class="col-xs-12 col-sm-2"><strong>Imagen</strong></div>
+    		<div class="col-xs-12 col-sm-10"><img src="imgs/publicaciones/{{publicacion.imagen}}" class="imagen-portada"></div>
+    	</div>
     </div>
 
     <!-- <br>
