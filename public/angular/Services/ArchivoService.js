@@ -25,7 +25,6 @@ angular.module('ArchivoService', []).factory('Archivo', ['$http', function($http
 		},
 
 		// Actualiza la información de un archivo (mediante el archivoID y la información nueva archivoID)
-		// 
 		update: function(archivoID, archivoData){
 			return $http.put('/api/archivos/' + archivoID, archivoData);
 		},
@@ -35,11 +34,6 @@ angular.module('ArchivoService', []).factory('Archivo', ['$http', function($http
 			return $http.delete('/api/archivos/' + archivoID);
 		},
 
-		// Elimina en el sistema de archivos (no en base de datos)
-		// El parámetro debe ser la concatenación de 'location' y 'filename' en el objeto Archivo
-		unlink: function(pathWithFilename){
-			return $http.delete('/api/files/' + pathWithFilename); // Por ejemplo: $http.delete('/api/files/Carpeta/Subcarpeta/foo.pdf');
-		},
 
 		// Busca la información completa de un archivo con base en su nombre (filename) y ubicación (location)
 		find: function(filename, location){
@@ -48,7 +42,17 @@ angular.module('ArchivoService', []).factory('Archivo', ['$http', function($http
 
 		findMultiple: function(filenameArray, location){
 			return $http.post('/api/archivos/search', {filenames: filenameArray, location: location});
-		}
+		},
 
+		// Elimina en el sistema de archivos (no en base de datos)
+		// El parámetro debe ser la concatenación de 'location' y 'filename' en el objeto Archivo
+		unlink: function(pathWithFilename){
+			return $http.delete('/api/files/' + pathWithFilename); // Por ejemplo: $http.delete('/api/files/Carpeta/Subcarpeta/foo.pdf');
+		},
+
+		// Elimina imagen en el sistema de archivos (no en base de datos)
+		unlinkImage: function(pathWithFilename){
+			return $http.delete('/api/images/' + pathWithFilename);
+		}
 	}
 }]);

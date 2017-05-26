@@ -111,8 +111,8 @@ angular.module('PublicacionFormCtrl',[]).controller('PublicacionFormController',
     // Sube archivo (imagen) al servidor
     $scope.uploadImage = function(file){
         Upload.upload({
-            url: 'api/upload2', // Ruta de Node (usando POST) para el manejo del almacenamiento de la imagen
-            data: {file: file} // Se pueden incluir datos adicionales (ej. {file: file, 'username': 'Roy'})
+            url: 'api/images', // Ruta de Node (usando POST) para el manejo del almacenamiento de la imagen
+            data: {file: file, path: 'publicaciones/'} // Se pueden incluir datos adicionales (ej. {file: file, 'username': 'Roy'})
         }).then(function (resp) { // Función cuando el archivo es subido exitosamente
             $scope.publicacion.imagen = resp.config.data.file.name;
             $scope.imageContainer = false;
@@ -120,7 +120,7 @@ angular.module('PublicacionFormCtrl',[]).controller('PublicacionFormController',
             console.error('Error status: ' + resp.status);
         }, function (evt) { // Función para notificar progreso
             var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-            console.error('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
         });
     };
     // Elimina imagen del evento
@@ -129,7 +129,7 @@ angular.module('PublicacionFormCtrl',[]).controller('PublicacionFormController',
         $scope.publicacion.imagen = undefined;
         $scope.imageContainer = true;
         // Borrar archivo del sistema:
-        Archivo.unlink('/imgs/publicaciones/', filename).
+        Archivo.unlinkImage('publicaciones/' + filename).
             then(function(res){
                 // console.log("Se ha borrado exitosamente el archivo del sistema");
             }, function(res){
