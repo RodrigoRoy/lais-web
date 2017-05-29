@@ -285,6 +285,9 @@ angular.module('PublicacionFormCtrl',[]).controller('PublicacionFormController',
                 for(var i in $scope.publicacion.keywords)
                     $scope.keywords.push({"text": $scope.publicacion.keywords[i]});
             }
+            if($scope.publicacion.imagen){ // Deshabilitar div para imagen si el evento ya tiene una
+                $scope.imageContainer = false;
+            }
             // Parse para "adjuntos" (análogo a "autor")
             if($scope.publicacion.adjuntos && $scope.publicacion.adjuntos.length > 0){
             	$scope.adjuntos = [];
