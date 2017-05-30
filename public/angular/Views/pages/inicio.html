@@ -1,25 +1,7 @@
 <div class="bicolor-sections">
-    <section id="intro">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <span class="fa-stack fa-4x">
-                        <i class="fa fa-circle fa-stack-2x text-primary">
-                            <center>
-                                <img id="iconoLAIS" class="img-responsive" src="imgs/lais_logo.png">
-                            </center>
-                        </i>
-                    </span>
-                    <p>
-                        El <strong>Laboratorio Audiovisual de Investigación Social (LAIS)</strong> es un espacio colectivo e interdisciplinario dedicado a la investigación social con imágenes. Creado en 2002, el LAIS realiza estudios que incorporan imágenes, tanto fijas como en movimiento, como fuentes primarias, ya sea procedentes de archivo o generadas desde la misma investigación; y como medio de divulgación de las investigaciones sociales.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    
     <!-- Seccion de carrusel/inicio -->
-    <section id="secCarrusel">
+    <section id="info">
         <center>
             <!-- <hr>
             <h1 style="color:white;">Noticias</h1>
@@ -39,8 +21,28 @@
         </center>
     </section>
 
+    <section id="intro">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x text-primary">
+                            <center>
+                                <img id="iconoLAIS" class="img-responsive" src="imgs/lais_logo.png">
+                            </center>
+                        </i>
+                    </span>
+                    <p>
+                        El <strong>Laboratorio Audiovisual de Investigación Social (LAIS)</strong> es un espacio colectivo e interdisciplinario dedicado a la investigación social con imágenes. Creado en 2002, el LAIS realiza estudios que incorporan imágenes, tanto fijas como en movimiento, como fuentes primarias, ya sea procedentes de archivo o generadas desde la misma investigación; y como medio de divulgación de las investigaciones sociales.
+                    </p>
+                    <small ng-click="openModal()">Leer más...</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Seccion de Historia -->
-    <section id="historia">
+    <section id="trayectoria">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center" id="headerIcon">
@@ -56,7 +58,7 @@
     </section>
 
     <!-- Seccion de Recusos en Línea -->
-    <section id="recursosLinea">
+    <section id="recursos">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -101,4 +103,32 @@
             </div>
         </div>
     </section>
+
+    <script type="text/ng-template" id="about.html">
+        <div class="modal-header">
+            <h3 class="modal-title" id="modal-title"><center>Acerca del LAIS</center></h3>
+        </div>
+        <div class="modal-body" id="modal-body">
+            <p>
+                El Laboratorio Audiovisual de Investigación Social (LAIS) es un espacio colectivo e interdisciplinario dedicado a la investigación social con imágenes. Creado en <strong>2002</strong>, el LAIS   realiza estudios que incorporan imágenes, tanto fijas como en movimiento, de diferentes maneras:
+
+                <ul>
+                    <li>Como fuentes primarias, ya sea procedentes de archivo o generadas desde la misma investigación; y como medio de divulgación de las investigaciones sociales.</li>
+                </ul>
+
+                Como parte de este trabajo, llevamos a cabo diversas actividades, entre ellas:
+
+                <ul>
+                    <li>Construimos propuestas teóricas, metodológicas, técnicas y sociales relacionadas con estos modos de incorporación de las imágenes a la investigación</li>
+
+                    <li>Fomentamos el análisis del ambiente audiovisual en el cual estamos inmersos</li>
+
+                    <li>Desarrollamos mecanismos de acceso libre al patrimonio imagético y de procesamiento de datos catalográficos; y formamos recursos humanos</li>
+                </ul>
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="closeModal()">Cerrar</button>
+        </div>
+    </script>
 </div> 

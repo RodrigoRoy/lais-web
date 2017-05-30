@@ -6,11 +6,6 @@
 	max-width: 100%; /*Para imagenes responsivas*/
 }
 
-/*controla la separación del margin-top con la sección del carusel con respecto del navbar*/
-/*#secCarrusel{
-	margin-top: -7%;
-}*/
-
 /*Tipografía utilizado en los textos de cada slide*/
 .carousel-caption{
 	font-family: 'Roboto Slab', serif;
@@ -41,14 +36,14 @@
 	background-color: #222222;
 	color: #eee;
 }
-.bicolor-sections section:first-child{
+.bicolor-sections section:nth-child(even) .section-heading{
+	color: #bbb; /*Titulos blancos donde el fondo es negro*/
+}
+#intro{ /*.bicolor-sections section:first-child{*/
 	padding: 100px 0;
 	font-size: 1.25em;
 }
 .bicolor-sections p{
 	font-family: 'Roboto Slab', serif;
 	font-size: 1.25em;
-}
-.bicolor-sections section:nth-child(even) .section-heading{
-	color: #bbb; /*Titulos blancos donde el fondo es negro*/
 }
