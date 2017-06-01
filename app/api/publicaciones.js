@@ -46,15 +46,15 @@ router.route('/')
                 res.send(publicaciones);
             });
         // En caso de desear agrupaciones de publicaciones. Por ejemplo, agrupar por fecha y filtrar por tipo:
-        // GET api/publicaciones?group=fecha&match=Documental
+        // GET api/publicaciones?group=tipo[&match=Documental]
         }else if(req.query.group){
             Publicacion.aggregate([
-                {$match: {tipo: {$regex: '.*' + req.query.match + '.*', $options: 'i'}}},
+                // {$match: {tipo: {$regex: '.*' + req.query.match + '.*', $options: 'i'}}},
                 {$sort: {fecha: -1, titulo: 1}},
                 {$group: {
                     _id: "$" + req.query.group, 
-                    publicaciones: {$push: "$$ROOT"}}},
-                {$sort: {_id: -1}}
+                    publicaciones: {$push: "$$ROOT"}}}
+                // {$sort: {_id: -1}}
             ])
             .exec(function(err, publicaciones){
                 if(err)

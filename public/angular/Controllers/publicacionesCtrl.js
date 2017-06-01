@@ -4,6 +4,7 @@ angular.module('PublicacionesCtrl',[]).controller('PublicacionesController', fun
 
 	// Variables
 	$scope.publicaciones = [];
+	$scope.collapse = {}; // contiene como atributos el nombre de la agrupación y bool como valor
 	// Establece el tipo de agrupación para las publicaciones
 	// Por ejemplo, desde URL: /publicaciones?group=tipo
 	var groupType = $routeParams.group || 'fecha';
@@ -34,9 +35,12 @@ angular.module('PublicacionesCtrl',[]).controller('PublicacionesController', fun
 			// }, function(res){ // Fail
 			// 	console.error('Error de conexión con la base de datos: ', res);
 			// });
-			Publicacion.all()
+			Publicacion.group('tipo')
 			.then(function(res){ // Success
 				$scope.publicaciones = res.data;
+				// Banderas para colapsar información (que viene agrupada)
+				for(var i in $scope.publicaciones)
+					$scope.collapse[$scope.publicaciones[i]._id] = true;
 			}, function(res){ // Fail
 				console.error('Error de conexión con la base de datos: ', res);
 			});

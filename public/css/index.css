@@ -30,11 +30,12 @@ img{
 	color: #ccc;
 }
 
-/* Seccion del logo */
-#secLogo{
-	width: 48%;
-	margin-top: -20%;
-	font-weight: 700;
+.brand-spacing{
+	padding-top: 0;
+	padding-bottom: 0;
+}
+.brand-spacing img{
+	height: 50px;
 }
 
 /*Contenedor en páginas generales*/
@@ -207,6 +208,11 @@ ul.social-buttons li a:hover, ul.social-buttons li a:focus, ul.social-buttons li
 /*Subtítulos en inicio y encabezados (de formulario)*/
 .service-heading, .color-title{
 	color: #294f6d;
+}
+/*Botón (div) personalizado (ver publicaciones.css)*/
+.my-block-button{
+	color: #ddd;
+	background-color: #294f6d;
 }
 
 /*Alternativa de color para enlaces (el color es más oscuro)*/

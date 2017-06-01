@@ -36,8 +36,13 @@ angular.module('PublicacionService', []).factory('Publicacion', ['$http', functi
 		},
 
 		// Agrupar las publicaciones por propiedad (e.g. fecha). Permite restringuir mediante match (e.g. tipo)
-		groupBy: function(propiedad, match){
-			return $http.get('api/publicaciones?group=' + propiedad + '&match=' + match);
+		// groupBy: function(propiedad, match){
+		// 	return $http.get('api/publicaciones?group=' + propiedad + '&match=' + match);
+		// },
+
+		// Agrupar las publicaciones por propiedad (e.g. fecha)
+		group: function(propiedad){
+			return $http.get('api/publicaciones?group=' + propiedad);
 		},
 
 		// Agrupar publicaciones por autor (en orden cronológico por default)
