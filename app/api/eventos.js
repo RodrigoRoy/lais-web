@@ -30,20 +30,39 @@ router.use(function(req, res, next){
 
 // En peticiones a la raiz del API
 router.route('/')
-	// Obtener todos los eventos. Permite filtrar por tipo de evento, ejemplo:
+	// Obtener todos los eventos. Permite filtrar por tipo de evento.
+    // Incluye caso especial para agrupar por fecha.
     // GET http://localhost:8080/api/eventos
     // GET http://localhost:8080/api/eventos?tipo=Docencia
+    // GET http://localhost:8080/api/eventos?group=fecha
 	.get(function(req, res){
-        // Crear objeto query de MongoDB si y solo si existe req.query.tipo, en caso contrario se crea objeto vacio (buscar todos)
-        var query = req.query.tipo ? {tipo: {$regex: '.*' + (req.query.tipo || '') + '.*', $options: 'i'}} : {};
-        Evento.find(query) // encontrar todos
-        .sort({fecha: 'desc'})
-        // .populate('lugar') // poblar la referencia a "lugar"
-        .exec(function(err, eventos){
-            if(err)
-                res.send(err);
-            res.json(eventos);
-        })
+        if(req.query.group && req.query.group === 'fecha'){
+            // Agrupar eventos por año (incluye fechas vacias)
+            Evento.aggregate([
+                {$sort: {fecha: -1}},
+                {$group: {
+                    _id: {"$substr": ["$fecha", 0, 4]},
+                    eventos: {$push: "$$ROOT"}}},
+                {$sort: {_id: -1}}
+            ])
+            .exec(function(err, eventos){
+                if(err)
+                    res.send(err);
+                res.json(eventos);
+            })
+        }
+        else{
+            // Crear objeto query de MongoDB si y solo si existe req.query.tipo, en caso contrario se crea objeto vacio (buscar todos)
+            var query = req.query.tipo ? {tipo: {$regex: '.*' + (req.query.tipo || '') + '.*', $options: 'i'}} : {};
+            Evento.find(query) // encontrar todos
+            .sort({fecha: 'desc'})
+            // .populate('lugar') // poblar la referencia a "lugar"
+            .exec(function(err, eventos){
+                if(err)
+                    res.send(err);
+                res.json(eventos);
+            })
+        }
     })
 
     // Agregar un nuevo evento

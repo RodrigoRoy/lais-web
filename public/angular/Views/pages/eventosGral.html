@@ -17,30 +17,41 @@
 		</div> -->
 	</div>
 
-	<div class="row">
-		<div class="col-sm-6 col-md-4" ng-repeat="evento in eventos.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
-			<a href="/eventos/{{evento._id}}" class="no-text-decoration">
-				<div class="thumbnail hvr-reveal"> <!-- ng-class="{available: isAvaliable(evento.fecha)}" -->
-			  		<img class="thumbnail-image" src="imgs/eventos/{{evento.imagen}}" alt="imagen-{{evento.titulo}}" ng-show="evento.imagen">
-			  		<div class="image-replacement" ng-show="!evento.imagen">
-			  			<span>{{evento.titulo}}</span>
-			  		</div>
-		  			<div class="vertically-centered">
-		    			<div>{{evento.titulo}}</div>
-	    				<!-- <p>{{evento.descripcion}}</p> -->
-		  			</div>
-		  			<div class="available-label" ng-show="isAvaliable(evento.fecha)">Próximamente</div>
-				</div>
-			</a>
+	<div class="row" ng-repeat="group in eventos">
+		<!-- <div class="col-sm-6 col-md-4" ng-repeat="evento in eventos.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))"> -->
+		<div class="centering">
+            <button class="my-block-button my-block-button-bw" ng-click="collapse[group._id] = !collapse[group._id]">{{group._id || "Otros"}}</button>
+        </div>
+
+		<div uib-collapse="collapse[group._id]">
+			<div class="col-sm-6 col-md-4" ng-repeat="evento in group.eventos">
+				<a href="/eventos/{{evento._id}}" class="no-text-decoration">
+					<div class="my-thumbnail">
+				  		<!-- CON IMAGEN COMO PORTADA -->
+				  		<div ng-show="evento.imagen">
+				  			<img class="thumbnail-image" src="imgs/eventos/{{evento.imagen}}" alt="imagen-{{evento.titulo}}">
+				  			<div class="vertically-centered">
+				    			<div>{{evento.titulo}}</div>
+				  			</div>
+				  		</div>
+				  		<!-- SIN IMAGEN, TEXTO COMO PORTADA -->
+				  		<div class="image-replacement" ng-show="!evento.imagen">
+				  			<span>{{evento.titulo}}</span>
+				  		</div>
+				  		<!-- AVISO EN EVENTOS PROXIMOS -->
+			  			<div class="available-label" ng-show="isAvaliable(evento.fecha)">Próximamente</div>
+					</div>
+				</a>
+			</div>
 		</div>
 	</div>
-	
+
 	<!-- PAGINATION -->
-	<center class="hidden-xs">
+	<!-- <center class="hidden-xs">
 		<ul uib-pagination boundary-link-numbers="true" direction-links="true" boundary-links="true" first-text="Inicio" previous-text="Anterior" next-text="Siguiente" last-text="Último" total-items="eventos.length" ng-model="currentPage" rotate="true" max-size="maxSize" class="pagination" items-per-page="itemsPerPage"></ul>
 	</center>
 	<center class="visible-xs-block">
 		<ul uib-pagination boundary-link-numbers="true" direction-links="false" boundary-links="false" first-text="<<" previous-text="<" next-text=">" last-text=">>" total-items="eventos.length" ng-model="currentPage" rotate="true" max-size="maxSize" class="pagination" items-per-page="itemsPerPage"></ul>
-	</center>
+	</center> -->
 </div>
 

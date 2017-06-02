@@ -15,31 +15,40 @@
     height: 2em;
     margin: 16px 0;
     padding: 15px 0;
-    border-bottom-style: solid;
-    border-top-style: solid;
+    /*border-bottom-style: solid;
+    border-top-style: solid;*/
     color: #ccc;
 }
 
 /*Representa el espacio destinado para mostrar imagen y título de un evento*/
-.thumbnail{
+/*.thumbnail{
 	background-color: #eee;
-	border: 0; /*Default border: 1px solid #ddd;*/
+	border: 0;
+}*/
+.my-thumbnail{
+    margin-bottom: 20px;
+    text-align: center;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #ddd;
+    height: 310px;
+    position: relative; /*ayuda a alinear otros objetos (.available-label)*/
+}
+img.thumbnail-image{
+    height: 240px;
+    width: auto;
 }
 
 /*Imagen que se muestra en grid de eventos*/
-/*.thumbnail-image{
+/*.thumbnail > img.thumbnail-image{
 	height: 240px;
 	width: auto;
 }*/
-.thumbnail > img.thumbnail-image{
-	height: 240px;
-	width: auto;
-}
 
 /*Cuando no hay imagen para un evento, se colorea un div y se escribe el título centrado. 
 Esto reeplaza a la imagen faltante*/
 .image-replacement{
-	height: 240px;
+	height: 100%;/*240px;*/
 	width: auto;
 	background: #30499B;
 	background: -webkit-linear-gradient(#367ABD, #30499B);
@@ -83,7 +92,8 @@ Esto reeplaza a la imagen faltante*/
     overflow: hidden;
     font-size: 1.4em;
     max-width: 100%;
-    color: #333;
+    /*color: #333;*/
+    color: #ddd;
     text-align: center;
 }
 .vertically-centered:after {
@@ -104,8 +114,8 @@ Esto reeplaza a la imagen faltante*/
 /*Para uso de eventos que aún son disponibles (no han ocurrido aún)*/
 .available-label{
 	position: absolute;
-    top: 6px;
-    right: 6px;
+    top: 0;
+    right: 0;
     background-color: rgba(45, 136, 45, 0.80);
     padding: 3px 5px;
     color: #ccc;

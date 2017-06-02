@@ -29,31 +29,6 @@
 	background-color: #ddd;
 }*/
 
-/*Permite centrar elementos (ejemplo: .my-block-button)*/
-.centering{
-	text-align: center;
-}
-/*Simula un botón ancho*/
-.my-block-button{
-	border: none;
-	outline: 0;
-	padding: 8px 16px;
-	vertical-align: middle;
-	overflow: hidden;
-	text-decoration: none;
-	text-align: center;
-	cursor: pointer;
-	white-space: nowrap;
-	margin-bottom: 15px;
-	display: inline-block;
-	width: 95%;
-	width: calc(100% - 30px); /*15+15px margin left&right*/
-}
-/*Efecto de sombra*/
-.my-block-button:hover{
-	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-}
-
 /*Espacio para mostrar publicación con imagen
 Se emplean publication-container, publication-cover y publication-info*/
 .publication-container{ /*contenedor principal*/

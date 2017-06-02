@@ -13,6 +13,11 @@ angular.module('EventoService', []).factory('Evento', ['$http', function($http){
 				return $http.get('/api/eventos');
 		},
 
+		// Obtiene todos los eventos agrupados por año (en orden descendente)
+		byDate: function(){
+			return $http.get('/api/eventos?group=fecha');
+		},
+
 		// Obtiene el evento en particular con el eventoID
 		get: function(eventoID){
 			return $http.get('/api/eventos/' + eventoID);

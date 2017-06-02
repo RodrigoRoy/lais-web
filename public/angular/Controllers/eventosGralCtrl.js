@@ -5,12 +5,16 @@ angular.module('EventosCtrl', []).controller('EventosController', function ($sco
 	$scope.currentPage = 1; //Indica el número de página actual
 	$scope.maxSize = 10; //Maximo numero de páginas a mostrar para escojer
 	$scope.itemsPerPage = 12; //Maximo numero de eventos a mostrar por página, lo cuál son 9
+	$scope.collapse = {}; // contiene como atributos el nombre de la agrupación y bool como valor
 
 	// Obtiene la información de todos los eventos
 	$scope.getEvents = function(){
-		Evento.all() //Se trae todos los eventos usando el servicio de Evento
+		Evento.byDate()
 		.then(function(res){ 
 			$scope.eventos = res.data; //Todos los eventos
+			// Banderas para colapsar información (que viene agrupada)
+			for(var i in $scope.eventos)
+				$scope.collapse[$scope.eventos[i]._id] = true;
 		}, function(res){ 
 			alert('Error de Conexión con la Base de Datos');
 		});
