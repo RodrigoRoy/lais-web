@@ -19,7 +19,7 @@
         </div>
         <div uib-collapse="collapse[group._id]">
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="publicacion in group.publicaciones">
-                <a href="publicaciones/{{publicacion._id}}" class="no-text-decoration">
+                <a href="publicacion/{{publicacion._id}}" class="no-text-decoration">
                     
                     <!-- CON IMAGEN COMO PORTADA -->
                     <div class="publication-container" ng-show="publicacion.imagen"> <!-- hvr-border-fade -->
@@ -62,15 +62,15 @@
                 <span ng-if="publicacion.tipo === 'Documental' || publicacion.tipo === 'Ponencia' || publicacion.tipo === 'Página web'">
                     <span ng-repeat="autor in publicacion.autor"><a href="publicaciones?autor={{autor._id}}">{{stylizeName(autor.nombre, autor.apellido)}}</a><span ng-if="!$last">, </span></span> 
                     ({{publicacion.fecha | date: 'yyyy'}}).
-                    <a href="publicaciones/{{publicacion._id}}" class="strong-color">
+                    <a href="publicacion/{{publicacion._id}}" class="strong-color">
                     <em>{{publicacion.titulo}}</em></a> 
-                    <a href="/publicaciones?group=tipo&match={{publicacion.tipo}}"><span class="label label-default">{{publicacion.tipo}}</span></a>
+                    <a href="/publicacion?group=tipo&match={{publicacion.tipo}}"><span class="label label-default">{{publicacion.tipo}}</span></a>
                 </span>
 
                 <span ng-if="publicacion.tipo === 'Artículo'">
                     <span ng-repeat="autor in publicacion.autor"><a href="publicaciones?autor={{autor._id}}">{{stylizeName(autor.nombre, autor.apellido)}}</a><span ng-if="!$last">, </span></span> 
                     ({{publicacion.fecha | date: 'yyyy'}}).
-                    <a href="publicaciones/{{publicacion._id}}" class="strong-color">{{publicacion.titulo}}</a>. 
+                    <a href="publicacion/{{publicacion._id}}" class="strong-color">{{publicacion.titulo}}</a>. 
                     <span ng-if="publicacion.journal || publicacion.booktitle">
                         <em>{{publicacion.journal}}</em>
                         <em ng-if="!publicacion.journal">{{publicacion.booktitle}}</em>
@@ -78,16 +78,16 @@
                         <span ng-if="publicacion.numero">({{publicacion.numero}}). </span>
                         {{publicacion.paginas}}
                     </span>
-                    <a href="/publicaciones?group=tipo&match={{publicacion.tipo}}"><span class="label label-default">{{publicacion.tipo}}</span></a>
+                    <a href="/publicacion?group=tipo&match={{publicacion.tipo}}"><span class="label label-default">{{publicacion.tipo}}</span></a>
                 </span>
 
                 <span ng-if="publicacion.tipo === 'Libro'">
                     <span ng-repeat="autor in publicacion.autor"><a href="publicaciones?autor={{autor._id}}">{{stylizeName(autor.nombre, autor.apellido)}}</a><span ng-if="!$last">, </span></span> 
                     ({{publicacion.fecha | date: 'yyyy'}}).
-                    <a href="publicaciones/{{publicacion._id}}" class="strong-color">
+                    <a href="publicacion/{{publicacion._id}}" class="strong-color">
                     <em>{{publicacion.titulo}}</em></a>. 
                     {{publicacion.publisher}}
-                    <a href="/publicaciones?group=tipo&match={{publicacion.tipo}}"><span class="label label-default">{{publicacion.tipo}}</span></a>
+                    <a href="/publicacion?group=tipo&match={{publicacion.tipo}}"><span class="label label-default">{{publicacion.tipo}}</span></a>
                 </span>
             </li>
         </ul>

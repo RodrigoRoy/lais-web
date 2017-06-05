@@ -22,12 +22,12 @@ angular.module('PublicacionesListCtrl',[]).controller('PublicacionesListControll
 
 	// Redirige a la página de edición de la publicación cuyo ID es dado como parámetro
 	$scope.edit = function(id){
-		$location.url('/publicaciones/' + id + '/edit'); // $location.path() también funciona
+		$location.url('/publicacion/' + id + '/edit'); // $location.path() también funciona
 	};
 
 	// Redirige a la página de creación para una nueva publicación
 	$scope.new = function(){
-		$location.url('/publicaciones/nuevo');
+		$location.url('/publicacion/nuevo');
 	};
 
 	// Asigna la propiedad usada para el orden de la tabla de eventos

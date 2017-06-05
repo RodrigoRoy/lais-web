@@ -21,7 +21,7 @@ angular.module('PublicacionCtrl',[]).controller('PublicacionController', functio
 		Publicacion.delete(publicacionID)
 			.then(function(res){
 				alert("Publicación eliminada");
-				$location.url('/publicaciones'); // Redirigin a página de eventos
+				$location.url('/publicacion'); // Redirigin a página de eventos
 			}, function(res){
 				alert("Error al eliminar. Por favor intentalo más tarde.");
 				console.error("Error al eliminar publicación de la base de datos", res);

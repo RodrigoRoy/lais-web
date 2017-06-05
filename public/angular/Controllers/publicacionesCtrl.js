@@ -6,7 +6,7 @@ angular.module('PublicacionesCtrl',[]).controller('PublicacionesController', fun
 	$scope.publicaciones = [];
 	$scope.collapse = {}; // contiene como atributos el nombre de la agrupación y bool como valor
 	// Establece el tipo de agrupación para las publicaciones
-	// Por ejemplo, desde URL: /publicaciones?group=tipo
+	// Por ejemplo, desde URL: /publicacion?group=tipo
 	var groupType = $routeParams.group || 'fecha';
 	var matchRestriction = $routeParams.match || '';
 	var autorId = $routeParams.autor;

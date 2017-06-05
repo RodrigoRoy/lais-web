@@ -4,7 +4,7 @@
     <h1 class="color-title">
     	<center>
     		{{publicacion.titulo}}
-	    	<span ng-if="can('update')"><a href="publicaciones/{{publicacion._id}}/edit" class="secret-icon"><i class="fa fa-pencil" aria-hidden="true"></i></a></span> 
+	    	<span ng-if="can('update')"><a href="publicacion/{{publicacion._id}}/edit" class="secret-icon"><i class="fa fa-pencil" aria-hidden="true"></i></a></span> 
 			<span ng-if="can('delete')"><a href="" class="secret-icon" ng-click="openModal(publicacion)"><i class="fa fa-trash-o" aria-hidden="true"></i></a></span>
 		</center>
     </h1>
@@ -26,7 +26,7 @@
 	    			<td>Autor<span ng-show="publicacion.autor.length > 1">es</span></td>
 	    			<td>
 	    				<ul class="list-unstyled">
-	    					<li ng-repeat="autor in publicacion.autor"><a href="/publicaciones?autor={{autor._id}}">{{autor.nombre}} {{autor.apellido}}</a></li>
+	    					<li ng-repeat="autor in publicacion.autor"><a href="/publicacion?autor={{autor._id}}">{{autor.nombre}} {{autor.apellido}}</a></li>
 	    				</ul>
 	    			</td>
 	    		</tr>
@@ -118,7 +118,7 @@
     		</div>
     		<div class="col-xs-12 col-sm-10">
     			<ul class="list-unstyled">
-					<li ng-repeat="autor in publicacion.autor"><a href="/publicaciones?autor={{autor._id}}">{{autor.nombre}} {{autor.apellido}}</a></li>
+					<li ng-repeat="autor in publicacion.autor"><a href="/publicacion?autor={{autor._id}}">{{autor.nombre}} {{autor.apellido}}</a></li>
 				</ul>
     		</div>
     	</div>

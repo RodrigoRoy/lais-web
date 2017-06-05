@@ -34,22 +34,22 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 			controller: 'EventoController'
 		})
 
-		.when('/publicaciones', {
+		.when('/publicacion', {
 			templateUrl: 'angular/Views/pages/publicaciones.html',
 			controller: 'PublicacionesController'
 		})
 
-		.when('/publicaciones/nuevo', {
+		.when('/publicacion/nuevo', {
 			templateUrl: 'angular/Views/pages/publicacionForm.html',
 			controller: 'PublicacionFormController'
 		})
 
-		.when('/publicaciones/:id', {
+		.when('/publicacion/:id', {
 			templateUrl: 'angular/Views/pages/publicacion.html',
 			controller: 'PublicacionController'
 		})
 
-		.when('/publicaciones/:id/edit', {
+		.when('/publicacion/:id/edit', {
 			templateUrl: 'angular/Views/pages/publicacionForm.html',
 			controller: 'PublicacionFormController'
 		})
