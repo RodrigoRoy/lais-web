@@ -108,7 +108,7 @@ img{
 }
 .my-block-button-bw{
 	color: #333 !important;
-	background-color: #999 !important;
+	background-color: #dedede !important;
 	font-size: 1.5em;
 }
 /*##########*/
@@ -118,7 +118,8 @@ img{
 @media screen and (min-width: 768px) {
 	/*Correccion para que el lado derecho del menu no quede pegado al borde*/
 	.nav{
-		padding-right: 15px;
+		padding-right: 0; /*15px*/
+		margin-right: 15px;
 	}
 
 	/* Margen superior e inferior para el contenido de cada página dentro de <div ng-view>*/
