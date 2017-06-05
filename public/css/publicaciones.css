@@ -3,6 +3,7 @@
 /*Estilo en el título (centrar el texto)*/
 .title-style{
 	text-align: center;
+	color: #ccc;
 }
 
 /*Color para icono de borrado en autores*/
