@@ -1,0 +1,480 @@
+{
+	"title": {
+		"text": {
+			"headline": "Trayectoria del LAIS",
+			"text": "En esta linea del tiempo, se muestran los sucesos y trabajos más destacados donde el LAIS contribuyó a la investigación social con materiales audiovisuales."
+		}
+	},
+	"events": [
+		{
+			"start_date": {
+				"year": 2000
+			},
+			"text": {
+				"headline": "Km. C-62. Un nómada del riel",
+				"text": "Cima, una estación de ferrocarril ubicada en el Km C-62 de la línea que durante cien años facilitó el transpporte entre la Ciudad de México y el río Balsas hasta ser clausurada en junio de 1997, constituye el punto de partida y de llegada de este viaje que recorrimos a través de numerosas vivencias y estaciones de la mano de Salvador Núñez, ferrocarrilero en México durante cincuenta años. Su historia de vida, que inicia en los años treinta en el norte del país, es un reflejo de lo que los Ferrocarriles representaron durante los sesenta años que fueron Nacionales, de 1937 a 1997."
+			},
+			"media": {
+				"url": "https://books.google.co.cr/books/content?id=ALq3AAAAIAAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE71f4W0lJFpxG9bmU7YRkK8GkC41SHX-ifbCAhUaPWX-kagadVhxyFyQxTqx_p-M_sjzgmmWPX_Yr3AFWrwNWo-9UBPNRPBsqiR3KFtXsALEOmo3l0E"
+			},
+			"group": "Publicaciones",
+			"background": {
+				"color": "#7d7d7d"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2005
+			},
+			"text": {
+				"headline": "Imágenes e investigación social",
+				"text": "Esta obra presenta diversas posturas teóricas y diferentes opciones metodológicas del trabajo con documentos visuales y audiovisuales buscando su construcción como fuentes de investigación. Pensamos que esto puede ser de gran utilidad para los procesos de enseñanza en este campo apenas en gestación, con opción a muy escasos textos de estas características publicados en español y sobre este tipo de estudios en el ámbito latinoamericano."
+			},
+			"media": {
+				"url": "https://libreria.mora.edu.mx/interno/files//5b77dbff8a456a611040bd9017bc6dff.jpg"
+			},
+			"group": "Publicaciones",
+			"background": {
+				"color": "#7d7d7d"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2012
+			},
+			"text": {
+				"headline": "Investigación con imágenes. Usos y Retos Metodológicos",
+				"text": "Resultado del trabajo desarrollado por sus autores en el Seminario La Fotografía como Fuente de Investigación Social, que tuvo lugar en el Instituto Mora para promover la reflexión periódica sobre la incorporación de las imágenes en las investigaciones que llevábamos a cabo varios colegas desde diversas disciplinas."
+			},
+			"media": {
+				"url": "https://pictures.abebooks.com/isbn/9786077613749-es-300.jpg"
+			},
+			"group": "Publicaciones",
+			"background": {
+				"color": "#7d7d7d"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2014
+			},
+			"text": {
+				"headline": "Tejedores de Imágenes",
+				"text": "Imágenes, archivo e investigación social son los tres grandes temas sobre los que hilvana el presente libro, con el fin de tejer algunas propuestas metodológicas en aras de una mayor articulación entre investigación, gestión y acceso al patrimonio visual y audiovisual."
+			},
+			"media": {
+				"url": "https://images-na.ssl-images-amazon.com/images/I/41JlvJ271nL.jpg"
+			},
+			"group": "Publicaciones",
+			"background": {
+				"color": "#7d7d7d"
+			}
+		},
+
+
+
+		{
+			"start_date": {
+				"year": 1994
+			},
+			"text": {
+				"headline": "Un pueblo en la memoria",
+				"text": "Historia oral de Mixcoac: un pueblo que, abruptamente convertido en colonia urbana, permanece en la memoria. Producción basada en las entrevistas de historia oral realizadas entre 1991 y 1994 a 28 vecinos de Mixcoac, Ciudad de México."
+			},
+			"media": {
+				"url": "https://www.youtube.com/watch?v=b6F9n60veoE"
+			},
+			"group": "Documentales"
+		},
+		{
+			"start_date": {
+				"year": 1997
+			},
+			"text": {
+				"headline": "Tradición o Modernidad",
+				"text": "Primer video de la serie El paradigma de la modernidad, historia oral de la ciudad de México. Testimonio de sus arquitectos (1940-1990). Basado en el testimonio del arquitecto Luis Ortiz Macedo, quien preocupado por el rescate del centro histórico de la ciudad de México, reflexiona acerca de cómo su formación familiar y académica lo condujo por los caminos de la restauración."
+			},
+			"media": {
+				"url": "https://www.youtube.com/watch?v=mMZdniUCXWA"
+			},
+			"group": "Documentales"
+		},
+		{
+			"start_date": {
+				"year": 1997
+			},
+			"text": {
+				"headline": "El Buen Restaurador Ama Lo Antiguo",
+				"text": "Testimonio de un visionario que entendió la restauración como una especialidad profesional, abocada a mantener vivos los monumentos del pasado sin borrar la impronta de la modernidad. “El buen restaurador ama lo antiguo. Pero yo le pondría otra condición, debe ser buen arquitecto. Un individuo que no es buen arquitecto no puede entender la arquitectura del pasado y mucho menos restaurarla.” -Ricardo de Robina."
+			},
+			"media": {
+				"url": "https://www.youtube.com/watch?v=5p-50GQrmUg"
+			},
+			"group": "Documentales"
+		},
+		{
+			"start_date": {
+				"year": 1998
+			},
+			"text": {
+				"headline": "Cuando la Rumba Nos Conoció...",
+				"text": "En un entorno pobre y a pesar de las carencias, la rumba eleva a los cubanos a momentos estéticos sublimes en el ejercicio de su derecho al gozo. En el video se rehúyen las versiones comerciales e idealizadas de la rumba, y se busca en los barrios, entre negros, blancos y mulatos una versión menos glamorosa, pero de fuerte raigambre popular."
+			},
+			"media": {
+				"url": "https://www.youtube.com/watch?v=dfqJ3zQ2p_0"
+			},
+			"group": "Documentales"
+		},
+		{
+			"start_date": {
+				"year": 1999
+			},
+			"text": {
+				"headline": "Mi Multi es Mi Multi",
+				"text": "<strong>Historia del Multifamiliar Miguel Alemán (1949-1999)</strong><br>Hoy, después de 50 años, tres generaciones de hombres y mujeres recuerdan sus experiencias como habitantes del Multifamiliar Miguel Alemán, primer gran conjunto habitacional de 1 080 departamentos construidos en América Latina. El Centro Urbano Presidente Alemán, proyectado por el arquitecto Mario Pani como una ciudad jardín vertical, destaca como un hito de la modernidad en el centro sur de la ciudad de México y, después de medio siglo, sus moradores y vecinos lo adoptan como el \"multi\"."
+			},
+			"media": {
+				"url": "https://www.youtube.com/watch?v=jKq581LKOmE"
+			},
+			"group": "Documentales"
+		},
+		{
+			"start_date": {
+				"year": 2000
+			},
+			"text": {
+				"headline": "Km. C-62 Un nómada del riel",
+				"text": "Cima, una estación de ferrocarril ubicada en el km C-62 de la línea que durante 100 años facilitó el transporte entre la ciudad de México y el río Balsas hasta su clausura en junio de 1997, constituye el punto de partida y llegada de este viaje que recorrimos a través de numerosas vivencias y estaciones de la mano de Salvador Núñez, ferrocarrilero durante 50 años. Su vida, que inicia en los años treinta en el norte del país, es un reflejo de lo que representaron los Ferrocarriles durante 60 años, de 1937 a 1997."
+			},
+			"media": {
+				"url": "https://www.youtube.com/watch?v=1U5CZrhKLLI"
+			},
+			"group": "Documentales"
+		},
+		{
+			"start_date": {
+				"year": 2000
+			},
+			"text": {
+				"headline": "El Arte de Hacer Ciudad",
+				"text": "<strong>Testimonios del Arquitecto Mario Pani</strong><br>¿Y por qué interesa la vida del arquitecto Mario Pani? Porque cuando diseñó viviendas imaginó ciudades y cuando planeó ciudades pensó en la gente. El Multifamiliar Miguel Alemán (1949), el Multifamiliar Benito Juárez (1952) y la Unidad Nonoalco Tlatelolco (1962) son pruebas de su visión urbana de la arquitectura. Ciudad Universitaria (1952), Ciudad Satélite (1954) y su magno proyecto \"Ciudad Concertada\" (1988) son epifanías de su modernidad urbana. Hacia dónde y cómo debería crecer la ciudad de México fue la motivación de su vida profesional. Nunca abandonó este reto y por sus respuestas se le considera uno de los más importantes arquitectos mexicanos del siglo XX."
+			},
+			"media": {
+				"url": "https://www.youtube.com/watch?v=fmWn7k2m01g"
+			},
+			"group": "Documentales"
+		},
+		{
+			"start_date": {
+				"year": 2002
+			},
+			"text": {
+				"headline": "Revelando el Rollo",
+				"text": "Revelando el rollo aborda la problemática de los usos de la imagen en la investigación social, a través de una ficción documentada con investigación de campo y entrevistas con diversos responsables de acervos fotográficos y fílmicos de la ciudad de México, así como investigadores de la imagen. Esta pequeña historia de los avatares de un investigador en su trabajo cotidiano permite conocer los principales problemas detectados en el uso generalizado de la imagen como elemento ilustrativo y plantear los retos del trabajo con la imagen como fuente de investigación."
+			},
+			"media": {
+				"url": "https://www.youtube.com/watch?v=cj2Y0wtE-eE"
+			},
+			"group": "Documentales"
+		},
+		{
+			"start_date": {
+				"year": 2002
+			},
+			"text": {
+				"headline": "De Dolor y Esperanza",
+				"text": "<strong>El Asilo, un Pasado Presente</strong><br>A treinta años de consumados los golpes de Estado y establecidas las dictaduras militares en el Cono Sur de América, el testimonio de quienes fueron protagonistas de la práctica del asilo diplomático, así como la recuperación de material fílmico y fotográfico de la época, contribuyen a construir la memoria histórica. De dolor y esperanza, ayuda a historiar tanto las rupturas del orden institucional en Argentina, Chile y Uruguay como la política mexicana de asilo. Recupera los avatares de la represión que puso en peligro la libertad y la vida de miles de opositores a los regímenes militares y la encrucijada que debieron sortear los miembros del servicio exterior mexicano asignados a esos países."
+			},
+			"media": {
+				"url": "https://www.youtube.com/watch?v=JJDKf1EPRh0"
+			},
+			"group": "Documentales"
+		},
+		{
+			"start_date": {
+				"year": 2005
+			},
+			"text": {
+				"headline": "El Triángulo de Tacubaya",
+				"text": "<strong>Historia del Cine Hipódromo Condesa</strong><br>Durante ya más de un siglo la gente ha acudido a entretenerse con la proyección de películas y ha sido testigo de la transformación de los recintos cinematográficos y por ende de las relaciones sociales que en ellos se experimentan. Una de esas salas de cine es el Hipódromo Condesa, viejo inmueble del barrio de Tacubaya que a más de 60 años de haber sido inaugurado sigue funcionando todos los días. Tomando como referencia al cine del edificio Ermita, el video hace una reconstrucción de las distintas etapas de la exhibición cinematográfica en la ciudad de México, contemplando en todo momento las circunstancias y los contextos que las generaron. La historia, la imagen, los testimonios y el análisis se conjugan en El triángulo de Tacubaya para construir un relato documental en busca de entender nuestro presente."
+			},
+			"media": {
+				"url": "https://www.youtube.com/watch?v=QetHxG5fLOA"
+			},
+			"group": "Documentales"
+		},
+		{
+			"start_date": {
+				"year": 2007
+			},
+			"text": {
+				"headline": "Ciudad Olimpia",
+				"text": "<strong>El Año que Fuimos Modernos</strong><br>La ciudad Olimpia es la síntesis de dos urbes existentes en la ciudad de México en 1968, la programada para la olimpiada y la construida por los estudiantes en las calles. Se proyectó un simulacro de ciudad para cubrir la existente, un gran escenario que intentó ocultar las diferencias sociales con el fin de satisfacer las demandas internacionales. Fue el batallón Olimpia quien resolvió las contradicciones, acalló las demandas y exigencias de un grupo social que ponía en evidencia las estructuras que sostenían a la sede olímpica: el autoritarismo estatal y la caducidad de las instituciones sociales. "
+			},
+			"media": {
+				"url": "https://www.youtube.com/watch?v=62Wsf8lb04Y"
+			},
+			"group": "Documentales"
+		},
+		{
+			"start_date": {
+				"year": 2008
+			},
+			"text": {
+				"headline": "De la Tele a la Boca…",
+				"text": "<strong>Una Reflexión sobre Desarrollo Infantil y Salud</strong><br>Niños, padres y maestras de un preescolar en Ciudad Netzahualcóyotl, Estado de México, investigan, reflexionan y construyen alternativas para transformar prácticas y hábitos cotidianos que están mermando de forma acelerada la calidad de vida de la población infantil. Diversos padecimientos se han presentado e incrementado últimamente entre este sector de la población, y los motivos están relacionados con factores como la familia y la educación, pero también con la sobreexposición a la televisión comercial que impera en el país. De la tele a la boca... parte del trabajo realizado con esta comunidad entre 2003 y 2007, en el proceso de investigación sobre las relaciones que establecemos con la televisión desde edades tempranas. El documental recupera esta reflexión sobre desarrollo infantil y salud, el más desatendido de los seis campos del programa de nivel preescolar en la mayoría de planteles, para acercar a padres y maestros a una problemática que les atañe de forma directa y cotidiana."
+			},
+			"media": {
+				"url": "https://www.youtube.com/watch?v=6a4F6Vb569M"
+			},
+			"group": "Documentales"
+		},
+		{
+			"start_date": {
+				"year": 2010
+			},
+			"text": {
+				"headline": "Más Allá del Reglamento",
+				"text": "<strong>Avatares de un Embajador Mexicano</strong><br>Don Vicente Muñiz Arroyo, hombre de Churintzio, Mich., dejó huella en la historia de América Latina. Fue embajador de México en Uruguay (1974-1977). Eran años de dictaduras y se vivía una intensa persecución política en el marco de la Operación Cóndor. Fue más allá del reglamento, brindó refugio a cientos de perseguidos. En el documental convergen miradas sobre sus desafiantes acciones inmersas en tiempos difíciles. Múltiples recuerdos se recrean e incitan al afecto y la alegría, así como al dolor que conlleva la recreación."
+			},
+			"media": {
+				"url": "https://www.youtube.com/watch?v=lFMmvM59cpM"
+			},
+			"group": "Documentales"
+		},
+		{
+			"start_date": {
+				"year": 2011
+			},
+			"text": {
+				"headline": "Palabra de Fotógrafo",
+				"text": "<strong>Testimonios sobre el 68</strong><br>Este documental presenta los testimonios de siete destacados fotógrafos activos en la coyuntura del movimiento estudiantil de 1968, la rebelión ciudadana que cambió a México y fue reprimida en forma violenta por el gobierno de Gustavo Díaz Ordaz. La lectura y el punto de vista de estos profesionales de la lente enriquece de manera notable el conocimiento histórico de uno de los acontecimientos políticos y culturales más importantes del siglo XX en nuestro país. Al mismo tiempo, nos permite comprender la visión del mundo de algunos de los constructores de uno de los más imaginarios visuales más poderosos de América Latina en el siglo pasado."
+			},
+			"media": {
+				"url": "https://www.youtube.com/watch?v=tYAQEsYjcM0"
+			},
+			"group": "Documentales"
+		},
+		{
+			"start_date": {
+				"year": 2012
+			},
+			"text": {
+				"headline": "Historias para No Pensar",
+				"text": "<strong>Las Familias en la Televisión</strong><br>En los estudios sobre las familias del México contemporáneo, sus diversidades y transformaciones, siempre aparecen los medios de comunicación y la televisión como un referente ineludible.La televisión comercial se concibe como una forma de ilustrar “realidades” y un “competidor desleal” de quienes cuidan y educan a niñas, niños y jóvenes. En respuesta a esa inquietud, Iniciativa Ciudadana y Desarrollo Social, INCIDE Social A.C. y el Laboratorio Audiovisual de Investigación Social del Instituto Mora nos preguntamos: ¿Qué representaciones sobre las familias difunden la televisión comercial abierta y de paga? Este material invita a que reflexionemos sobre como son representadas las familias, sus relaciones, sus integrantes, las tomas de decisión en su interior, los problemas que tienen y cómo se vinculan a sus contextos."
+			},
+			"group": "Documentales"
+		},
+
+
+
+		{
+			"start_date": {
+				"year": 2002,
+				"month": 10,
+				"day": 28
+			},
+			"end_date": {
+				"year": 2002,
+				"month": 10,
+				"day": 31
+			},
+			"text": {
+				"headline": "1er. Congreso Internacional sobre Imágenes e Investigación",
+				"text": "Conferencias magistrales: Boris Kossoy, Universidad de Sao Paulo, Brasil, El reloj de Hiroshima: reflexiones sobre los diálogos y los silencios de las imágenes. Felix del Valle Gustaminza, Universidad Complutense, España, Dimensión documental de la fotografía. Philippe Dubois, Universidad de Paris III, Francia, L'image et l'épreuve du réel. Mesas redondas: Fotografía e historia. Fotografía e investigación urbana. Imagen, historia y representación. Procesos sociales y acervos gráficos. Memoria e imágenes. Análisis sobre registros recientes. Materiales fílmicos: investigación y conservación."
+			},
+			"media": {
+				"url": "http://lais.mora.edu.mx/imgs/eventos/1er%20Congreso.jpg"
+			},
+			"group": "Eventos",
+			"background": {
+				"color": "#222"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2016,
+				"month": 9,
+				"day": 26
+			},
+			"end_date": {
+				"year": 2016,
+				"month": 9,
+				"day": 30
+			},
+			"text": {
+				"headline": "IX Curso de Lenguaje Audiovisual e Investigación Social",
+				"text": "Impartido por Julieta Keldjian"
+			},
+			"media": {
+				"url": "http://lais.mora.edu.mx/imgs/eventos/Lenguaje-Audiovisual.jpg"
+			},
+			"group": "Cursos",
+			"background": {
+				"color": "#222"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2015,
+				"month": 10,
+				"day": 19
+			},
+			"end_date": {
+				"year": 2015,
+				"month": 10,
+				"day": 23
+			},
+			"text": {
+				"headline": "8vo Curso de Lenguaje Audiovisual e Investigación Social",
+				"text": "<strong>Movimiento de Documentalistas<br>Argentina</strong><br>Impartido por Miguel Mirra"
+			},
+			"media": {
+				"url": "http://lais.mora.edu.mx/imgs/eventos/Mirra%20Difusi%C3%B3n%20Redes.jpg"
+			},
+			"group": "Cursos",
+			"background": {
+				"color": "#222"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2014,
+				"month": 9,
+				"day": 1
+			},
+			"end_date": {
+				"year": 2014,
+				"month": 9,
+				"day": 5
+			},
+			"text": {
+				"headline": "7o Curso de Lenguaje Audiovisual e Investigación Social",
+				"text": "Impartido por Ana Mauad"
+			},
+			"media": {
+				"url": "http://lais.mora.edu.mx/imgs/eventos/Curso%202014%207.jpg"
+			},
+			"group": "Cursos",
+			"background": {
+				"color": "#222"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2013,
+				"month": 10,
+				"day": 21
+			},
+			"end_date": {
+				"year": 2013,
+				"month": 10,
+				"day": 25
+			},
+			"text": {
+				"headline": "6o Curso de Lenguaje Audiovisual e Investigación Social",
+				"text": "Impartido por Belkis Vega"
+			},
+			"media": {
+				"url": "http://lais.mora.edu.mx/imgs/eventos/Curso%202013.jpg"
+			},
+			"group": "Cursos",
+			"background": {
+				"color": "#222"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2012,
+				"month": 9,
+				"day": 10
+			},
+			"end_date": {
+				"year": 2012,
+				"month": 9,
+				"day": 14
+			},
+			"text": {
+				"headline": "V Curso de Lenguaje Audiovisual e Investigación Social",
+				"text": "Impartido por Catarina Alves Costa"
+			},
+			"media": {
+				"url": "http://lais.mora.edu.mx/imgs/eventos/Curso%202012%205.jpg"
+			},
+			"group": "Cursos",
+			"background": {
+				"color": "#222"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2010,
+				"month": 8,
+				"day": 30
+			},
+			"end_date": {
+				"year": 2010,
+				"month": 9,
+				"day": 3
+			},
+			"text": {
+				"headline": "Taller Historia y Cine",
+				"text": "<strong>La compilación audiovisual: una herramienta para la investigación, didáctica y divulgación históricas</strong><br>Impartido por Itzia Fernández Escareño"
+			},
+			"media": {
+				"url": "http://lais.mora.edu.mx/imgs/eventos/Taller%20historia.jpg"
+			},
+			"group": "Cursos",
+			"background": {
+				"color": "#222"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2009,
+				"month": 2,
+				"day": 9
+			},
+			"end_date": {
+				"year": 2009,
+				"month": 2,
+				"day": 13
+			},
+			"text": {
+				"headline": "Curso La documentación fotográfica en la investigación social",
+				"text": "<strong>Metodología de la representación en acervos fotográficos</strong><br>Impartido por Félix del Valle Gastaminza en colaboración con Antonio García Jiménez"
+			},
+			"media": {
+				"url": "http://lais.mora.edu.mx/imgs/eventos/La%20doc%20fotog.jpg"
+			},
+			"group": "Cursos",
+			"background": {
+				"color": "#222"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2005,
+				"month": 10,
+				"day": 3
+			},
+			"end_date": {
+				"year": 2005,
+				"month": 10,
+				"day": 7
+			},
+			"text": {
+				"headline": "Taller y conferencias sobre conservación, documentación y digitalización de colecciones",
+				"text": "Impartido por Ilonka Csillag Pimstein, Paulina Bravo Castillo, Soledad Abarca de la Fuente y Roberto Aguirre Bello"
+			},
+			"media": {
+				"url": "http://lais.mora.edu.mx/imgs/eventos/Taller%20conservacion.jpg"
+			},
+			"group": "Cursos",
+			"background": {
+				"color": "#222"
+			}
+		}
+	],
+	"scale": "human"
+}

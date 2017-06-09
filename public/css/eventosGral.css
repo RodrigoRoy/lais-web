@@ -30,9 +30,12 @@
     text-align: center;
     border-style: solid;
     border-width: 2px;
-    border-color: #ddd;
+    border-color: #353535;
     height: 310px;
     position: relative; /*ayuda a alinear otros objetos (.available-label)*/
+}
+.my-thumbnail:hover{
+    border-color: #ddd;
 }
 img.thumbnail-image{
     height: 240px;

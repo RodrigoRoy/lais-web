@@ -47,3 +47,26 @@
 	font-family: 'Roboto Slab', serif;
 	font-size: 1.25em;
 }
+
+/*Estilos para TimelineJS*/
+.tl-slide .tl-slide-content-container .tl-slide-content{
+	width: 100% !important;
+}
+/*Flechas derecha/izquierda*/
+/*.tl-slidenav-next .tl-slidenav-content-container.tl-slidenav-inverted */
+.tl-slidenav-icon{
+	color: #b7b7b7 !important;
+	text-shadow: none !important;
+}
+/*.tl-slidenav-next .tl-slidenav-content-container.tl-slidenav-inverted */
+.tl-slidenav-title{
+	color: #3c3c3c !important;
+	text-shadow: none !important;	
+}
+.tl-slidenav-description{
+	color: #484848 !important; 
+	text-shadow: none !important;
+}
+.tl-text h2.tl-headline{
+	/*font-size: 1.3em !important;*/
+}

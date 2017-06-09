@@ -1,8 +1,9 @@
 //Controlador que maneja la página de Inicio
 
-angular.module('InicioCtrl',[]).controller('InicioController', function ($scope, $uibModal){ // Evento
+angular.module('InicioCtrl',[]).controller('InicioController', function ($scope, $http, $uibModal){ // Evento
 	
 	$scope.myInterval = 5000; //Intervalo de tiempo para pasar de un slide a otro 
+	$scope.active = 0;
 	$scope.slides = [ // Nombres de imagenes en public/imgs/carrusel
 		"city-q-g-900-500-8.jpg", 
 		"nature-q-c-900-500-3.jpg", 
@@ -13,6 +14,18 @@ angular.module('InicioCtrl',[]).controller('InicioController', function ($scope,
 		// "HEAD_metadoc2916.jpg",
 		// "image003.png"
 	];
+
+	$http.get('js/timelineLAIS.json').then(function(res){
+		var timelineConfig = {
+			default_bg_color: '#eee',
+			scale_factor: 2,
+			optimal_tick_width: 100,
+			start_at_slide: 0,
+			duration: 950,
+			language: 'es'
+		};
+		var timeline = new TL.Timeline('timeline-embed', res.data, timelineConfig);
+    });
 
 	// Evento.news() //Se trae los 4 eventos para el slide
 	// 	.then(function(res){ 
