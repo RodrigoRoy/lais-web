@@ -27,18 +27,14 @@
 			<div class="col-sm-6 col-md-4" ng-repeat="evento in group.eventos">
 				<a href="/eventos/{{evento._id}}" class="no-text-decoration">
 					<div class="my-thumbnail">
-				  		<!-- CON IMAGEN COMO PORTADA -->
-				  		<div ng-show="evento.imagen">
-				  			<img class="thumbnail-image" src="imgs/eventos/{{evento.imagen}}" alt="imagen-{{evento.titulo}}">
-				  			<div class="vertically-centered">
-				    			<div>{{evento.titulo}}</div>
-				  			</div>
-				  		</div>
-				  		<!-- SIN IMAGEN, TEXTO COMO PORTADA -->
-				  		<div class="image-replacement" ng-show="!evento.imagen">
-				  			<span>{{evento.titulo}}</span>
-				  		</div>
-				  		<!-- AVISO EN EVENTOS PROXIMOS -->
+			  			<!-- CON IMAGEN COMO PORTADA: -->
+			  			<img class="thumbnail-image" src="imgs/eventos/{{evento.imagen}}" ng-show="evento.imagen">
+				  		<!-- SIN IMAGEN, TEXTO COMO PORTADA: -->
+				  		<div class="new-image-replacement" ng-show="!evento.imagen"></div>
+			  			<div class="vertically-centered">
+			    			<div>{{evento.titulo}}</div>
+			  			</div>
+				  		<!-- AVISO EN EVENTOS PROXIMOS: -->
 			  			<div class="available-label" ng-show="isAvaliable(evento.fecha)">Próximamente</div>
 					</div>
 				</a>

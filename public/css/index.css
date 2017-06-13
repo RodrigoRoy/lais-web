@@ -59,7 +59,7 @@ img{
 }
 
 
-/*########## ESTILOS COMPARTIDOS EN VARIAS PAGINAS*/
+/*#################### ESTILOS COMPARTIDOS EN VARIAS PAGINAS*/
 /*Evita que un texto (normalmente un link) no se decore con una linea bajo el texto en ningún momento*/
 .no-text-decoration:active, .no-text-decoration:focus, .no-text-decoration:hover, .no-text-decoration:visited, .no-text-decoration{
     text-decoration: none;
@@ -111,7 +111,88 @@ img{
 	background-color: #dedede !important;
 	font-size: 1.5em;
 }
-/*##########*/
+
+/*Representa el espacio destinado para mostrar imagen y título de un evento*/
+.my-thumbnail{
+    margin-bottom: 20px;
+    text-align: center;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #353535;
+    height: 310px;
+    position: relative; /*ayuda a alinear otros objetos (.available-label)*/
+}
+.my-thumbnail:hover{
+    border-color: #ddd;
+}
+img.thumbnail-image{
+    height: 240px;
+    width: auto;
+    max-width: 80%;
+}
+
+/*Cuando no hay imagen para un evento, se colorea un div y se escribe el título centrado. 
+Esto reeplaza a la imagen faltante*/
+.new-image-replacement{
+    height: 240px;
+    width: 60%;
+    background-image: url(../imgs/lais.png);
+    background-size: auto 55%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: #181818;
+    margin: auto;
+}
+
+/*Texto que se muestra en grid de eventos*/
+.thumbnail-text{
+	--verticalPadSize: 4px;
+	padding: 4px 0; /*compatibilidad sin variables CSS en IE, Edge*/
+	padding: var(--verticalPadSize) 0;
+	/*height: 2.4em;*/
+	height: calc(2.4em + 8px); /*compatibilidad sin variables CSS en IE, Edge*/
+	height: calc(2.4em + (var(--verticalPadSize) * 2));
+	overflow: hidden;
+	color: #333;
+	text-align: center;
+}
+
+/* Ellipsis (.block-with-text)*/ 
+/* Source: http://hackingui.com/front-end/a-pure-css-solution-for-multiline-text-truncation/*/
+/* No funciona para este caso porque los títulos pueden ser cortos y CSS espera textos más largos*/
+
+/* Permite agregar ellipsis (puntos suspensivos) cuando el texto es muy largo */
+/* Comentario en: http://dev.mobify.com/blog/multiline-ellipsis-in-pure-css/*/
+/* Ejemplo y uso en: http://codepen.io/anon/pen/htbxA*/
+/* NOTA: No funciona en Firefox */
+.vertically-centered {
+	--verticalPadSize: 4px;
+	padding: 4px 0; /*compatibilidad sin variables CSS en IE, Edge*/
+	padding: var(--verticalPadSize) 0;
+    height: calc(2.4em + 8px + 3px); /*compatibilidad sin variables CSS en IE, Edge*/
+	height: calc(2.4em + (var(--verticalPadSize) * 2) + 3px);
+    overflow: hidden;
+    font-size: 1.4em;
+    max-width: 100%;
+    /*color: #333;*/
+    color: #ddd;
+    text-align: center;
+}
+.vertically-centered:after {
+    content: "";
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+.vertically-centered div {
+    display: inline-block;
+    display: -webkit-inline-box;
+    max-height: 100%;
+    vertical-align: middle;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+/*##############################*/
 
 
 /*Estilo a usar en dispositivos no-móviles (ancho > 768px)*/
