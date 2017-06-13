@@ -320,7 +320,11 @@ ul.social-buttons li a:hover, ul.social-buttons li a:focus, ul.social-buttons li
 	color: #123652;
 }
 /*Subtítulos en inicio y encabezados (de formulario)*/
-.service-heading, .color-title{
+.service-heading{
+	/*color: #294f6d;*/
+	color: #bbb;
+}
+.color-title{
 	color: #294f6d;
 }
 /*Botón (div) personalizado (ver publicaciones.css)*/
