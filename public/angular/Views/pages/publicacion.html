@@ -1,12 +1,18 @@
 <!-- Página individual para una publicación del LAIS -->
 
-<div class="container my-container">
+<div class="container" ng-if="!(publicacion && publicacion._id)">
+<!-- Mensaje de alerta si $scope.publicacion es vacio (URL ID inválido) -->
+    <div uib-alert class="alert-danger" style="margin: 1em 0;">URL de publicación inválida. Consulta la lista completa en la sección <strong><a href="/publicacion" style="color: inherit;">Publicaciones</a></strong>.</div>
+</div>
+
+<div class="container my-container" ng-if="publicacion && publicacion._id">
+
     <h1 class="color-title">
-    	<center>
-    		{{publicacion.titulo}}
-	    	<span ng-if="can('update')"><a href="publicacion/{{publicacion._id}}/edit" class="secret-icon"><i class="fa fa-pencil" aria-hidden="true"></i></a></span> 
-			<span ng-if="can('delete')"><a href="" class="secret-icon" ng-click="openModal(publicacion)"><i class="fa fa-trash-o" aria-hidden="true"></i></a></span>
-		</center>
+        <center>
+            {{publicacion.titulo}}
+            <span ng-if="can('update')"><a href="publicacion/{{publicacion._id}}/edit" class="secret-icon"><i class="fa fa-pencil" aria-hidden="true"></i></a></span> 
+            <span ng-if="can('delete')"><a href="" class="secret-icon" ng-click="openModal(publicacion)"><i class="fa fa-trash-o" aria-hidden="true"></i></a></span>
+        </center>
     </h1>
 
     <!-- TABLA PARA MOSTRAR EN DISPOSITIVOS NO-MOVILES (XS) -->

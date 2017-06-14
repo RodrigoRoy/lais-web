@@ -1,7 +1,9 @@
 /*Controlador que manda a llamar la información de un evento con su id */
 
 angular.module('EventoCtrl',[])
+
 .filter("trustUrl", ['$sce', function($sce){
+	// Para usarse con "ng-bind-html" en la vista
 	return function(recordingUrl){
 		return $sce.trustAsResourceUrl(recordingUrl);
 	};
@@ -16,6 +18,8 @@ angular.module('EventoCtrl',[])
 	// 	});
 	// };
 	// google.maps.event.addDomListenerOnce(window, 'load', initialize);
+
+	$scope.evento = {};
 
 	//Obtiene el evento con su ID
 	$scope.getEvent = function(){

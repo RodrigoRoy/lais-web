@@ -1,6 +1,11 @@
 <!--Página que muestra toda la información referente a un evento en particular-->
 
-<div class="container"><!-- class="my-container" no define el tamaño de fuente apropiadamente -->
+<div class="container" ng-if="!(evento && evento._id)">
+<!-- Mensaje de alerta si $scope.evento es vacio (URL ID inválido) -->
+    <div uib-alert class="alert-danger" style="margin: 1em 0;">URL de evento inválida. Consulta la lista completa en la sección <strong><a href="/eventos" style="color: inherit;">Eventos</a></strong>.</div>
+</div>
+
+<div class="container" ng-if="evento && evento._id"><!-- class="my-container" no define el tamaño de fuente apropiadamente -->
 	<!-- <hr> -->
 	<div class="jumbotron">
 		<!-- TITULO E IMAGEN -->
