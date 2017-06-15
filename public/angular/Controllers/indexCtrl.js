@@ -4,7 +4,7 @@
 	y para que funcione "href" en páginas distintas a la de inicio (por ejemplo: /eventos).
 */
 
-angular.module('IndexCtrl',[]).controller('IndexController', function ($scope, $location, $uibModal, $rootScope, Auth){
+angular.module('IndexCtrl',[]).controller('IndexController', function ($scope, $location, $window, $rootScope, $uibModal, Auth){
 	$scope.user = {}; // Información del usuario (si inicia sesión)
 	$scope.loggedIn = false; // Bandera que indica si un usuario se encuetra con sesión iniciada
 	$scope.today = new Date();
@@ -82,6 +82,17 @@ angular.module('IndexCtrl',[]).controller('IndexController', function ($scope, $
 				return false;
 		}
 	};
+
+	// Analytics stuff
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-81472503-2', 'auto');
+	ga('send', 'pageview');
+	$rootScope.$on('$viewContentLoaded', function(event) {
+		$window.ga('send', 'pageview', { page: $location.url() });
+	});
 });
 
 /*(Sub)Controlador que le da la funcionalidad a lo que se ha declarado dentro del modal. 
