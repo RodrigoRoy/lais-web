@@ -4,7 +4,7 @@
 	y para que funcione "href" en páginas distintas a la de inicio (por ejemplo: /eventos).
 */
 
-angular.module('IndexCtrl',[]).controller('IndexController', function ($scope, $location, $window, $rootScope, $uibModal, Auth){
+angular.module('IndexCtrl',[]).controller('IndexController', function ($scope, $location, $window, $rootScope,  $anchorScroll, $uibModal, Auth){
 	$scope.user = {}; // Información del usuario (si inicia sesión)
 	$scope.loggedIn = false; // Bandera que indica si un usuario se encuetra con sesión iniciada
 	$scope.today = new Date();
@@ -26,15 +26,21 @@ angular.module('IndexCtrl',[]).controller('IndexController', function ($scope, $
 				$scope.user = res.data;
 				$scope.loggedIn = !angular.equals($scope.user, {});
 				// console.log("LoggedIn? ", $scope.loggedIn);
-				console.log("User: ", $scope.user);
+				// console.log("User: ", $scope.user);
 			}, function(res){
 				$scope.user = {};
 				$scope.loggedIn = !angular.equals($scope.user, {});
 				// console.error("LoggedIn? ", $scope.loggedIn);
-				console.error("User: ", $scope.user);
+				// console.error("User: ", $scope.user);
 				Auth.logout(); // Borra token en localStorage (evita errores al tener un token expirado)
 			});
 	});
+
+	// Possible anchor link behavior
+	// $rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute){
+	// 	if($location.hash())
+	// 		$anchorScroll();
+	// });
 
 	// Activa la palabra del menu dada como parámetro (class="active") y desactiva la anterior selección
 	// TODO: Revisar scroll porque al llegar al final de la página puede borrar la clase "active"

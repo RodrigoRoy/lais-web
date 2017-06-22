@@ -20,3 +20,30 @@
     color: #ccc;
     font-size: smaller;
 }
+
+/*Bootstrap Affix component*/
+.affix {
+    top: 70px;
+    left: 0;
+    width: 100%;
+    z-index: 9999 !important;
+}
+
+/*
+####################
+PRECAUCIÓN! Clases nav y nav-tabs modificadas globalmente para estilo de la barra de años en Eventos
+####################
+*/
+.nav-tabs{
+    border-bottom: 0px solid #222;
+}
+.nav-tabs>li>a{
+    color: #ddd;
+    border-radius: 25px;
+}
+.nav>li>a:hover{
+    background-color: transparent;
+}
+.nav{
+    margin-bottom: 10px;
+}

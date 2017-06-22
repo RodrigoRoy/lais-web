@@ -4,50 +4,34 @@
 		<div class="col-xs-12">
 			<h1 class="color-title event-main-title">Eventos</h1>
 		</div>
-		<!-- <div class="col-lg-4">
-			TODO: BUSCADOR PARA FILTRAR EVENTOS
-			<div class="input-group" id="buscador">
-				<input ng-model="query" type="text" class="form-control" placeholder="buscar...">
-				<span class="input-group-btn">
-					<button ng-click="buscar(query)" class="btn btn-default" type="button">
-						<i class="fa fa-search"></i>
-					</button>
-				</span>
-			</div>
-		</div> -->
 	</div>
 
-	<div class="row" ng-repeat="group in eventos">
-		<!-- <div class="col-sm-6 col-md-4" ng-repeat="evento in eventos.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))"> -->
-		<div class="centering">
-            <button class="my-block-button my-block-button-bw" ng-click="collapse[group._id] = !collapse[group._id]">{{group._id || "Otros"}}</button>
-        </div>
-
-		<div uib-collapse="collapse[group._id]">
-			<div class="col-sm-6 col-md-4" ng-repeat="evento in group.eventos">
-				<a href="/eventos/{{evento._id}}" class="no-text-decoration">
-					<div class="my-thumbnail">
-			  			<!-- CON IMAGEN COMO PORTADA: -->
-			  			<img class="thumbnail-image" src="imgs/eventos/{{evento.imagen}}" ng-show="evento.imagen">
-				  		<!-- SIN IMAGEN, TEXTO COMO PORTADA: -->
-				  		<div class="new-image-replacement" ng-show="!evento.imagen"></div>
-			  			<div class="vertically-centered">
-			    			<div>{{evento.titulo}}</div>
-			  			</div>
-				  		<!-- AVISO EN EVENTOS PROXIMOS: -->
-			  			<div class="available-label" ng-show="isAvaliable(evento.fecha)">Próximamente</div>
+	<div class="row">
+		<div class="col-xs-12">
+			<uib-tabset active="0" justified="false" type="tabs" vertical="false">
+				<uib-tab index="$index" ng-repeat="group in eventos" heading="{{group._id || 'Otros'}}" classes="years-tab">
+					<div class="row">
+						<div class="col-sm-6 col-md-4" ng-repeat="evento in group.eventos">
+							<a href="/eventos/{{evento._id}}" class="no-text-decoration">
+								<div class="my-thumbnail">
+						  			<!-- CON IMAGEN COMO PORTADA: -->
+						  			<img class="thumbnail-image" src="imgs/eventos/{{evento.imagen}}" ng-show="evento.imagen">
+							  		<!-- SIN IMAGEN, TEXTO COMO PORTADA: -->
+							  		<div class="new-image-replacement" ng-show="!evento.imagen"></div>
+						  			<div class="vertically-centered">
+						    			<div>{{evento.titulo}}</div>
+						  			</div>
+							  		<!-- AVISO EN EVENTOS PROXIMOS: -->
+						  			<div class="available-label" ng-show="isAvaliable(evento.fecha)">Próximamente</div>
+								</div>
+							</a>
+						</div>
 					</div>
-				</a>
-			</div>
+				</uib-tab>
+			</uib-tabset>
 		</div>
 	</div>
 
-	<!-- PAGINATION -->
-	<!-- <center class="hidden-xs">
-		<ul uib-pagination boundary-link-numbers="true" direction-links="true" boundary-links="true" first-text="Inicio" previous-text="Anterior" next-text="Siguiente" last-text="Último" total-items="eventos.length" ng-model="currentPage" rotate="true" max-size="maxSize" class="pagination" items-per-page="itemsPerPage"></ul>
-	</center>
-	<center class="visible-xs-block">
-		<ul uib-pagination boundary-link-numbers="true" direction-links="false" boundary-links="false" first-text="<<" previous-text="<" next-text=">" last-text=">>" total-items="eventos.length" ng-model="currentPage" rotate="true" max-size="maxSize" class="pagination" items-per-page="itemsPerPage"></ul>
-	</center> -->
+	
 </div>
 
