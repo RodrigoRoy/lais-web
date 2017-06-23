@@ -18,23 +18,22 @@
     <form name="eventoForm" id="eventoForm" role="form" novalidate>
         <!-- TITULO DEL EVENTO -->
         <div class="form-group" ng-class="{'has-error': eventoForm.titulo.$dirty && eventoForm.titulo.$invalid}">
-            <label class="control-label color-title format-title" for="titulo">Título</label>
-            <input class="form-control" type="text" name="titulo" id="titulo" placeholder="Nombre del evento" ng-model="evento.titulo" ng-maxlength="150" ng-trim required>
+            <label class="control-label color-title format-title" for="titulo">
+                Título 
+                <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Nombre del evento" tooltip-placement="right"></i>
+            </label>
+            <input class="form-control" type="text" name="titulo" id="titulo" placeholder="" ng-model="evento.titulo" ng-maxlength="150" ng-trim required>
             <div ng-messages="eventoForm.titulo.$error" ng-show="eventoForm.titulo.$dirty && eventoForm.titulo.$invalid"><div ng-messages-include="error-messages"></div></div>
         </div>
 
-        <!-- DESCRIPCION DEL EVENTO -->
-        <!-- <div class="form-group" ng-class="{'has-error': eventoForm.descripcion.$dirty && eventoForm.descripcion.$invalid}">
-            <label class="control-label color-title format-title" for="descripcion">Descripción</label>
-            <textarea class="form-control" rows="2" name="descripcion" id="descripcion" placeholder="Breve descripción del evento" ng-model="evento.descripcion" ng-maxlength="250" ng-trim></textarea>
-            <div ng-messages="eventoForm.descripcion.$error" ng-show="eventoForm.descripcion.$dirty && eventoForm.descripcion.$invalid"><div ng-messages-include="error-messages"></div></div>
-        </div> -->
-
         <!-- INFORMACIÓN COMPLETA DEL EVENTO (HTML) -->
         <div class="form-group" ng-class="{'has-error': eventoForm.contenidoHTML.$dirty && eventoForm.contenidoHTML.$invalid}">
-          <label class="control-label color-title format-title" for="contenidoHTML">Contenido</label>
-          <div text-angular ng-model="evento.contenidoHTML" ta-text-editor-class="form-control" ta-html-editor-class="form-control" id="contenidoHTML" placeholder="Información completa sobre el evento" required></div>
-          <div ng-messages="eventoForm.contenidoHTML.$error" ng-show="eventoForm.contenidoHTML.$dirty && eventoForm.contenidoHTML.$invalid"><div ng-messages-include="error-messages"></div></div>
+            <label class="control-label color-title format-title" for="contenidoHTML">
+                Contenido 
+                <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Información completa del evento. Se permite dar formato al texto e insertar links, imágenes y videos de internet" tooltip-placement="right"></i>
+            </label>
+            <div text-angular ng-model="evento.contenidoHTML" ta-text-editor-class="form-control" ta-html-editor-class="form-control" id="contenidoHTML" placeholder="" required></div>
+            <div ng-messages="eventoForm.contenidoHTML.$error" ng-show="eventoForm.contenidoHTML.$dirty && eventoForm.contenidoHTML.$invalid"><div ng-messages-include="error-messages"></div></div>
         </div>
 
         <!-- FECHAS -->
@@ -42,7 +41,10 @@
             <div class="col-md-6">
                 <!-- FECHA UNICA/INICIAL -->
                 <div class="form-group">
-                    <label class="control-label color-title format-title" for="fecha">Fecha</label>
+                    <label class="control-label color-title format-title" for="fecha">
+                        Fecha 
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Fecha única o inicial de evento" tooltip-placement="right"></i>
+                    </label>
                     <div class="input-group">
                         <!-- DATEPICKER POPUP BUG: No se muestra la fecha hasta dar clic en el calendario -->
                         <!-- <input type="text" id="fecha" class="form-control" uib-datepicker-popup="dd 'de' MMMM 'de' yyyy (EEEE)" ng-model="evento.fecha" is-open="calendar" datepicker-options="dateOptions" close-text="Close" close-text="Listo" current-text="Hoy" clear-text="Borrar" readonly>
@@ -58,7 +60,10 @@
             <div class="col-md-6">
                 <!-- FECHA FINAL -->
                 <div class="form-group" ng-show="evento.fecha"> <!-- && fechaFin -->
-                    <label class="control-label color-title format-title" for="fechaFin">Fecha final</label>
+                    <label class="control-label color-title format-title" for="fechaFin">
+                        Fecha final 
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Fecha de término del evento (no necesaria si el evento se realiza en un solo día)" tooltip-placement="right"></i>
+                    </label>
                     <div class="input-group">
                         <!-- DATEPICKER POPUP BUG: No se muestra la fecha hasta dar clic en el calendario -->
                         <!-- <input type="text" id="fechaFin" class="form-control" uib-datepicker-popup="dd 'de' MMMM 'de' yyyy (EEEE)" ng-model="evento.fechaFin" is-open="secondCalendar" datepicker-options="finalDateOptions" close-text="Close" close-text="Listo" current-text="Hoy" clear-text="Borrar" readonly>
@@ -77,7 +82,10 @@
             <div class="col-md-6">
                 <!-- HORARIO -->
                 <div class="form-group">
-                    <label class="control-label color-title format-title" for="horario">Horario</label>
+                    <label class="control-label color-title format-title" for="horario">
+                        Horario 
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Horario en que comienza el evento (no necesario si el evento dura todo el día)" tooltip-placement="right"></i>
+                    </label>
                     <div uib-timepicker id="horario" ng-model="evento.horario" hour-step="1" minute-step="1"></div>
                     <button class="btn btn-danger btn-sm" ng-click="deleteHorario()" ng-show="evento.horario"><i class="fa fa-clock-o" aria-hidden="true"></i> Borrar hora</button>
                 </div>
@@ -86,7 +94,10 @@
             <div class="col-md-6">
                 <!-- HORARIO FIN-->
                 <div class="form-group" ng-show="evento.horario"> <!-- && hourField -->
-                    <label class="control-label color-title format-title" for="horarioFin">Horario final</label>
+                    <label class="control-label color-title format-title" for="horarioFin">
+                        Horario final 
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Horario en que finaliza el evento (no necesario si no está definido)" tooltip-placement="right"></i>
+                    </label>
                     <div uib-timepicker id="horarioFin" ng-model="evento.horarioFin" hour-step="1" minute-step="1"></div>
                     <button class="btn btn-danger btn-sm" ng-click="deleteFinalHorario()" ng-show="evento.horarioFin"><i class="fa fa-clock-o" aria-hidden="true"></i> Borrar hora final</button>
                 </div>
@@ -95,14 +106,20 @@
 
         <!-- LUGAR (GOOGLE MAPS) -->
         <div class="form-group">
-            <label class="control-label color-title format-title" for="place">Lugar</label>
-            <input class="form-control" type="text" id="place" ng-model="place" placeholder="Escribe y selecciona un lugar o dirección">
+            <label class="control-label color-title format-title" for="place">
+                Lugar 
+                <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Lugar o dirección del evento. El mapa mostrará el lugar seleccionado" tooltip-placement="right"></i>
+            </label>
+            <input class="form-control" type="text" id="place" ng-model="place" placeholder="">
             <div id="map"></div>
         </div>
 
         <!-- TIPO DE EVENTO -->
         <div class="form-group" ng-class="{'has-error': eventoForm.tipo.$dirty && eventoForm.tipo.$invalid}">
-            <label class="control-label color-title format-title" for="tipo">Tipo de evento</label>
+            <label class="control-label color-title format-title" for="tipo">
+                Tipo de evento 
+                <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Seleccionar entre los tipos Académico o Docencia" tooltip-placement="right"></i>
+            </label>
             <select class="form-control" id="tipo" ng-model="evento.tipo">
                 <option value="Académico">Académico</option>
                 <option value="Docencia">Docencia</option>
@@ -112,21 +129,30 @@
 
         <!-- COORDINADOR -->
         <div class="form-group">
-            <label class="control-label color-title format-title" for="coordinador">Coordinador(es)</label>
-            <input type="text" class="form-control" ng-repeat="coordinador in coordinadores" placeholder="Persona(s) encargada(s) del evento" ng-model="coordinador.nombre" ng-blur="updateCoordinador()">
+            <label class="control-label color-title format-title" for="coordinador">
+                Coordinador(es) 
+                <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Personas(s) a cargo del evento (se deben registrar una por una)" tooltip-placement="right"></i>
+            </label>
+            <input type="text" class="form-control" ng-repeat="coordinador in coordinadores" placeholder="" ng-model="coordinador.nombre" ng-blur="updateCoordinador()">
             <button class="btn btn-default" ng-click="add()" ng-disabled="coordinadores[coordinadores.length-1].nombre === ''" ng-show="coordinadores.length < maxLengthCoordinadores"><i class="fa fa-user-plus"></i></button>
         </div>
 
         <!-- PARTICIPANTES -->
         <div class="form-group">
-            <label class="control-label color-title format-title" for="participantes">Participantes</label>
-            <input type="text" class="form-control" ng-repeat="participante in participantes" placeholder="Persona destacada en el evento" ng-model="participante.nombre" ng-blur="updateParticipantes()">
+            <label class="control-label color-title format-title" for="participantes">
+                Participantes 
+                <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Persona(s) destacada(s) que asisten al evento (se deben registrar una por una)" tooltip-placement="right"></i>
+            </label>
+            <input type="text" class="form-control" ng-repeat="participante in participantes" placeholder="" ng-model="participante.nombre" ng-blur="updateParticipantes()">
             <button class="btn btn-default" ng-click="addParticipante()" ng-disabled="participantes[participantes.length-1].nombre === ''" ng-show="participantes.length < maxLengthParticipantes"><i class="fa fa-user-plus"></i></button>
         </div>
 
         <!-- IMAGEN -->
         <div class="form-group">
-            <label class="control-label color-title format-title" for="imagen">Imagen</label>
+            <label class="control-label color-title format-title" for="imagen">
+                Imagen 
+                <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Imagen que será usada como portada representativa" tooltip-placement="right"></i>
+            </label>
             <!-- Detalles del componente: https://github.com/danialfarid/ng-file-upload -->
             <div class="drag-drop-area" ngf-select="uploadImage($file)" ngf-drop="uploadImage($file)" ng-model="imagen" ng-show="imageContainer" name="imagen" id="imagen" ngf-capture="'camera'" ngf-accept="'image/*'" ngf-pattern="'image/*'"><i class="fa fa-file-image-o"></i> Selecciona o arrastra imagen</div>
             <!--Previsualización de imagen-->
@@ -137,7 +163,10 @@
 
         <!-- ARCHIVOS ADJUNTOS -->
         <div class="form-group">
-            <label class="control-label color-title format-title" for="ajduntos">Archivos adjuntos</label>
+            <label class="control-label color-title format-title" for="ajduntos">
+                Archivos adjuntos 
+                <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Archivos complementarios del evento, pueden ser archivos de texto, imágenes, videos, etc. (límite: 200MB)" tooltip-placement="right"></i>
+            </label>
             <button type="button" class="btn btn-default full-width" name="adjuntos" id="adjuntos" ngf-select="uploadFiles($files)" ng-model="adjuntosModel" ngf-multiple="true" ngf-keep="'distinct'" ngf-max-files="20" ngf-max-size="'100MB'" ngf-max-total-size="'200MB'">Selecciona archivos...</button>
             <div class="files-upload">
                 <ul class="list-inline">
@@ -150,16 +179,22 @@
 
         <!-- PALABRAS CLAVE (KEYWORDS) -->
         <div class="form-group">
-            <label class="control-label color-title format-title" for="keywords">Palabras clave</label>
-            <tags-input ng-model="keywords" name="keywords" id="keywords" type="text" placeholder="Agrega una etiqueta" min-length="3" max-length="50" min-tags="0" max-tags="10"  replace-spaces-with-dashes="false" add-from-autocomplete-only="true" spellcheck="false" ng-blur="updateKeywords()">
+            <label class="control-label color-title format-title" for="keywords">
+                Palabras clave 
+                <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Palabras (separadas por comas) que describen la categoría del evento: Ciclo de cine documental, Ciclo de cine, Ciclo de conferencias, Cine, Conferencia, Curso, Diplomado, Exposición, Foro, Jornada, Muestra documental, Presentación de documental, Presentación de libro, Presentación de proyecto, Presentación, Proyección, Seminario, Taller" tooltip-placement="right"></i>
+            </label>
+            <tags-input ng-model="keywords" name="keywords" id="keywords" type="text" placeholder="Agregar keywords..." min-length="3" max-length="50" min-tags="0" max-tags="10"  replace-spaces-with-dashes="false" add-from-autocomplete-only="true" spellcheck="false" ng-blur="updateKeywords()">
                 <auto-complete source="loadTags($query)" display-property="text" min-length="1" max-results-to-show="5"></auto-complete>
             </tags-input>
         </div>
 
         <!-- NOTAS -->
         <div class="form-group" ng-class="{'has-error': eventoForm.notas.$dirty && eventoForm.notas.$invalid}">
-            <label class="control-label color-title format-title" for="notas">Notas</label>
-            <textarea class="form-control" rows="3" name="notas" id="notas" placeholder="Información adicional acerca del evento" ng-model="evento.notas" ng-trim></textarea>
+            <label class="control-label color-title format-title" for="notas">
+                Notas 
+                <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Espacio para describir cualquier otra información que no haya sido considerada anteriormente" tooltip-placement="right"></i>
+            </label>
+            <textarea class="form-control" rows="3" name="notas" id="notas" placeholder="" ng-model="evento.notas" ng-trim></textarea>
             <div ng-messages="eventoForm.notas.$error" ng-show="eventoForm.notas.$dirty && eventoForm.notas.$invalid"><div ng-messages-include="error-messages"></div></div>
         </div>
         

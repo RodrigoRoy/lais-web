@@ -24,14 +24,20 @@
     <form name="publicacionForm" id="publicacionForm" role="form" novalidate>
         <!-- TITULO DE LA PUBLICACION -->
         <div class="form-group" ng-class="{'has-error': publicacionForm.titulo.$dirty && publicacionForm.titulo.$invalid}">
-            <label class="control-label color-title format-title" for="titulo">Título</label>
+            <label class="control-label color-title format-title" for="titulo">
+                Título 
+                <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Nombre completo de la publicación" tooltip-placement="right"></i>
+            </label>
             <input class="form-control" type="text" name="titulo" id="titulo" placeholder="" ng-model="publicacion.titulo" ng-trim required>
             <div ng-messages="publicacionForm.titulo.$error" ng-show="publicacionForm.titulo.$dirty && publicacionForm.titulo.$invalid"><div ng-messages-include="error-messages"></div></div>
         </div>
 
         <!-- AUTORES -->
         <div class="form-group" ng-class="{'has-error': publicacionForm.autor.$dirty && publicacionForm.autor.$invalid}">
-            <label class="control-label color-title format-title" for="autor">Autor(es)</label>
+            <label class="control-label color-title format-title" for="autor">
+                Autor(es) 
+                <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Personas registradas como autores" tooltip-placement="right"></i>
+            </label>
             <input class="form-control" type="text" name="autor" id="autor" placeholder="" ng-model="asyncAutorInput" uib-typeahead="autor.apellido + ', ' + autor.nombre for autor in getAutor($viewValue)" typeahead-loading="loadingAutores" typeahead-no-results="noResults" typeahead-template-url="customTemplate.html" typeahead-on-select="onSelectAutor($item, $model, $label, $event)">
             <i class="fa fa-spinner fa-spin fa-fw" ng-show="loadingAutores"></i>
             <div ng-show="noResults">
@@ -66,18 +72,21 @@
 
         <!-- TIPO -->
         <div class="form-group" ng-class="{'has-error': publicacionForm.tipo.$dirty && publicacionForm.tipo.$invalid}">
-            <label class="control-label color-title format-title" for="tipo">Tipo</label>
+            <label class="control-label color-title format-title" for="tipo">
+                Tipo 
+                <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Elegir uno de los tipos de publicación establecidos: Documental, Artículo, Libro, etc." tooltip-placement="right"></i>
+            </label>
             <select class="form-control" id="tipo" ng-model="publicacion.tipo" required>
                 <!-- <option value=""></option> -->
                 <option value="Documental">Documental</option>
                 <option value="Artículo">Artículo</option>
                 <option value="Libro">Libro</option>
                 <option value="Ponencia">Ponencia</option>
-                <!-- <option value="Incollection">Incollection</option>
+                <!--<option value="Página web">Página web</option>
+                <option value="Incollection">Incollection</option>
                 <option value="Manual">Manual</option>
-                <option value="Tesis">Tesis</option> -->
-                <option value="Página web">Página web</option>
-                <!-- <option value="No especificado">No especificado</option> -->
+                <option value="Tesis">Tesis</option>
+                <option value="No especificado">No especificado</option> -->
             </select>
             <div ng-messages="publicacionForm.tipo.$error" ng-show="publicacionForm.tipo.$dirty && publicacionForm.tipo.$invalid"><div ng-messages-include="error-messages"></div></div>
         </div>
@@ -86,7 +95,10 @@
 
             <!-- FECHA -->
             <div class="form-group">
-                <label class="control-label color-title format-title" for="fecha">Fecha</label>
+                <label class="control-label color-title format-title" for="fecha">
+                    Fecha
+                    <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Fecha (año) en que el material es publicado" tooltip-placement="right"></i>
+                </label>
                 <div class="input-group">
                     <!-- DATEPICKER POPUP BUG: no muestra fecha hasta volver a dar clic en el calendario: -->
                     <!-- <input id="fecha" class="form-control" type="text" uib-datepicker-popup="yyyy" ng-model="publicacion.fecha" datepicker-options="dateOptions" is-open="calendar.open" show-button-bar="false">
@@ -99,99 +111,120 @@
 
             <!-- PUBLISHER -->
             <div class="form-group" ng-class="{'has-error': publicacionForm.publisher.$dirty && publicacionForm.publisher.$invalid}" ng-show="publicacion.tipo === 'Libro'">
-                <label class="control-label color-title format-title" for="publisher">Editorial</label>
+                <label class="control-label color-title format-title" for="publisher">
+                    Editorial
+                    <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Nombre de la editorial encargada del libro" tooltip-placement="right"></i>
+                </label>
                 <input class="form-control" type="text" name="publisher" id="publisher" placeholder="" ng-model="publicacion.publisher" ng-trim>
                 <div ng-messages="publicacionForm.publisher.$error" ng-show="publicacionForm.publisher.$dirty && publicacionForm.publisher.$invalid"><div ng-messages-include="error-messages"></div></div>
             </div>
 
             <!-- JOURNAL -->
             <div class="form-group" ng-class="{'has-error': publicacionForm.journal.$dirty && publicacionForm.journal.$invalid}" ng-show="publicacion.tipo === 'Artículo'">
-                <label class="control-label color-title format-title" for="journal">Journal / Revista</label>
+                <label class="control-label color-title format-title" for="journal">
+                    Journal / Revista 
+                    <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Nombre de la revista donde está incluido el artículo" tooltip-placement="right"></i>
+                </label>
                 <input class="form-control" type="text" name="journal" id="journal" placeholder="" ng-model="publicacion.journal" ng-trim>
                 <div ng-messages="publicacionForm.journal.$error" ng-show="publicacionForm.journal.$dirty && publicacionForm.journal.$invalid"><div ng-messages-include="error-messages"></div></div>
             </div>
 
+            <!-- BOOKTITLE --> <!-- Libro o publicación a la que pertenece -->
+            <div class="form-group" ng-class="{'has-error': publicacionForm.booktitle.$dirty && publicacionForm.booktitle.$invalid}" ng-show="publicacion.tipo === 'Artículo'">
+                <label class="control-label color-title format-title" for="booktitle">
+                    Libro 
+                    <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Nombre del libro o publicación donde está incluido el artículo" tooltip-placement="right"></i>
+                </label>
+                <input class="form-control" type="text" name="booktitle" id="booktitle" placeholder="" ng-model="publicacion.booktitle" ng-trim>
+                <div ng-messages="publicacionForm.booktitle.$error" ng-show="publicacionForm.booktitle.$dirty && publicacionForm.booktitle.$invalid"><div ng-messages-include="error-messages"></div></div>
+            </div>
+
             <!-- VOLUMEN -->
             <div class="form-group" ng-class="{'has-error': publicacionForm.volumen.$dirty && publicacionForm.volumen.$invalid}" ng-show="publicacion.tipo === 'Artículo' || publicacion.tipo === 'Libro'">
-                <label class="control-label color-title format-title" for="volumen">Volumen</label>
+                <label class="control-label color-title format-title" for="volumen">
+                    Volumen 
+                    <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Volumen del libro o artículo" tooltip-placement="right"></i>
+                </label>
                 <input class="form-control" type="text" name="volumen" id="volumen" placeholder="" ng-model="publicacion.volumen" ng-trim>
                 <div ng-messages="publicacionForm.volumen.$error" ng-show="publicacionForm.volumen.$dirty && publicacionForm.volumen.$invalid"><div ng-messages-include="error-messages"></div></div>
             </div>
 
             <!-- NÚMERO -->
             <div class="form-group" ng-class="{'has-error': publicacionForm.numero.$dirty && publicacionForm.numero.$invalid}" ng-show="publicacion.tipo === 'Artículo'">
-                <label class="control-label color-title format-title" for="numero">Número</label>
+                <label class="control-label color-title format-title" for="numero">
+                    Número 
+                    <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Número de la revista donde está incluido el artículo" tooltip-placement="right"></i>
+                </label>
                 <input class="form-control" type="text" name="numero" id="numero" placeholder="" ng-model="publicacion.numero" ng-trim>
                 <div ng-messages="publicacionForm.numero.$error" ng-show="publicacionForm.numero.$dirty && publicacionForm.numero.$invalid"><div ng-messages-include="error-messages"></div></div>
             </div>
 
             <!-- PÁGINAS -->
             <div class="form-group" ng-class="{'has-error': publicacionForm.paginas.$dirty && publicacionForm.paginas.$invalid}" ng-show="publicacion.tipo === 'Artículo' || publicacion.tipo === 'Ponencia'">
-                <label class="control-label color-title format-title" for="paginas">Páginas</label>
+                <label class="control-label color-title format-title" for="paginas">
+                    Páginas 
+                    <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Rango de páginas en las que aparece el artículo o ponencia. Ejemplo: 71-105" tooltip-placement="right"></i>
+                </label>
                 <input class="form-control" type="text" name="paginas" id="paginas" placeholder="" ng-model="publicacion.paginas" ng-trim>
                 <div ng-messages="publicacionForm.paginas.$error" ng-show="publicacionForm.paginas.$dirty && publicacionForm.paginas.$invalid"><div ng-messages-include="error-messages"></div></div>
             </div>
 
-            <!-- BOOKTITLE --> <!-- Libro o publicación a la que pertenece -->
-            <div class="form-group" ng-class="{'has-error': publicacionForm.booktitle.$dirty && publicacionForm.booktitle.$invalid}" ng-show="publicacion.tipo === 'Artículo'">
-                <label class="control-label color-title format-title" for="booktitle">Booktitle</label>
-                <input class="form-control" type="text" name="booktitle" id="booktitle" placeholder="" ng-model="publicacion.booktitle" ng-trim>
-                <div ng-messages="publicacionForm.booktitle.$error" ng-show="publicacionForm.booktitle.$dirty && publicacionForm.booktitle.$invalid"><div ng-messages-include="error-messages"></div></div>
-            </div>
-
             <!-- COLECCION -->
             <div class="form-group" ng-class="{'has-error': publicacionForm.coleccion.$dirty && publicacionForm.coleccion.$invalid}" ng-show="publicacion.tipo === 'Artículo'">
-                <label class="control-label color-title format-title" for="coleccion">Colección</label>
+                <label class="control-label color-title format-title" for="coleccion">
+                    Colección 
+                    <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Nombre de la colección a la puede pertenece la publicación" tooltip-placement="right"></i>
+                </label>
                 <input class="form-control" type="text" name="coleccion" id="coleccion" placeholder="" ng-model="publicacion.coleccion" ng-trim>
                 <div ng-messages="publicacionForm.coleccion.$error" ng-show="publicacionForm.coleccion.$dirty && publicacionForm.coleccion.$invalid"><div ng-messages-include="error-messages"></div></div>
             </div>
 
             <!-- ISBN -->
             <div class="form-group" ng-class="{'has-error': publicacionForm.isbn.$dirty && publicacionForm.isbn.$invalid}" ng-show="publicacion.tipo === 'Libro'">
-                <label class="control-label color-title format-title" for="isbn">ISBN</label>
+                <label class="control-label color-title format-title" for="isbn">
+                    ISBN 
+                    <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Número ISBN del libro" tooltip-placement="right"></i>
+                </label>
                 <input class="form-control" type="text" name="isbn" id="isbn" placeholder="" ng-model="publicacion.isbn" ng-trim>
                 <div ng-messages="publicacionForm.isbn.$error" ng-show="publicacionForm.isbn.$dirty && publicacionForm.isbn.$invalid"><div ng-messages-include="error-messages"></div></div>
             </div>
 
-            <!-- DESCRIPCIÓN -->
-            <div class="form-group" ng-class="{'has-error': publicacionForm.descripcion.$dirty && publicacionForm.descripcion.$invalid}">
-                <label class="control-label color-title format-title" for="descripcion">Descripción</label>
-                <textarea class="form-control" name="descripcion" id="descripcion" rows="2" placeholder="" ng-model="publicacion.descripcion" ng-trim></textarea>
-                <div ng-messages="publicacionForm.descripcion.$error" ng-show="publicacionForm.descripcion.$dirty && publicacionForm.descripcion.$invalid"><div ng-messages-include="error-messages"></div></div>
-            </div>
-
             <!-- ABSTRACT -->
             <div class="form-group" ng-class="{'has-error': publicacionForm.abstract.$dirty && publicacionForm.abstract.$invalid}" ng-show="publicacion.tipo != 'Página web'">
-                <label class="control-label color-title format-title" for="abstract">Abstract / Resumen</label>
+                <label class="control-label color-title format-title" for="abstract">
+                    Abstract / Resumen 
+                    <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Abstract o resumen sobre el contenido de la publicación" tooltip-placement="right"></i>
+                </label>
                 <textarea class="form-control" name="abstract" id="abstract" rows="3" placeholder="" ng-model="publicacion.abstract" ng-trim></textarea>
                 <div ng-messages="publicacionForm.abstract.$error" ng-show="publicacionForm.abstract.$dirty && publicacionForm.abstract.$invalid"><div ng-messages-include="error-messages"></div></div>
             </div>
 
+            <!-- DESCRIPCIÓN -->
+            <div class="form-group" ng-class="{'has-error': publicacionForm.descripcion.$dirty && publicacionForm.descripcion.$invalid}">
+                <label class="control-label color-title format-title" for="descripcion">
+                    Descripción 
+                    <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Descripción adicional sobre la publicación. Ejemplo: Conferencia impartida en ..., Publicación elaborada en el contexto de ..." tooltip-placement="right"></i>
+                </label>
+                <textarea class="form-control" name="descripcion" id="descripcion" rows="2" placeholder="" ng-model="publicacion.descripcion" ng-trim></textarea>
+                <div ng-messages="publicacionForm.descripcion.$error" ng-show="publicacionForm.descripcion.$dirty && publicacionForm.descripcion.$invalid"><div ng-messages-include="error-messages"></div></div>
+            </div>
+
             <!-- URL -->
             <div class="form-group" ng-class="{'has-error': publicacionForm.url.$dirty && publicacionForm.url.$invalid}">
-                <label class="control-label color-title format-title" for="url">URL</label>
+                <label class="control-label color-title format-title" for="url">
+                    URL 
+                    <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Dirección electrónica donde se puede consultar la publicación" tooltip-placement="right"></i>
+                </label>
                 <input class="form-control" type="url" name="url" id="url" placeholder="" ng-model="publicacion.url" ng-trim>
                 <div ng-messages="publicacionForm.url.$error" ng-show="publicacionForm.url.$dirty && publicacionForm.url.$invalid"><div ng-messages-include="error-messages"></div></div>
             </div>
 
-            <!-- KEYWORDS -->
-            <div class="form-group">
-                <label class="control-label color-title format-title" for="keywords">Palabras clave</label>
-                <tags-input ng-model="keywords" name="keywords" id="keywords" type="text" placeholder="Agrega una etiqueta" replace-spaces-with-dashes="false" add-from-autocomplete-only="false" spellcheck="false" ng-blur="updateKeywords()">
-                    <auto-complete source="loadTags($query)" display-property="text" min-length="1" max-results-to-show="5"></auto-complete>
-                </tags-input>
-            </div>
-
-            <!-- NOTAS -->
-            <div class="form-group" ng-class="{'has-error': publicacionForm.notas.$dirty && publicacionForm.notas.$invalid}">
-                <label class="control-label color-title format-title" for="notas">Notas</label>
-                <textarea class="form-control" name="notas" id="notas" rows="2" placeholder="" ng-model="publicacion.notas" ng-trim></textarea>
-                <div ng-messages="publicacionForm.notas.$error" ng-show="publicacionForm.notas.$dirty && publicacionForm.notas.$invalid"><div ng-messages-include="error-messages"></div></div>
-            </div>
-
             <!-- IMAGEN -->
             <div class="form-group">
-                <label class="control-label color-title format-title" for="imagen">Imagen</label>
+                <label class="control-label color-title format-title" for="imagen">
+                    Imagen 
+                    <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Imagen que será usada como portada representativa" tooltip-placement="right"></i>
+                </label>
                 <!-- Detalles del componente: https://github.com/danialfarid/ng-file-upload -->
                 <div class="drag-drop-area" ngf-select="uploadImage($file)" ngf-drop="uploadImage($file)" ng-model="imagen" ng-show="imageContainer" name="imagen" id="imagen" ngf-capture="'camera'" ngf-accept="'image/*'" ngf-pattern="'image/*'"><i class="fa fa-file-image-o"></i> Selecciona o arrastra imagen</div>
                 <!--Previsualización de imagen-->
@@ -201,7 +234,10 @@
 
             <!-- ARCHIVOS ADJUNTOS -->
             <div class="form-group">
-                <label class="control-label color-title format-title" for="ajduntos">Archivos adjuntos</label>
+                <label class="control-label color-title format-title" for="ajduntos">
+                    Archivos adjuntos 
+                    <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Archivos complementarios de la publicación, pueden ser archivos de texto, imágenes y/o videos (límite: 200MB)" tooltip-placement="right"></i>
+                </label>
                 <button type="button" class="btn btn-default full-width" name="adjuntos" id="adjuntos" ngf-select="uploadFiles($files)" ng-model="adjuntosModel" ngf-multiple="true" ngf-keep="'distinct'" ngf-accept="'image/*,.pdf,.doc,.docx'" ngf-max-files="10" ngf-pattern="'image/*,.pdf,.doc,.docx'" ngf-max-size="'100MB'" ngf-max-total-size="'200MB'">Selecciona archivos...</button>
                 <div class="files-upload">
                     <ul>
@@ -210,6 +246,27 @@
                         </li>
                     </ul>
                 </div>
+            </div>
+
+            <!-- KEYWORDS -->
+            <div class="form-group">
+                <label class="control-label color-title format-title" for="keywords">
+                    Palabras clave 
+                    <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Palabras (separadas por comas) que describen las temáticas que aborda la publicación. Ejemplo: Documental, Derechos humanos, Latinoamérica" tooltip-placement="right"></i>
+                </label>
+                <tags-input ng-model="keywords" name="keywords" id="keywords" type="text" placeholder="Agregar keywords..." replace-spaces-with-dashes="false" add-from-autocomplete-only="false" spellcheck="false" ng-blur="updateKeywords()">
+                    <auto-complete source="loadTags($query)" display-property="text" min-length="1" max-results-to-show="5"></auto-complete>
+                </tags-input>
+            </div>
+
+            <!-- NOTAS -->
+            <div class="form-group" ng-class="{'has-error': publicacionForm.notas.$dirty && publicacionForm.notas.$invalid}">
+                <label class="control-label color-title format-title" for="notas">
+                    Notas 
+                    <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Espacio para describir cualquier otra información que no haya sido considerada anteriormente" tooltip-placement="right"></i>
+                </label>
+                <textarea class="form-control" name="notas" id="notas" rows="2" placeholder="" ng-model="publicacion.notas" ng-trim></textarea>
+                <div ng-messages="publicacionForm.notas.$error" ng-show="publicacionForm.notas.$dirty && publicacionForm.notas.$invalid"><div ng-messages-include="error-messages"></div></div>
             </div>
 
         </div><!-- Contenedor de campos hasta que se elija el tipo de publicación -->

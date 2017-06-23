@@ -25,6 +25,11 @@ img{
   margin-bottom: 2em;
 }
 
+/*Sombra de la barra de navegación (cuando no está en el tope de la página)*/
+.navbar-default.navbar-shrink{
+	box-shadow: 0 3px 3px rgba(0,0,0,0.175);
+}
+
 /*Secciones de las etiquestas de los dropdowns menu*/
 #dropdown-label{
 	color: #ccc;
@@ -232,7 +237,7 @@ Esto reeplaza a la imagen faltante*/
 	/*Color transparente de icono oculto*/
 	.secret-icon, .secret-icon:active{
 		color: rgba(51,51,51,0.2);
-		font-size: 0.8em;
+		/*font-size: 0.8em;*/ /*Deshabilitado en favor de un uso más general*/
 	}
 	/*Animación y color que revela el icono*/
 	.secret-icon:hover{
