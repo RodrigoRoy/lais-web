@@ -101,7 +101,8 @@
 		},
 		{
 			"start_date": {
-				"year": 1997
+				"year": 1997,
+				"month": 6
 			},
 			"text": {
 				"headline": "El Buen Restaurador Ama Lo Antiguo",
@@ -153,7 +154,8 @@
 		},
 		{
 			"start_date": {
-				"year": 2000
+				"year": 2000,
+				"month": 6
 			},
 			"text": {
 				"headline": "El Arte de Hacer Ciudad",
@@ -179,7 +181,8 @@
 		},
 		{
 			"start_date": {
-				"year": 2002
+				"year": 2002,
+				"month": 6
 			},
 			"text": {
 				"headline": "De Dolor y Esperanza",

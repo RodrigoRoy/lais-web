@@ -2,17 +2,30 @@
 
 angular.module('InicioCtrl',[]).controller('InicioController', function ($scope, $http, $uibModal){ // Evento
 	
-	$scope.myInterval = 5000; //Intervalo de tiempo para pasar de un slide a otro 
-	$scope.active = 0;
-	$scope.slides = [ // Nombres de imagenes en public/imgs/carrusel
-		"city-q-g-900-500-8.jpg", 
-		"nature-q-c-900-500-3.jpg", 
-		"people-q-c-900-500-7.jpg", 
-		"transport-q-c-900-500-9.jpg"
-		// "a8.jpg",
-		// "captura-de-pantalla-2013-04-27-a-las-22-30-31.png",
-		// "HEAD_metadoc2916.jpg",
-		// "image003.png"
+	// Lista de objetos que representan las diapositivas a mostrar en la página principal.
+	// Propiedad	Obligatorio	Significado
+	// image 		true		URL de la imagen a mostrar
+	// text		false		Texto que acompaña a la imagen
+	// url 		false		URL para hacer hipervínculo
+	$scope.slides = [
+		{
+			image: 'imgs/carrusel/metadoc.jpg',
+			text: 'Catalogación de la colección de documentales del Laboratorio Audiovisual de Investigación Social',
+			url: 'http://lais.mora.edu.mx/metadoc'
+		},
+		{
+			image: 'imgs/carrusel/huellas_de_luz.jpg',
+			// text: 'Fototecas digitales que dan acceso a imágenes de América Latina, siglos XIX y XX',
+			url: 'http://lais.mora.edu.mx/huellasdeluz'
+		},
+		{
+			image: 'imgs/carrusel/nature-q-c-1280-720-10.jpg',
+			text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec libero neque, molestie vitae lorem a, pellentesque blandit magna. Etiam vestibulum efficitur accumsan. Etiam vel enim nibh.',
+			url: 'http://lorempixel.com/'
+		},
+		{
+			image: 'imgs/eventos/1er Congreso.jpg'
+		}
 	];
 
 	$http.get('js/timelineLAIS.json').then(function(res){

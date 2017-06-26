@@ -1,17 +1,17 @@
 <div class="bicolor-sections">
     
     <!-- Seccion de carrusel/inicio -->
-    <section id="info">
+    <section id="info" style="padding: 0; background-color: #222">
         <center>
-            <div uib-carousel active="active" interval="myInterval">
+            <div uib-carousel active="0" interval="5000" no-wrap="true">
                 <div uib-slide ng-repeat="slide in slides" index="$index">
-                    <!-- <a href="eventos/{{slide._id}}"> -->
-                        <!-- <img class="slide-img" ng-src="imgs/carrusel/{{slide.imagen}}"> -->
-                        <img class="slide-img" ng-src="imgs/carrusel/{{slide}}">
-                        <div class="carousel-caption">
-                            <h4>{{slide.titulo}}</h4>
-                        </div>
-                    <!-- </a> -->
+                    <a href="{{slide.url}}" ng-if="slide.url">
+                        <img class="slide-img" ng-src="{{slide.image}}">
+                    </a>
+                    <img class="slide-img" ng-src="{{slide.image}}" ng-if="!slide.url">
+                    <div class="carousel-caption hidden-xs hidden-sm" ng-if="slide.text">
+                        {{slide.text}}
+                    </div>
                 </div>
             </div>
         </center>
