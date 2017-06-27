@@ -3,7 +3,7 @@
     <!-- Seccion de carrusel/inicio -->
     <section id="info" style="padding: 0; background-color: #222">
         <center>
-            <div uib-carousel active="0" interval="5000" no-wrap="true">
+            <div uib-carousel interval="7000">
                 <div uib-slide ng-repeat="slide in slides" index="$index">
                     <a href="{{slide.url}}" ng-if="slide.url">
                         <img class="slide-img" ng-src="{{slide.image}}">

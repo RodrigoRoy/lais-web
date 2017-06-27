@@ -7,26 +7,30 @@ angular.module('InicioCtrl',[]).controller('InicioController', function ($scope,
 	// image 		true		URL de la imagen a mostrar
 	// text		false		Texto que acompaña a la imagen
 	// url 		false		URL para hacer hipervínculo
-	$scope.slides = [
-		{
-			image: 'imgs/carrusel/metadoc.jpg',
-			text: 'Catalogación de la colección de documentales del Laboratorio Audiovisual de Investigación Social',
-			url: 'http://lais.mora.edu.mx/metadoc'
-		},
-		{
-			image: 'imgs/carrusel/huellas_de_luz.jpg',
-			// text: 'Fototecas digitales que dan acceso a imágenes de América Latina, siglos XIX y XX',
-			url: 'http://lais.mora.edu.mx/huellasdeluz'
-		},
-		{
-			image: 'imgs/carrusel/nature-q-c-1280-720-10.jpg',
-			text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec libero neque, molestie vitae lorem a, pellentesque blandit magna. Etiam vestibulum efficitur accumsan. Etiam vel enim nibh.',
-			url: 'http://lorempixel.com/'
-		},
-		{
-			image: 'imgs/eventos/1er Congreso.jpg'
-		}
-	];
+	// $scope.slides = [
+	// 	{
+	// 		image: 'imgs/carrusel/metadoc.jpg',
+	// 		text: 'Catalogación de la colección de documentales del Laboratorio Audiovisual de Investigación Social',
+	// 		url: 'http://lais.mora.edu.mx/metadoc'
+	// 	},
+	// 	{
+	// 		image: 'imgs/carrusel/huellas_de_luz.jpg',
+	// 		text: 'Fototecas digitales que dan acceso a imágenes de América Latina, siglos XIX y XX',
+	// 		url: 'http://lais.mora.edu.mx/huellasdeluz'
+	// 	},
+	// 	{
+	// 		image: 'imgs/carrusel/nature-q-c-1280-720-10.jpg',
+	// 		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec libero neque, molestie vitae lorem a, pellentesque blandit magna. Etiam vestibulum efficitur accumsan. Etiam vel enim nibh.',
+	// 		url: 'http://lorempixel.com/'
+	// 	},
+	// 	{
+	// 		image: 'imgs/eventos/1er Congreso.jpg'
+	// 	}
+	// ];
+
+	$http.get('js/carouselSlides.json').then(function(res){
+		$scope.slides = res.data.slides;
+	});
 
 	$http.get('js/timelineLAIS.json').then(function(res){
 		var timelineConfig = {
@@ -47,8 +51,8 @@ angular.module('InicioCtrl',[]).controller('InicioController', function ($scope,
 	// 		alert('Error de Conexión con la Base de Datos');
 	// 	});
 
-	// Muestra un modal de advertencia al borrar un archivo
-    $scope.openModal = function(/*publicacion*/){
+	// Muestra un modal con información adicional
+    $scope.openModal = function(){
     	$uibModal.open({
     		ariaDescribedBy: 'modal-body',
     		size: 'lg',

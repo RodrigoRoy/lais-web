@@ -97,11 +97,13 @@
 		<div>
 			<p>
 				<!-- FACEBOOK -->
-				<button class="btn btn-default" socialshare socialshare-provider="facebook" socialshare-url="{{url}}" socialshare-text="{{evento.titulo}}" socialshare-type="feed" socialshare-via="148770792254400"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</button>
+				<button class="btn btn-default" socialshare socialshare-provider="facebook" socialshare-url="{{url}}"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</button>
 				<!-- TWITTER -->
 				<button class="btn btn-default" socialshare socialshare-provider="twitter" socialshare-text="{{evento.titulo}}" socialshare-url="{{url}}"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</button>
 				<!-- EMAIL -->
-				<button class="btn btn-default" socialshare socialshare-provider="email" socialshare-subject="Evento audiovisual" socialshare-body="A quien corresponda.%0D%0A %0D%0APor considerarlo de su interés, el Laboratorio Audiovisual de Investigación Social del Instituto Mora le invita a revisar la información del evento {{evento.titulo}} desde su página en internet:%0D%0A {{url}}.%0D%0A %0D%0AUn cordial saludo y gracias por su atención."><i class="fa fa-envelope-o" aria-hidden="true"></i> Email</button>
+				<button class="btn btn-default" socialshare socialshare-provider="email" socialshare-subject="{{evento.titulo}}" socialshare-body="{{evento.titulo}}
+				Información en la página web del Laboratorio Audiovisual de Investigación Social:
+				{{url}}"><i class="fa fa-envelope-o" aria-hidden="true"></i> Email</button>
 			</p>
 		</div>
 
