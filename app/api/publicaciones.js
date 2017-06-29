@@ -75,9 +75,10 @@ router.route('/')
                 {$match: {autor: mongoose.Types.ObjectId(req.query.autor)}},
                 {$sort: {fecha: -1, titulo: 1}},
                 {$group: {
-                    _id: {"$substr": ["$fecha", 0, 4]},
+                    // _id: {"$substr": ["$fecha", 0, 4]},
+                    _id: "$tipo",
                     publicaciones: {$push: '$$ROOT'}}},
-                {$sort: {_id: -1}}
+                // {$sort: {_id: -1}}
             ])
             .exec(function(err, publicaciones){
                 if(err)
@@ -88,17 +89,6 @@ router.route('/')
                     res.send(populatedPublicaciones);
                 });
             });
-            
-            // Publicacion.find({autor: mongoose.Types.ObjectId(req.query.autor)})
-            // .sort({fecha: 'desc'})
-            // .populate('autor')
-            // .populate('adjuntos')
-            // .populate('usuario')
-            // .exec(function(err, publicaciones){
-            //     if(err)
-            //         res.send(err);
-            //     res.send(publicaciones);
-            // });
         }else{
             Publicacion.find() // encontrar todos
             .sort({fecha: 'desc'})

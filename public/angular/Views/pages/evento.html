@@ -63,19 +63,18 @@
 		<div ng-if="evento.documentos && evento.documentos.length > 0">
 			<h4 class="subtitle-color">Archivos adjuntos</h4>
 			<!-- IMAGENES -->
-			<div ng-if="evento.adjuntos.imagenes.length > 0">
-				<ul class="list-inline">
-					<li ng-repeat="archivo in evento.adjuntos.imagenes">
-						<a href="files/{{archivo.location + archivo.filename}}" target="_blank"><img src="files/{{archivo.location + archivo.filename}}" style="height: 150px; width: auto;"></a>
-					</li>
-				</ul>
+			<div class="row" ng-if="evento.adjuntos.imagenes.length > 0">
+				<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2" ng-repeat="archivo in evento.adjuntos.imagenes">
+					<a href="files/{{archivo.location + archivo.filename}}" target="_blank"><img src="files/{{archivo.location + archivo.filename}}"></a>
+				</div>
 			</div>
 			<!-- VIDEOS -->
-			<div ng-if="evento.adjuntos.videos.length > 0">
-				<video ng-repeat="archivo in evento.adjuntos.videos" controls style="width: 100%;">
-					<source src="{{'files/' + archivo.location + archivo.filename | trustUrl}}" type="video/mp4">
-					<a href="files/{{archivo.location + archivo.filename}}" target="_blank">{{archivo.filename}}</a>
-				</video>
+			<div class="row" ng-if="evento.adjuntos.videos.length > 0">
+				<div class="col-xs-12 col-md-6" ng-repeat="archivo in evento.adjuntos.videos">
+					<video controls style="width: 100%;"> <source src="{{'files/' + archivo.location + archivo.filename | trustUrl}}" type="video/mp4">
+						<a href="files/{{archivo.location + archivo.filename}}" target="_blank">{{archivo.filename}}</a>
+					</video>
+				</div>
 			</div>
 			<!-- DOCUMENTOS DE TEXTO -->
 			<div ng-if="evento.adjuntos.documentos.length > 0">
