@@ -74,6 +74,11 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 			controller: 'UsuariosController'
 		})
 
+		.when('/admin/carrusel',{
+			templateUrl: 'angular/Views/pages/carousel.html',
+			controller: 'CarouselController'
+		})
+
 		.when('/archivos',{
 			templateUrl: 'angular/Views/pages/archivos.html',
 			controller: 'ArchivosController'

@@ -1,0 +1,132 @@
+<!-- Página con el formulario para agregar un evento -->
+
+<div class="container my-container">
+    <!--Script para mostrar mensajes de error en los campos del formulario-->
+    <script type="text/ng-template" id="error-messages">
+        <span ng-message="required" class="help-block">Este campo es obligatorio.</span>
+        <span ng-message="maxlength" class="help-block">La información excede el límite de longitud permitido.</span>
+        <span ng-message="minlength" class="help-block">La información es demasiado corta.</span>
+        <span ng-message="date" class="help-block">La fecha es incorrecta.</span>
+        <span ng-message="url" class="help-block">Se requiere la dirección completa de internet (comúnmente iniciando con "http://").</span>
+        <span ng-message="pattern" class="help-block">El formato de este campo es incorrecto.</span>
+    </script>
+
+    <center><h1 class="color-title">Carrusel</h1></center>
+
+    <div class="row">
+        <div class="col-xs-12 individual-slide" ng-repeat="slide in slides">
+            <form name="carouselForm" id="carouselForm" role="form" novalidate>
+                <span class="individual-slide-title">{{$index + 1}}</span>
+                <div class="row">
+                    <div class="col-xs-12 col-md-4">
+                        <div class="form-group" ng-class="{'has-error': carouselForm.imagen.$dirty && carouselForm.imagen.$invalid}">
+                            <label class="control-label color-title" for="imagen">
+                                Imagen
+                                <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Imagen que se utilizará en la vista del carrusel" tooltip-placement="right"></i>
+                            </label>
+                            <input class="form-control" type="text" name="imagen" id="imagen" ng-model="slide.image" required>
+                            <div ng-messages="carouselForm.imagen.$error" ng-show="carouselForm.imagen.$dirty && carouselForm.imagen.$invalid"><div ng-messages-include="error-messages"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-4">
+                        <div class="form-group" ng-class="{'has-error': carouselForm.url.$dirty && carouselForm.url.$invalid}">
+                            <label class="control-label color-title" for="url">
+                                URL
+                                <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Link o URL que se utilizará al dar clic en la imagen" tooltip-placement="right"></i>
+                            </label>
+                            <input class="form-control" type="url" name="url" id="url" ng-model="slide.url">
+                            <div ng-messages="carouselForm.url.$error" ng-show="carouselForm.url.$dirty && carouselForm.url.$invalid"><div ng-messages-include="error-messages"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-4">
+                        <div class="form-group" ng-class="{'has-error': carouselForm.text.$dirty && carouselForm.text.$invalid}">
+                            <label class="control-label color-title" for="text">
+                                Descripción
+                                <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Texto descriptivo que acompaña a la imagen en la parte inferior" tooltip-placement="right"></i>
+                            </label>
+                            <input class="form-control" type="text" name="text" id="text" ng-model="slide.text" ng-maxlength="200" ng-trim>
+                            <div ng-messages="carouselForm.text.$error" ng-show="carouselForm.text.$dirty && carouselForm.text.$invalid"><div ng-messages-include="error-messages"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <button class="btn btn-default" ng-if="!$first" ng-click="upSlide($index)"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+                        <button class="btn btn-default" ng-if="!$last" ng-click="downSlide($index)"><i class="fa fa-arrow-down" aria-hidden="true"></i></button>
+                        <button class="btn btn-default" ng-click="deleteSlide($index)"><i class="fa fa-times" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-xs-12 individual-slide">
+            <form name="carouselForm" id="imagen" role="form" novalidate>
+                <span class="individual-slide-title">Nueva diapositiva</span>
+                <div class="row">
+                    <div class="col-xs-12 col-md-4">
+                        <div class="form-group" ng-class="{'has-error': carouselForm.imagen.$dirty && carouselForm.imagen.$invalid}">
+                            <label class="control-label color-title" for="imagen">
+                                Imagen
+                                <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Imagen que se utilizará en la vista del carrusel" tooltip-placement="right"></i>
+                            </label>
+                            <input class="form-control" type="text" name="imagen" id="imagen" ng-model="newSlide.image" required>
+                            <div ng-messages="carouselForm.imagen.$error" ng-show="carouselForm.imagen.$dirty && carouselForm.imagen.$invalid"><div ng-messages-include="error-messages"></div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-xs-12 col-md-4">
+                        <div class="form-group" ng-class="{'has-error': carouselForm.url.$dirty && carouselForm.url.$invalid}">
+                            <label class="control-label color-title" for="url">
+                                URL
+                                <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Link o URL que se utilizará al dar clic en la imagen" tooltip-placement="right"></i>
+                            </label>
+                            <input class="form-control" type="url" name="url" id="url" ng-model="newSlide.url">
+                            <div ng-messages="carouselForm.url.$error" ng-show="carouselForm.url.$dirty && carouselForm.url.$invalid"><div ng-messages-include="error-messages"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-md-4">
+                        <div class="form-group" ng-class="{'has-error': carouselForm.text.$dirty && carouselForm.text.$invalid}">
+                            <label class="control-label color-title" for="text">
+                                Descripción
+                                <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Texto descriptivo que acompaña a la imagen en la parte inferior" tooltip-placement="right"></i>
+                            </label>
+                            <input class="form-control" type="text" name="text" id="text" ng-model="newSlide.text" ng-maxlength="200" ng-trim>
+                            <div ng-messages="carouselForm.text.$error" ng-show="carouselForm.text.$dirty && carouselForm.text.$invalid"><div ng-messages-include="error-messages"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <button class="btn btn-default" ng-click="addSlide()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <div class="col-xs-12">
+            <button class="btn btn-default">Aplicar cambios</button>
+        </div>
+
+        <!-- <br>
+        <pre>{{newSlide | json}}</pre>
+        <br>
+        <pre>{{slides | json}}</pre> -->
+
+        <div class="col-xs-12">
+            <center><span class="individual-slide-title">Previsualización</span></center>
+            <div uib-carousel interval="7000">
+                <div uib-slide ng-repeat="slide in slides" index="$index">
+                    <a href="{{slide.url}}" ng-if="slide.url">
+                        <img class="slide-img" ng-src="{{slide.image}}">
+                    </a>
+                    <img class="slide-img" ng-src="{{slide.image}}" ng-if="!slide.url">
+                    <div class="carousel-caption hidden-xs hidden-sm" ng-if="slide.text">
+                        {{slide.text}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

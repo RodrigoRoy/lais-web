@@ -1,0 +1,18 @@
+.individual-slide{
+	/*padding: 10px 5px 30px;*/
+	padding-top: 10px;
+	padding-bottom: 30px;
+}
+
+.individual-slide:nth-child(odd){
+	background-color: rgba(181, 181, 181, 0.3);
+}
+
+/*.individual-slide:nth-child(even){
+	background-color: rgba(181, 181, 181, 0);
+}*/
+
+.individual-slide-title{
+	font-size: 1.5em;
+	font-weight: bold;
+}

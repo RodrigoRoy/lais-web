@@ -30,6 +30,7 @@ angular.module('laisApp', [
 	'UsuariosCtrl', // Administración de los usuarios
 	'EventosListCtrl', // Administración de los eventos (en forma de lista)
 	'PublicacionesListCtrl', // Administración de los eventos (en forma de lista)
+	'CarouselCtrl', // Administración de las imagenes del carrusel
 	'ArchivosCtrl', //Carga toda la informacion de la Base de datos de los archivos
 	'ContactoCtrl', // Página de contacto
 	
