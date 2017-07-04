@@ -2,12 +2,17 @@
     Controlador para organizar imagenes del carrusel. 
 */
 
-angular.module('CarouselCtrl', []).controller('CarouselController', function ($scope, $http) {
+angular.module('CarouselCtrl', []).controller('CarouselController', function ($scope, $http, Carrusel) {
     $scope.slides = {};
     $scope.newSlide = {};
 
-    $http.get('js/carouselSlides.json').then(function(res){
+    // $http.get('js/carouselSlides.json').then(function(res){
+    Carrusel.get()
+    .then(function(res){
         $scope.slides = res.data.slides;
+    }, function(res){
+        $scope.slides = {};
+        console.error('Error al obtener información del carrusel: ', res);
     });
 
     $scope.swapSlides = function(index1, index2){
@@ -34,5 +39,15 @@ angular.module('CarouselCtrl', []).controller('CarouselController', function ($s
         $scope.newSlide = {};
         $scope.carouselForm.$setPristine();
         $scope.carouselForm.$setUntouched();
+    };
+
+    $scope.sendInfo = function(){
+        Carrusel.update($scope.slides)
+        .then(function(res){
+            console.log("Updating...");
+            // TODO: Actualizar página
+        }, function(res){
+            console.error('Error al actualizar información del carrusel: ', res);
+        });
     };
 });

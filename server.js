@@ -59,6 +59,8 @@ var autores = require('./app/api/autores'); // API para Autores
 app.use('/api/autores', autores); // usar el API desde la ruta "/api/autores"
 var publicaciones = require('./app/api/publicaciones'); // API para Publicaciones
 app.use('/api/publicaciones', publicaciones); // usar el API desde la ruta "/api/publicaciones"
+var carrusel = require('./app/api/carrusel'); // API para Carrusel
+app.use('/api/carrusel', carrusel); // usar el API desde la ruta "/api/carrusel"
 var files = require('./app/api/files'); // API para Files
 app.use('/api/files', files); // usar el API desde la ruta "/api/files"
 var images = require('./app/api/images'); // API para Imagenes

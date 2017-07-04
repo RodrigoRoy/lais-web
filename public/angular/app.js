@@ -39,6 +39,7 @@ angular.module('laisApp', [
 	'EventoService', //Servicio que administra las llamadas a la base de datos de "eventos"
 	'AutorService', // Servicio que administra las llamadas a la base de datos de "autores"
 	'PublicacionService', //Servicio que administra las llamada a la base de datos de "publicaciones"
+	'CarruselService', // Servicio que administra las llamadas al archivo "carouselSlides.json"
 	'ArchivoService', //Servicio que administra las llamadas a la base de datos de "archivos"
 	'UsuarioService', //Servicio que administra las llamadas a la base de datos de usuarios
 	'EventosBusquedaService', //Servicio que obtiene los oventos con la coincidencia de busqueda

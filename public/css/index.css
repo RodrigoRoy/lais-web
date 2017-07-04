@@ -43,6 +43,14 @@ img{
 	height: 50px;
 }
 
+/*.parallax{
+	background-image: url(http://lais.mora.edu.mx/metadoc/imgs/imgsSlide/3.jpg);
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}*/
+
 /*Contenedor en páginas generales*/
 .my-container{
 	background-color: #eee;
