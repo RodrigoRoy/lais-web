@@ -12,6 +12,7 @@ var express = require('express');
 var router = express.Router(); // para modularizar las rutas
 var fs = require('fs'); // File system library
 var verifyToken = require('./token'); // Función de verificación de token
+var carouselLocation = 'app/dataset/carouselSlides.json';
 
 // Función a realizar siempre que se utilize esta API
 router.use(function(req, res, next){
@@ -28,14 +29,14 @@ router.route('/')
 	// Obtener toda la información de los slides
     // GET http://localhost:8080/api/carrusel
 	.get(function(req, res){
-        fs.access('public/js/carouselSlides.json', (fs.constants || fs).F_OK, function(err){
+        fs.access(carouselLocation, (fs.constants || fs).F_OK, function(err){
             if(err)
                 return res.status(404).send({
                     success: false,
                     message: "File with slides data not found",
                     err: err
                 });
-            fs.readFile('public/js/carouselSlides.json', 'utf8', function(err, data){
+            fs.readFile(carouselLocation, 'utf8', function(err, data){
                 var carouselData = JSON.parse(data);
                 res.send(carouselData);
             });
@@ -49,14 +50,14 @@ router.route('/')
         // console.log('carouselData: ', carouselData);
         var jsonData = JSON.stringify(carouselData);
         // res.send('Hello POST');
-        fs.access('public/js/carouselSlides.json', (fs.constants || fs).F_OK, function(err){
+        fs.access(carouselLocation, (fs.constants || fs).F_OK, function(err){
             if(err)
                 return res.status(404).send({
                     success: false,
                     message: "File with slides data not found",
                     err: err
                 });
-            fs.writeFile('public/js/carouselSlides.json', jsonData, 'utf8', function(err){
+            fs.writeFile(carouselLocation, jsonData, 'utf8', function(err){
                 res.send({
                     success: true,
                     message: 'Carousel data updated'

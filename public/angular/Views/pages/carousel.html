@@ -3,11 +3,11 @@
 <div class="container my-container">
     <!--Script para mostrar mensajes de error en los campos del formulario-->
     <script type="text/ng-template" id="error-messages">
-        <span ng-message="required" class="help-block">Este campo es obligatorio.</span>
-        <span ng-message="maxlength" class="help-block">La información excede el límite de longitud permitido.</span>
+        <span ng-message="required" class="help-block">Este campo es necesario.</span>
+        <span ng-message="maxlength" class="help-block">La información excede el límite de longitud.</span>
         <span ng-message="minlength" class="help-block">La información es demasiado corta.</span>
         <span ng-message="date" class="help-block">La fecha es incorrecta.</span>
-        <span ng-message="url" class="help-block">Se requiere la dirección completa de internet (comúnmente iniciando con "http://").</span>
+        <span ng-message="url" class="help-block">Se requiere una dirección de internet válida (comúnmente iniciando con "http://").</span>
         <span ng-message="pattern" class="help-block">El formato de este campo es incorrecto.</span>
     </script>
 
@@ -46,7 +46,7 @@
                                 Descripción
                                 <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Texto descriptivo que acompaña a la imagen en la parte inferior" tooltip-placement="right"></i>
                             </label>
-                            <input class="form-control" type="text" name="text" id="text" ng-model="slide.text" ng-maxlength="200" ng-trim>
+                            <input class="form-control" type="text" name="text" id="text" ng-model="slide.text" ng-maxlength="200" placeholder="(Opcional)" ng-trim>
                             <div ng-messages="carouselForm.text.$error" ng-show="carouselForm.text.$dirty && carouselForm.text.$invalid"><div ng-messages-include="error-messages"></div></div>
                         </div>
                     </div>
@@ -68,9 +68,15 @@
                         <div class="form-group" ng-class="{'has-error': carouselForm.imagen.$dirty && carouselForm.imagen.$invalid}">
                             <label class="control-label color-title" for="imagen">
                                 Imagen
-                                <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Imagen que se utilizará en la vista del carrusel" tooltip-placement="right"></i>
+                                <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Imagen que se utilizará en la vista del carrusel. Se puede subir una imagen propia o escribir la URL de una imagen en línea" tooltip-placement="right"></i>
                             </label>
-                            <input class="form-control" type="text" name="imagen" id="imagen" ng-model="newSlide.image" required>
+                            <!-- Detalles del componente: https://github.com/danialfarid/ng-file-upload -->
+                            <div class="drag-drop-area" style="padding: 20px 10px;" ngf-select="uploadImage($file)" ngf-drop="uploadImage($file)" ng-model="newSlide.image" ng-show="!newSlide.image" name="imagen" id="imagen" ngf-capture="'camera'" ngf-accept="'image/*'" ngf-pattern="'image/*'"><i class="fa fa-file-image-o"></i> Click o arrastra imagen</div>
+                            <!--Previsualización de imagen-->
+                            <img class="preview full-width" ng-show="newSlide.image" src="{{newSlide.image}}">
+                            <!-- <button type="button" class="btn btn-danger" ng-show="publicacion.imagen" ng-click="deleteImage()">Eliminar <i class="fa fa-times" aria-hidden="true"></i></button> -->
+
+                            <input class="form-control" type="text" name="imagen" id="imagen" ng-model="newSlide.image" placeholder="http://www.sitio.com/imagen.jpg" required>
                             <div ng-messages="carouselForm.imagen.$error" ng-show="carouselForm.imagen.$dirty && carouselForm.imagen.$invalid"><div ng-messages-include="error-messages"></div></div>
                         </div>
                     </div>
@@ -92,20 +98,20 @@
                                 Descripción
                                 <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Texto descriptivo que acompaña a la imagen en la parte inferior" tooltip-placement="right"></i>
                             </label>
-                            <input class="form-control" type="text" name="text" id="text" ng-model="newSlide.text" ng-maxlength="200" ng-trim>
+                            <input class="form-control" type="text" name="text" id="text" ng-model="newSlide.text" ng-maxlength="200" placeholder="(Opcional)" ng-trim>
                             <div ng-messages="carouselForm.text.$error" ng-show="carouselForm.text.$dirty && carouselForm.text.$invalid"><div ng-messages-include="error-messages"></div></div>
                         </div>
                     </div>
 
-                    <div class="col-xs-12">
-                        <button class="btn btn-default" ng-click="addSlide()"><i class="fa fa-plus" aria-hidden="true"></i></button>
-                    </div>
+                    <!-- <div class="col-xs-12">
+                        <button class="btn btn-default" ng-click="addSlide()"><i class="fa fa-plus" aria-hidden="true"></i> Agregar diapositiva</button>
+                    </div> -->
                 </div>
             </form>
         </div>
         
         <div class="col-xs-12">
-            <button class="btn btn-default" ng-click="sendInfo()">Aplicar cambios</button>
+            <button class="btn btn-default" ng-click="sendInfo()"><i class="fa fa-plus" aria-hidden="true"></i> Agregar y/o actualizar</button>
         </div>
 
         <!-- <br>
