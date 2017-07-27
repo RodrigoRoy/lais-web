@@ -121,7 +121,7 @@
 
         <div class="col-xs-12">
             <center><span class="individual-slide-title">Previsualización</span></center>
-            <div uib-carousel interval="7000">
+            <div uib-carousel interval="7000" active="0">
                 <div uib-slide ng-repeat="slide in slides" index="$index">
                     <a href="{{slide.url}}" ng-if="slide.url">
                         <img class="slide-img" ng-src="{{slide.image}}">

@@ -21,13 +21,18 @@ img{
 
 /* Margen superior e inferior para el contenido de cada página dentro de <div ng-view>*/
 [ng-view]{
-  margin-top: 4em;
-  margin-bottom: 2em;
+	margin-top: 4em;
+	margin-bottom: 0;
+
+	background-image: url(../imgs/background2.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-attachment: fixed;
 }
 
 /*Sombra de la barra de navegación (cuando no está en el tope de la página)*/
 .navbar-default.navbar-shrink{
-	box-shadow: 0 3px 3px rgba(0,0,0,0.175);
+	box-shadow: 0 5px 3px rgba(0,0,0,0.175);
 }
 
 /*Secciones de las etiquestas de los dropdowns menu*/
@@ -43,13 +48,20 @@ img{
 	height: 50px;
 }
 
-/*.parallax{
-	background-image: url(http://lais.mora.edu.mx/metadoc/imgs/imgsSlide/3.jpg);
+/*Efecto pseudo-parallax para tener imagenes de fondo*/
+.parallax{
+	background-image: url(../imgs/background.jpg);
 	background-attachment: fixed;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-}*/
+}
+.parallax-bgim-1{
+	background-image: url(../imgs/background.jpg);
+}
+.parallax-bgim-2{
+	background-image: url(../imgs/background2.jpg);
+}
 
 /*Contenedor en páginas generales*/
 .my-container{
@@ -57,6 +69,8 @@ img{
 	border-radius: 6px;
 	padding-bottom: 1em;
 	font-size: 1.2em; /*texto ligeramente mas grande*/
+
+	background-color: rgba(238, 238, 238, 0.9);
 }
 
 /*Ajustes de tipografía en botones*/
@@ -222,7 +236,7 @@ Esto reeplaza a la imagen faltante*/
 	/* Margen superior e inferior para el contenido de cada página dentro de <div ng-view>*/
 	[ng-view]{
 	  margin-top: 8em;
-	  margin-bottom: 2em;
+	  margin-bottom: 0;
 	}
 
 	/*Secciones de las etiquestas de los dropdowns menu*/
@@ -351,10 +365,10 @@ ul.social-buttons li a:hover, ul.social-buttons li a:focus, ul.social-buttons li
 .section-heading{
 	color: #123652;
 }
-/*Subtítulos en inicio y encabezados (de formulario)*/
+/*Subtítulos en inicio (Recursos en línea)*/
 .service-heading{
 	/*color: #294f6d;*/
-	color: #bbb;
+	color: #ccc;
 }
 .color-title{
 	color: #294f6d;

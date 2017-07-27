@@ -1,9 +1,7 @@
 /*Alineación (centrada) de la imagen dentro del slide*/
 .slide-img{
-	/*display: block;*/
 	margin: auto;
-	max-width: 100%; /*Para imagenes responsivas*/
-	max-height: 720px;
+	height: 150px;
 }
 
 /*Tipografía utilizado en los textos de cada slide*/
@@ -19,11 +17,37 @@
     background-color: rgba(15, 15, 15, 0.8);
 }
 
+/*Pequeños círculos del carrusel*/
+.carousel-indicators{
+	bottom: -35px; /*Debajo de las imágenes*/
+}
+
+/*Modal con información adicional del LAIS. Se usa la clase .modal-lais para solo sobreescribir esta instancia de modal*/
+.modal-lais div .modal-content{
+	background-color: #ddd;
+}
+.modal-lais div .modal-content .modal-body, .modal-lais div .modal-content .modal-body p, .modal-lais div .modal-content .modal-body ul li{
+	font-size: 1.1em;
+}
+.modal-lais div .modal-content .modal-body h4{
+	margin: 1.5em 0;
+}
+
 /* Controla el tamaño de las imagenes de recursos en linea(metadoc, huellas de luz,..)*/
 .imagen{
 	width: 250px;
 	height: 250px;
 	display: inline-block;
+}
+
+/*Color de texto en Recursos en línea*/
+.text-muted{
+	color: #b5b5b5;
+}
+
+/*Subtítulos en inicio (Recursos en línea)*/
+.service-heading{
+	font-size: 1.5em;
 }
 
 /*Icono de la parte "intro"*/
@@ -38,10 +62,10 @@
 }
 .bicolor-sections section:nth-child(even){
 	background-color: #222222;
-	color: #eee;
+	color: #ccc;
 }
 .bicolor-sections section:nth-child(even) .section-heading{
-	color: #bbb; /*Titulos blancos donde el fondo es negro*/
+	color: #ccc; /*Titulos blancos donde el fondo es negro*/
 }
 #intro{ /*.bicolor-sections section:first-child{*/
 	padding: 100px 0;
@@ -73,4 +97,28 @@
 }
 .tl-text h2.tl-headline{
 	/*font-size: 1.3em !important;*/
+}
+
+@media screen and (min-width: 768px) {
+	/*Alineación (centrada) de la imagen dentro del slide*/
+	.slide-img{
+		margin: auto;
+		height: 200px;
+	}
+}
+
+@media screen and (min-width: 992px) {
+	/*Alineación (centrada) de la imagen dentro del slide*/
+	.slide-img{
+		margin: auto;
+		height: 250px;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	/*Alineación (centrada) de la imagen dentro del slide*/
+	.slide-img{
+		margin: auto;
+		height: 350px;
+	}
 }

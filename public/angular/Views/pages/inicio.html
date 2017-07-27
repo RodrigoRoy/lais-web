@@ -1,9 +1,9 @@
 <div class="bicolor-sections">
     
     <!-- Seccion de carrusel/inicio -->
-    <section id="info" style="padding: 0; background-color: #222">
+    <section id="info" style="padding: 4em 0; background-color: #222">
         <center>
-            <div uib-carousel interval="7000">
+            <div uib-carousel interval="7000" active="0">
                 <div uib-slide ng-repeat="slide in slides" index="$index">
                     <a href="{{slide.url}}" ng-if="slide.url">
                         <img class="slide-img" ng-src="{{slide.image}}">
@@ -17,7 +17,7 @@
         </center>
     </section>
 
-    <section id="intro" class="parallax">
+    <section id="intro" class="parallax parallax-bgim-1">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -38,7 +38,7 @@
     </section>
 
     <!-- Seccion de Historia -->
-    <section id="trayectoria">
+    <section id="trayectoria" style="padding: 3em 0;">
         <div class="container">
             <div class="row text-center">
                 <!-- <p>
@@ -50,7 +50,7 @@
     </section>
 
     <!-- Seccion de Recusos en Línea -->
-    <section id="recursos" class="parallax">
+    <section id="recursos" class="parallax parallax-bgim-2">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -64,7 +64,7 @@
                         <img src="imgs/Huellas_de_Luz.png" class="img-responsive img-circle imagen">
                     </a>
                     <h4 class="service-heading">Huellaz de Luz</h4>
-                    <p class="text-muted">
+                    <p> <!-- class="text-muted" -->
                         Da acceso a <strong>imágenes</strong> de América Latina, siglos XIX y XX.
                         <br>
                         Incluye documentación que permite ir más allá de las imágenes y conocer acerca de sus contextos de producción.
@@ -77,7 +77,7 @@
                         <img src="imgs/metaDOC.png" class="img-responsive img-circle imagen">
                     </a>
                     <h4 class="service-heading">metaDOC</h4>
-                    <p class="text-muted">
+                    <p> <!-- class="text-muted" -->
                         Sitio web que pone a disposición la catalogación de la colección de <strong>documentales</strong> del Laboratorio Audiovisual de Investigación Social del Instituto Mora, con la intención de impulsar el análisis e investigación sobre este tipo de documentos.
                     </p>
                 </div>
@@ -86,7 +86,7 @@
                         <img src="imgs/Como_la_ves.png" class="img-responsive img-circle imagen">
                     </a>
                     <h4 class="service-heading">Exposición Interactiva</h4>
-                    <p class="text-muted">
+                    <p> <!-- class="text-muted" -->
                         Interactivo ¿Cómo la ves? Infancia y Televisión.
                         <br>
                         Diseñado para los padres, tutores y maestros que estamos interesados en reflexionar sobre el consumo indiscriminado y excesivo de la <strong>televisión comercial</strong> por parte de nuestros hijos y alumnos.
@@ -107,38 +107,46 @@
                 <ul>
                     <li>Como fuentes primarias, ya sea procedentes de archivo o generadas desde la misma investigación; y como medio de divulgación de las investigaciones sociales.</li>
                 </ul>
-
-                Como parte de este trabajo, llevamos a cabo diversas actividades, entre ellas:
-
-                <ul>
-                    <li>Construimos propuestas teóricas, metodológicas, técnicas y sociales relacionadas con estos modos de incorporación de las imágenes a la investigación</li>
-
-                    <li>Fomentamos el análisis del ambiente audiovisual en el cual estamos inmersos</li>
-
-                    <li>Desarrollamos mecanismos de acceso libre al patrimonio imagético y de procesamiento de datos catalográficos; y formamos recursos humanos</li>
-                </ul>
             </p>
+            
+            <p>
+                Como parte de este trabajo, llevamos a cabo diversas actividades, entre ellas:
+            </p>
+
+            <ul>
+                <li>Construimos propuestas teóricas, metodológicas, técnicas y sociales relacionadas con estos modos de incorporación de las imágenes a la investigación</li>
+
+                <li>Fomentamos el análisis del ambiente audiovisual en el cual estamos inmersos</li>
+
+                <li>Desarrollamos mecanismos de acceso libre al patrimonio imagético y de procesamiento de datos catalográficos; y formamos recursos humanos</li>
+            </ul>
 
             <h4>Publicaciones</h4>
 
-            <p>Las publicaciones del LAIS incluyen libros, capítulos de libros, artículos, documentales, interactivos, exposiciones y sitios Web.
-            <br>
-            <a href="/publicacion">Consulta aquí</a> la base de datos de publicaciones del LAIS.
+            <p>
+                Las publicaciones del LAIS incluyen libros, capítulos de libros, artículos, documentales, interactivos, exposiciones y sitios Web.
+                <br>
+                <a href="/publicacion">Consulta aquí</a> la base de datos de publicaciones del LAIS.
             </p>
 
             <h4>Documentales</h4>
 
-            <p>Hemos producido documentales sobre temas como la historia del pueblo de Mixcoac, la vida de un ferrocarrilero mexicano, los problemas de la investigación social con imágenes y de los archivos que resguardan tales documentos, y las prácticas de la exhibición de películas en la Ciudad de México.
-            <br>
+            <p>
+                Hemos producido documentales sobre temas como la historia del pueblo de Mixcoac, la vida de un ferrocarrilero mexicano, los problemas de la investigación social con imágenes y de los archivos que resguardan tales documentos, y las prácticas de la exhibición de películas en la Ciudad de México.
+                <br>
 
-            Las fichas de nuestros documentales pueden <a href="http://www.mora.edu.mx/Investigacion/SitePages/LAIS-Video/Mas-Videos.aspx">consultarse aquí</a>
+                Las fichas de nuestros documentales pueden <a href="http://www.mora.edu.mx/Investigacion/SitePages/LAIS-Video/Mas-Videos.aspx">consultarse aquí</a>
             </p>
 
             <h4>Proyectos y actividades académicas</h4>
 
-            <p>Investigación sobre Gestión y Difusión del Patrimonio Visual Comunitario, 2012-2013, con el apoyo del FONCA.</p>
+            <p>
+                Investigación sobre Gestión y Difusión del Patrimonio Visual Comunitario, 2012-2013, con el apoyo del FONCA.
+            </p>
 
-            <p>Desde su conformación, el LAIS ha desarrollado diversos proyectos con el apoyo del CONACYT:</p>
+            <p>
+                Desde su conformación, el LAIS ha desarrollado diversos proyectos con el apoyo del CONACYT:
+            </p>
 
             <ul>
                 <li>Los Usos de lo Visual en la Investigación Social (antecedente directo, 2000-2001)</li>
@@ -148,7 +156,9 @@
                 <li>Preservación de Imágenes: Sistemas de Información, Acceso e Investigación (2007-2012)</li>
             </ul>
 
-            <p>Entre los eventos académicos y cursos que ha organizado, destacan:</p>
+            <p>
+                Entre los eventos académicos y cursos que ha organizado, destacan:
+            </p>
 
             <ul>
                 <li>Primer Congreso Internacional sobre Imágenes e Investigación Social (2002)</li>

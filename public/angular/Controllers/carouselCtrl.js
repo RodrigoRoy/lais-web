@@ -2,7 +2,11 @@
     Controlador para organizar imagenes del carrusel. 
 */
 
-angular.module('CarouselCtrl', []).controller('CarouselController', function ($scope, $route, $window, Carrusel, Upload) {
+angular.module('CarouselCtrl', []).controller('CarouselController', function ($scope, $location, $route, $window, Carrusel, Upload) {
+    // No permitir ingresar a la página de este controlador sin sesión iniciada
+    if(!$scope.loggedIn)
+        $location.path('/');
+
     $scope.slides = {}; // Arreglo de objetos que representan diapositivas del carrusel
     $scope.newSlide = {}; // Objeto que representa una nueva diapositiva. Contiene las propiedades image, url, text
 

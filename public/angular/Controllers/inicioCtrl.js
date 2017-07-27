@@ -30,6 +30,7 @@ angular.module('InicioCtrl',[]).controller('InicioController', function ($scope,
     		size: 'lg',
     		templateUrl: 'about.html',
     		scope: $scope, // pasar el actual $scope (evitar 'crear' otro controlador)
+            windowClass: 'modal-lais', // clase CSS que se agrega al Modal para identificarlo
     		controller: function($uibModalInstance){
     			$scope.closeModal = function(){
     				$uibModalInstance.dismiss('cancel');
