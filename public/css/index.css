@@ -151,6 +151,7 @@ img{
     border-color: #353535;
     height: 310px;
     position: relative; /*ayuda a alinear otros objetos (.available-label)*/
+    background-color: rgba(0, 0, 0, 0.4);
 }
 .my-thumbnail:hover{
     border-color: #ddd;
@@ -377,6 +378,10 @@ ul.social-buttons li a:hover, ul.social-buttons li a:focus, ul.social-buttons li
 .my-block-button{
 	color: #ddd;
 	background-color: #294f6d;
+}
+/*Color semi-transparente para jumbotron*/
+.jumbotron{
+	background-color: rgba(238,238,238,0.9);
 }
 
 /*Alternativa de color para enlaces (el color es más oscuro)*/
