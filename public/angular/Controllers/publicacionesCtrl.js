@@ -12,6 +12,14 @@ angular.module('PublicacionesCtrl',[]).controller('PublicacionesController', fun
 	
 	var autorId = $routeParams.autor;
 	$scope.autorObject = {}; // Objeto con la info del autor
+	$scope.renameId = { // Auxiliar para pluralizar los nombres (id's) de cada grupo de publicaciones
+		'Documental': 'Documentales',
+		'Ponencia': 'Ponencias',
+		'Libro': 'Libros',
+		'Artículo': 'Artículos',
+		'Página web': 'Sitios web',
+		// 'Exposición': 'Exposiciones'
+	};
 
 	$scope.getPublicaciones = function(){
 		if(autorId){ // Si se desean las publicaciones de un autor específico
