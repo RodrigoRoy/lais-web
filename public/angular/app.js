@@ -25,6 +25,7 @@ angular.module('laisApp', [
 	'PublicacionesCtrl', // Información sobre las publicaciones
 	'PublicacionCtrl', // Información sobre las publicaciones
 	'PublicacionFormCtrl', // Formulario para publicaciones
+	'AudiovisualesFormCtrl', // Formulario para registros fotográficos
 	'AuthCtrl', //Carga la informacion para autentificar a un usuario
 	'AdminCtrl', // Información general para la administración del sitio
 	'UsuariosCtrl', // Administración de los usuarios
@@ -39,6 +40,7 @@ angular.module('laisApp', [
 	'EventoService', //Servicio que administra las llamadas a la base de datos de "eventos"
 	'AutorService', // Servicio que administra las llamadas a la base de datos de "autores"
 	'PublicacionService', //Servicio que administra las llamada a la base de datos de "publicaciones"
+	'AudiovisualService', //Servicio que administra las llamada a la base de datos de "video" (audiovisuales)
 	'CarruselService', // Servicio que administra las llamadas al archivo "carouselSlides.json"
 	'ArchivoService', //Servicio que administra las llamadas a la base de datos de "archivos"
 	'UsuarioService', //Servicio que administra las llamadas a la base de datos de usuarios
@@ -49,5 +51,11 @@ angular.module('laisApp', [
 // configuración de aplicación para integrar token en peticiones
 .config(function($httpProvider){
 	$httpProvider.interceptors.push('AuthInterceptor');
-});
+})
 
+// Establecer placeholder vacio en ngInputTags
+.config(function(tagsInputConfigProvider){
+	tagsInputConfigProvider.setDefaults('tagsInput', {
+		placeholder: ''
+	});
+});

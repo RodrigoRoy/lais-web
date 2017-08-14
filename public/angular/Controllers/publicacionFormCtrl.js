@@ -257,7 +257,7 @@ angular.module('PublicacionFormCtrl',[]).controller('PublicacionFormController',
             alert("Se ha actualizado la información de la publicación.");
             $location.url('/publicacion/' + $routeParams.id); // Redirigir a la página de la publicación
         }, function(res){
-            console.log("Error de conexión con la base de datos para la creación de la publicación.", res);
+            console.log("Error de conexión con la base de datos para la edición de la publicación.", res);
         });
     };
 

@@ -12,7 +12,7 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<uib-tabset active="0" justified="false" type="tabs" vertical="false">
-				<uib-tab index="$index" ng-repeat="group in eventos" heading="{{group._id || 'Otros'}}" classes="years-tab">
+				<uib-tab index="$index" ng-repeat="group in eventos" heading="{{group._id || 'Otros'}}" classes="tab-style-years">
 					<div class="row">
 						<div class="col-sm-6 col-md-4" ng-repeat="evento in group.eventos">
 							<a href="/eventos/{{evento._id}}" class="no-text-decoration">

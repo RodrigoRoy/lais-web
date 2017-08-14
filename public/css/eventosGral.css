@@ -29,20 +29,28 @@
     z-index: 9999 !important;
 }
 
+
+/*Color de texto sobre tab activo*/
+.tab-style-years.active a{
+    color: #333 !important;
+}
+/*Color de texto y borde redondo de tabs*/
+.tab-style-years a{
+    color: #ddd !important;
+    border-radius: 25px !important;
+}
+/*No aplicar color de fondo al pasar el mouse*/
+.tab-style-years a:hover{
+    background-color: transparent !important;
+}
+
 /*
 ####################
 PRECAUCIÓN! Clases nav y nav-tabs modificadas globalmente para estilo de la barra de años en Eventos
 ####################
 */
 .nav-tabs{
-    border-bottom: 0px solid #222;
-}
-.nav-tabs>li>a{
-    color: #ddd;
-    border-radius: 25px;
-}
-.nav>li>a:hover{
-    background-color: transparent;
+    border-bottom: 0px solid #222 !important;
 }
 .nav{
     margin-bottom: 10px;

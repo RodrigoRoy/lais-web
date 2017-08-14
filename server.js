@@ -65,6 +65,8 @@ var files = require('./app/api/files'); // API para Files
 app.use('/api/files', files); // usar el API desde la ruta "/api/files"
 var images = require('./app/api/images'); // API para Imagenes
 app.use('/api/images', images); // usar el API desde la ruta "/api/images"
+var videos = require('./app/api/videos'); // API para Videos (registros audiovisuales)
+app.use('/api/videos', videos);
 // REGISTRAR LAS DEMÁS RUTAS
 
 // require('./app/routes')(app); // pasar a la aplicación las demás rutas a utilizar
