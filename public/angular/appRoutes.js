@@ -54,6 +54,16 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 			controller: 'PublicacionFormController'
 		})
 
+		.when('/audiovisuales/nuevo', {
+			templateUrl: 'angular/Views/pages/audiovisualesForm.html',
+			controller: 'AudiovisualesFormController'
+		})
+
+		.when('/audiovisuales/:id/edit', {
+			templateUrl: 'angular/Views/pages/audiovisualesForm.html',
+			controller: 'AudiovisualesFormController'
+		})
+
 		.when('/admin',{
 			templateUrl: 'angular/Views/pages/admin.html',
 			controller: 'AdminController'
@@ -77,11 +87,6 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 		.when('/admin/carrusel',{
 			templateUrl: 'angular/Views/pages/carousel.html',
 			controller: 'CarouselController'
-		})
-
-		.when('/audiovisuales/nuevo', {
-			templateUrl: 'angular/Views/pages/audiovisualesForm.html',
-			controller: 'AudiovisualesFormController'
 		})
 
 		.when('/archivos',{
