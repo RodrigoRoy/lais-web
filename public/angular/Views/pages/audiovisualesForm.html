@@ -23,7 +23,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.codigo_de_referencia.$dirty && audiovisualForm.codigo_de_referencia.$invalid}">
                     <label class="control-label color-title format-title" for="codigo_de_referencia">
                         Código de referencia
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Código alfanumérico separado por guiones que identifica de manera única al material" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="codigo_de_referencia" id="codigo_de_referencia" ng-model="audiovisual.codigo_de_referencia" ng-trim required>
                     <div ng-messages="audiovisualForm.codigo_de_referencia.$error" ng-show="audiovisualForm.codigo_de_referencia.$dirty && audiovisualForm.codigo_de_referencia.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -33,7 +33,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.titulo_propio.$dirty && audiovisualForm.titulo_propio.$invalid}">
                     <label class="control-label color-title format-title" for="titulo_propio">
                         Título propio
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Título original de distribución en el país de origen. Se incluye, en su caso, el subtítulo que es una palabra o frase que aparece junto con y subordinada al título propio" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="titulo_propio" id="titulo_propio" ng-model="audiovisual.titulo_propio" ng-trim>
                     <div ng-messages="audiovisualForm.titulo_propio.$error" ng-show="audiovisualForm.titulo_propio.$dirty && audiovisualForm.titulo_propio.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -43,7 +43,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.titulo_paralelo.$dirty && audiovisualForm.titulo_paralelo.$invalid}">
                     <label class="control-label color-title format-title" for="titulo_paralelo">
                         Título paralelo
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Título propio en otra lengua (no es la traducción, sino un nuevo título creado para su versión en otra lengua). En caso de tener subtítulo también se consigna" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="titulo_paralelo" id="titulo_paralelo" ng-model="audiovisual.titulo_paralelo" ng-trim>
                     <div ng-messages="audiovisualForm.titulo_paralelo.$error" ng-show="audiovisualForm.titulo_paralelo.$dirty && audiovisualForm.titulo_paralelo.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -53,7 +53,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.titulo_atribuido.$dirty && audiovisualForm.titulo_atribuido.$invalid}">
                     <label class="control-label color-title format-title" for="titulo_atribuido">
                         Título atribuido
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Nombre dado por el documentalista cuando el material no tiene nombre propio" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="titulo_atribuido" id="titulo_atribuido" ng-model="audiovisual.titulo_atribuido" ng-trim>
                     <div ng-messages="audiovisualForm.titulo_atribuido.$error" ng-show="audiovisualForm.titulo_atribuido.$dirty && audiovisualForm.titulo_atribuido.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -63,7 +63,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.pais.$dirty && audiovisualForm.pais.$invalid}">
                     <label class="control-label color-title format-title" for="pais">
                         País 
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="El país o países donde se localizan las oficinas principales de la o las compañías productoras" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="pais" id="pais" ng-model="audiovisual.pais" ng-trim>
                     <div ng-messages="audiovisualForm.pais.$error" ng-show="audiovisualForm.pais.$dirty && audiovisualForm.pais.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -73,7 +73,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.fecha.$dirty && audiovisualForm.fecha.$invalid}">
                     <label class="control-label color-title format-title" for="fecha">
                         Fecha 
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Año en que se terminó la producción de la obra. En caso de desconocerlo, se indica un año probable de acuerdo al conocimiento de la obra, o a alguna fuente de consulta complementaria que exista" tooltip-placement="right"></i>
                     </label>
                     <div uib-datepicker id="fecha" class="well well-sm" ng-model="audiovisual.fecha" datepicker-options="dateOptions"></div>
                     <div ng-messages="audiovisualForm.fecha.$error" ng-show="audiovisualForm.fecha.$dirty && audiovisualForm.fecha.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -83,7 +83,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.duracion.$dirty && audiovisualForm.duracion.$invalid}">
                     <label class="control-label color-title format-title" for="duracion">
                         Duración 
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="La duración de la obra en minutos (solamente escribir el número de minutos)" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="number" name="duracion" id="duracion" ng-model="audiovisual.duracion" min="1">
                     <div ng-messages="audiovisualForm.duracion.$error" ng-show="audiovisualForm.duracion.$dirty && audiovisualForm.duracion.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -93,7 +93,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.investigacion.$dirty && audiovisualForm.investigacion.$invalid}">
                     <label class="control-label color-title format-title" for="investigacion">
                         Investigación 
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Es el responsable de realizar la investigación científico social, su trabajo es desarrolla incluso antes de poner en marcha el proyecto audiovisual. Su labor es fundamental puesto que es quien plantea las hipótesis, realiza las búsquedas, recopila los materiales y presenta los resultados que serán integrados a la escaleta y guión de la película documental" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="investigacion" id="investigacion" ng-model="audiovisual.investigacion" ng-trim>
                     <div ng-messages="audiovisualForm.investigacion.$error" ng-show="audiovisualForm.investigacion.$dirty && audiovisualForm.investigacion.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -103,7 +103,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.realizacion.$dirty && audiovisualForm.realizacion.$invalid}">
                     <label class="control-label color-title format-title" for="realizacion">
                         Realización 
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Aquel que, partiendo de un tema, lo analiza, lo comprende y busca expresarlo de forma audiovisual, para ello se apoya en el investigador o en su caso emprende él mismo el trabajo de búsqueda y desarrollo del conocimiento. El realizador da forma y contenido al tema" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="realizacion" id="realizacion" ng-model="audiovisual.realizacion" ng-trim>
                     <div ng-messages="audiovisualForm.realizacion.$error" ng-show="audiovisualForm.realizacion.$dirty && audiovisualForm.realizacion.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -113,7 +113,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.direccion.$dirty && audiovisualForm.direccion.$invalid}">
                     <label class="control-label color-title format-title" for="direccion">
                         Dirección 
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="El término de director está más asociado al cine de ficción y se liga directamente a la dirección de actores. En muchas ocasiones el director no desarrolla la investigación ni el guión del documental sino que es contratado para plasmar el trabajo de otros en forma audiovisual" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="direccion" id="direccion" ng-model="audiovisual.direccion" ng-trim>
                     <div ng-messages="audiovisualForm.direccion.$error" ng-show="audiovisualForm.direccion.$dirty && audiovisualForm.direccion.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -123,7 +123,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.guion.$dirty && audiovisualForm.guion.$invalid}">
                     <label class="control-label color-title format-title" for="guion">
                         Guión 
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Construye la estructura audiovisual de la investigación, se encarga de establecer por escrito el orden y la forma en que aparecerán todos aquellos elementos que harán entendible el tema" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="guion" id="guion" ng-model="audiovisual.guion" ng-trim>
                     <div ng-messages="audiovisualForm.guion.$error" ng-show="audiovisualForm.guion.$dirty && audiovisualForm.guion.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -133,7 +133,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.adaptacion.$dirty && audiovisualForm.adaptacion.$invalid}">
                     <label class="control-label color-title format-title" for="adaptacion">
                         Adaptación 
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Aquellas personas que teniendo una investigación en sus manos la transforman en un proyecto audiovisual; usualmente esta investigación es hecha con antelación por personas ajenas al grupo de trabajo que realizará la película. Normalmente la adaptación desemboca en un guión" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="adaptacion" id="adaptacion" ng-model="audiovisual.adaptacion" ng-trim>
                     <div ng-messages="audiovisualForm.adaptacion.$error" ng-show="audiovisualForm.adaptacion.$dirty && audiovisualForm.adaptacion.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -143,7 +143,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.idea_original.$dirty && audiovisualForm.idea_original.$invalid}">
                     <label class="control-label color-title format-title" for="idea_original">
                         Idea original 
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Concibe la idea de abordar el tema en cuestión o bien a aquella persona que propone la forma, audiovisualmente hablando, en que dicho tema se presentará" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="idea_original" id="idea_original" ng-model="audiovisual.idea_original" ng-trim>
                     <div ng-messages="audiovisualForm.idea_original.$error" ng-show="audiovisualForm.idea_original.$dirty && audiovisualForm.idea_original.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -153,7 +153,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.fotografia.$dirty && audiovisualForm.fotografia.$invalid}">
                     <label class="control-label color-title format-title" for="fotografia">
                         Fotografía 
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Plasma en imágenes la materia del documental, el fotógrafo diseña los encuadres de acuerdo con las propuestas del realizador y las necesidades del documental. En la mayoría de los casos opera la cámara" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="fotografia" id="fotografia" ng-model="audiovisual.fotografia" ng-trim>
                     <div ng-messages="audiovisualForm.fotografia.$error" ng-show="audiovisualForm.fotografia.$dirty && audiovisualForm.fotografia.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -163,7 +163,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.fotografia_fija.$dirty && audiovisualForm.fotografia_fija.$invalid}">
                     <label class="control-label color-title format-title" for="fotografia_fija">
                         Fotografía fija 
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Responsable del registro de imágenes fijas utilizadas en el documental" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="fotografia_fija" id="fotografia_fija" ng-model="audiovisual.fotografia_fija" ng-trim>
                     <div ng-messages="audiovisualForm.fotografia_fija.$error" ng-show="audiovisualForm.fotografia_fija.$dirty && audiovisualForm.fotografia_fija.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -173,7 +173,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.edicion.$dirty && audiovisualForm.edicion.$invalid}">
                     <label class="control-label color-title format-title" for="edicion">
                         Edición 
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Ordena y estructura el material audiovisual por medio de tecnología para lograr el resultado final de la obra. Estructura las secuencias del documental integrando y en su caso mezclando todas las fuentes de audio y video" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="edicion" id="edicion" ng-model="audiovisual.edicion" ng-trim>
                     <div ng-messages="audiovisualForm.edicion.$error" ng-show="audiovisualForm.edicion.$dirty && audiovisualForm.edicion.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -183,7 +183,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.sonido_grabacion.$dirty && audiovisualForm.sonido_grabacion.$invalid}">
                     <label class="control-label color-title format-title" for="sonido_grabacion">
                         Grabación de sonido 
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Registra el sonido del documental ya sea de forma directa, cuando contecen las cosas, o indirecta, en estudio" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="sonido_grabacion" id="sonido_grabacion" ng-model="audiovisual.sonido_grabacion" ng-trim>
                     <div ng-messages="audiovisualForm.sonido_grabacion.$error" ng-show="audiovisualForm.sonido_grabacion.$dirty && audiovisualForm.sonido_grabacion.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -193,7 +193,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.sonido_edicion.$dirty && audiovisualForm.sonido_edicion.$invalid}">
                     <label class="control-label color-title format-title" for="sonido_edicion">
                         Edicion de sonido 
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Crea la pista de sonido del documental. Ordena y mezcla las distintas fuentes: voces, música, incidentales, efectos y silencios" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="sonido_edicion" id="sonido_edicion" ng-model="audiovisual.sonido_edicion" ng-trim>
                     <div ng-messages="audiovisualForm.sonido_edicion.$error" ng-show="audiovisualForm.sonido_edicion.$dirty && audiovisualForm.sonido_edicion.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -203,7 +203,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.musica_original.$dirty && audiovisualForm.musica_original.$invalid}">
                     <label class="control-label color-title format-title" for="musica_original">
                         Música original 
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Compone e interpreta las piezas musicales que han sido creadas ex profeso para el documental" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="musica_original" id="musica_original" ng-model="audiovisual.musica_original" ng-trim>
                     <div ng-messages="audiovisualForm.musica_original.$error" ng-show="audiovisualForm.musica_original.$dirty && audiovisualForm.musica_original.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -213,7 +213,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.musicalizacion.$dirty && audiovisualForm.musicalizacion.$invalid}">
                     <label class="control-label color-title format-title" for="musicalizacion">
                         Musicalización 
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Selecciona las piezas musicales que serán incorporadas a la pista sonora del documental" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="musicalizacion" id="musicalizacion" ng-model="audiovisual.musicalizacion" ng-trim>
                     <div ng-messages="audiovisualForm.musicalizacion.$error" ng-show="audiovisualForm.musicalizacion.$dirty && audiovisualForm.musicalizacion.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -223,7 +223,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.voces.$dirty && audiovisualForm.voces.$invalid}">
                     <label class="control-label color-title format-title" for="voces">
                         Voces 
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Realiza la narración o conducción de los dichos que busca plasmar el realizador, por lo regular son voces en off. En este apartado también se incluye a aquellos que se han encargado de realizar el doblaje de algún personaje del documental" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="voces" id="voces" ng-model="audiovisual.voces" ng-trim>
                     <div ng-messages="audiovisualForm.voces.$error" ng-show="audiovisualForm.voces.$dirty && audiovisualForm.voces.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -233,7 +233,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.actores.$dirty && audiovisualForm.actores.$invalid}">
                     <label class="control-label color-title format-title" for="actores">
                         Actores 
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Realizan las recreaciones de algún hecho importante para la trama, representan personajes y situaciones que por algún motivo no pueden ser revividas por los protagonistas originales" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="actores" id="actores" ng-model="audiovisual.actores" ng-trim>
                     <div ng-messages="audiovisualForm.actores.$error" ng-show="audiovisualForm.actores.$dirty && audiovisualForm.actores.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -243,7 +243,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.animacion.$dirty && audiovisualForm.animacion.$invalid}">
                     <label class="control-label color-title format-title" for="animacion">
                         Animación 
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Realiza la simulación de movimiento producido a partir de la proyección continua de imágenes estáticas creadas y registradas de forma individual. La animación puede ser en dos o tres dimensiones" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="animacion" id="animacion" ng-model="audiovisual.animacion" ng-trim>
                     <div ng-messages="audiovisualForm.animacion.$error" ng-show="audiovisualForm.animacion.$dirty && audiovisualForm.animacion.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -253,7 +253,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.otros_colaboradores.$dirty && audiovisualForm.otros_colaboradores.$invalid}">
                     <label class="control-label color-title format-title" for="otros_colaboradores">
                         Otros colaboradores 
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Por su especificidad los documentales pueden contar con el trabajo creativo de otro tipo de profesionales que a la postre imprimen alguna característica al documental. Algunos ejemplos de este tipos son: restaurador, efectos especiales, coreógrafo, entrenador, etc." tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="otros_colaboradores" id="otros_colaboradores" ng-model="audiovisual.otros_colaboradores" ng-trim>
                     <div ng-messages="audiovisualForm.otros_colaboradores.$error" ng-show="audiovisualForm.otros_colaboradores.$dirty && audiovisualForm.otros_colaboradores.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -287,7 +287,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.entidad_productora.$dirty && audiovisualForm.entidad_productora.$invalid}">
                     <label class="control-label color-title format-title" for="entidad_productora">
                         Entidad productora
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Nombre completo de la publicación" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Nombre o nombres de la o las entidades productoras de la obra, tal como aparecen en los créditos originales" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="entidad_productora" id="entidad_productora" ng-model="audiovisual.entidad_productora" ng-trim>
                     <div ng-messages="audiovisualForm.entidad_productora.$error" ng-show="audiovisualForm.entidad_productora.$dirty && audiovisualForm.entidad_productora.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -297,7 +297,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.productor.$dirty && audiovisualForm.productor.$invalid}">
                     <label class="control-label color-title format-title" for="productor">
                         Productor
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Nombre o nombres de las personas responsables de la producción (personas físicas), tal como aparece en los créditos de la obra" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="productor" id="productor" ng-model="audiovisual.productor" ng-trim>
                     <div ng-messages="audiovisualForm.productor.$error" ng-show="audiovisualForm.productor.$dirty && audiovisualForm.productor.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -307,7 +307,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.distribuidora.$dirty && audiovisualForm.distribuidora.$invalid}">
                     <label class="control-label color-title format-title" for="distribuidora">
                         Distribuidora
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Institución o empresa distribuidora del material en el país, en caso de no existir tal se consigna la distribuidora original en el país de origen de la obra" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="distribuidora" id="distribuidora" ng-model="audiovisual.distribuidora" ng-trim>
                     <div ng-messages="audiovisualForm.distribuidora.$error" ng-show="audiovisualForm.distribuidora.$dirty && audiovisualForm.distribuidora.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -317,7 +317,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.historia_institucional.$dirty && audiovisualForm.historia_institucional.$invalid}">
                     <label class="control-label color-title format-title" for="historia_institucional">
                         Historia institucional
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Breve semblanza de las instituciones productoras" tooltip-placement="right"></i>
                     </label>
                     <textarea class="form-control" type="text" name="historia_institucional" id="historia_institucional" ng-model="audiovisual.historia_institucional" rows="3" ng-trim></textarea>
                     <div ng-messages="audiovisualForm.historia_institucional.$error" ng-show="audiovisualForm.historia_institucional.$dirty && audiovisualForm.historia_institucional.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -327,7 +327,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.resena_biografica.$dirty && audiovisualForm.resena_biografica.$invalid}">
                     <label class="control-label color-title format-title" for="resena_biografica">
                         Reseña biográfica
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Refiere una biografía sintética del realizador de la obra, priorizando su trabajo en producciones del tipo que se está consignando" tooltip-placement="right"></i>
                     </label>
                     <textarea class="form-control" type="text" name="resena_biografica" id="resena_biografica" ng-model="audiovisual.resena_biografica" rows="3" ng-trim></textarea>
                     <div ng-messages="audiovisualForm.resena_biografica.$error" ng-show="audiovisualForm.resena_biografica.$dirty && audiovisualForm.resena_biografica.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -337,10 +337,24 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.forma_de_ingreso.$dirty && audiovisualForm.forma_de_ingreso.$invalid}">
                     <label class="control-label color-title format-title" for="forma_de_ingreso">
                         Forma de ingreso
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Describe cómo llegó la unidad documental al acervo. Como lenguaje restringido se encuentran las opciones: Compra, Donación o Producción propia" tooltip-placement="right"></i>
                     </label>
-                    <input class="form-control" type="text" name="forma_de_ingreso" id="forma_de_ingreso" ng-model="audiovisual.forma_de_ingreso" ng-trim>
+                    <select class="form-control" name="forma_de_ingreso" id="forma_de_ingreso" ng-model="audiovisual.forma_de_ingreso">
+                        <option value="Compra">Compra</option>
+                        <option value="Donación">Donación</option>
+                        <option value="Producción propia">Producción propia</option>
+                    </select>
                     <div ng-messages="audiovisualForm.forma_de_ingreso.$error" ng-show="audiovisualForm.forma_de_ingreso.$dirty && audiovisualForm.forma_de_ingreso.$invalid"><div ng-messages-include="error-messages"></div></div>
+                </div>
+
+                <!-- FECHA DE INGRESO -->
+                <div class="form-group" ng-class="{'has-error': audiovisualForm.fecha_de_ingreso.$dirty && audiovisualForm.fecha_de_ingreso.$invalid}">
+                    <label class="control-label color-title format-title" for="fecha_de_ingreso">
+                        Fecha de ingreso
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Fecha de ingreso del material a la colección" tooltip-placement="right"></i>
+                    </label>
+                    <div uib-datepicker id="fecha_de_ingreso" class="well well-sm" ng-model="audiovisual.fecha_de_ingreso"></div>
+                    <div ng-messages="audiovisualForm.fecha_de_ingreso.$error" ng-show="audiovisualForm.fecha_de_ingreso.$dirty && audiovisualForm.fecha_de_ingreso.$invalid"><div ng-messages-include="error-messages"></div></div>
                 </div>
 
                 <!-- PROYECTO DE INVESTIGACION -->
@@ -352,16 +366,6 @@
                     <input class="form-control" type="text" name="proyecto_de_investigacion" id="proyecto_de_investigacion" ng-model="audiovisual.proyecto_de_investigacion" ng-trim>
                     <div ng-messages="audiovisualForm.proyecto_de_investigacion.$error" ng-show="audiovisualForm.proyecto_de_investigacion.$dirty && audiovisualForm.proyecto_de_investigacion.$invalid"><div ng-messages-include="error-messages"></div></div>
                 </div>
-
-                <!-- FECHA DE INGRESO -->
-                <div class="form-group" ng-class="{'has-error': audiovisualForm.fecha_de_ingreso.$dirty && audiovisualForm.fecha_de_ingreso.$invalid}">
-                    <label class="control-label color-title format-title" for="fecha_de_ingreso">
-                        Fecha de ingreso
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
-                    </label>
-                    <div uib-datepicker id="fecha_de_ingreso" class="well well-sm" ng-model="audiovisual.fecha_de_ingreso"></div>
-                    <div ng-messages="audiovisualForm.fecha_de_ingreso.$error" ng-show="audiovisualForm.fecha_de_ingreso.$dirty && audiovisualForm.fecha_de_ingreso.$invalid"><div ng-messages-include="error-messages"></div></div>
-                </div>
             </uib-tab>
 
             <!-- AREA DE CONTENIDO Y ESTRUCTURA -->
@@ -370,7 +374,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.sinopsis.$dirty && audiovisualForm.sinopsis.$invalid}">
                     <label class="control-label color-title format-title" for="sinopsis">
                         Sinopsis
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="El contenido del material, refiriendo el resumen original del mismo, en idioma original (o una traducción al español). Cuando no exista una sinopsis elaborada por el realizador o productor de los materiales se puede recuperar un texto que describa el material en forma adecuada (citando la fuente). Cuando no sea posible lo anterior, ésta será elaborada por el catalogador, describiendo de forma general el asunto de la obra y la forma en que es realizada la producción, evitando cualquier tipo de ajetivos. En este caso se indica que se trata de una descripción elaborada por el catalogador (Sinopsis elaborada por:)" tooltip-placement="right"></i>
                     </label>
                     <textarea class="form-control" type="text" name="sinopsis" id="sinopsis" ng-model="audiovisual.sinopsis" rows="3" ng-trim></textarea>
                     <div ng-messages="audiovisualForm.sinopsis.$error" ng-show="audiovisualForm.sinopsis.$dirty && audiovisualForm.sinopsis.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -380,7 +384,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.descriptor_onomastico.$dirty && audiovisualForm.descriptor_onomastico.$invalid}">
                     <label class="control-label color-title format-title" for="descriptor_onomastico">
                         Descriptor onomástico
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Nombres de las personas referidas en el documental así como los de aquellas que aprecen en el mismo. Se debe poner nombre y después apellidos" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="descriptor_onomastico" id="descriptor_onomastico" ng-model="audiovisual.descriptor_onomastico" ng-trim>
                     <div ng-messages="audiovisualForm.descriptor_onomastico.$error" ng-show="audiovisualForm.descriptor_onomastico.$dirty && audiovisualForm.descriptor_onomastico.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -390,7 +394,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.descriptor_toponimico.$dirty && audiovisualForm.descriptor_toponimico.$invalid}">
                     <label class="control-label color-title format-title" for="descriptor_toponimico">
                         Descriptor toponímico
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Nombres de los lugares que aparecen en el documental, así como aquellos que sean referidos, siempre y cuando sean de trascendencia para el trabajo. Se debe referir el nombre completo del lugar, inclueyndo el artículo. El catalogador debe incluir municipio, estado y país, de acuerdo a las normas del INEGI" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="descriptor_toponimico" id="descriptor_toponimico" ng-model="audiovisual.descriptor_toponimico" ng-trim>
                     <div ng-messages="audiovisualForm.descriptor_toponimico.$error" ng-show="audiovisualForm.descriptor_toponimico.$dirty && audiovisualForm.descriptor_toponimico.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -400,7 +404,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.descriptor_cronologico.$dirty && audiovisualForm.descriptor_cronologico.$invalid}">
                     <label class="control-label color-title format-title" for="descriptor_cronologico">
                         Descriptor cronológico
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Todas aquellas fechas o periodos de tiempo que señale o abarque el documental. Por ejemplo: 1923-1925, 1990, 26/05/1998, Siglo XX. Se debe buscar la precisión cronológica" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="descriptor_cronologico" id="descriptor_cronologico" ng-model="audiovisual.descriptor_cronologico" ng-trim>
                     <div ng-messages="audiovisualForm.descriptor_cronologico.$error" ng-show="audiovisualForm.descriptor_cronologico.$dirty && audiovisualForm.descriptor_cronologico.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -410,7 +414,7 @@
                 <div class="form-group">
                     <label class="control-label color-title format-title" for="tipo_de_produccion">
                         Tipo de producción
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Se maneja un lenguaje restringido para este rubro: Película de ficción, Película documental, Programa de televisión, Trailer, Publicidad, Propaganda, Registros fílmicos, Registros en video, Extractos de otras producciones" tooltip-placement="right"></i>
                     </label>
                     <tags-input ng-model="auxiliar.tipo_de_produccion" name="tipo_de_produccion" id="tipo_de_produccion" type="text" placeholder="" replace-spaces-with-dashes="false" add-from-autocomplete-only="true" spellcheck="false" ng-blur="updateProductionType()">
                         <auto-complete source="loadTags($query, 'productionTypeTags.json')" display-property="text" min-length="1" max-results-to-show="5"></auto-complete>
@@ -421,7 +425,7 @@
                 <div class="form-group">
                     <label class="control-label color-title format-title" for="fuentes">
                         Fuentes
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Todos aquellos documentos utilizados para sustentar, contrastar, evidenciar y explicar aspectos del tema expuesto en el documental y que hagan explícito el proceso de investigación. Las fuentes pueden ser construidas con documentos de archivo de muy diversa índole, o creadas durante la investigación. Entre ellas están las entrevistas, documentos, fotografías, registros fílmicos, ficción, entre otros" tooltip-placement="right"></i>
                     </label>
                     <tags-input ng-model="auxiliar.fuentes" name="fuentes" id="fuentes" type="text" placeholder="" replace-spaces-with-dashes="false" add-from-autocomplete-only="true" spellcheck="false" ng-blur="updateSource()">
                         <auto-complete source="loadTags($query, 'sourceTags.json')" display-property="text" min-length="1" max-results-to-show="5"></auto-complete>
@@ -432,7 +436,7 @@
                 <div class="form-group">
                     <label class="control-label color-title format-title" for="recursos">
                         Recursos
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Elementos creados o retomados para la producción audiovisual, utilizados con fines expresivos o narrativos, de acuerdo a las necesidades del propio lenguaje audiovisual. Los recursos no son en sí elementos de la investigación sino una forma de exponer un tema, con intenciones expresivas o narrativas claras. Pueden ser puestas en escena, animaciones, recursos narrativos como la voz en off o la conducción, ciertos usos de la música y de elmentos gráficos, entre otros" tooltip-placement="right"></i>
                     </label>
                     <tags-input ng-model="auxiliar.recursos" name="recursos" id="recursos" type="text" placeholder="" replace-spaces-with-dashes="false" add-from-autocomplete-only="true" spellcheck="false" ng-blur="updateResource()">
                         <auto-complete source="loadTags($query, 'resourceTags.json')" display-property="text" min-length="1" max-results-to-show="5"></auto-complete>
@@ -446,9 +450,12 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.condiciones_de_acceso.$dirty && audiovisualForm.condiciones_de_acceso.$invalid}">
                     <label class="control-label color-title format-title" for="condiciones_de_acceso">
                         Condiciones de acceso
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Disponibilidad de utilización que se ofrece al usuario. En nuestro caso adoptamos las definiciones de: Usos no lucrativos (atender demandas de particulares como maestros, estudiantes, investigadores y público general) o Usos reservados para consulta in situ (la consulta solo se puede dar en el espacio físico en que se encuentran)" tooltip-placement="right"></i>
                     </label>
-                    <input class="form-control" type="text" name="condiciones_de_acceso" id="condiciones_de_acceso" ng-model="audiovisual.condiciones_de_acceso" ng-trim>
+                    <select class="form-control" name="condiciones_de_acceso" id="condiciones_de_acceso" ng-model="audiovisual.condiciones_de_acceso">
+                        <option value="Usos no lucrativos">Usos no lucrativos</option>
+                        <option value="Usos reservados para consulta in situ">Usos reservados para consulta in situ</option>
+                    </select>
                     <div ng-messages="audiovisualForm.condiciones_de_acceso.$error" ng-show="audiovisualForm.condiciones_de_acceso.$dirty && audiovisualForm.condiciones_de_acceso.$invalid"><div ng-messages-include="error-messages"></div></div>
                 </div>
 
@@ -456,7 +463,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.condiciones_de_reproduccion.$dirty && audiovisualForm.condiciones_de_reproduccion.$invalid}">
                     <label class="control-label color-title format-title" for="condiciones_de_reproduccion">
                         Condiciones de reproducción
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Si el ejemplar se puede reproducir o no" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="condiciones_de_reproduccion" id="condiciones_de_reproduccion" ng-model="audiovisual.condiciones_de_reproduccion" ng-trim>
                     <div ng-messages="audiovisualForm.condiciones_de_reproduccion.$error" ng-show="audiovisualForm.condiciones_de_reproduccion.$dirty && audiovisualForm.condiciones_de_reproduccion.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -466,7 +473,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.idioma_original.$dirty && audiovisualForm.idioma_original.$invalid}">
                     <label class="control-label color-title format-title" for="idioma_original">
                         Idioma original
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="El o los idiomas originales de la producción" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="idioma_original" id="idioma_original" ng-model="audiovisual.idioma_original" ng-trim>
                     <div ng-messages="audiovisualForm.idioma_original.$error" ng-show="audiovisualForm.idioma_original.$dirty && audiovisualForm.idioma_original.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -475,8 +482,8 @@
                 <!-- DOBLAJE -->
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.doblaje.$dirty && audiovisualForm.doblaje.$invalid}">
                     <label class="control-label color-title format-title" for="doblaje">
-                        Doblaje
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        Doblaje disponible
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="El o los idiomas a los que ha sido doblado el material" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="doblaje" id="doblaje" ng-model="audiovisual.doblaje" ng-trim>
                     <div ng-messages="audiovisualForm.doblaje.$error" ng-show="audiovisualForm.doblaje.$dirty && audiovisualForm.doblaje.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -485,8 +492,8 @@
                 <!-- SUBTITULAJE -->
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.subtitulaje.$dirty && audiovisualForm.subtitulaje.$invalid}">
                     <label class="control-label color-title format-title" for="subtitulaje">
-                        Subtitulaje
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        Subtitulaje disponible
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="El o los idiomas en los que ha sido subtitulado el material" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="subtitulaje" id="subtitulaje" ng-model="audiovisual.subtitulaje" ng-trim>
                     <div ng-messages="audiovisualForm.subtitulaje.$error" ng-show="audiovisualForm.subtitulaje.$dirty && audiovisualForm.subtitulaje.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -496,7 +503,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.soporte.$dirty && audiovisualForm.soporte.$invalid}">
                     <label class="control-label color-title format-title" for="soporte">
                         Soporte
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="El soporte del material, este puede ser: Betamax, Betacam, VHS, DVCAM, MiniDV, DVD, etc." tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="soporte" id="soporte" ng-model="audiovisual.soporte" ng-trim>
                     <div ng-messages="audiovisualForm.soporte.$error" ng-show="audiovisualForm.soporte.$dirty && audiovisualForm.soporte.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -506,7 +513,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.color.$dirty && audiovisualForm.color.$invalid}">
                     <label class="control-label color-title format-title" for="color">
                         Color
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Si la producción es a color, blanco y negro o ambos" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="color" id="color" ng-model="audiovisual.color" ng-trim>
                     <div ng-messages="audiovisualForm.color.$error" ng-show="audiovisualForm.color.$dirty && audiovisualForm.color.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -516,7 +523,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.audio.$dirty && audiovisualForm.audio.$invalid}">
                     <label class="control-label color-title format-title" for="audio">
                         Audio
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="El sistema de audio en que se encuentra la producción (Dolby, Dolby Digital, Estéreo, Monoaural, Sonido 2.1, Sonido 5.1, etc. Se indicará lo que esté consignado en la obra" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="audio" id="audio" ng-model="audiovisual.audio" ng-trim>
                     <div ng-messages="audiovisualForm.audio.$error" ng-show="audiovisualForm.audio.$dirty && audiovisualForm.audio.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -526,7 +533,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.sistema_de_grabacion.$dirty && audiovisualForm.sistema_de_grabacion.$invalid}">
                     <label class="control-label color-title format-title" for="sistema_de_grabacion">
                         Sistema de grabación
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="El sistema de grabación y reproducción de los materiales, el cual puede ser: NTSC, PAL, SECAM, etc." tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="sistema_de_grabacion" id="sistema_de_grabacion" ng-model="audiovisual.sistema_de_grabacion" ng-trim>
                     <div ng-messages="audiovisualForm.sistema_de_grabacion.$error" ng-show="audiovisualForm.sistema_de_grabacion.$dirty && audiovisualForm.sistema_de_grabacion.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -536,7 +543,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.region_dvd.$dirty && audiovisualForm.region_dvd.$invalid}">
                     <label class="control-label color-title format-title" for="region_dvd">
                         Región del DVD
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="La región designada para la reproducción del DVD. En caso de no tener, se catalogará como libre de región" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="region_dvd" id="region_dvd" ng-model="audiovisual.region_dvd" ng-trim>
                     <div ng-messages="audiovisualForm.region_dvd.$error" ng-show="audiovisualForm.region_dvd.$dirty && audiovisualForm.region_dvd.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -546,7 +553,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.requisitos_tecnicos.$dirty && audiovisualForm.requisitos_tecnicos.$invalid}">
                     <label class="control-label color-title format-title" for="requisitos_tecnicos">
                         Requisitos técnicos
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Qué equipo de reproducción se requiere para visionar el material" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="requisitos_tecnicos" id="requisitos_tecnicos" ng-model="audiovisual.requisitos_tecnicos" ng-trim>
                     <div ng-messages="audiovisualForm.requisitos_tecnicos.$error" ng-show="audiovisualForm.requisitos_tecnicos.$dirty && audiovisualForm.requisitos_tecnicos.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -559,7 +566,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.existencia_y_localizacion_de_copias.$dirty && audiovisualForm.existencia_y_localizacion_de_copias.$invalid}">
                     <label class="control-label color-title format-title" for="existencia_y_localizacion_de_copias">
                         Existencia y localización de copias
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="La posible existencia de copias del material en algún otro acervo del Insituto Mora (biblioteca)" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="existencia_y_localizacion_de_copias" id="existencia_y_localizacion_de_copias" ng-model="audiovisual.existencia_y_localizacion_de_copias" ng-trim>
                     <div ng-messages="audiovisualForm.existencia_y_localizacion_de_copias.$error" ng-show="audiovisualForm.existencia_y_localizacion_de_copias.$dirty && audiovisualForm.existencia_y_localizacion_de_copias.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -569,7 +576,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.unidades_de_descripcion_relacionadas.$dirty && audiovisualForm.unidades_de_descripcion_relacionadas.$invalid}">
                     <label class="control-label color-title format-title" for="unidades_de_descripcion_relacionadas">
                         Unidades de descripción relacionadas
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Relación que existe entre dos o más unidades de la misma colección a partir de coincidencias temáticas o conceptuales. La relación se establece con base en el conocimiento de las obras y debe ser aprobada por al menos dos integrantes del órgano de documentación" tooltip-placement="right"></i>
                     </label>
                     <textarea class="form-control" type="text" name="unidades_de_descripcion_relacionadas" id="unidades_de_descripcion_relacionadas" ng-model="audiovisual.unidades_de_descripcion_relacionadas" rows="3" ng-trim></textarea>
                     <div ng-messages="audiovisualForm.unidades_de_descripcion_relacionadas.$error" ng-show="audiovisualForm.unidades_de_descripcion_relacionadas.$dirty && audiovisualForm.unidades_de_descripcion_relacionadas.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -579,7 +586,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.documentos_asociados.$dirty && audiovisualForm.documentos_asociados.$invalid}">
                     <label class="control-label color-title format-title" for="documentos_asociados">
                         Documentos asociados
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Referencia a cualquier publicación o documento (libros, artículos, transcripciones, etc.) que tenga relación directa con la producción catalogada. La relación puede ser de tipo temática, autorial, etc." tooltip-placement="right"></i>
                     </label>
                     <textarea class="form-control" type="text" name="documentos_asociados" id="documentos_asociados" ng-model="audiovisual.documentos_asociados" rows="3" ng-trim></textarea>
                     <div ng-messages="audiovisualForm.documentos_asociados.$error" ng-show="audiovisualForm.documentos_asociados.$dirty && audiovisualForm.documentos_asociados.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -592,7 +599,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.notas.$dirty && audiovisualForm.notas.$invalid}">
                     <label class="control-label color-title format-title" for="notas">
                         Notas
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Toda aquella información que se considere relevante y que por alguna razón no pudo ser indexada en algún otro campo" tooltip-placement="right"></i>
                     </label>
                     <textarea class="form-control" type="text" name="notas" id="notas" ng-model="audiovisual.notas" rows="5" ng-trim></textarea>
                     <div ng-messages="audiovisualForm.notas.$error" ng-show="audiovisualForm.notas.$dirty && audiovisualForm.notas.$invalid"><div ng-messages-include="error-messages"></div></div>
@@ -601,35 +608,35 @@
 
             <!-- AREA DE CONTROL DE LA DESCRIPCION -->
             <uib-tab index="6" heading="Control de la descripción" classes="tab-style-video">
-                <!-- NOTAS DEL ARCHIVERO -->
-                <div class="form-group" ng-class="{'has-error': audiovisualForm.notas_del_archivero.$dirty && audiovisualForm.notas_del_archivero.$invalid}">
-                    <label class="control-label color-title format-title" for="notas_del_archivero">
-                        Notas del archivero
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
-                    </label>
-                    <textarea class="form-control" type="text" name="notas_del_archivero" id="notas_del_archivero" ng-model="audiovisual.notas_del_archivero" rows="3" ng-trim></textarea>
-                    <div ng-messages="audiovisualForm.notas_del_archivero.$error" ng-show="audiovisualForm.notas_del_archivero.$dirty && audiovisualForm.notas_del_archivero.$invalid"><div ng-messages-include="error-messages"></div></div>
-                </div>
-
                 <!-- ARCHIVERO -->
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.archivero.$dirty && audiovisualForm.archivero.$invalid}">
                     <label class="control-label color-title format-title" for="archivero">
                         Archivero
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="El nombre de quien elaboró la ficha de la unidad" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="archivero" id="archivero" ng-model="audiovisual.archivero" ng-trim>
                     <div ng-messages="audiovisualForm.archivero.$error" ng-show="audiovisualForm.archivero.$dirty && audiovisualForm.archivero.$invalid"><div ng-messages-include="error-messages"></div></div>
                 </div>
 
+                <!-- NOTAS DEL ARCHIVERO -->
+                <div class="form-group" ng-class="{'has-error': audiovisualForm.notas_del_archivero.$dirty && audiovisualForm.notas_del_archivero.$invalid}">
+                    <label class="control-label color-title format-title" for="notas_del_archivero">
+                        Notas del archivero
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Señala las fuentes usadas para completar la información de la ficha (producción original, sitios web, publicaciones, etc.)" tooltip-placement="right"></i>
+                    </label>
+                    <textarea class="form-control" type="text" name="notas_del_archivero" id="notas_del_archivero" ng-model="audiovisual.notas_del_archivero" rows="3" ng-trim></textarea>
+                    <div ng-messages="audiovisualForm.notas_del_archivero.$error" ng-show="audiovisualForm.notas_del_archivero.$dirty && audiovisualForm.notas_del_archivero.$invalid"><div ng-messages-include="error-messages"></div></div>
+                </div>
+
                 <!-- REGLAS O NORMAS -->
-                <div class="form-group" ng-class="{'has-error': audiovisualForm.reglas_o_normas.$dirty && audiovisualForm.reglas_o_normas.$invalid}">
+                <!-- <div class="form-group" ng-class="{'has-error': audiovisualForm.reglas_o_normas.$dirty && audiovisualForm.reglas_o_normas.$invalid}">
                     <label class="control-label color-title format-title" for="reglas_o_normas">
                         Reglas o normas
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Aquellas normas que se utilizaron para la elaboración de la ficha" tooltip-placement="right"></i>
                     </label>
                     <input class="form-control" type="text" name="reglas_o_normas" id="reglas_o_normas" ng-model="audiovisual.reglas_o_normas" ng-trim>
                     <div ng-messages="audiovisualForm.reglas_o_normas.$error" ng-show="audiovisualForm.reglas_o_normas.$dirty && audiovisualForm.reglas_o_normas.$invalid"><div ng-messages-include="error-messages"></div></div>
-                </div>
+                </div> -->
             </uib-tab>
 
             <!-- INFORMACION ADICIONAL -->
@@ -638,7 +645,7 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.imagen.$dirty && audiovisualForm.imagen.$invalid}">
                     <label class="control-label color-title format-title" for="imagen">
                         Imagen
-                        <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Imagen con la portada del material o captura de pantalla que ilustre el material que se registra" tooltip-placement="right"></i>
                     </label>
                     <!-- Detalles del componente: https://github.com/danialfarid/ng-file-upload -->
                     <div class="drag-drop-area" ngf-select="uploadImage($file)" ngf-drop="uploadImage($file)" ng-model="imagen" ng-show="imageContainer" name="imagen" id="imagen" ngf-capture="'camera'" ngf-accept="'image/*'" ngf-pattern="'image/*'"><i class="fa fa-file-image-o"></i> Selecciona o arrastra imagen</div>

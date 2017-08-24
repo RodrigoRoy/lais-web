@@ -47,7 +47,7 @@ var VideoSchema = new Schema({
     distribuidora: {type: String},
     historia_institucional: {type: String},
     resena_biografica: {type: String},
-    forma_de_ingreso: {type: String},
+    forma_de_ingreso: {type: String, enum: ['Compra', 'Donación', 'Producción propia']},
     fecha_de_ingreso: {type: Date},
     proyecto_de_investigacion: {type: String}, // *NUEVA PROPIEDAD
 
@@ -107,7 +107,7 @@ var VideoSchema = new Schema({
     // material_extra: {type: String},
 
     // 4 AREA DE CONDICIONES DE ACCESO Y USO
-    condiciones_de_acceso: {type: String},
+    condiciones_de_acceso: {type: String, enum: ['Usos no lucrativos', 'Usos reservados para consulta in situ']},
     condiciones_de_reproduccion: {type: String}, // NOTA: no es parte de metadoc pero sí del manual
     // existencia_y_localizacion_de_originales: {type: String},
     idioma_original: {type: String},
@@ -132,7 +132,8 @@ var VideoSchema = new Schema({
 
     // 7 AREA DE CONTROL DE LA DESCRIPCION
     notas_del_archivero: {type: String},
-    archivero: {type: mongoose.Schema.Types.ObjectId, ref: 'Usuario'},
+    // archivero: {type: mongoose.Schema.Types.ObjectId, ref: 'Usuario'}, // TODO: Cambiar esquema de usuarios
+    archivero: {type: String},
     reglas_o_normas: {type: String},
     // fecha_de_descripcion: {type: String} // es lo mismo que propiedad 'createdAt'
 
