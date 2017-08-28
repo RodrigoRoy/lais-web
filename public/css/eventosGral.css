@@ -31,8 +31,9 @@
 
 
 /*Color de texto sobre tab activo*/
-.tab-style-years.active a{
-    color: #333 !important;
+.tab-style-years.active a, .tab-style-years.active a:hover{
+    color: #555 !important;
+    background-color: #ddd !important;
 }
 /*Color de texto y borde redondo de tabs*/
 .tab-style-years a{
