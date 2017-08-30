@@ -65,7 +65,7 @@
                         País 
                         <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="El país o países donde se localizan las oficinas principales de la o las compañías productoras" tooltip-placement="right"></i>
                     </label>
-                    <input class="form-control" type="text" name="pais" id="pais" ng-model="audiovisual.pais" ng-trim>
+                    <input class="form-control" type="text" name="pais" id="pais" ng-model="audiovisual.pais" uib-typeahead="value for value in getData('pais', $viewValue)" autocomplete="off" ng-trim>
                     <div ng-messages="audiovisualForm.pais.$error" ng-show="audiovisualForm.pais.$dirty && audiovisualForm.pais.$invalid"><div ng-messages-include="error-messages"></div></div>
                 </div>
 
@@ -265,7 +265,7 @@
                         Archivo de procedencia 
                         <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
                     </label>
-                    <input class="form-control" type="text" name="archivo_procedencia" id="archivo_procedencia" ng-model="audiovisual.archivo_procedencia" ng-trim>
+                    <input class="form-control" type="text" name="archivo_procedencia" id="archivo_procedencia" ng-model="audiovisual.archivo_procedencia" uib-typeahead="value for value in getData('archivo_procedencia', $viewValue)" autocomplete="off" ng-trim>
                     <div ng-messages="audiovisualForm.archivo_procedencia.$error" ng-show="audiovisualForm.archivo_procedencia.$dirty && audiovisualForm.archivo_procedencia.$invalid"><div ng-messages-include="error-messages"></div></div>
                 </div>
 
@@ -275,7 +275,7 @@
                         Fondo de pertenencia 
                         <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
                     </label>
-                    <input class="form-control" type="text" name="fondo_de_pertenencia" id="fondo_de_pertenencia" ng-model="audiovisual.fondo_de_pertenencia" ng-trim>
+                    <input class="form-control" type="text" name="fondo_de_pertenencia" id="fondo_de_pertenencia" ng-model="audiovisual.fondo_de_pertenencia" uib-typeahead="value for value in getData('fondo_de_pertenencia', $viewValue)" autocomplete="off" ng-trim>
                     <div ng-messages="audiovisualForm.fondo_de_pertenencia.$error" ng-show="audiovisualForm.fondo_de_pertenencia.$dirty && audiovisualForm.fondo_de_pertenencia.$invalid"><div ng-messages-include="error-messages"></div></div>
                 </div>
 
@@ -289,7 +289,7 @@
                         Entidad productora
                         <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Nombre o nombres de la o las entidades productoras de la obra, tal como aparecen en los créditos originales" tooltip-placement="right"></i>
                     </label>
-                    <input class="form-control" type="text" name="entidad_productora" id="entidad_productora" ng-model="audiovisual.entidad_productora" ng-trim>
+                    <input class="form-control" type="text" name="entidad_productora" id="entidad_productora" ng-model="audiovisual.entidad_productora" uib-typeahead="value for value in getData('entidad_productora', $viewValue)" autocomplete="off" ng-trim>
                     <div ng-messages="audiovisualForm.entidad_productora.$error" ng-show="audiovisualForm.entidad_productora.$dirty && audiovisualForm.entidad_productora.$invalid"><div ng-messages-include="error-messages"></div></div>
                 </div>
 
@@ -299,7 +299,7 @@
                         Productor
                         <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Nombre o nombres de las personas responsables de la producción (personas físicas), tal como aparece en los créditos de la obra" tooltip-placement="right"></i>
                     </label>
-                    <input class="form-control" type="text" name="productor" id="productor" ng-model="audiovisual.productor" ng-trim>
+                    <input class="form-control" type="text" name="productor" id="productor" ng-model="audiovisual.productor" uib-typeahead="value for value in getData('productor', $viewValue)" autocomplete="off" ng-trim>
                     <div ng-messages="audiovisualForm.productor.$error" ng-show="audiovisualForm.productor.$dirty && audiovisualForm.productor.$invalid"><div ng-messages-include="error-messages"></div></div>
                 </div>
 
@@ -309,7 +309,7 @@
                         Distribuidora
                         <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Institución o empresa distribuidora del material en el país, en caso de no existir tal se consigna la distribuidora original en el país de origen de la obra" tooltip-placement="right"></i>
                     </label>
-                    <input class="form-control" type="text" name="distribuidora" id="distribuidora" ng-model="audiovisual.distribuidora" ng-trim>
+                    <input class="form-control" type="text" name="distribuidora" id="distribuidora" ng-model="audiovisual.distribuidora" uib-typeahead="value for value in getData('distribuidora', $viewValue)" autocomplete="off" ng-trim>
                     <div ng-messages="audiovisualForm.distribuidora.$error" ng-show="audiovisualForm.distribuidora.$dirty && audiovisualForm.distribuidora.$invalid"><div ng-messages-include="error-messages"></div></div>
                 </div>
 
@@ -363,7 +363,7 @@
                         Proyecto de investigación
                         <!-- <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="" tooltip-placement="right"></i> -->
                     </label>
-                    <input class="form-control" type="text" name="proyecto_de_investigacion" id="proyecto_de_investigacion" ng-model="audiovisual.proyecto_de_investigacion" ng-trim>
+                    <input class="form-control" type="text" name="proyecto_de_investigacion" id="proyecto_de_investigacion" ng-model="audiovisual.proyecto_de_investigacion" uib-typeahead="value for value in getData('proyecto_de_investigacion', $viewValue)" autocomplete="off" ng-trim>
                     <div ng-messages="audiovisualForm.proyecto_de_investigacion.$error" ng-show="audiovisualForm.proyecto_de_investigacion.$dirty && audiovisualForm.proyecto_de_investigacion.$invalid"><div ng-messages-include="error-messages"></div></div>
                 </div>
             </uib-tab>
@@ -505,7 +505,7 @@
                         Soporte
                         <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="El soporte del material, este puede ser: Betamax, Betacam, VHS, DVCAM, MiniDV, DVD, etc." tooltip-placement="right"></i>
                     </label>
-                    <input class="form-control" type="text" name="soporte" id="soporte" ng-model="audiovisual.soporte" ng-trim>
+                    <input class="form-control" type="text" name="soporte" id="soporte" ng-model="audiovisual.soporte" uib-typeahead="value for value in getData('soporte', $viewValue)" autocomplete="off" ng-trim>
                     <div ng-messages="audiovisualForm.soporte.$error" ng-show="audiovisualForm.soporte.$dirty && audiovisualForm.soporte.$invalid"><div ng-messages-include="error-messages"></div></div>
                 </div>
 
@@ -515,7 +515,7 @@
                         Color
                         <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Si la producción es a color, blanco y negro o ambos" tooltip-placement="right"></i>
                     </label>
-                    <input class="form-control" type="text" name="color" id="color" ng-model="audiovisual.color" ng-trim>
+                    <input class="form-control" type="text" name="color" id="color" ng-model="audiovisual.color" uib-typeahead="value for value in getData('color', $viewValue)" autocomplete="off" ng-trim>
                     <div ng-messages="audiovisualForm.color.$error" ng-show="audiovisualForm.color.$dirty && audiovisualForm.color.$invalid"><div ng-messages-include="error-messages"></div></div>
                 </div>
 
@@ -525,7 +525,7 @@
                         Audio
                         <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="El sistema de audio en que se encuentra la producción (Dolby, Dolby Digital, Estéreo, Monoaural, Sonido 2.1, Sonido 5.1, etc. Se indicará lo que esté consignado en la obra" tooltip-placement="right"></i>
                     </label>
-                    <input class="form-control" type="text" name="audio" id="audio" ng-model="audiovisual.audio" ng-trim>
+                    <input class="form-control" type="text" name="audio" id="audio" ng-model="audiovisual.audio" uib-typeahead="value for value in getData('audio', $viewValue)" autocomplete="off" ng-trim>
                     <div ng-messages="audiovisualForm.audio.$error" ng-show="audiovisualForm.audio.$dirty && audiovisualForm.audio.$invalid"><div ng-messages-include="error-messages"></div></div>
                 </div>
 
@@ -535,7 +535,7 @@
                         Sistema de grabación
                         <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="El sistema de grabación y reproducción de los materiales, el cual puede ser: NTSC, PAL, SECAM, etc." tooltip-placement="right"></i>
                     </label>
-                    <input class="form-control" type="text" name="sistema_de_grabacion" id="sistema_de_grabacion" ng-model="audiovisual.sistema_de_grabacion" ng-trim>
+                    <input class="form-control" type="text" name="sistema_de_grabacion" id="sistema_de_grabacion" ng-model="audiovisual.sistema_de_grabacion" uib-typeahead="value for value in getData('sistema_de_grabacion', $viewValue)" autocomplete="off" ng-trim>
                     <div ng-messages="audiovisualForm.sistema_de_grabacion.$error" ng-show="audiovisualForm.sistema_de_grabacion.$dirty && audiovisualForm.sistema_de_grabacion.$invalid"><div ng-messages-include="error-messages"></div></div>
                 </div>
 
@@ -545,7 +545,7 @@
                         Región del DVD
                         <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="La región designada para la reproducción del DVD. En caso de no tener, se catalogará como libre de región" tooltip-placement="right"></i>
                     </label>
-                    <input class="form-control" type="text" name="region_dvd" id="region_dvd" ng-model="audiovisual.region_dvd" ng-trim>
+                    <input class="form-control" type="text" name="region_dvd" id="region_dvd" ng-model="audiovisual.region_dvd" uib-typeahead="value for value in getData('region_dvd', $viewValue)" autocomplete="off" ng-trim>
                     <div ng-messages="audiovisualForm.region_dvd.$error" ng-show="audiovisualForm.region_dvd.$dirty && audiovisualForm.region_dvd.$invalid"><div ng-messages-include="error-messages"></div></div>
                 </div>
 
@@ -614,7 +614,7 @@
                         Archivero
                         <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="El nombre de quien elaboró la ficha de la unidad" tooltip-placement="right"></i>
                     </label>
-                    <input class="form-control" type="text" name="archivero" id="archivero" ng-model="audiovisual.archivero" ng-trim>
+                    <input class="form-control" type="text" name="archivero" id="archivero" ng-model="audiovisual.archivero" uib-typeahead="value for value in getData('archivero', $viewValue)" autocomplete="off" ng-trim>
                     <div ng-messages="audiovisualForm.archivero.$error" ng-show="audiovisualForm.archivero.$dirty && audiovisualForm.archivero.$invalid"><div ng-messages-include="error-messages"></div></div>
                 </div>
 

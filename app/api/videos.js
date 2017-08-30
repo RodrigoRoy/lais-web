@@ -177,6 +177,38 @@ router.route('/')
         })
     })
 
+// Conocer el siguiente valor consecutivo de codigo_de_referencia
+// router.route('/nextId/:year_code')
+//     .get(function(req, res){
+//         Video.find()
+//         .select('codigo_de_referencia')
+//         .exec(function(err, audiovisuales){
+//             if(err)
+//                 res.send(err);
+//             if(req.params.year_code){
+//                 var re = new RegExp('MXIM-AV-' + req.params.year_code + '-(\d+)');
+//                 for(var audiovisual in audiovisuales){
+//                     if(/MXIM-/)
+//                 }
+//             }
+//             res.send(audiovisuales);
+//         })
+//     })
+
+// Busca los datos existentes de un campo especificado que cumpla con el query de búsqueda. Por ejemplo
+// GET http://localhost:8080/api/videos/search?f=titulo_propio&q=Lorem
+router.route('/search')
+    .get(function(req, res){
+        var mongoQuery = {};
+        mongoQuery[req.query.f] = {$regex: '.*' + req.query.q + '.*', $options: 'i'};
+        Video.distinct(req.query.f, mongoQuery)
+        .exec(function(err, results){
+            if(err)
+                res.send(err);
+            res.send(results);
+        })
+    })
+
 // En peticiones con un ID
 router.route('/:video_id')
 	// Obtener un registro audiovisual particular (mediante el ID)

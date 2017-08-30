@@ -31,6 +31,11 @@ angular.module('AudiovisualService', []).factory('Audiovisual', ['$http', functi
 		// Obtener algún arreglo de tags (buscar 'ngTagsInput') contenido en archivo JSON
 		getTags: function(JSONfilename){
 			return $http.get('js/' + JSONfilename);
+		},
+
+		// Busquedas de contenido (sin repetición) en un campo específico
+		search: function(field, query){
+			return $http.get('/api/videos/search?f=' + field + '&q=' + query);
 		}
 	}
 }]);

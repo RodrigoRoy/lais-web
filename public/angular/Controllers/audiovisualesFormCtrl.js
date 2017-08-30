@@ -16,6 +16,14 @@ angular.module('AudiovisualesFormCtrl',[]).controller('AudiovisualesFormControll
     $scope.imageContainer = true; // Bandera para mostrar/ocultar elemento DIV para cargar una imagen
     $scope.auxiliar = {};
 
+    // Promise para autocompletar input 'typeahead' de diversos campos del formulario
+    $scope.getData = function(field, query){
+        return Audiovisual.search(field, query).
+            then(function(res){
+                return res.data;
+            });
+    }
+
     // Llamada asíncrona para obtener los tags desde archivo y filtrarlos por medio del query dado como parámetro
     $scope.loadTags = function(query, JSONfilename){
         return Audiovisual.getTags(JSONfilename)
