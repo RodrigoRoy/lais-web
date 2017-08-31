@@ -177,23 +177,37 @@ router.route('/')
         })
     })
 
-// Conocer el siguiente valor consecutivo de codigo_de_referencia
-// router.route('/nextId/:year_code')
-//     .get(function(req, res){
-//         Video.find()
-//         .select('codigo_de_referencia')
-//         .exec(function(err, audiovisuales){
-//             if(err)
-//                 res.send(err);
-//             if(req.params.year_code){
-//                 var re = new RegExp('MXIM-AV-' + req.params.year_code + '-(\d+)');
-//                 for(var audiovisual in audiovisuales){
-//                     if(/MXIM-/)
-//                 }
-//             }
-//             res.send(audiovisuales);
-//         })
-//     })
+// Conocer el siguiente valor consecutivo de codigo_de_referencia. Por ejemplo:
+// GET http://localhost:8080/api/videos/next?year=11
+// La respuesta puede ser: {next: 3}
+router.route('/next')
+    .get(function(req, res){
+        if(req.query.year){
+            Video.find({
+                'codigo_de_referencia': {$regex: '^MXIM-AV-3-' + req.query.year}
+            })
+            .select('codigo_de_referencia')
+            .exec(function(err, audiovisuales){
+                if(err)
+                    res.send(err);
+                var container = []; // Contenedor de enteros (no necesariamente) consecutivos
+                for(var i in audiovisuales){
+                    var re = new RegExp('^MXIM-AV-3-' + req.query.year + '-([0-9]+)');
+                    var match = re.exec(audiovisuales[i].codigo_de_referencia);
+                    if(match && match[1])
+                        container.push(parseInt(match[1]));
+                }
+                container = container.sort();
+                var defitiveNext = 1; // Auxiliar que representa el siguiente entero consecutivo
+                for(var i in container){ // Buscar el primer número no-consecutivo o responder con el último siguiente
+                    defitiveNext = parseInt(i)+1;
+                    if(parseInt(i)+1 != container[i])
+                        break;
+                }
+                res.send({next: defitiveNext});
+            })
+        }
+    })
 
 // Busca los datos existentes de un campo especificado que cumpla con el query de búsqueda. Por ejemplo
 // GET http://localhost:8080/api/videos/search?f=titulo_propio&q=Lorem

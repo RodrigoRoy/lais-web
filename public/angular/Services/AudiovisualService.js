@@ -36,6 +36,12 @@ angular.module('AudiovisualService', []).factory('Audiovisual', ['$http', functi
 		// Busquedas de contenido (sin repetición) en un campo específico
 		search: function(field, query){
 			return $http.get('/api/videos/search?f=' + field + '&q=' + query);
+		},
+
+		// Se recibe el código del año (comúnmente 4-11) y devuelve un objeto con la propiedad "next"
+		// que indica el siguiente entero consecutivo (sin espacios intermedios) que le corresponde
+		next: function(yearCode){
+			return $http.get('/api/videos/next?year=' + yearCode);
 		}
 	}
 }]);

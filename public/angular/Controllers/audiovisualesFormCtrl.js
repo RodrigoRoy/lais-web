@@ -24,6 +24,49 @@ angular.module('AudiovisualesFormCtrl',[]).controller('AudiovisualesFormControll
             });
     }
 
+    // Al establecer la fecha (año), determina el código por década correspondiente y solicita
+    // el siguiente número consecutivo correspondiente para asignar adecuadamente el codigo_de_referencia
+    $scope.setCodigoReferencia = function(){
+        if($scope.audiovisual.fecha){
+            var decada = 0;
+            var year = $scope.audiovisual.fecha.getFullYear();
+            if(year >= 1890 && year < 1900)
+                decada = 1;
+            else if(year >= 1900 && year < 1910)
+                decada = 2;
+            else if(year >= 1910 && year < 1920)
+                decada = 3;
+            else if(year >= 1920 && year < 1930)
+                decada = 4;
+            else if(year >= 1930 && year < 1940)
+                decada = 5;
+            else if(year >= 1940 && year < 1950)
+                decada = 6;
+            else if(year >= 1950 && year < 1960)
+                decada = 7;
+            else if(year >= 1960 && year < 1970)
+                decada = 8;
+            else if(year >= 1970 && year < 1980)
+                decada = 9;
+            else if(year >= 1980 && year < 1990)
+                decada = 10;
+            else if(year >= 1990 && year < 2000)
+                decada = 11;
+            else if(year >= 2000 && year < 2010)
+                decada = 12;
+            else if(year >= 2010 && year < 2020)
+                decada = 13;
+            else if(year >= 2020 && year < 2030)
+                decada = 14;
+            else
+                decada = 0;
+            Audiovisual.next(decada)
+            .then(function(res){
+                $scope.audiovisual.codigo_de_referencia = 'MXIM-AV-3-' + decada + '-' + res.data.next;
+            })
+        }
+    };
+
     // Llamada asíncrona para obtener los tags desde archivo y filtrarlos por medio del query dado como parámetro
     $scope.loadTags = function(query, JSONfilename){
         return Audiovisual.getTags(JSONfilename)

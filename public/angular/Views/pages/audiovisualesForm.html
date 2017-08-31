@@ -23,9 +23,9 @@
                 <div class="form-group" ng-class="{'has-error': audiovisualForm.codigo_de_referencia.$dirty && audiovisualForm.codigo_de_referencia.$invalid}">
                     <label class="control-label color-title format-title" for="codigo_de_referencia">
                         Código de referencia
-                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Código alfanumérico separado por guiones que identifica de manera única al material" tooltip-placement="right"></i>
+                        <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Código alfanumérico separado por guiones que identifica de manera única al material. Es autogenerado al seleccionar la fecha (año) del material" tooltip-placement="right"></i>
                     </label>
-                    <input class="form-control" type="text" name="codigo_de_referencia" id="codigo_de_referencia" ng-model="audiovisual.codigo_de_referencia" ng-trim required>
+                    <input class="form-control" type="text" name="codigo_de_referencia" id="codigo_de_referencia" ng-model="audiovisual.codigo_de_referencia" readonly required>
                     <div ng-messages="audiovisualForm.codigo_de_referencia.$error" ng-show="audiovisualForm.codigo_de_referencia.$dirty && audiovisualForm.codigo_de_referencia.$invalid"><div ng-messages-include="error-messages"></div></div>
                 </div>
 
@@ -75,7 +75,7 @@
                         Fecha 
                         <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Año en que se terminó la producción de la obra. En caso de desconocerlo, se indica un año probable de acuerdo al conocimiento de la obra, o a alguna fuente de consulta complementaria que exista" tooltip-placement="right"></i>
                     </label>
-                    <div uib-datepicker id="fecha" class="well well-sm" ng-model="audiovisual.fecha" datepicker-options="dateOptions"></div>
+                    <div uib-datepicker id="fecha" class="well well-sm" ng-model="audiovisual.fecha" datepicker-options="dateOptions" ng-click="setCodigoReferencia()"></div>
                     <div ng-messages="audiovisualForm.fecha.$error" ng-show="audiovisualForm.fecha.$dirty && audiovisualForm.fecha.$invalid"><div ng-messages-include="error-messages"></div></div>
                 </div>
 
@@ -660,8 +660,8 @@
         <button type="submit" class="btn btn-primary" ng-if="edit" ng-disabled="audiovisualForm.$invalid" ng-click="editar()">Editar material de archivo</button>
     </form>
     
-    <!-- <br>
-    <pre>{{audiovisual | json}}</pre>
     <br>
+    <pre>{{audiovisual | json}}</pre>
+    <!-- <br>
     <pre>{{auxiliar | json}}</pre> -->
 </div>
