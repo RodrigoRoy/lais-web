@@ -42,6 +42,13 @@ angular.module('AudiovisualService', []).factory('Audiovisual', ['$http', functi
 		// que indica el siguiente entero consecutivo (sin espacios intermedios) que le corresponde
 		next: function(yearCode){
 			return $http.get('/api/videos/next?year=' + yearCode);
+		},
+
+		// Devuelve el valor de una propiedad (neededProperty) que depende de otra propiedad para hacer la referencia (sourceProperty)
+		// Se requiere de el valor de la segunda (valueOfSource) para realizar el match en la base de datos.
+		// Por ejemplo: Se desea obtener la historia_institucional (neededProperty) de la entidad_productora (sourceProperty) "Lorem Ipsum" (valueOfSource)
+		reference: function(neededProperty, sourceProperty, valueOfSource){
+			return $http.get('/api/videos/reference?need=' + neededProperty + '&source=' + sourceProperty + '&value=' + valueOfSource);
 		}
 	}
 }]);

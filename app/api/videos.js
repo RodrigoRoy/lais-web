@@ -207,20 +207,62 @@ router.route('/next')
                 res.send({next: defitiveNext});
             })
         }
+        else{
+            res.status(400).send({
+                success: false,
+                message: "No se especifica la propiedad year. Por ejemplo: /next?year=11"
+            });
+        }
+    })
+
+// Obtiene un documento de la base de datos que incluya solamente la propiedad deseada (need)
+// con la restricción de que contenga la propiedad (source) y valor (value) proporcionados. Ejemplo:
+// GET http://localhost:8080/api/videos/reference?need=resena_biografica&source=productor&value=Test%20Name
+router.route('/reference')
+    .get(function(req, res){
+        if(req.query.need && req.query.source && req.query.value){
+            var mongoQuery = {};
+            mongoQuery[req.query.source] = req.query.value;
+            var sortQuery = {};
+            sortQuery[req.query.need] = -1;
+            Video.find(mongoQuery)
+            .select(req.query.need)
+            .limit(1)
+            .sort(sortQuery)
+            .exec(function(err, audiovisual){
+                if(err)
+                    res.send(err);
+                res.send(audiovisual);
+            })
+        }
+        else{
+            res.status(400).send({
+                success: false,
+                message: "No se especifican las propiedades need, source y value. Por ejemplo: /reference?need=resena_biografica&source=productor&value=Test%20Name"
+            });
+        }
     })
 
 // Busca los datos existentes de un campo especificado que cumpla con el query de búsqueda. Por ejemplo
 // GET http://localhost:8080/api/videos/search?f=titulo_propio&q=Lorem
 router.route('/search')
     .get(function(req, res){
-        var mongoQuery = {};
-        mongoQuery[req.query.f] = {$regex: '.*' + req.query.q + '.*', $options: 'i'};
-        Video.distinct(req.query.f, mongoQuery)
-        .exec(function(err, results){
-            if(err)
-                res.send(err);
-            res.send(results);
-        })
+        if(req.query.f && req.query.q){
+            var mongoQuery = {};
+            mongoQuery[req.query.f] = {$regex: '.*' + req.query.q + '.*', $options: 'i'};
+            Video.distinct(req.query.f, mongoQuery)
+            .exec(function(err, results){
+                if(err)
+                    res.send(err);
+                res.send(results);
+            })
+        }
+        else{
+            res.status(400).send({
+                success: false,
+                message: "No se especifica la propiedad f(ield) ni q(uery). Por ejemplo: search?f=titulo_propio&q=Lorem"
+            });
+        }
     })
 
 // En peticiones con un ID

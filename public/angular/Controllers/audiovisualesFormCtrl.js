@@ -67,6 +67,18 @@ angular.module('AudiovisualesFormCtrl',[]).controller('AudiovisualesFormControll
         }
     };
 
+    // Asigna el valor de un campo (neededProperty) dependiendo del valor de otro (sourceProperty)
+    // Es útil para autollenar campos del formulario que están relacionados. Por ejemplo:
+    // Autocompletar el campo resena_biografica (neededProperty) si se tiene el valor del productor (sourceProperty)
+    $scope.setReferencedValue = function(neededProperty, sourceProperty){
+        Audiovisual.reference(neededProperty, sourceProperty, $scope.audiovisual[sourceProperty])
+        .then(function(res){
+            $scope.audiovisual[neededProperty] = res.data[0][neededProperty];
+        }, function(err){
+            console.error('Error de comunicación con la base de datos: ', err);
+        });
+    };
+
     // Llamada asíncrona para obtener los tags desde archivo y filtrarlos por medio del query dado como parámetro
     $scope.loadTags = function(query, JSONfilename){
         return Audiovisual.getTags(JSONfilename)

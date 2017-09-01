@@ -289,7 +289,7 @@
                         Entidad productora
                         <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Nombre o nombres de la o las entidades productoras de la obra, tal como aparecen en los créditos originales" tooltip-placement="right"></i>
                     </label>
-                    <input class="form-control" type="text" name="entidad_productora" id="entidad_productora" ng-model="audiovisual.entidad_productora" uib-typeahead="value for value in getData('entidad_productora', $viewValue)" autocomplete="off" ng-trim>
+                    <input class="form-control" type="text" name="entidad_productora" id="entidad_productora" ng-model="audiovisual.entidad_productora" uib-typeahead="value for value in getData('entidad_productora', $viewValue)" autocomplete="off" ng-trim ng-blur="setReferencedValue('historia_institucional', 'entidad_productora')">
                     <div ng-messages="audiovisualForm.entidad_productora.$error" ng-show="audiovisualForm.entidad_productora.$dirty && audiovisualForm.entidad_productora.$invalid"><div ng-messages-include="error-messages"></div></div>
                 </div>
 
@@ -299,7 +299,7 @@
                         Productor
                         <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Nombre o nombres de las personas responsables de la producción (personas físicas), tal como aparece en los créditos de la obra" tooltip-placement="right"></i>
                     </label>
-                    <input class="form-control" type="text" name="productor" id="productor" ng-model="audiovisual.productor" uib-typeahead="value for value in getData('productor', $viewValue)" autocomplete="off" ng-trim>
+                    <input class="form-control" type="text" name="productor" id="productor" ng-model="audiovisual.productor" uib-typeahead="value for value in getData('productor', $viewValue)" autocomplete="off" ng-trim ng-blur="setReferencedValue('resena_biografica', 'productor')">
                     <div ng-messages="audiovisualForm.productor.$error" ng-show="audiovisualForm.productor.$dirty && audiovisualForm.productor.$invalid"><div ng-messages-include="error-messages"></div></div>
                 </div>
 
