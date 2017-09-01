@@ -270,7 +270,7 @@ router.route('/:video_id')
 	// Obtener un registro audiovisual particular (mediante el ID)
     .get(function(req, res){
         Video.findById(req.params.video_id)
-        .populate('archivero')
+        // .populate('archivero')
         .exec(function(err, audiovisual){
             if(err)
                 res.send(err);

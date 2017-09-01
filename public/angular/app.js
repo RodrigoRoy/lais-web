@@ -1,5 +1,3 @@
-
-
 angular.module('laisApp', [
 	'ngRoute', // Front end router
 	'ngMessages', // Manejador de validación en formularios
@@ -26,6 +24,7 @@ angular.module('laisApp', [
 	'PublicacionCtrl', // Información sobre las publicaciones
 	'PublicacionFormCtrl', // Formulario para publicaciones
 	'AudiovisualesFormCtrl', // Formulario para registros fotográficos
+	'AudiovisualesListCtrl', // Formulario para materiales de archivo
 	'AuthCtrl', //Carga la informacion para autentificar a un usuario
 	'AdminCtrl', // Información general para la administración del sitio
 	'UsuariosCtrl', // Administración de los usuarios
