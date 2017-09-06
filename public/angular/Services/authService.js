@@ -15,10 +15,10 @@ angular.module('authService', [])
 	var authFactory = {};
 
 	// iniciar sesión para un usuario
-	authFactory.login = function(username, password){
+	authFactory.login = function(name, password){
 		// devolver objeto promise y los datos
 		return $http.post('/api/authenticate', {
-			username: username,
+			name: name,
 			password: password
 		})
 		.then(function(res){

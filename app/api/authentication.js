@@ -9,17 +9,17 @@ var secret = require('../../config').jwt;
 // Ruta para autentificar un usuario (POST http://localhost:8080/api/authenticate)
 router.post('/authenticate', function(req, res){
     Usuario.findOne({
-        username: req.body.username
-    }).select('username password permisos').exec(function(err, usuario){
+        $or: [{email: req.body.name}, {username: req.body.name}]
+    }).select('username password permisos admin').exec(function(err, usuario){
         if(err)
             throw err;
 
-        // no se encontró usuario con ese username
+        // no se encontró usuario con ese username/email
         if(!usuario){
             res.status(400).send({
                 success: false,
                 code: 'username',
-                message: 'Nombre de usuario no encontrado'
+                message: 'Nombre de usuario/correo no encontrado'
             });
         }
         else if (usuario) {
