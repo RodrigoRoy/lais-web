@@ -132,8 +132,7 @@ var VideoSchema = new Schema({
 
     // 7 AREA DE CONTROL DE LA DESCRIPCION
     notas_del_archivero: {type: String},
-    // archivero: {type: mongoose.Schema.Types.ObjectId, ref: 'Usuario'}, // TODO: Cambiar esquema de usuarios
-    archivero: {type: String},
+    archivero: {type: mongoose.Schema.Types.ObjectId, ref: 'Usuario'},
     reglas_o_normas: {type: String},
     // fecha_de_descripcion: {type: String} // es lo mismo que propiedad 'createdAt'
 

@@ -14,7 +14,9 @@ angular.module('AudiovisualesFormCtrl',[]).controller('AudiovisualesFormControll
         minMode: 'year' // Usar esta propiedad en vez de 'dateMode' evita errores al ingresar el año
     };
     $scope.imageContainer = true; // Bandera para mostrar/ocultar elemento DIV para cargar una imagen
-    $scope.auxiliar = {};
+    $scope.auxiliar = {}; // Contenedor para propiedades auxiliares y/o temporales
+    $scope.auxiliar.archivero = $scope.user; // Referencia al usuario (para obtener y mostrar el nombre/username)
+    $scope.audiovisual.archivero = $scope.auxiliar.archivero.id; // En realidad se guarda el id del usuario
 
     // Promise para autocompletar input 'typeahead' de diversos campos del formulario
     $scope.getData = function(field, query){
@@ -160,6 +162,7 @@ angular.module('AudiovisualesFormCtrl',[]).controller('AudiovisualesFormControll
             alert("Se ha guardado la información del material de archivo.");
             // TODO: Crear la vista de cada registro audiovisual 
             //$location.url('/publicacion/' + res.data.publication._id); // Redirigir a la página de la publicación creada
+            $location.url('/admin/audiovisuales'); // Redirigir a la página que enlista los audiovisuales
         }, function(res){
             console.log("Error de conexión con la base de datos para la creación del material de archivo.", res);
         });
@@ -171,6 +174,7 @@ angular.module('AudiovisualesFormCtrl',[]).controller('AudiovisualesFormControll
             alert("Se ha actualizado la información del material de archivo.");
             // TODO: Crear la vista de cada registro audiovisual 
             // $location.url('/publicacion/' + $routeParams.id); // Redirigir a la página de la publicación
+            $location.url('/admin/audiovisuales'); // Redirigir a la página que enlista los audiovisuales
         }, function(res){
             console.log("Error de conexión con la base de datos para la edición del material de archivo.", res);
         });
@@ -205,6 +209,9 @@ angular.module('AudiovisualesFormCtrl',[]).controller('AudiovisualesFormControll
             if($scope.audiovisual.imagen){ // Deshabilitar div para imagen si el registro audiovisual ya tiene una
                 $scope.imageContainer = false;
             }
+            // Parse para archivero
+            $scope.auxiliar.archivero = $scope.user; // Referencia al usuario (para obtener y mostrar el nombre/username)
+            $scope.audiovisual.archivero = $scope.auxiliar.archivero.id; // En realidad se guarda el id del usuario
         }, function(res){
             console.log("Error de conexión con la base de datos para obtener información del registro audiovisual.", res);
         });

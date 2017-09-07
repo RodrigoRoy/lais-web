@@ -614,7 +614,7 @@
                         Archivero
                         <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="El nombre de quien elaboró la ficha de la unidad" tooltip-placement="right"></i>
                     </label>
-                    <input class="form-control" type="text" name="archivero" id="archivero" ng-model="audiovisual.archivero" uib-typeahead="value for value in getData('archivero', $viewValue)" autocomplete="off" ng-trim>
+                    <input class="form-control" type="text" name="archivero" id="archivero" ng-model="auxiliar.archivero.username" readonly>
                     <div ng-messages="audiovisualForm.archivero.$error" ng-show="audiovisualForm.archivero.$dirty && audiovisualForm.archivero.$invalid"><div ng-messages-include="error-messages"></div></div>
                 </div>
 
@@ -661,7 +661,7 @@
     </form>
     
     <!-- <br>
-    <pre>{{audiovisual | json}}</pre> -->
-    <!-- <br>
+    <pre>{{audiovisual | json}}</pre>
+    <br>
     <pre>{{auxiliar | json}}</pre> -->
 </div>
