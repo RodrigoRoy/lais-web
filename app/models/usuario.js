@@ -13,7 +13,7 @@ var UsuarioSchema = new Schema({
     username: {type: String, minlength: 3, trim: true, required: true, index: {unique: true}},
     password: {type: String, required: true, select: false},
     email: {type: String, required: true},
-    admin: {type: Boolean},
+    admin: {type: Boolean, default: false},
     permisos: {type: Number, min: 0, max: 15, default: 8},
     // Los permisos se asignan de acuerdo al valor en binario de las operaciones CRUD (CREATE, READ, UPDATE, DELETE):
     // Ejemplo con usuario con permisos con agregar (CREATE) y editar (UPDATE):
