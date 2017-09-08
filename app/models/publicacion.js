@@ -11,7 +11,7 @@ var PublicacionSchema = new Schema({
 	titulo: {type: String, required: true},
 	fecha: {type: Date},
 	autor: [{type: mongoose.Schema.Types.ObjectId, ref: 'Autores'}],
-	tipo: {type: String, enum: ['Artículo', 'Libro', 'Documental', 'Página web', 'Ponencia']},
+	tipo: {type: String, enum: ['Artículo', 'Libro', 'Documental', 'Página web', 'Ponencia', 'Exposición']},
 	publisher: {type: String}, // Libro, Incollection
 	journal: {type: String},   // Artículo
 	numero: {type: String},    // Artículo

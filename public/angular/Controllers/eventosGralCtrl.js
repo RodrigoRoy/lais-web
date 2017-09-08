@@ -1,30 +1,23 @@
 /*Controlador de la página de eventos, se encarga de obtener todos los eventos existentes de la base de datos */
 
-angular.module('EventosCtrl', []).controller('EventosController', function ($scope, $location, Evento) {
+angular.module('EventosCtrl', []).controller('EventosController', function ($scope, $location, $routeParams, Evento) {
 	
 	$scope.currentPage = 1; //Indica el número de página actual
 	$scope.maxSize = 10; //Maximo numero de páginas a mostrar para escojer
 	$scope.itemsPerPage = 12; //Maximo numero de eventos a mostrar por página, lo cuál son 9
-	$scope.collapse = {}; // contiene como atributos el nombre de la agrupación y bool como valor
+	$scope.active = 0; // Indice del tab activo (por default es el primero: cero)
+	if($routeParams.show)
+		$scope.active = parseInt($routeParams.show);
 
 	// Obtiene la información de todos los eventos
 	$scope.getEvents = function(){
 		Evento.byDate()
 		.then(function(res){ 
 			$scope.eventos = res.data; //Todos los eventos
-			// Banderas para colapsar información (que viene agrupada)
-			for(var i in $scope.eventos)
-				$scope.collapse[$scope.eventos[i]._id] = true;
 		}, function(res){ 
 			alert('Error de Conexión con la Base de Datos');
 		});
 	};
-
-	// Auxiliar para realizar busquedas (está deshabilitada esta opción)
-	// $scope.buscar = function(query){
-	// 	if(query)
-	// 		$location.url('/eventos/busqueda/'+query)
-	// }
 
 	// Determina si una fecha es menor que el día de hoy (en tiempo de ejecución)
 	$scope.isAvaliable = function(fechaStr){
@@ -35,23 +28,9 @@ angular.module('EventosCtrl', []).controller('EventosController', function ($sco
 		return today.getTime() < fecha.getTime();
 	};
 
-	// Objeto contenedor de filtros. Hace referencia a cada checkbox en la vista.
-	// $scope.filterModel = {
-	// 	academico: true,
-	// 	docencia: true
-	// };
-	// Función que se manda a llamar durante el filtrado de Angular en la vista (ng-repeat) de los eventos.
-	// Recibe como parémetro el evento (value), su índice (index) y el arreglo completo con los eventos (array)
-	// Devuelve true si alguno de los checkboxs de filtrado (filterModel) es verdadero, false en otro caso.
-	// $scope.filterType = function(value, index, array){
-	// 	return ($scope.filterModel.academico && (value.tipo === 'academico')) || ($scope.filterModel.docencia && (value.tipo === 'docencia'));
-	// 	Es decir:
-	// 	if($scope.filterModel.academico && (value.tipo === 'academico'))
-	// 		return true;
-	// 	if($scope.filterModel.docencia && (value.tipo === 'docencia'))
-	// 		return true;
-	// 	return false;
-	// };
+	$scope.setUrl = function(index){
+		$location.search('show', index);
+	};
 
 	// INICIALIZACION: obtener eventos
 	$scope.getEvents();

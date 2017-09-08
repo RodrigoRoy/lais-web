@@ -1,10 +1,10 @@
 /* Formulario para registrar una publicación */
 
-angular.module('PublicacionesCtrl',[]).controller('PublicacionesController', function ($scope, $routeParams, Publicacion, Autor){
+angular.module('PublicacionesCtrl',[]).controller('PublicacionesController', function ($scope, $routeParams, $location, Publicacion, Autor){
 
 	// Variables
 	$scope.publicaciones = [];
-	$scope.collapse = {}; // contiene como atributos el nombre de la agrupación y bool como valor
+	$scope.collapse = {}; // auxiliar para mostrar/ocultar publicaciones: contiene como atributos el nombre de la agrupación y bool como valor
 	// Establece el tipo de agrupación para las publicaciones
 	// Por ejemplo, desde URL: /publicacion?group=tipo
 	// var groupType = $routeParams.group || 'fecha';
@@ -18,7 +18,7 @@ angular.module('PublicacionesCtrl',[]).controller('PublicacionesController', fun
 		'Libro': 'Libros',
 		'Artículo': 'Artículos',
 		'Página web': 'Sitios web',
-		// 'Exposición': 'Exposiciones'
+		'Exposición': 'Exposiciones'
 	};
 
 	$scope.getPublicaciones = function(){
@@ -29,6 +29,8 @@ angular.module('PublicacionesCtrl',[]).controller('PublicacionesController', fun
 				// Banderas para colapsar información (que viene agrupada)
 				for(var i in $scope.publicaciones)
 					$scope.collapse[$scope.publicaciones[i]._id] = true;
+				if($routeParams.show)
+					$scope.collapse[$routeParams.show] = false;
 				// Obtener los datos del autor (e.g. nombre)
 				Autor.get(autorId)
 				.then(function(res){
@@ -53,10 +55,16 @@ angular.module('PublicacionesCtrl',[]).controller('PublicacionesController', fun
 				// Banderas para colapsar información (que viene agrupada)
 				for(var i in $scope.publicaciones)
 					$scope.collapse[$scope.publicaciones[i]._id] = true;
+				if($routeParams.show)
+					$scope.collapse[$routeParams.show] = false;
 			}, function(res){ // Fail
 				console.error('Error de conexión con la base de datos: ', res);
 			});
 		}
+	};
+
+	$scope.toggle = function(groupId){
+		$scope.collapse[groupId] = !$scope.collapse[groupId];
 	};
 
 	// Estiliza nombre y apellido al estilo deseado para hacer citas
@@ -97,5 +105,6 @@ angular.module('PublicacionesCtrl',[]).controller('PublicacionesController', fun
 		return nombres.join(', ');
 	}
 
+	// INICIALIZACION:
 	$scope.getPublicaciones();
 })

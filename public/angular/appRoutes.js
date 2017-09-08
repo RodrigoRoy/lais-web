@@ -3,7 +3,6 @@
 angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider){
 	
 	$routeProvider
-		// HOME
 		.when('/', {
 			templateUrl: 'angular/Views/pages/inicio.html',
 			controller: 'InicioController'
@@ -11,7 +10,8 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 
 		.when('/eventos', {
 			templateUrl: 'angular/Views/pages/eventosGral.html',
-			controller: 'EventosController'
+			controller: 'EventosController',
+			reloadOnSearch: false // Permite establecer url params sin recargar página
 		})
 
 		.when('/eventos/nuevo', {
