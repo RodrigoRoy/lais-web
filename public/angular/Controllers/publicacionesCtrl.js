@@ -14,11 +14,13 @@ angular.module('PublicacionesCtrl',[]).controller('PublicacionesController', fun
 	$scope.autorObject = {}; // Objeto con la info del autor
 	$scope.renameId = { // Auxiliar para pluralizar los nombres (id's) de cada grupo de publicaciones
 		'Documental': 'Documentales',
-		'Artículo': 'Artículos',
-		'Ponencia': 'Ponencias',
-		'Libro': 'Libros',
-		'Capítulo de libro': 'Capítulos de libro',
-		'Exposición': 'Exposiciones'
+		'Artículo': 'Artículos y ponencias',
+		// 'Artículo': 'Artículos',
+		// 'Ponencia': 'Ponencias',
+		'Libro': 'Libros y capítulos de libro',
+		// 'Libro': 'Libros',
+		// 'Capítulo de libro': 'Capítulos de libro',
+		'Exposición': 'Exposiciones',
 		'Página web': 'Sitios web',
 	};
 
@@ -27,6 +29,7 @@ angular.module('PublicacionesCtrl',[]).controller('PublicacionesController', fun
 			Publicacion.autor(autorId)
 			.then(function(res){ // Success
 				$scope.publicaciones = res.data;
+				$scope.publicaciones = agruparPublicaciones($scope.publicaciones);
 				// Banderas para colapsar información (que viene agrupada)
 				for(var i in $scope.publicaciones)
 					$scope.collapse[$scope.publicaciones[i]._id] = true;
@@ -53,6 +56,8 @@ angular.module('PublicacionesCtrl',[]).controller('PublicacionesController', fun
 			Publicacion.group('tipo')
 			.then(function(res){ // Success
 				$scope.publicaciones = res.data;
+				$scope.publicaciones = agruparPublicaciones($scope.publicaciones);
+
 				// Banderas para colapsar información (que viene agrupada)
 				for(var i in $scope.publicaciones)
 					$scope.collapse[$scope.publicaciones[i]._id] = true;
@@ -62,6 +67,22 @@ angular.module('PublicacionesCtrl',[]).controller('PublicacionesController', fun
 				console.error('Error de conexión con la base de datos: ', res);
 			});
 		}
+	};
+
+	// Auxiliar que permite incluir "Capítulos de libro" dentro de "Libros" y "Ponencias" dentro de "Artículos"
+	var agruparPublicaciones = function(publicacionesArray){
+		var publicaciones = publicacionesArray || [];
+		var capitulos = publicaciones.filter(function(value){return value._id === 'Capítulo de libro';});
+		var ponencias = publicaciones.filter(function(value){return value._id === 'Ponencia';});
+		var mainPublications = publicaciones.filter(function(value){return !(/Ponencia|Capítulo de libro/.test(value._id));}); // sin incluir capitulos ni ponencias
+		publicaciones = mainPublications; // sobreescribir publicaciones
+		for(var i in publicaciones){
+			if(publicaciones[i]._id === 'Libro') // incluir capitulos dentro de libros
+				publicaciones[i].publicaciones = publicaciones[i].publicaciones.concat(capitulos[0].publicaciones);
+			if(publicaciones[i]._id === 'Artículo') //  ponencias dentro de artículos
+				publicaciones[i].publicaciones = publicaciones[i].publicaciones.concat(ponencias[0].publicaciones);
+		}
+		return publicaciones;
 	};
 
 	// Cambia la visibilidad de un conjunto de publicaciones
@@ -114,7 +135,7 @@ angular.module('PublicacionesCtrl',[]).controller('PublicacionesController', fun
 		for(var i in namesArray)
 			nombres.push($scope.stylizeName(namesArray[i].nombre, namesArray[i].apellido, styleMode));
 		return nombres.join(', ');
-	}
+	};
 
 	// INICIALIZACION:
 	$scope.getPublicaciones();
