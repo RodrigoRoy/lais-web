@@ -36,7 +36,8 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 
 		.when('/publicacion', {
 			templateUrl: 'angular/Views/pages/publicaciones.html',
-			controller: 'PublicacionesController'
+			controller: 'PublicacionesController',
+			reloadOnSearch: false // Permite establecer url params sin recargar página
 		})
 
 		.when('/publicacion/nuevo', {

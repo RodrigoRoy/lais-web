@@ -22,54 +22,6 @@
 
     <!-- Formulario para agregar una nueva publicacion a la base de datos -->
     <form name="publicacionForm" id="publicacionForm" role="form" novalidate>
-        <!-- TITULO DE LA PUBLICACION -->
-        <div class="form-group" ng-class="{'has-error': publicacionForm.titulo.$dirty && publicacionForm.titulo.$invalid}">
-            <label class="control-label color-title format-title" for="titulo">
-                Título 
-                <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Nombre completo de la publicación" tooltip-placement="right"></i>
-            </label>
-            <input class="form-control" type="text" name="titulo" id="titulo" placeholder="" ng-model="publicacion.titulo" ng-trim required>
-            <div ng-messages="publicacionForm.titulo.$error" ng-show="publicacionForm.titulo.$dirty && publicacionForm.titulo.$invalid"><div ng-messages-include="error-messages"></div></div>
-        </div>
-
-        <!-- AUTORES -->
-        <div class="form-group" ng-class="{'has-error': publicacionForm.autor.$dirty && publicacionForm.autor.$invalid}">
-            <label class="control-label color-title format-title" for="autor">
-                Autor(es) 
-                <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Personas registradas como autores" tooltip-placement="right"></i>
-            </label>
-            <input class="form-control" type="text" name="autor" id="autor" placeholder="" ng-model="asyncAutorInput" uib-typeahead="autor.apellido + ', ' + autor.nombre for autor in getAutor($viewValue)" typeahead-loading="loadingAutores" typeahead-no-results="noResults" typeahead-template-url="customTemplate.html" typeahead-on-select="onSelectAutor($item, $model, $label, $event)">
-            <i class="fa fa-spinner fa-spin fa-fw" ng-show="loadingAutores"></i>
-            <div ng-show="noResults">
-                <p class="spacing-text-alert">
-                    <i class="fa fa-times" aria-hidden="true"></i> No se encontraron resultados. <a href="" ng-click="showAutorForm()">Registra al autor</a>
-                </p>
-                <div class="container-fluid subform-autor" ng-show="addingAuthor">
-                    <div class="row">
-                        <div class="col-xs-12 col-md-5">
-                            <input type="text" class="form-control" ng-model="autor.nombre" placeholder="Nombre(s) del autor">
-                        </div>
-                        <div class="col-xs-12 col-md-5">
-                            <input type="text" class="form-control" ng-model="autor.apellido" placeholder="Apellido(s) del autor">
-                        </div>
-                        <div class="col-xs-12 col-md-2">
-                            <button class="btn btn-default" ng-click="addAutor()" ng-disabled="!autor.nombre && !autor.apellido">Registrar autor</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <ol ng-show="autores && autores.length > 0">
-                <li ng-repeat="autor in autores">
-                    <span ng-show="autor.apellido">{{autor.apellido}}, </span>{{autor.nombre}} 
-                    <span ng-show="autores && autores.length > 1">
-                        <button class="btn btn-link" ng-show="!$first" ng-click="orderUpAutor($index)" alt="Subir autor"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
-                        <button class="btn btn-link" ng-show="!$last" ng-click="orderDownAutor($index)" alt="Bajar autor"><i class="fa fa-angle-down" aria-hidden="true"></i></button>
-                        <button class="btn btn-link btn-delete-color" ng-click="removeAutor($index)" alt="Quitar autor"><i class="fa fa-times" aria-hidden="true"></i></button>
-                    </span>
-                </li>
-            </ol>
-        </div>
-
         <!-- TIPO -->
         <div class="form-group" ng-class="{'has-error': publicacionForm.tipo.$dirty && publicacionForm.tipo.$invalid}">
             <label class="control-label color-title format-title" for="tipo">
@@ -80,11 +32,11 @@
                 <!-- <option value=""></option> -->
                 <option value="Documental">Documental</option>
                 <option value="Artículo">Artículo</option>
-                <option value="Libro">Libro</option>
                 <option value="Ponencia">Ponencia</option>
+                <option value="Libro">Libro</option>
+                <option value="Capítulo de libro">Capítulo de libro</option>
+                <option value="Exposición">Exposición</option>
                 <!--<option value="Página web">Página web</option>
-                <option value="Incollection">Incollection</option>
-                <option value="Manual">Manual</option>
                 <option value="Tesis">Tesis</option>
                 <option value="No especificado">No especificado</option> -->
             </select>
@@ -92,6 +44,64 @@
         </div>
         
         <div ng-show="publicacion.tipo"><!-- Contenedor de campos hasta que se elija el tipo de publicación -->
+            
+            <!-- TITULO DE LA PUBLICACION -->
+            <div class="form-group" ng-class="{'has-error': publicacionForm.titulo.$dirty && publicacionForm.titulo.$invalid}">
+                <label class="control-label color-title format-title" for="titulo">
+                    Título 
+                    <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Nombre de la publicación" tooltip-placement="right"></i>
+                </label>
+                <input class="form-control" type="text" name="titulo" id="titulo" placeholder="" ng-model="publicacion.titulo" ng-trim required>
+                <div ng-messages="publicacionForm.titulo.$error" ng-show="publicacionForm.titulo.$dirty && publicacionForm.titulo.$invalid"><div ng-messages-include="error-messages"></div></div>
+            </div>
+
+            <!-- SUBTITULO DE LA PUBLICACION -->
+            <div class="form-group" ng-class="{'has-error': publicacionForm.subtitulo.$dirty && publicacionForm.subtitulo.$invalid}" ng-show="publicacion.tipo === 'Libro' || publicacion.tipo === 'Documental'">
+                <label class="control-label color-title format-title" for="subtitulo">
+                    Subtítulo 
+                    <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Subtítulo de la publicación, en caso de que se desee separar del título principal" tooltip-placement="right"></i>
+                </label>
+                <input class="form-control" type="text" name="subtitulo" id="subtitulo" placeholder="" ng-model="publicacion.subtitulo" ng-trim required>
+                <div ng-messages="publicacionForm.subtitulo.$error" ng-show="publicacionForm.subtitulo.$dirty && publicacionForm.subtitulo.$invalid"><div ng-messages-include="error-messages"></div></div>
+            </div>
+            
+            <!-- AUTORES -->
+            <div class="form-group" ng-class="{'has-error': publicacionForm.autor.$dirty && publicacionForm.autor.$invalid}">
+                <label class="control-label color-title format-title" for="autor">
+                    Autor(es) 
+                    <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Personas registradas como autores" tooltip-placement="right"></i>
+                </label>
+                <input class="form-control" type="text" name="autor" id="autor" placeholder="" ng-model="asyncAutorInput" uib-typeahead="autor.apellido + ', ' + autor.nombre for autor in getAutor($viewValue)" typeahead-loading="loadingAutores" typeahead-no-results="noResults" typeahead-template-url="customTemplate.html" typeahead-on-select="onSelectAutor($item, $model, $label, $event)">
+                <i class="fa fa-spinner fa-spin fa-fw" ng-show="loadingAutores"></i>
+                <div ng-show="noResults">
+                    <p class="spacing-text-alert">
+                        <i class="fa fa-times" aria-hidden="true"></i> No se encontraron resultados. <a href="" ng-click="showAutorForm()">Registra al autor</a>
+                    </p>
+                    <div class="container-fluid subform-autor" ng-show="addingAuthor">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-5">
+                                <input type="text" class="form-control" ng-model="autor.nombre" placeholder="Nombre(s) del autor">
+                            </div>
+                            <div class="col-xs-12 col-md-5">
+                                <input type="text" class="form-control" ng-model="autor.apellido" placeholder="Apellido(s) del autor">
+                            </div>
+                            <div class="col-xs-12 col-md-2">
+                                <button class="btn btn-default" ng-click="addAutor()" ng-disabled="!autor.nombre && !autor.apellido">Registrar autor</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ol ng-show="autores && autores.length > 0">
+                    <li ng-repeat="autor in autores">
+                        <span ng-show="autor.apellido">{{autor.apellido}}, </span>{{autor.nombre}} 
+                        <span ng-show="autores && autores.length > 1">
+                            <button class="btn btn-link" ng-show="!$first" ng-click="orderUpAutor($index)" alt="Subir autor"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
+                            <button class="btn btn-link" ng-show="!$last" ng-click="orderDownAutor($index)" alt="Bajar autor"><i class="fa fa-angle-down" aria-hidden="true"></i></button>
+                            <button class="btn btn-link btn-delete-color" ng-click="removeAutor($index)" alt="Quitar autor"><i class="fa fa-times" aria-hidden="true"></i></button>
+                        </span>
+                    </li>
+                </ol>
+            </div>
 
             <!-- FECHA -->
             <div class="form-group">
@@ -110,7 +120,7 @@
             </div>
 
             <!-- PUBLISHER -->
-            <div class="form-group" ng-class="{'has-error': publicacionForm.publisher.$dirty && publicacionForm.publisher.$invalid}" ng-show="publicacion.tipo === 'Libro'">
+            <div class="form-group" ng-class="{'has-error': publicacionForm.publisher.$dirty && publicacionForm.publisher.$invalid}" ng-show="publicacion.tipo === 'Libro' || publicacion.tipo == 'Capítulo de libro'">
                 <label class="control-label color-title format-title" for="publisher">
                     Editorial
                     <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Nombre de la editorial encargada del libro" tooltip-placement="right"></i>
@@ -130,7 +140,7 @@
             </div>
 
             <!-- BOOKTITLE --> <!-- Libro o publicación a la que pertenece -->
-            <div class="form-group" ng-class="{'has-error': publicacionForm.booktitle.$dirty && publicacionForm.booktitle.$invalid}" ng-show="publicacion.tipo === 'Artículo'">
+            <div class="form-group" ng-class="{'has-error': publicacionForm.booktitle.$dirty && publicacionForm.booktitle.$invalid}" ng-show="publicacion.tipo === 'Capítulo de libro'">
                 <label class="control-label color-title format-title" for="booktitle">
                     Libro 
                     <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Nombre del libro o publicación donde está incluido el artículo" tooltip-placement="right"></i>
@@ -140,7 +150,7 @@
             </div>
 
             <!-- VOLUMEN -->
-            <div class="form-group" ng-class="{'has-error': publicacionForm.volumen.$dirty && publicacionForm.volumen.$invalid}" ng-show="publicacion.tipo === 'Artículo' || publicacion.tipo === 'Libro'">
+            <div class="form-group" ng-class="{'has-error': publicacionForm.volumen.$dirty && publicacionForm.volumen.$invalid}" ng-show="publicacion.tipo === 'Artículo' || publicacion.tipo === 'Libro' || publicacion.tipo === 'Capítulo de libro'">
                 <label class="control-label color-title format-title" for="volumen">
                     Volumen 
                     <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Volumen del libro o artículo" tooltip-placement="right"></i>
@@ -160,7 +170,7 @@
             </div>
 
             <!-- PÁGINAS -->
-            <div class="form-group" ng-class="{'has-error': publicacionForm.paginas.$dirty && publicacionForm.paginas.$invalid}" ng-show="publicacion.tipo === 'Artículo' || publicacion.tipo === 'Ponencia'">
+            <div class="form-group" ng-class="{'has-error': publicacionForm.paginas.$dirty && publicacionForm.paginas.$invalid}" ng-show="publicacion.tipo === 'Artículo' || publicacion.tipo === 'Ponencia' || publicacion.tipo === 'Capítulo de libro'">
                 <label class="control-label color-title format-title" for="paginas">
                     Páginas 
                     <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Rango de páginas en las que aparece el artículo o ponencia. Ejemplo: 71-105" tooltip-placement="right"></i>
@@ -170,7 +180,7 @@
             </div>
 
             <!-- COLECCION -->
-            <div class="form-group" ng-class="{'has-error': publicacionForm.coleccion.$dirty && publicacionForm.coleccion.$invalid}" ng-show="publicacion.tipo === 'Artículo'">
+            <div class="form-group" ng-class="{'has-error': publicacionForm.coleccion.$dirty && publicacionForm.coleccion.$invalid}" ng-show="publicacion.tipo === 'Artículo' || publicacion.tipo === 'Capítulo de libro'">
                 <label class="control-label color-title format-title" for="coleccion">
                     Colección 
                     <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Nombre de la colección a la puede pertenece la publicación" tooltip-placement="right"></i>

@@ -14,11 +14,12 @@ angular.module('PublicacionesCtrl',[]).controller('PublicacionesController', fun
 	$scope.autorObject = {}; // Objeto con la info del autor
 	$scope.renameId = { // Auxiliar para pluralizar los nombres (id's) de cada grupo de publicaciones
 		'Documental': 'Documentales',
+		'Artículo': 'Artículos',
 		'Ponencia': 'Ponencias',
 		'Libro': 'Libros',
-		'Artículo': 'Artículos',
-		'Página web': 'Sitios web',
+		'Capítulo de libro': 'Capítulos de libro',
 		'Exposición': 'Exposiciones'
+		'Página web': 'Sitios web',
 	};
 
 	$scope.getPublicaciones = function(){
@@ -63,8 +64,18 @@ angular.module('PublicacionesCtrl',[]).controller('PublicacionesController', fun
 		}
 	};
 
+	// Cambia la visibilidad de un conjunto de publicaciones
+	// Adicionalmente permite modificar la URL
 	$scope.toggle = function(groupId){
+		// for(var i in $scope.collapse) // Si se desea solamente tener un grupo abierto a la vez
+		// 	$scope.collapse[i] = true;
 		$scope.collapse[groupId] = !$scope.collapse[groupId];
+		$scope.setUrl(groupId);
+	};
+
+	// Establece en la URL el parámetro "show" por el valor dado
+	$scope.setUrl = function(groupName){
+		$location.search('show', groupName);
 	};
 
 	// Estiliza nombre y apellido al estilo deseado para hacer citas

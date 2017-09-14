@@ -9,20 +9,21 @@ var Schema = mongoose.Schema; // "Modelo" de la colección
 // Definición del esquema "Autor":
 var PublicacionSchema = new Schema({
 	titulo: {type: String, required: true},
+	subtitulo: {type: String}, // Libro, Documental
 	fecha: {type: Date},
 	autor: [{type: mongoose.Schema.Types.ObjectId, ref: 'Autores'}],
-	tipo: {type: String, enum: ['Artículo', 'Libro', 'Documental', 'Página web', 'Ponencia', 'Exposición']},
-	publisher: {type: String}, // Libro, Incollection
+	tipo: {type: String, enum: ['Artículo', 'Ponencia', 'Libro', 'Capítulo de libro', 'Documental', 'Exposición', 'Página web']},
+	publisher: {type: String}, // Libro, Capítulo de Libro
 	journal: {type: String},   // Artículo
 	numero: {type: String},    // Artículo
-	volumen: {type: String},   // Artículo, Libro
-	booktitle: {type: String}, // Incollection
-	paginas: {type: String},   // Artículo, Incollection, Ponencia
-	coleccion: {type: String}, // Incollection
-	isbn: {type: String},      // Libro, Incollection
+	volumen: {type: String},   // Artículo, Libro, Capítulo de Libro
+	booktitle: {type: String}, // Capítulo de Libro
+	paginas: {type: String},   // Artículo, Capítulo de Libro, Ponencia
+	coleccion: {type: String}, // Capítulo de Libro
+	isbn: {type: String},      // Libro, Capítulo de Libro?
 	descripcion: {type: String},
-	abstract: {type: String},  // !Página web
-	url: {type: String, match: [/https?.*/, 'URL debe comenzar con "http(s)://"']}, // necesario en "Página web"
+	abstract: {type: String},  // !Página web, !Exposición
+	url: {type: String, match: [/https?.*/, 'URL debe comenzar con "http(s)://"']},
 	keywords: [{type: String}], 
 	notas: {type: String},
 	imagen: {type: String},
