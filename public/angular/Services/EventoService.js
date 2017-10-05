@@ -44,6 +44,11 @@ angular.module('EventoService', []).factory('Evento', ['$http', function($http){
 			return $http.get('/api/eventos/news');
 		},
 
+		//Obtiene los años de los eventos
+		years: function(){
+			return $http.get('/api/eventos/years');
+		},
+
 		// Determina los eventos que contengan al archivoID como documento adjunto
 		attachment: function(archivoID){
 			return $http.get('/api/eventos/search?attachment=' + archivoID);

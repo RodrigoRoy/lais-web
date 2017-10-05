@@ -1,7 +1,7 @@
 <div class="bicolor-sections">
     
     <!-- Seccion de carrusel/inicio -->
-    <section id="info" style="padding: 4em 0; background-color: #222">
+    <section id="info" style="padding: 0 0 3em; background-color: #222">
         <center>
             <div uib-carousel interval="7000" active="0">
                 <div uib-slide ng-repeat="slide in slides" index="$index">
@@ -64,6 +64,7 @@
                         <img src="imgs/Huellas_de_Luz.png" class="img-responsive img-circle imagen">
                     </a>
                     <h4 class="service-heading">Huellaz de Luz</h4>
+                    <div class="service-subheading">Investigación sobre el patrimonio visual latinoamericano en acceso libre</div>
                     <p> <!-- class="text-muted" -->
                         Da acceso a <strong>imágenes</strong> de América Latina, siglos XIX y XX. Incluye documentación que permite ir más allá de las imágenes y conocer acerca de sus contextos de producción. Vincula con archivos de imágenes de diversos países latinoamericanos y quienes las estudian.
                     </p>
@@ -72,7 +73,8 @@
                     <a href="http://lais.mora.edu.mx/metadoc/#/" target="_blank">
                         <img src="imgs/metaDOC.png" class="img-responsive img-circle imagen">
                     </a>
-                    <h4 class="service-heading">metaDOC</h4>
+                    <div><h4 class="service-heading">metaDOC</h4></div>
+                    <div class="service-subheading">Documentales e investigación</div>
                     <p> <!-- class="text-muted" -->
                         Sitio web que pone a disposición la catalogación de la colección de <strong>documentales</strong> del Laboratorio Audiovisual de Investigación Social del Instituto Mora, con la intención de impulsar el análisis e investigación sobre este tipo de documentos.
                     </p>
@@ -81,12 +83,88 @@
                     <a href="http://www.mora.edu.mx/Investigacion/Interactivo_como_la_ves/index.htm" target="_blank">
                         <img src="imgs/Como_la_ves.png" class="img-responsive img-circle imagen">
                     </a>
-                    <h4 class="service-heading">¿Cómo la ves?</h4>
+                    <div><h4 class="service-heading">¿Cómo la ves?</h4></div>
+                    <div class="service-subheading">Exposición Interactiva</div>
                     <p> <!-- class="text-muted" -->
                         Interactivo diseñado para los padres, tutores y maestros que estamos interesados en reflexionar sobre el consumo indiscriminado y excesivo de la <strong>televisión comercial</strong> por parte de nuestros hijos y alumnos.
                     </p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Seccion de Publicaciones -->
+    <section id="publicaciones" class="parallax parallax-bgim-2" style="background-image: none; background-color: #222; ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading" style="color: #ccc;">Publicaciones</h2>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-3">
+                    <a href="/publicacion?show=Art%C3%ADculo">
+                        <img src="http://lorempixel.com/250/300/abstract/1" class="img-responsive">
+                    </a>
+                    <h4 class="service-heading">Artículos</h4>
+                </div>
+                <div class="col-md-3">
+                    <a href="/publicacion?show=Libro">
+                        <img src="http://lorempixel.com/250/300/abstract/2" class="img-responsive">
+                    </a>
+                    <div><h4 class="service-heading">Libros</h4></div>
+                </div>
+                <div class="col-md-3">
+                    <a href="/publicacion?show=Documental">
+                        <img src="http://lorempixel.com/250/300/abstract/3" class="img-responsive">
+                    </a>
+                    <div><h4 class="service-heading">Documentales</h4></div>
+                </div>
+                <div class="col-md-3">
+                    <a href="/publicacion?show=Exposición">
+                        <img src="http://lorempixel.com/250/300/abstract/4" class="img-responsive">
+                    </a>
+                    <div><h4 class="service-heading">Exposiciones</h4></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seccion de Eventos -->
+    <section id="publicaciones" class="parallax parallax-bgim-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Eventos</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <uib-tabset active="0" justified="false" type="tabs" vertical="false">
+                        <uib-tab index="$index" ng-repeat="year in years" ng-click="viewEvents($index)" heading="{{year._id || 'Otros'}}" classes="tab-style-years">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-3" ng-repeat="evento in eventos">
+                                    <a href="/eventos/{{evento._id}}" class="no-text-decoration">
+                                        <div class="my-thumbnail">
+                                            <!-- CON IMAGEN COMO PORTADA: -->
+                                            <img class="thumbnail-image" src="imgs/eventos/{{evento.imagen}}" ng-show="evento.imagen">
+                                            <!-- SIN IMAGEN, TEXTO COMO PORTADA: -->
+                                            <div class="new-image-replacement" ng-show="!evento.imagen"></div>
+                                            <div class="vertically-centered">
+                                                <div>{{evento.titulo}}</div>
+                                            </div>
+                                            <!-- AVISO EN EVENTOS PROXIMOS: -->
+                                            <div class="available-label" ng-show="isAvaliable(evento.fecha)">Próximamente</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </uib-tab>
+                    </uib-tabset>
+                </div>
+            </div>
+
         </div>
     </section>
 

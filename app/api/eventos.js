@@ -115,13 +115,28 @@ router.route('/')
 router.route('/news')
     .get(function(req, res){
         Evento.find() // encontrar todos
-        .sort({fechaCreacion: 'desc'})
+        .sort({fecha: 'desc'})
         .limit(4)
         .select('titulo imagen')
         .exec(function(err, eventos){
             if(err)
                 res.send(err);
             res.json(eventos);
+        })
+    })
+
+router.route('/years')
+    .get(function(req, res){
+        // Agrupar eventos por año (incluye fechas vacias)
+        Evento.aggregate([
+            {$sort: {fecha: -1}},
+            {$group: {_id: {"$substr": ["$fecha", 0, 4]}}},
+            {$sort: {_id: -1}}
+        ])
+        .exec(function(err, years){
+            if(err)
+                res.send(err);
+            res.json(years);
         })
     })
 

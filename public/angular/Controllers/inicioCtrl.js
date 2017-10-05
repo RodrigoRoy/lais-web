@@ -1,6 +1,6 @@
 //Controlador que maneja la página de Inicio
 
-angular.module('InicioCtrl',[]).controller('InicioController', function ($scope, $http, $uibModal, Carrusel){ // Evento
+angular.module('InicioCtrl',[]).controller('InicioController', function ($scope, $http, $location, $uibModal, Carrusel, Evento){ // Evento
 	
 	// Obtener datos del carrusel
 	Carrusel.get()
@@ -8,6 +8,23 @@ angular.module('InicioCtrl',[]).controller('InicioController', function ($scope,
         $scope.slides = res.data.slides;
     }, function(res){
         console.error('Error al obtener información del carrusel: ', res);
+    });
+
+    // Obtener los años disponibles de eventos
+    Evento.years()
+    .then(function(res){
+        $scope.years = res.data;
+    }, function(res){
+        console.error('Error al obtener años de los eventos: ', res);
+    });
+
+    // Obtener datos de los últimos eventos
+    Evento.news()
+    .then(function(res){
+        $scope.eventos = res.data;
+        console.log('$scope.eventos: ', $scope.eventos);
+    }, function(res){
+        console.error('Error al obtener información de eventos: ', res);
     });
 
 	// Obtener datos de la linea del tiempo
@@ -22,6 +39,11 @@ angular.module('InicioCtrl',[]).controller('InicioController', function ($scope,
 		};
 		var timeline = new TL.Timeline('timeline-embed', res.data, timelineConfig);
     });
+
+    // Envia a la página de Eventos pasando como parámetro el año particular al que se desea ir
+    $scope.viewEvents = function(yearCode){
+        $location.url('/eventos?show=' + yearCode);
+    };
 
 	// Muestra un modal con información adicional
     $scope.openModal = function(){

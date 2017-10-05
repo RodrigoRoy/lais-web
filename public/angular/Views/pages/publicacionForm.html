@@ -200,7 +200,7 @@
             </div>
 
             <!-- ABSTRACT -->
-            <div class="form-group" ng-class="{'has-error': publicacionForm.abstract.$dirty && publicacionForm.abstract.$invalid}" ng-show="publicacion.tipo != 'Página web'">
+            <div class="form-group" ng-class="{'has-error': publicacionForm.abstract.$dirty && publicacionForm.abstract.$invalid}" ng-show="publicacion.tipo != 'Página web' && publicacion.tipo != 'Exposición'">
                 <label class="control-label color-title format-title" for="abstract">
                     Abstract / Resumen 
                     <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Abstract o resumen sobre el contenido de la publicación" tooltip-placement="right"></i>

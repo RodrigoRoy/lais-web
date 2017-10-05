@@ -38,6 +38,7 @@
 	width: 250px;
 	height: 250px;
 	display: inline-block;
+	margin-top: 2em; /*Util para espaciar en version móvil*/
 }
 
 /*Color de texto en Recursos en línea*/
@@ -45,9 +46,16 @@
 	color: #b5b5b5;
 }
 
-/*Subtítulos en inicio (Recursos en línea)*/
+/*Títulos en inicio (Recursos en línea)*/
 .service-heading{
 	font-size: 1.5em;
+}
+
+/*Subtítulos en inicio (Recursos en línea)*/
+.service-subheading{
+	height: 6em;
+	font-size: 1em;
+	font-style: italic;
 }
 
 /*Icono de la parte "intro"*/
