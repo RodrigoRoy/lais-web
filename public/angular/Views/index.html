@@ -86,10 +86,14 @@
 		                        <a class="page-scroll" href="index.html#recursos" ng-hide="isIndex">Recursos en Línea</a>
 		                    </li>
 		                    <li>
-		                        <a class="page-scroll" href="/publicacion" ng-click="setActive('Publicaciones')">Publicaciones</a>
+		                        <!-- <a class="page-scroll" href="/publicacion" ng-click="setActive('Publicaciones')">Publicaciones</a> -->
+		                        <a class="page-scroll" ng-href="#publicaciones" ng-show="isIndex">Publicaciones</a>
+		                        <a class="page-scroll" href="index.html#publicaciones" ng-hide="isIndex">Publicaciones</a>
 		                    </li>
 		                    <li>
-		                    	<a class="page-scroll" href="/eventos" ng-click="setActive('Eventos')">Eventos</a>
+		                    	<!-- <a class="page-scroll" href="/eventos" ng-click="setActive('Eventos')">Eventos</a> -->
+		                    	<a class="page-scroll" ng-href="#eventos" ng-show="isIndex">Eventos</a>
+		                        <a class="page-scroll" href="index.html#eventos" ng-hide="isIndex">Eventos</a>
 		                    </li>
 		                    <!-- <li class="dropdown">
 		                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acervos <span class="caret"></span></a>
