@@ -61,7 +61,7 @@
                     Subtítulo 
                     <i class="fa fa-question-circle secret-icon" aria-hidden="true" uib-tooltip="Subtítulo de la publicación, en caso de que se desee separar del título principal" tooltip-placement="right"></i>
                 </label>
-                <input class="form-control" type="text" name="subtitulo" id="subtitulo" placeholder="" ng-model="publicacion.subtitulo" ng-trim required>
+                <input class="form-control" type="text" name="subtitulo" id="subtitulo" placeholder="" ng-model="publicacion.subtitulo" ng-trim>
                 <div ng-messages="publicacionForm.subtitulo.$error" ng-show="publicacionForm.subtitulo.$dirty && publicacionForm.subtitulo.$invalid"><div ng-messages-include="error-messages"></div></div>
             </div>
             
