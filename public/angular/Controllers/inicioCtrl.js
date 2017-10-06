@@ -22,7 +22,6 @@ angular.module('InicioCtrl',[]).controller('InicioController', function ($scope,
     Evento.news()
     .then(function(res){
         $scope.eventos = res.data;
-        console.log('$scope.eventos: ', $scope.eventos);
     }, function(res){
         console.error('Error al obtener información de eventos: ', res);
     });
