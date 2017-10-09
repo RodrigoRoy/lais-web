@@ -48,17 +48,21 @@
 		    <nav class="navbar navbar-default navbar-fixed-top" >
 		        
 		            <!-- Brand and toggle get grouped for better mobile display -->
-		            <div class="navbar-header">
+		            <div class="navbar-header" ng-cloak>
 		                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
 		                    <span class="sr-only">Toggle navigation</span>
 		                    <span class="icon-bar"></span>
 		                    <span class="icon-bar"></span>
 		                    <span class="icon-bar"></span>
 		                </button>
-		                <a class="navbar-brand brand-spacing hidden-xs" href="index.html">
+		                <a class="navbar-brand brand-spacing hidden-xs" ng-click="openModal()" ng-show="!loggedIn">
 		                	<center>
 		                		<img src="imgs/lais_logo.png">
-		                		<!-- <img src="imgs/mora_logo.png" class="hidden-sm"> -->
+		                	</center>
+		                </a>
+		                <a class="navbar-brand brand-spacing hidden-xs" href="/admin" ng-show="loggedIn">
+		                	<center>
+		                		<img src="imgs/lais_logo.png">
 		                	</center>
 		                </a>
 		                <a class="navbar-brand brand-spacing hidden-xs hidden-sm" href="http://www.mora.edu.mx/" target="_blank">
@@ -121,20 +125,17 @@
 	            <div class="row">
 	                <div class="col-xs-12 col-sm-6 col-md-4">
 	                    <a href="http://www.mora.edu.mx" target="_blank"><img src="imgs/Mora_logo.png" class="footer-logo"></a>
-	                    <a href="http://www.conacyt.mx/" target="_blank"><img src="imgs/Conacyt_logo.png" class="footer-logo"></a>
 	                </div>
 	                <div class="col-xs-12 col-sm-6 col-md-4 col-md-push-4">
-	                    <ul class="list-unstyled quicklinks">
-	                    	<!-- <li>
-	                    		<a href="/contacto">Contacto</a>
-	                        </li> -->
+	                    <a href="http://www.conacyt.mx/" target="_blank"><img src="imgs/Conacyt_logo.png" class="footer-logo"></a>
+	                    <!-- <ul class="list-unstyled quicklinks">
 	                        <li ng-show="!loggedIn">
 	                        	<a href="" ng-click="openModal()">Login</a>
 	                        </li>
 	                        <li ng-show="loggedIn">
 	                        	<a href="/admin">Administración del sitio</a>
 	                        </li>
-	                    </ul>
+	                    </ul> -->
 	                </div>
 	                <div class="col-xs-12 col-sm-12 col-md-4 col-md-pull-4">
 	                    <ul class="list-inline social-buttons">
