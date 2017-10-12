@@ -15,27 +15,27 @@
 
 	<!-- Formulario para agregar nuevo(s) archivo(s) a la base de datos -->
     <div class="spacing-block"> <!-- ng-show="sesion" -->
-	    <button type="button" class="btn btn-default full-width" ng-click="creatingUser = true" ng-show="!creatingUser && can('create')"><i class="fa fa-user-plus" aria-hidden="true"></i> Nuevo usuario</button>
+	    <button type="button" class="btn btn-default full-width" ng-click="creatingUser = true" ng-show="!creatingUser && can('create') && user.admin"><i class="fa fa-user-plus" aria-hidden="true"></i> Nuevo usuario</button>
 
 	    <form name="userForm" id="userForm" role="form" novalidate ng-show="creatingUser">
 	        <div class="form-group" ng-class="{'has-error': userForm.username.$dirty && userForm.username.$invalid}">
 	            <label class="control-label color-title format-title" for="username">Nombre</label>
-	            <input class="form-control" type="text" name="username" id="username" placeholder="Usa un nombre breve y fácil de recordar" ng-model="newUser.username" ng-maxlength="150" ng-trim required>
+	            <input class="form-control" type="text" name="username" id="username" placeholder="" ng-model="newUser.username" ng-maxlength="150" ng-trim required>
 	            <div ng-messages="userForm.username.$error" ng-show="userForm.username.$dirty && userForm.username.$invalid"><div ng-messages-include="error-messages"></div></div>
 	        </div>
 	        <div class="form-group" ng-class="{'has-error': userForm.email.$dirty && userForm.email.$invalid}">
-	            <label class="control-label color-title format-title" for="email">Correo</label>
-	            <input class="form-control" type="email" name="email" id="email" placeholder="Tu dirección de correo electrónico" ng-model="newUser.email" required>
+	            <label class="control-label color-title format-title" for="email">Correo electrónico</label>
+	            <input class="form-control" type="email" name="email" id="email" placeholder="" ng-model="newUser.email" required>
 	            <div ng-messages="userForm.email.$error" ng-show="userForm.email.$dirty && userForm.email.$invalid"><div ng-messages-include="error-messages"></div></div>
 	        </div>
 	        <div class="form-group" ng-class="{'has-error': userForm.password.$dirty && userForm.password.$invalid}">
 	            <label class="control-label color-title format-title" for="password">Contraseña</label>
-	            <input class="form-control" type="password" name="password" id="password" placeholder="De al menos 3 letras de longitud" ng-model="newUser.password" ng-minlength="3" required>
+	            <input class="form-control" type="password" name="password" id="password" placeholder="" ng-model="newUser.password" ng-minlength="3" required>
 	            <div ng-messages="userForm.password.$error" ng-show="userForm.password.$dirty && userForm.password.$invalid"><div ng-messages-include="error-messages"></div></div>
 	        </div>
 	        <div class="form-group" ng-class="{'has-error': userForm.confirmPassword.$dirty && userForm.confirmPassword.$invalid}">
 	            <label class="control-label color-title format-title" for="confirmPassword">Confirmar contraseña</label>
-	            <input class="form-control" type="password" name="confirmPassword" id="confirmPassword" placeholder="Repite tu contraseña" ng-model="confirmPassword" ng-minlength="3" required ui-validate="'$value === newUser.password'">
+	            <input class="form-control" type="password" name="confirmPassword" id="confirmPassword" placeholder="" ng-model="confirmPassword" ng-minlength="3" required ui-validate="'$value === newUser.password'">
 	            <div ng-messages="userForm.confirmPassword.$error" ng-show="userForm.confirmPassword.$dirty && userForm.confirmPassword.$invalid"><div ng-messages-include="error-messages"></div></div>
 	        </div>
 	        <label class="control-label color-title format-title">Permisos</label>
@@ -60,7 +60,7 @@
 	        	</label>
 	        </div>
 	        
-	        <div class="checkbox" style="margin-top: 1.5em;">
+	        <div class="checkbox" style="margin-top: 1.5em;" ng-show="user.admin">
 	        	<label>
 	        		<input type="checkbox" name="" ng-model="newUser.admin"> <span class="format-title"> Administrador</span> - Un usuario administrador puede revocar permisos y eliminar otros usuarios.
 	        	</label>
@@ -130,12 +130,12 @@
 						<input type="checkbox" ng-show="usuario._id === editable" ng-model="tempUser.admin">
 					</td>
 					<!-- EDITAR USUARIO -->
-					<td ng-show="can('update')">
+					<td ng-show="can('update') && user.admin"> <!-- El nombre "usurio" existe como referencia al usuario logeado y se sobreescribe -->
 						<button class="btn btn-default btn-xs" ng-show="usuario._id != editable" ng-click="enableEdit(usuario)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
 						<button class="btn btn-default btn-xs" ng-show="usuario._id === editable" ng-click="updateUser()"><i class="fa fa-check" aria-hidden="true"></i></button>
 					</td>
 					<!-- BORRAR USUARIO -->
-					<td ng-show="can('delete')">
+					<td ng-show="can('delete') && user.admin">
 						<button class="btn btn-danger btn-xs" ng-click="openModal(usuario)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
 					</td>
 				</tr>

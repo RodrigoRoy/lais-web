@@ -150,4 +150,5 @@ angular.module('UsuariosCtrl',[]).controller('UsuariosController', function ($sc
 
     // *** INICIALIZACIÓN ***
 	$scope.getUsers();
+	console.log("user: ", $scope.user);
 })
