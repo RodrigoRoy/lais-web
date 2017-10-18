@@ -58,6 +58,18 @@
 	font-style: italic;
 }
 
+/*Permite que los links no tengan un color diferente. Útil para encabezados de Publicaciones y Eventos*/
+.link-other-color, .link-other-color:active, .link-other-color:focus, .link-other-color:hover, .link-other-color:visited{
+	color: #ccc;
+}
+
+/*Imagenes representativas para la subsección de Publicaciones: mismo tamaño y centradas*/
+.publicaciones-inicio{
+	height: 350px;
+	margin-left: auto;
+    margin-right: auto;
+}
+
 /*Icono de la parte "intro"*/
 #iconoLAIS{
 	margin-top: calc(23px - 100%);
