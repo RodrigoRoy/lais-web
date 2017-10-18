@@ -45,11 +45,11 @@
 	    			<td>{{publicacion.tipo}}</td>
 	    		</tr>
 	    		<tr ng-show="publicacion.publisher">
-	    			<td>Publisher</td>
+	    			<td>Editorial</td>
 	    			<td>{{publicacion.publisher}}</td>
 	    		</tr>
 	    		<tr ng-show="publicacion.journal">
-	    			<td>Journal</td>
+	    			<td>Revista</td>
 	    			<td>{{publicacion.journal}}</td>
 	    		</tr>
 	    		<tr ng-show="publicacion.numero">
@@ -77,7 +77,7 @@
 	    			<td>{{publicacion.descripcion}}</td>
 	    		</tr>
 	    		<tr ng-show="publicacion.abstract">
-	    			<td>Abstract</td>
+	    			<td>Resumen</td>
 	    			<td>{{publicacion.abstract}}</td>
 	    		</tr>
 	    		<tr ng-show="publicacion.url">
@@ -98,11 +98,11 @@
 	    		</tr>
 	    		<tr ng-show="publicacion.keywords && publicacion.keywords.length > 0">
 	    			<td>Palabras clave</td>
-	    			<td>{{publicacion.keywords.join(', ')}}</td>
-	    		</tr>
-	    		<tr ng-show="publicacion.imagen">
-	    			<td>Imagen</td>
-	    			<td><img src="imgs/publicaciones/{{publicacion.imagen}}" class="imagen-portada"></td>
+	    			<td><span class="label label-default" style="margin-right: 1em;" ng-repeat="keyword in publicacion.keywords">{{keyword}}</span></td>
+                </tr>
+                <tr ng-show="publicacion.imagen">
+                    <td>Imagen</td>
+                    <td><img src="imgs/publicaciones/{{publicacion.imagen}}" class="imagen-portada"></td>
 	    		</tr>
 	    	</tbody>
 	    </table>

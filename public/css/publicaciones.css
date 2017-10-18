@@ -38,6 +38,11 @@
 	max-height: 400px;
 }
 
+/*Ventana auxiliar (modal). Se usa la clase .modal-publication para solo sobreescribir esta instancia de modal*/
+.modal-publication div .modal-content{
+	background-color: rgba(238, 238, 238, 0.95);
+}
+
 /*Estilo a usar en tamaño sm, md, lg*/
 @media screen and (min-width: 768px){
 	/*Se disminuye ligeramente el tamaño de fuente*/

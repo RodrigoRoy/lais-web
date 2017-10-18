@@ -22,7 +22,8 @@
         </div>
         <div uib-collapse="collapse[group._id]">
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="publicacion in group.publicaciones">
-                <a href="publicacion/{{publicacion._id}}" class="no-text-decoration">
+                <!-- <a href="publicacion/{{publicacion._id}}" class="no-text-decoration"> -->
+                <a href="" class="no-text-decoration" ng-click="openModal(publicacion._id)">
                     <div class="my-thumbnail">
                         <!-- CON IMAGEN COMO PORTADA: -->
                         <img class="thumbnail-image" src="imgs/publicaciones/{{publicacion.imagen}}" ng-show="publicacion.imagen"> 
@@ -37,4 +38,105 @@
         </div>
     </div>
 
+    <script type="text/ng-template" id="publicacionModal.html">
+        <div class="modal-header">
+            <center><h2 class="color-title">{{publicacion.titulo}}</h2></center>
+        </div>
+        <div class="modal-body">
+            <table class="table table-condensed">
+                <tbody>
+                    <tr>
+                        <td class="col-xs-2">Título</td>
+                        <td class="col-xs-10">{{publicacion.titulo}}</td>
+                    </tr>
+                    <tr ng-show="publicacion.booktitle">
+                        <td class="col-xs-2">Incluido en</td>
+                        <td class="col-xs-10">{{publicacion.booktitle}}</td>
+                    </tr>
+                    <tr ng-show="publicacion.autor && publicacion.autor.length > 0">
+                        <td class="col-xs-2">Autor<span ng-show="publicacion.autor.length > 1">es</span></td>
+                        <td class="col-xs-10">
+                            <ul class="list-unstyled">
+                                <li ng-repeat="autor in publicacion.autor"><a href="/publicacion?autor={{autor._id}}">{{autor.nombre}} {{autor.apellido}}</a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr ng-show="publicacion.fecha">
+                        <td class="col-xs-2">Año</td>
+                        <td class="col-xs-10">{{publicacion.fecha | date: 'yyyy'}}</td>
+                    </tr>
+                    <tr>
+                        <td class="col-xs-2">Tipo de publicación</td>
+                        <td class="col-xs-10">{{publicacion.tipo}}</td>
+                    </tr>
+                    <tr ng-show="publicacion.publisher">
+                        <td class="col-xs-2">Editorial</td>
+                        <td class="col-xs-10">{{publicacion.publisher}}</td>
+                    </tr>
+                    <tr ng-show="publicacion.journal">
+                        <td class="col-xs-2">Revista</td>
+                        <td class="col-xs-10">{{publicacion.journal}}</td>
+                    </tr>
+                    <tr ng-show="publicacion.numero">
+                        <td class="col-xs-2">Número</td>
+                        <td class="col-xs-10">{{publicacion.numero}}</td>
+                    </tr>
+                    <tr ng-show="publicacion.volumen">
+                        <td class="col-xs-2">Volumen</td>
+                        <td class="col-xs-10">{{publicacion.volumen}}</td>
+                    </tr>
+                    <tr ng-show="publicacion.paginas">
+                        <td class="col-xs-2">Páginas</td>
+                        <td class="col-xs-10">{{publicacion.paginas}}</td>
+                    </tr>
+                    <tr ng-show="publicacion.coleccion">
+                        <td class="col-xs-2">Colección a la que pertenece</td>
+                        <td class="col-xs-10">{{publicacion.coleccion}}</td>
+                    </tr>
+                    <tr ng-show="publicacion.isbn">
+                        <td class="col-xs-2">ISBN</td>
+                        <td class="col-xs-10">{{publicacion.isbn}}</td>
+                    </tr>
+                    <tr ng-show="publicacion.descripcion">
+                        <td class="col-xs-2">Descripción</td>
+                        <td class="col-xs-10">{{publicacion.descripcion}}</td>
+                    </tr>
+                    <tr ng-show="publicacion.abstract">
+                        <td class="col-xs-2">Resumen</td>
+                        <td class="col-xs-10">{{publicacion.abstract}}</td>
+                    </tr>
+                    <tr ng-show="publicacion.url">
+                        <td class="col-xs-2">URL</td>
+                        <td class="col-xs-10"><a href="{{publicacion.url}}" target="_blank">{{publicacion.url}}</a></td>
+                    </tr>
+                    <tr ng-show="publicacion.notas">
+                        <td class="col-xs-2">Notas</td>
+                        <td class="col-xs-10">{{publicacion.notas}}</td>
+                    </tr>
+                    <tr ng-show="publicacion.adjuntos && publicacion.adjuntos.length > 0">
+                        <td class="col-xs-2">Archivos adjuntos</td>
+                        <td class="col-xs-10">
+                            <ul class="list-unstyled">
+                                <li ng-repeat="adjunto in publicacion.adjuntos"><a href="files/{{adjunto.location + adjunto.filename}}" target="_blank">{{adjunto.filename}}</a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr ng-show="publicacion.keywords && publicacion.keywords.length > 0">
+                        <td class="col-xs-2">Palabras clave</td>
+                        <td class="col-xs-10"><span class="label label-default" style="margin-right: 1em;" ng-repeat="keyword in publicacion.keywords">{{keyword}}</span></td>
+                    </tr>
+                    <tr ng-show="publicacion.imagen">
+                        <td class="col-xs-2">Portada</td>
+                        <td class="col-xs-10"><img src="imgs/publicaciones/{{publicacion.imagen}}" class="imagen-portada"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="closeModal()">Cerrar</button>
+        </div>
+    </script>
+
 </div>
+
+

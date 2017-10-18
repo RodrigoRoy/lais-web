@@ -1,6 +1,6 @@
 /* Formulario para registrar una publicación */
 
-angular.module('PublicacionesCtrl',[]).controller('PublicacionesController', function ($scope, $routeParams, $location, Publicacion, Autor){
+angular.module('PublicacionesCtrl',[]).controller('PublicacionesController', function ($scope, $routeParams, $location, $uibModal, Publicacion, Autor){
 
 	// Variables
 	$scope.publicaciones = [];
@@ -136,6 +136,30 @@ angular.module('PublicacionesCtrl',[]).controller('PublicacionesController', fun
 			nombres.push($scope.stylizeName(namesArray[i].nombre, namesArray[i].apellido, styleMode));
 		return nombres.join(', ');
 	};
+
+	// Muestra un modal con información adicional
+    $scope.openModal = function(publicacionID){
+    	Publicacion.get(publicacionID)
+		.then(function(res){ // Success
+			
+			$scope.publicacion = res.data;
+	    	
+	    	$uibModal.open({
+	    		// ariaDescribedBy: 'modal-body',
+	    		size: 'lg',
+	    		templateUrl: 'publicacionModal.html',
+	    		scope: $scope, // pasar el actual $scope (evitar 'crear' otro controlador)
+	            windowClass: 'modal-publication', // clase CSS que se agrega al Modal para identificarlo
+	    		controller: function($uibModalInstance){
+	    			$scope.closeModal = function(){
+	    				$uibModalInstance.dismiss('cancel');
+	    			};
+	    		}
+	    	});
+		}, function(res){ // Fail
+			console.error('Error de conexión con la base de datos: ', res);
+		});
+    }
 
 	// INICIALIZACION:
 	$scope.getPublicaciones();
