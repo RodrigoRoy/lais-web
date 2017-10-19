@@ -137,13 +137,11 @@ angular.module('PublicacionesCtrl',[]).controller('PublicacionesController', fun
 		return nombres.join(', ');
 	};
 
-	// Muestra un modal con información adicional
+	// Muestra un modal con la información de la publicación
     $scope.openModal = function(publicacionID){
     	Publicacion.get(publicacionID)
-		.then(function(res){ // Success
-			
-			$scope.publicacion = res.data;
-	    	
+		.then(function(res){ // Success			
+			$scope.publicacion = res.data;	    	
 	    	$uibModal.open({
 	    		// ariaDescribedBy: 'modal-body',
 	    		size: 'lg',

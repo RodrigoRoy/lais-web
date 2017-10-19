@@ -15,7 +15,8 @@
 				<uib-tab index="$index" ng-repeat="group in eventos" ng-click="setUrl($index)" heading="{{group._id || 'Otros'}}" classes="tab-style-years">
 					<div class="row">
 						<div class="col-sm-6 col-md-4" ng-repeat="evento in group.eventos">
-							<a href="/eventos/{{evento._id}}" class="no-text-decoration">
+							<!-- <a href="/eventos/{{evento._id}}" class="no-text-decoration"> -->
+							<a href="" class="no-text-decoration" ng-click="openModal(evento._id)">
 								<div class="my-thumbnail">
 						  			<!-- CON IMAGEN COMO PORTADA: -->
 						  			<img class="thumbnail-image" src="imgs/eventos/{{evento.imagen}}" ng-show="evento.imagen">
@@ -34,6 +35,113 @@
 			</uib-tabset>
 		</div>
 	</div>
+
+	<script type="text/ng-template" id="eventoModal.html">
+        <div class="modal-header">
+            <center><h2 class="color-title">{{evento.titulo}}</h2></center>
+        </div>
+        <div class="modal-body">
+			<!-- TITULO E IMAGEN -->
+			<center>
+				<!-- <h1 class="title"></h1> -->
+				<img class="img-responsive img-rounded" src="imgs/eventos/{{evento.imagen}}">
+			</center>
+			<hr>
+			<!-- CONTENIDO (HTML) -->
+			<p ng-bind-html="evento.contenidoHTML"></p>
+			<hr>
+			<!-- MAPA -->
+			<div class="geocode-direction" ng-show="geocodeResult">
+				<h4 class="subtitle-color">Dirección</h4>
+				<p>{{geocodeResult.formatted_address}}</p>
+				<div id="map"></div>
+			</div>
+			<!-- FECHA Y HORARIO -->
+			<div ng-if="evento.fecha">
+				<h4 class="subtitle-color">Fecha <span ng-show="evento.horario">y hora</span></h4>
+				<p class="capitalize">
+					{{evento.fecha | date : 'fullDate'}}
+					<span ng-show="evento.fechaFin"> &ndash; {{evento.fechaFin | date : 'fullDate'}}</span>
+					<span ng-show="evento.horario"><br>
+						{{evento.horario | date : 'shortTime'}}
+						<span ng-show="evento.horarioFin"> a {{evento.horarioFin | date : 'shortTime'}}</span>
+					</span>
+				</p>
+			</div>
+			<!-- COORDINADOR DEL EVENTO -->
+			<div ng-if="evento.coordinador && evento.coordinador.length > 0">
+				<h4 class="subtitle-color">Coordinador<span ng-if="evento.coordinador.length == 1">(a)</span><span ng-if="evento.coordinador.length > 1">es</span> del evento</h4>
+				<p>{{coordinador}}</p>
+			</div>
+			<!-- PARTICIPANTES DESTACADOS -->
+			<div ng-if="evento.participantes && evento.participantes.length > 0">
+				<h4 class="subtitle-color">Participante<span ng-if="evento.participantes.length > 1">s</span> destacado<span ng-if="evento.participantes.length > 1">s</span></h4>
+				<p>{{participantes}}</p>
+			</div>
+			<!-- TIPO DE EVENTO -->
+			<div ng-if="evento.tipo">
+				<h4 class="subtitle-color">Tipo de evento</h4>
+				<p class="capitalize">{{evento.tipo}}</p>
+			</div>
+			<!-- NOTAS -->
+			<div ng-if="evento.notas">
+				<h4 class="subtitle-color">Notas</h4>
+				<p>{{evento.notas}}</p>
+			</div>
+			<!-- ARCHIVOS ADJUNTOS -->
+			<div ng-if="evento.documentos && evento.documentos.length > 0">
+				<h4 class="subtitle-color">Archivos adjuntos</h4>
+				<!-- IMAGENES -->
+				<div class="row" ng-if="evento.adjuntos.imagenes.length > 0">
+					<div class="col-xs-6 col-sm-4 col-md-3 col-lg-2" ng-repeat="archivo in evento.adjuntos.imagenes">
+						<a href="files/{{archivo.location + archivo.filename}}" target="_blank"><img src="files/{{archivo.location + archivo.filename}}"></a>
+					</div>
+				</div>
+				<!-- VIDEOS -->
+				<div class="row" ng-if="evento.adjuntos.videos.length > 0">
+					<div class="col-xs-12 col-md-6" ng-repeat="archivo in evento.adjuntos.videos">
+						<video controls style="width: 100%;"> <source src="{{'files/' + archivo.location + archivo.filename | trustUrl}}" type="video/mp4">
+							<a href="files/{{archivo.location + archivo.filename}}" target="_blank">{{archivo.filename}}</a>
+						</video>
+					</div>
+				</div>
+				<!-- DOCUMENTOS DE TEXTO -->
+				<div ng-if="evento.adjuntos.documentos.length > 0">
+					<ul>
+						<li ng-repeat="archivo in evento.adjuntos.documentos">
+							<a href="files/{{archivo.location + archivo.filename}}" target="_blank">{{archivo.filename}}</a> <small><i class="fa fa-file-text-o" aria-hidden="true"> {{archivo.size}}</small></i>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- KEYWORDS -->
+			<div ng-if="evento.keywords && evento.keywords.length > 0">
+				<!-- <h4 class="subtitle-color">Palabras clave</h4> -->
+				<p>
+					<span class="label label-default label-spacing" ng-repeat="keyword in evento.keywords">{{keyword}}</span>
+				</p>
+			</div>
+			<!-- REDES SOCIALES -->
+			<div>
+				<p>
+					<!-- FACEBOOK -->
+					<button class="btn btn-default" socialshare socialshare-provider="facebook" socialshare-url="{{url + '/' + evento._id}}" socialshare-text="{{evento.titulo}}"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</button>
+					<!-- TWITTER -->
+					<button class="btn btn-default" socialshare socialshare-provider="twitter" socialshare-text="{{evento.titulo}}" socialshare-url="{{url + '/' + evento._id}}"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</button>
+					<!-- EMAIL -->
+					<button class="btn btn-default" socialshare socialshare-provider="email" socialshare-subject="{{evento.titulo}}" socialshare-body="{{evento.titulo}}
+					Información en la página web del Laboratorio Audiovisual de Investigación Social:
+					{{url + '/' + evento._id}}"><i class="fa fa-envelope-o" aria-hidden="true"></i> Email</button>
+				</p>
+			</div>
+			
+        	<!-- <pre>{{evento | json}}</pre> -->
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="closeModal()">Cerrar</button>
+        </div>
+    </script>
+
 
 	
 </div>
