@@ -122,7 +122,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-3">
                     <a href="/publicacion?show=Exposición">
-                        <img src="http://lorempixel.com/250/300/abstract/4" class="img-responsive publicaciones-inicio">
+                        <img src="/imgs/publicaciones/FOTOGRAFÍA%20Y%20CIUDAD.jpg" class="img-responsive publicaciones-inicio">
                     </a>
                     <div><h4 class="service-heading"><a href="/publicacion?show=Exposición" class="link-other-color no-text-decoration">Exposiciones</a></h4></div>
                 </div>
@@ -145,7 +145,8 @@
                         <uib-tab index="$index" ng-repeat="year in years" ng-click="viewEvents($index)" heading="{{year._id || 'Otros'}}" classes="tab-style-years">
                             <div class="row">
                                 <div class="col-sm-6 col-md-3" ng-repeat="evento in eventos">
-                                    <a href="/eventos/{{evento._id}}" class="no-text-decoration">
+                                    <!-- <a href="/eventos/{{evento._id}}" class="no-text-decoration"> -->
+                                    <a href="/eventos" class="no-text-decoration">
                                         <div class="my-thumbnail">
                                             <!-- CON IMAGEN COMO PORTADA: -->
                                             <img class="thumbnail-image" src="imgs/eventos/{{evento.imagen}}" ng-show="evento.imagen">
