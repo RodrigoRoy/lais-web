@@ -33,7 +33,7 @@ angular.module('InicioCtrl',[]).controller('InicioController', function ($scope,
 			scale_factor: 2,
 			optimal_tick_width: 100,
 			start_at_slide: 0,
-			duration: 950,
+			duration: 1000,
 			language: 'es'
 		};
 		var timeline = new TL.Timeline('timeline-embed', res.data, timelineConfig);

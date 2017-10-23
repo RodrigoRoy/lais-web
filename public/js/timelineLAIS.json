@@ -3,6 +3,9 @@
 		"text": {
 			"headline": "Trayectoria del LAIS",
 			"text": "En esta linea del tiempo, se muestran los sucesos y trabajos más destacados donde el LAIS contribuyó a la investigación social con materiales audiovisuales."
+		},
+		"background": {
+			"url": "http://lais.mora.edu.mx/imgs/background4.jpg"
 		}
 	},
 	"events": [
@@ -15,11 +18,11 @@
 				"text": "Cima, una estación de ferrocarril ubicada en el Km C-62 de la línea que durante cien años facilitó el transpporte entre la Ciudad de México y el río Balsas hasta ser clausurada en junio de 1997, constituye el punto de partida y de llegada de este viaje que recorrimos a través de numerosas vivencias y estaciones de la mano de Salvador Núñez, ferrocarrilero en México durante cincuenta años. Su historia de vida, que inicia en los años treinta en el norte del país, es un reflejo de lo que los Ferrocarriles representaron durante los sesenta años que fueron Nacionales, de 1937 a 1997."
 			},
 			"media": {
-				"url": "https://books.google.co.cr/books/content?id=ALq3AAAAIAAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE71f4W0lJFpxG9bmU7YRkK8GkC41SHX-ifbCAhUaPWX-kagadVhxyFyQxTqx_p-M_sjzgmmWPX_Yr3AFWrwNWo-9UBPNRPBsqiR3KFtXsALEOmo3l0E"
+				"url": "http://lais.mora.edu.mx/imgs/publicaciones/km62.jpg"
 			},
 			"group": "Publicaciones",
 			"background": {
-				"color": "#7d7d7d"
+				"url": "http://lais.mora.edu.mx/imgs/background6.jpg"
 			}
 		},
 		{
@@ -31,11 +34,11 @@
 				"text": "Esta obra presenta diversas posturas teóricas y diferentes opciones metodológicas del trabajo con documentos visuales y audiovisuales buscando su construcción como fuentes de investigación. Pensamos que esto puede ser de gran utilidad para los procesos de enseñanza en este campo apenas en gestación, con opción a muy escasos textos de estas características publicados en español y sobre este tipo de estudios en el ámbito latinoamericano."
 			},
 			"media": {
-				"url": "https://libreria.mora.edu.mx/interno/files//5b77dbff8a456a611040bd9017bc6dff.jpg"
+				"url": "http://lais.mora.edu.mx/imgs/publicaciones/investigacion.jpg"
 			},
 			"group": "Publicaciones",
 			"background": {
-				"color": "#7d7d7d"
+				"url": "http://lais.mora.edu.mx/imgs/background6.jpg"
 			}
 		},
 		{
@@ -47,11 +50,11 @@
 				"text": "Resultado del trabajo desarrollado por sus autores en el Seminario La Fotografía como Fuente de Investigación Social, que tuvo lugar en el Instituto Mora para promover la reflexión periódica sobre la incorporación de las imágenes en las investigaciones que llevábamos a cabo varios colegas desde diversas disciplinas."
 			},
 			"media": {
-				"url": "https://pictures.abebooks.com/isbn/9786077613749-es-300.jpg"
+				"url": "http://lais.mora.edu.mx/imgs/publicaciones/investigaciones%20con.jpg"
 			},
 			"group": "Publicaciones",
 			"background": {
-				"color": "#7d7d7d"
+				"url": "http://lais.mora.edu.mx/imgs/background6.jpg"
 			}
 		},
 		{
@@ -67,7 +70,7 @@
 			},
 			"group": "Publicaciones",
 			"background": {
-				"color": "#7d7d7d"
+				"url": "http://lais.mora.edu.mx/imgs/background6.jpg"
 			}
 		},
 
@@ -84,7 +87,10 @@
 			"media": {
 				"url": "https://www.youtube.com/watch?v=b6F9n60veoE"
 			},
-			"group": "Documentales"
+			"group": "Documentales",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+			}
 		},
 		{
 			"start_date": {
@@ -97,7 +103,10 @@
 			"media": {
 				"url": "https://www.youtube.com/watch?v=mMZdniUCXWA"
 			},
-			"group": "Documentales"
+			"group": "Documentales",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+			}
 		},
 		{
 			"start_date": {
@@ -111,7 +120,10 @@
 			"media": {
 				"url": "https://www.youtube.com/watch?v=5p-50GQrmUg"
 			},
-			"group": "Documentales"
+			"group": "Documentales",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+			}
 		},
 		{
 			"start_date": {
@@ -124,7 +136,10 @@
 			"media": {
 				"url": "https://www.youtube.com/watch?v=dfqJ3zQ2p_0"
 			},
-			"group": "Documentales"
+			"group": "Documentales",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+			}
 		},
 		{
 			"start_date": {
@@ -137,7 +152,10 @@
 			"media": {
 				"url": "https://www.youtube.com/watch?v=jKq581LKOmE"
 			},
-			"group": "Documentales"
+			"group": "Documentales",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+			}
 		},
 		{
 			"start_date": {
@@ -150,7 +168,10 @@
 			"media": {
 				"url": "https://www.youtube.com/watch?v=1U5CZrhKLLI"
 			},
-			"group": "Documentales"
+			"group": "Documentales",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+			}
 		},
 		{
 			"start_date": {
@@ -164,7 +185,10 @@
 			"media": {
 				"url": "https://www.youtube.com/watch?v=fmWn7k2m01g"
 			},
-			"group": "Documentales"
+			"group": "Documentales",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+			}
 		},
 		{
 			"start_date": {
@@ -177,7 +201,10 @@
 			"media": {
 				"url": "https://www.youtube.com/watch?v=cj2Y0wtE-eE"
 			},
-			"group": "Documentales"
+			"group": "Documentales",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+			}
 		},
 		{
 			"start_date": {
@@ -191,7 +218,10 @@
 			"media": {
 				"url": "https://www.youtube.com/watch?v=JJDKf1EPRh0"
 			},
-			"group": "Documentales"
+			"group": "Documentales",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+			}
 		},
 		{
 			"start_date": {
@@ -199,12 +229,15 @@
 			},
 			"text": {
 				"headline": "El Triángulo de Tacubaya",
-				"text": "<strong>Historia del Cine Hipódromo Condesa</strong><br>Durante ya más de un siglo la gente ha acudido a entretenerse con la proyección de películas y ha sido testigo de la transformación de los recintos cinematográficos y por ende de las relaciones sociales que en ellos se experimentan. Una de esas salas de cine es el Hipódromo Condesa, viejo inmueble del barrio de Tacubaya que a más de 60 años de haber sido inaugurado sigue funcionando todos los días. Tomando como referencia al cine del edificio Ermita, el video hace una reconstrucción de las distintas etapas de la exhibición cinematográfica en la ciudad de México, contemplando en todo momento las circunstancias y los contextos que las generaron. La historia, la imagen, los testimonios y el análisis se conjugan en El triángulo de Tacubaya para construir un relato documental en busca de entender nuestro presente."
+				"text": "<strong>Historia del Cine Hipódromo Condesa</strong><br>Durante ya más de un siglo la gente ha acudido a entretenerse con la proyección de películas y ha sido testigo de la transformación de los recintos cinematográficos. Una de esas salas de cine es el Hipódromo Condesa. Tomando como referencia al cine del edificio Ermita, el video hace una reconstrucción de las distintas etapas de la exhibición cinematográfica en la ciudad de México, contemplando en todo momento las circunstancias y los contextos que las generaron."
 			},
 			"media": {
 				"url": "https://www.youtube.com/watch?v=QetHxG5fLOA"
 			},
-			"group": "Documentales"
+			"group": "Documentales",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+			}
 		},
 		{
 			"start_date": {
@@ -217,7 +250,10 @@
 			"media": {
 				"url": "https://www.youtube.com/watch?v=62Wsf8lb04Y"
 			},
-			"group": "Documentales"
+			"group": "Documentales",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+			}
 		},
 		{
 			"start_date": {
@@ -225,12 +261,15 @@
 			},
 			"text": {
 				"headline": "De la Tele a la Boca…",
-				"text": "<strong>Una Reflexión sobre Desarrollo Infantil y Salud</strong><br>Niños, padres y maestras de un preescolar en Ciudad Netzahualcóyotl, Estado de México, investigan, reflexionan y construyen alternativas para transformar prácticas y hábitos cotidianos que están mermando de forma acelerada la calidad de vida de la población infantil. Diversos padecimientos se han presentado e incrementado últimamente entre este sector de la población, y los motivos están relacionados con factores como la familia y la educación, pero también con la sobreexposición a la televisión comercial que impera en el país. De la tele a la boca... parte del trabajo realizado con esta comunidad entre 2003 y 2007, en el proceso de investigación sobre las relaciones que establecemos con la televisión desde edades tempranas. El documental recupera esta reflexión sobre desarrollo infantil y salud, el más desatendido de los seis campos del programa de nivel preescolar en la mayoría de planteles, para acercar a padres y maestros a una problemática que les atañe de forma directa y cotidiana."
+				"text": "<strong>Una Reflexión sobre Desarrollo Infantil y Salud</strong><br>Niños, padres y maestras de un preescolar en Ciudad Netzahualcóyotl, Estado de México, investigan, reflexionan y construyen alternativas para transformar prácticas y hábitos cotidianos que están mermando de forma acelerada la calidad de vida de la población infantil. Diversos padecimientos se han presentado e incrementado últimamente entre este sector de la población, y los motivos están relacionados con factores como la familia y la educación, pero también con la sobreexposición a la televisión comercial que impera en el país. De la tele a la boca... parte del trabajo realizado con esta comunidad entre 2003 y 2007, en el proceso de investigación sobre las relaciones que establecemos con la televisión desde edades tempranas."
 			},
 			"media": {
 				"url": "https://www.youtube.com/watch?v=6a4F6Vb569M"
 			},
-			"group": "Documentales"
+			"group": "Documentales",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+			}
 		},
 		{
 			"start_date": {
@@ -243,7 +282,10 @@
 			"media": {
 				"url": "https://www.youtube.com/watch?v=lFMmvM59cpM"
 			},
-			"group": "Documentales"
+			"group": "Documentales",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+			}
 		},
 		{
 			"start_date": {
@@ -256,7 +298,10 @@
 			"media": {
 				"url": "https://www.youtube.com/watch?v=tYAQEsYjcM0"
 			},
-			"group": "Documentales"
+			"group": "Documentales",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+			}
 		},
 		{
 			"start_date": {
@@ -266,7 +311,10 @@
 				"headline": "Historias para No Pensar",
 				"text": "<strong>Las Familias en la Televisión</strong><br>En los estudios sobre las familias del México contemporáneo, sus diversidades y transformaciones, siempre aparecen los medios de comunicación y la televisión como un referente ineludible.La televisión comercial se concibe como una forma de ilustrar “realidades” y un “competidor desleal” de quienes cuidan y educan a niñas, niños y jóvenes. En respuesta a esa inquietud, Iniciativa Ciudadana y Desarrollo Social, INCIDE Social A.C. y el Laboratorio Audiovisual de Investigación Social del Instituto Mora nos preguntamos: ¿Qué representaciones sobre las familias difunden la televisión comercial abierta y de paga? Este material invita a que reflexionemos sobre como son representadas las familias, sus relaciones, sus integrantes, las tomas de decisión en su interior, los problemas que tienen y cómo se vinculan a sus contextos."
 			},
-			"group": "Documentales"
+			"group": "Documentales",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+			}
 		},
 
 
@@ -291,7 +339,30 @@
 			},
 			"group": "Eventos",
 			"background": {
-				"color": "#222"
+				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2017,
+				"month": 9,
+				"day": 25
+			},
+			"end_date": {
+				"year": 2017,
+				"month": 9,
+				"day": 29
+			},
+			"text": {
+				"headline": "X Curso de Lenguaje Audiovisual e Investigación Social",
+				"text": "Impartido por Carlos Mendoza Aupetit"
+			},
+			"media": {
+				"url": "http://lais.mora.edu.mx/imgs/eventos/Cartel_curso_Lenguaje_10.jpg"
+			},
+			"group": "Cursos",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -314,7 +385,7 @@
 			},
 			"group": "Cursos",
 			"background": {
-				"color": "#222"
+				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -337,7 +408,7 @@
 			},
 			"group": "Cursos",
 			"background": {
-				"color": "#222"
+				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -360,7 +431,7 @@
 			},
 			"group": "Cursos",
 			"background": {
-				"color": "#222"
+				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -383,7 +454,7 @@
 			},
 			"group": "Cursos",
 			"background": {
-				"color": "#222"
+				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -406,7 +477,7 @@
 			},
 			"group": "Cursos",
 			"background": {
-				"color": "#222"
+				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -429,7 +500,7 @@
 			},
 			"group": "Cursos",
 			"background": {
-				"color": "#222"
+				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -452,7 +523,7 @@
 			},
 			"group": "Cursos",
 			"background": {
-				"color": "#222"
+				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -475,7 +546,7 @@
 			},
 			"group": "Cursos",
 			"background": {
-				"color": "#222"
+				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		}
 	],
