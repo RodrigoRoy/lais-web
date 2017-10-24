@@ -46,12 +46,13 @@
 }
 
 /*Ventana auxiliar (modal). Se usa la clase .modal-publication para solo sobreescribir esta instancia de modal*/
-.modal-publication div .modal-content{
+.modal-event div .modal-content{
     background-color: rgba(238, 238, 238, 0.95);
 }
 
-.modal-publication div .modal-content .modal-body, .modal-publication div .modal-content .modal-body p{
-    font-size: 1.5em !important; /*TODO: Cambiar realmente el tamaño de las fuentes dentro de modal*/
+/*Texto dentro de modal (no es subtítulo). Y el caso particular para insertar html embebido (elemento p anidado)*/
+.modal-event div .modal-content .modal-body p.ng-binding, .modal-event div .modal-content .modal-body p.ng-binding p{
+    font-size: 1.2em;
 }
 
 /*

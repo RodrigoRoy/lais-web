@@ -43,6 +43,11 @@
 	background-color: rgba(238, 238, 238, 0.95);
 }
 
+/*Texto dentro del modal*/
+.modal-publication div .modal-content .modal-body{
+	font-size: 1.2em;
+}
+
 /*Estilo a usar en tamaño sm, md, lg*/
 @media screen and (min-width: 768px){
 	/*Se disminuye ligeramente el tamaño de fuente*/
