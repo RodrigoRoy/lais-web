@@ -91,19 +91,38 @@
 	    		<tr ng-show="publicacion.adjuntos && publicacion.adjuntos.length > 0">
 	    			<td>Archivos adjuntos</td>
 	    			<td>
-	    				<ul class="list-unstyled">
-	    					<li ng-repeat="adjunto in publicacion.adjuntos"><a href="files/{{adjunto.location + adjunto.filename}}" target="_blank">{{adjunto.filename}}</a></li>
-	    				</ul>
+                        <!-- IMAGENES -->
+                        <div class="row" ng-if="publicacion.attachments.imagenes.length > 0">
+                            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2" ng-repeat="archivo in publicacion.attachments.imagenes">
+                                <a href="files/{{archivo.location + archivo.filename}}" target="_blank"><img src="files/{{archivo.location + archivo.filename}}" style="max-height: 70px; display: block; margin-left: auto; margin-right: auto;"></a>
+                            </div>
+                        </div>
+                        <!-- VIDEOS -->
+                        <div class="row" ng-if="publicacion.attachments.videos.length > 0">
+                            <div class="col-xs-12 col-md-6" ng-repeat="archivo in publicacion.attachments.videos">
+                                <video controls style="width: 100%;"> <source src="{{'files/' + archivo.location + archivo.filename | trustUrl}}" type="video/mp4">
+                                    <a href="files/{{archivo.location + archivo.filename}}" target="_blank">{{archivo.filename}}</a>
+                                </video>
+                            </div>
+                        </div>
+                        <!-- DOCUMENTOS DE TEXTO -->
+                        <div ng-if="publicacion.attachments.documentos.length > 0">
+                            <ul>
+                                <li ng-repeat="archivo in publicacion.attachments.documentos">
+                                    <a href="files/{{archivo.location + archivo.filename}}" target="_blank">{{archivo.filename}}</a> <small><i class="fa fa-file-text-o" aria-hidden="true"> {{archivo.size}}</small></i>
+                                </li>
+                            </ul>
+                        </div>
 	    			</td>
 	    		</tr>
+                <tr ng-show="publicacion.imagen">
+                    <td>Imagen</td>
+                    <td><img src="imgs/publicaciones/{{publicacion.imagen}}" class="imagen-portada"></td>
+                </tr>
 	    		<tr ng-show="publicacion.keywords && publicacion.keywords.length > 0">
 	    			<td>Palabras clave</td>
 	    			<td><span class="label label-default" style="margin-right: 1em;" ng-repeat="keyword in publicacion.keywords">{{keyword}}</span></td>
                 </tr>
-                <tr ng-show="publicacion.imagen">
-                    <td>Imagen</td>
-                    <td><img src="imgs/publicaciones/{{publicacion.imagen}}" class="imagen-portada"></td>
-	    		</tr>
 	    	</tbody>
 	    </table>
     </div>

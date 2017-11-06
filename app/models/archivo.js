@@ -42,19 +42,19 @@ ArchivoSchema.virtual('size').get(function(){ // tamaño en el sistema de archiv
 ArchivoSchema.virtual('filetype').get(function(){
     if(this.directory)
         return 'directory';
-    else if(/\.(jpe?g|gif|png|tiff|bmp|svg|webp)$/.test(this.filename)) // imagenes
+    else if(/\.(jpe?g|gif|png|tiff|bmp|svg|webp)$/i.test(this.filename)) // imagenes
         return 'image';
-    else if(/\.(ogg|mp3|wav|m4a|wma|aac|flac)$/.test(this.filename)) // audio
+    else if(/\.(ogg|mp3|wav|m4a|wma|aac|flac)$/i.test(this.filename)) // audio
         return 'audio';
-    else if(/\.(mp4|avi|mkv|wmv|flv|3gp|ogv|webm)$/.test(this.filename)) // video
+    else if(/\.(mp4|avi|mkv|wmv|flv|3gp|ogv|webm)$/i.test(this.filename)) // video
         return 'video';
-    else if(/\.pdf$/.test(this.filename)) // pdf
+    else if(/\.pdf$/i.test(this.filename)) // pdf
         return 'pdf';
-    else if(/\.(docx?|f?odt|txt)$/.test(this.filename)) // documentos de texto
+    else if(/\.(docx?|f?odt|txt)$/i.test(this.filename)) // documentos de texto
         return 'word';
-    else if(/\.(pptx?|f?odp)$/.test(this.filename)) // presentaciones
+    else if(/\.(pptx?|f?odp)$/i.test(this.filename)) // presentaciones
         return 'presentation';
-    else if(/\.(xlsx?|f?ods|csv)$/.test(this.filename)) // hoja de cálculo
+    else if(/\.(xlsx?|f?ods|csv)$/i.test(this.filename)) // hoja de cálculo
         return 'spreadsheet';
     return 'other';
 });

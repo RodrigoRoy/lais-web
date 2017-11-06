@@ -10,6 +10,18 @@ angular.module('PublicacionCtrl',[]).controller('PublicacionController', functio
 		.then(function(res){
 			// Success
 			$scope.publicacion = res.data;
+			// Separar archivos por tipo
+			$scope.publicacion.attachments = {imagenes: [], videos: [], documentos: [], otros: []};
+			for(var i in $scope.publicacion.adjuntos){
+				if($scope.publicacion.adjuntos[i].filetype === 'image') // imagen
+					$scope.publicacion.attachments.imagenes.push($scope.publicacion.adjuntos[i]);
+				else if($scope.publicacion.adjuntos[i].filetype === 'video') // video
+					$scope.publicacion.attachments.videos.push($scope.publicacion.adjuntos[i]);
+				else if($scope.publicacion.adjuntos[i].filetype === 'pdf' || $scope.publicacion.adjuntos[i].filetype === 'word' || $scope.publicacion.adjuntos[i].filetype === 'presentation' || $scope.publicacion.adjuntos[i].filetype === 'spreadsheet') // documentos
+					$scope.publicacion.attachments.documentos.push($scope.publicacion.adjuntos[i]);
+				else
+					$scope.publicacion.attachments.otros.push($scope.publicacion.adjuntos[i]);
+			}
 		}, function(res){
 			// Fail
 			console.error('Error de conexión con la base de datos: ', res);
