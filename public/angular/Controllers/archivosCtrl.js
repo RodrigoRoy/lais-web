@@ -160,7 +160,7 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
             $scope.getFiles(); // Reload de los archivos
         }, function(res){
             if(!res.data.sucess && res.data.error){
-        		// console.log(res.data.message, res.data.error);
+        		console.error("Error al guardar archivos: ", res.data.message, res.data.error);
 	            $scope.getFiles(); // Reload de los archivos
         	}
         	else
