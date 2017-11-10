@@ -226,7 +226,14 @@ angular.module('ArchivosCtrl',[]).controller('ArchivosController', function ($sc
     // En la vista, $scope.editable indica que en ese momento se está llevando a cabo una edición
     $scope.enableEdit = function(archivoID){
     	$scope.editable = archivoID;
-    	//console.log($scope.editable);
+        // Obtener información del archivo para que al momento de actualizar no se pierda (especialmente propiedades location y directory)
+        Archivo.get(archivoID)
+            .then(function(res){
+                $scope.tempFile.location = res.data.location;
+                $scope.tempFile.directory = res.data.directory;
+            }, function(res){
+                console.error('No se obtuvo la información temporal del archivo para actualizar correctamente');
+            });
     };
 
     // Actualizar la información de un archivo (por ejemplo, descripción). 
