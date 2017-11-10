@@ -14,6 +14,7 @@ DELETE http://localhost:8080/api/archivos/1234567890
 // Dependencias
 var express = require('express');
 var router = express.Router(); // para modularizar las rutas
+var fs = require('fs'); // File system library
 var Archivo = require('../models/archivo'); // Modelo de la colección "Archivos"
 var verifyToken = require('./token'); // Función de verificación de token
 
