@@ -5,7 +5,7 @@
         <center>
             <div uib-carousel interval="7000" active="0">
                 <div uib-slide ng-repeat="slide in slides" index="$index">
-                    <a href="{{slide.url}}" ng-if="slide.url">
+                    <a ng-href="{{slide.url}}" ng-if="slide.url" target="_blank">
                         <img class="slide-img" ng-src="{{slide.image}}">
                     </a>
                     <img class="slide-img" ng-src="{{slide.image}}" ng-if="!slide.url">
