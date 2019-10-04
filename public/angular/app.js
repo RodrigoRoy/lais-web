@@ -6,7 +6,7 @@ angular.module('laisApp', [
 	'ngSanitize', // Mostrar HTML de manera segura
 
 	'viewsRoutes', // Rutas y controladores
-	
+
 	'ngFileUpload', // upload files
 	'ui.bootstrap', // Componentes Bootstrap
 	'ui.validate', // General purpose validator
@@ -33,7 +33,8 @@ angular.module('laisApp', [
 	'CarouselCtrl', // Administración de las imagenes del carrusel
 	'ArchivosCtrl', //Carga toda la informacion de la Base de datos de los archivos
 	'ContactoCtrl', // Página de contacto
-	
+	'ConvocatoriasCtrl', // Página de convocatorias
+
 	'authService', // Servicio para la autentificación de usuarios
 	'LugarService', // Servicio para administrar llamadas a la base de datos de "lugares"
 	'EventoService', //Servicio que administra las llamadas a la base de datos de "eventos"

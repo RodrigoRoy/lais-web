@@ -36,7 +36,7 @@
 	    <link rel="stylesheet" type="text/css" href="css/archivos.css">
 	    <link rel="stylesheet" type="text/css" href="css/contacto.css">
 	    <link rel="stylesheet" type="text/css" href="css/admin.css">
-	    
+
 	    <!-- TimelineJS3 -->
 	    <link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
 	    <link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/fonts/font.opensans-gentiumbook.css">
@@ -46,7 +46,7 @@
 	    <div class="container">
 		    <!-- Secciones de navegación -->
 		    <nav class="navbar navbar-default navbar-fixed-top" >
-		        
+
 		            <!-- Brand and toggle get grouped for better mobile display -->
 		            <div class="navbar-header" ng-cloak>
 		                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
@@ -116,7 +116,7 @@
 		        </div>
 		    </nav>
 		</div>
-		
+
     	<!-- Contenido dinámico de Angular -->
         <div ng-view></div>
 
@@ -170,12 +170,12 @@
 		    	<h3 class="modal-title" style="margin-bottom: 0.4em;">Acceso al sitio</h3>
 
 		    	<form name="loginForm" id="loginForm" role="form" novalidate>
-		    		
+
 		    		<div class="input-group" style="margin-bottom: 1em">
 						<span class="input-group-addon" id="username"><i class="fa fa-user"></i></span>
 						<input ng-model="user.name" type="text" class="form-control" placeholder="Usuario / Correo" aria-describedby="username" autofocus required>
 					</div>
-					
+
 					<div class="input-group" style="margin-bottom: 1em">
 						<span class="input-group-addon" id="password"><i class="fa fa-key"></i></span>
 						<input ng-model="user.pass" type="password" class="form-control" placeholder="Contraseña" aria-describedby="password" ng-keydown="$event.which === 13 && iniciarSesion()" required>
@@ -193,12 +193,12 @@
 	        <!-- <div class="modal-footer">
 	        	<button class="btn btn-danger" type="button" ng-click="closeModal()">Cancel</button>
 	        </div> -->
-	    </script>	
+	    </script>
 
-	    <!-- Google Maps API (no async) --> 
-	    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyC_lkirqTF4tjzljMYchBThPzAYXIOgCys&v=3"></script>
+	    <!-- Google Maps API (no async) -->
+	    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places&key=*****&v=3"></script>
 
-        <!-- Angular Libraries --> 
+        <!-- Angular Libraries -->
     	<script type="text/javascript" src="libs/angular/angular.js"></script>
     	<script type="text/javascript" src="libs/angular-i18n/angular-locale_es-mx.js"></script>
     	<script type="text/javascript" src="libs/angular-route/angular-route.js"></script>
@@ -225,7 +225,7 @@
 	    <script type="text/javascript" src='libs/ng-tags-input/ng-tags-input.js'></script>
 	    <!-- Angular Social share buttons -->
 	    <script type="text/javascript" src='libs/angular-socialshare/dist/angular-socialshare.js'></script>
-    	
+
 		<!--Js Plugins for parallax -->
 		<!-- <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script> -->
 	    <script type="text/javascript" src='libs/jquery.easing/jquery.easing.min.js'></script>
@@ -246,7 +246,7 @@
     	<script type="text/javascript" src="angular/Services/CarruselService.js"></script>
     	<script type="text/javascript" src="angular/Services/ArchivoService.js"></script>
     	<script type="text/javascript" src="angular/Services/ContactoService.js"></script>
-    	
+
     	<!--Angular Controllers-->
     	<script type="text/javascript" src="angular/Controllers/indexCtrl.js"></script>
     	<script type="text/javascript" src="angular/Controllers/eventosBusquedaCtrl.js"></script>
@@ -265,7 +265,8 @@
     	<script type="text/javascript" src="angular/Controllers/eventosListCtrl.js"></script>
     	<script type="text/javascript" src="angular/Controllers/publicacionesListCtrl.js"></script>
     	<script type="text/javascript" src="angular/Controllers/archivosCtrl.js"></script>
-    	<script type="text/javascript" src="angular/Controllers/contactoCtrl.js"></script>
+			<script type="text/javascript" src="angular/Controllers/contactoCtrl.js"></script>
+    	<script type="text/javascript" src="angular/Controllers/convocatoriasCtrl.js"></script>
     	<script type="text/javascript" src="angular/appRoutes.js"></script>
     	<script type="text/javascript" src="angular/app.js"></script>
     </body>
