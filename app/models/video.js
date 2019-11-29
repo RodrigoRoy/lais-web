@@ -9,7 +9,7 @@ var Schema = mongoose.Schema; // "Modelo" de la colección
 // Definición del esquema "Video", incluyendo nombre del campo y el tipo de dato (key: value_type)
 var VideoSchema = new Schema({
 	// UNIDAD SIMPLE
-    
+
     // 1 AREA DE IDENTIFICACION
     codigo_de_referencia: {type: String, required: true, index: {unique: true}},
     titulo_propio: {type: String},
@@ -58,13 +58,13 @@ var VideoSchema = new Schema({
     descriptor_cronologico: {type: String},
     // Estructura interna:
     tipo_de_produccion: [{type: String, enum: [
-        'Película de ficción', 
-        'Película documental', 
-        'Programa de televisión', 
-        'Trailer', 'Publicidad', 
-        'Propaganda', 
-        'Registros fílmicos', 
-        'Registros en video', 
+        'Película de ficción',
+        'Película documental',
+        'Programa de televisión',
+        'Trailer', 'Publicidad',
+        'Propaganda',
+        'Registros fílmicos',
+        'Registros en video',
         'Extractos de otras producciones']}],
     // genero: {type: Date},
     fuentes: [{type: String, enum: [
@@ -89,7 +89,7 @@ var VideoSchema = new Schema({
         'Música de época',
         'Documentos',
         'Registros fonográficos',
-        'Registros videográficos']}], 
+        'Registros videográficos']}],
     recursos: [{type: String, enum: [
         'Puesta en escena',
         'Animación',

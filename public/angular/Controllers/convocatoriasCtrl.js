@@ -4,7 +4,7 @@ angular.module('ConvocatoriasCtrl', []).controller('ConvocatoriasController', fu
 
 	// Obtiene la información de todos los eventos
 	$scope.redirect = function(){
-		$window.location.href = 'http://lais-interno.mora.edu.mx/convocatorias/index.php/277314?lang=es-MX';
+		$window.location.href = 'https://forms.gle/69LcgX9XYFWqUJwL7';
 	};
 
 	// INICIALIZACION
