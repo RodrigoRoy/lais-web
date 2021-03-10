@@ -357,7 +357,7 @@
 				"day": 29
 			},
 			"text": {
-				"headline": "X Curso de Lenguaje Audiovisual e Investigación Social",
+				"headline": "10° Curso de Lenguaje Audiovisual e Investigación Social",
 				"text": "Impartido por Carlos Mendoza Aupetit"
 			},
 			"media": {
@@ -368,6 +368,9 @@
 				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
+
+
+		
 		{
 			"start_date": {
 				"year": 2016,
@@ -380,7 +383,7 @@
 				"day": 30
 			},
 			"text": {
-				"headline": "IX Curso de Lenguaje Audiovisual e Investigación Social",
+				"headline": "9° Curso de Lenguaje Audiovisual e Investigación Social",
 				"text": "Impartido por Julieta Keldjian"
 			},
 			"media": {
@@ -403,7 +406,7 @@
 				"day": 23
 			},
 			"text": {
-				"headline": "8vo Curso de Lenguaje Audiovisual e Investigación Social",
+				"headline": "8° Curso de Lenguaje Audiovisual e Investigación Social",
 				"text": "<strong>Movimiento de Documentalistas<br>Argentina</strong><br>Impartido por Miguel Mirra"
 			},
 			"media": {
@@ -426,7 +429,7 @@
 				"day": 5
 			},
 			"text": {
-				"headline": "7o Curso de Lenguaje Audiovisual e Investigación Social",
+				"headline": "7° Curso de Lenguaje Audiovisual e Investigación Social",
 				"text": "Impartido por Ana Mauad"
 			},
 			"media": {
@@ -449,7 +452,7 @@
 				"day": 25
 			},
 			"text": {
-				"headline": "6o Curso de Lenguaje Audiovisual e Investigación Social",
+				"headline": "6° Curso de Lenguaje Audiovisual e Investigación Social",
 				"text": "Impartido por Belkis Vega"
 			},
 			"media": {
@@ -472,7 +475,7 @@
 				"day": 14
 			},
 			"text": {
-				"headline": "V Curso de Lenguaje Audiovisual e Investigación Social",
+				"headline": "5° Curso de Lenguaje Audiovisual e Investigación Social",
 				"text": "Impartido por Catarina Alves Costa"
 			},
 			"media": {
@@ -550,6 +553,423 @@
 			"group": "Cursos",
 			"background": {
 				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2017,
+				"month": 9,
+				"day": 27
+			},
+			"end_date": {
+				"year": 2017,
+				"month": 11,
+				"day": 8
+			},
+			"text": {
+				"headline": "Foro Documental e Investigación",
+				"text": "Proyecciones con participación de comentaristas y realizadores"
+			},
+			"media": {
+				"url": "http://lais.mora.edu.mx/imgs/eventos/2017_IEPry02-0917.jpg"
+			},
+			"group": "Eventos",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2017,
+				"month": 10,
+				"day": 25
+			},
+			"end_date": {
+				"year": 2017,
+				"month": 10,
+				"day": 27
+			},
+			"text": {
+				"headline": "Coloquio Documental e Investigación",
+				"text": "Experiencias diversas desde: Archivos públicos y privados, sociedad civil organizada, organización de festivales, centros universitarios y de investigación"
+			},
+			"media": {
+				"url": "http://lais.mora.edu.mx/imgs/eventos/2017_IECol10-1017.jpg"
+			},
+			"group": "Eventos",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2018,
+				"month": 3,
+				"day": 5
+			},
+			"end_date": {
+				"year": 2018,
+				"month": 3,
+				"day": 9
+			},
+			"text": {
+				"headline": "16° Taller de Manejo de Equipo Audiovisual para la Investigación Social",
+				"text": "Acercar a investigadores y estudiantes a las posibilidades que abre el uso de fuentes audiovisuales en la investigación social"
+			},
+			"media": {
+				"url": "http://lais.mora.edu.mx/imgs/eventos/Poster%20Taller%2016.jpg"
+			},
+			"group": "Cursos",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2018,
+				"month": 4,
+				"day": 25
+			},
+			"end_date": {
+				"year": 2018,
+				"month": 11,
+				"day": 9
+			},
+			"text": {
+				"headline": "4° Taller de Proyectos de Investigación Social con Fuentes Audiovisuales",
+				"text": "En seguimiento al Taller de Manejo de Equipo Audiovisual para la Investigación Social, se ofrece esta segunda etapa de formación para dar continuidad a los proyectos de investigación social con fuentes audiovisuales"
+			},
+			"media": {
+				"url": "http://lais.mora.edu.mx/imgs/eventos/Taller%20proyectos2018.jpg"
+			},
+			"group": "Cursos",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2018,
+				"month": 10,
+				"day": 17
+			},
+			"end_date": {
+				"year": 2018,
+				"month": 10,
+				"day": 31
+			},
+			"text": {
+				"headline": "Presentación de Documentales",
+				"text": "Producidos en el marco de los Talleres de Proyectos de Investigación con Fuentes Aduiovisuales (2015-2017)"
+			},
+			"media": {
+				"url": "http://lais.mora.edu.mx/imgs/eventos/1018_IEPry05-1018.jpg"
+			},
+			"group": "Eventos",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2018,
+				"month": 10,
+				"day": 22
+			},
+			"end_date": {
+				"year": 2018,
+				"month": 10,
+				"day": 26
+			},
+			"text": {
+				"headline": "11° Curso sobre Lenguaje Audiovisual e Investigación Social",
+				"text": "Impartido por Héctor Veitía"
+			},
+			"media": {
+				"url": "http://lais.mora.edu.mx/imgs/eventos/1018_IECrs02-1018.jpg"
+			},
+			"group": "Cursos",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2019,
+				"month": 1,
+				"day": 21
+			},
+			"end_date": {
+				"year": 2019,
+				"month": 1,
+				"day": 25
+			},
+			"text": {
+				"headline": "17° Taller de Manejo de Equipo Audiovisual para la Investigación Social",
+				"text": "Acercar a investigadores y estudiantes a las posibilidades que abre el uso de fuentes audiovisuales en la investigación social"
+			},
+			"media": {
+				"url": "http://lais.mora.edu.mx/imgs/eventos/Cart-%20XVII%20Taller%20de%20Manejo.jpg"
+			},
+			"group": "Cursos",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2019,
+				"month": 1,
+				"day": 24
+			},
+			"end_date": {
+				"year": 2019,
+				"month": 2,
+				"day": 14
+			},
+			"text": {
+				"headline": "Exposición \"Un Paisaje Fronterizo\"",
+				"text": "Un Paisaje Fronterizo. Cruces e itinerarios en la línea México-Guatemala"
+			},
+			"media": {
+				"url": "http://lais.mora.edu.mx/imgs/eventos/paisaje-fronterizo_600x928px.jpg"
+			},
+			"group": "Eventos",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2019,
+				"month": 2,
+				"day": 13
+			},
+			"end_date": {
+				"year": 2019,
+				"month": 11,
+				"day": 13
+			},
+			"text": {
+				"headline": "Ciclo de proyecciones \"El Documental en el Tiempo\"",
+				"text": "Desde los inicios de los registros documentales del siglo XX hasta las narrativas contemporáneas"
+			},
+			"media": {
+				"url": "http://lais.mora.edu.mx/imgs/eventos/DocumentalEnElTiempo_Febrero.jpg"
+			},
+			"group": "Eventos",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2019,
+				"month": 9,
+				"day": 23
+			},
+			"end_date": {
+				"year": 2019,
+				"month": 9,
+				"day": 27
+			},
+			"text": {
+				"headline": "12° Curso sobre Lenguaje Audiovisual e Investigación Social",
+				"text": "Impartido por Gregoria Rocha"
+			},
+			"media": {
+				"url": "http://lais.mora.edu.mx/imgs/eventos/XII%20Curso%20Lenguaje.jpg"
+			},
+			"group": "Cursos",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2019,
+				"month": 11,
+				"day": 15
+			},
+			"text": {
+				"headline": "Taller \"Las Fotografías como Fuentes de Investigación\"",
+				"text": "Las Fotografías como Fuentes de Investigación: Precisiones para el trabajo de campo y el archivo"
+			},
+			"media": {
+				"url": "http://lais.mora.edu.mx/imgs/eventos/Taller%20las%20fotograf%C3%ADas.jpg"
+			},
+			"group": "Cursos",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2019,
+				"month": 11,
+				"day": 26
+			},
+			"end_date": {
+				"year": 2020,
+				"month": 11
+			},
+			"text": {
+				"headline": "5° Taller de Proyectos de Investigación Social con Fuentes Audiovisuales",
+				"text": "En seguimiento al Taller de Manejo de Equipo Audiovisual para la Investigación Social, se ofrece esta segunda etapa de formación para dar continuidad a los proyectos de investigación social con fuentes audiovisuales"
+			},
+			"media": {
+				"url": "http://lais.mora.edu.mx/imgs/eventos/5o%20Taller%20proyectos.jpg"
+			},
+			"group": "Cursos",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2020,
+				"month": 2,
+				"day": 5
+			},
+			"end_date": {
+				"year": 2020,
+				"month": 3,
+				"day": 25
+			},
+			"text": {
+				"headline": "Conversatorios de Investigación sobre Documentales",
+				"text": "Sesiones de intercambio sobre investigaciones en curso acerca de documentales de diversos periodos y temáticas, para profundizar sobre todo en aspectos teóricos y metodológicos"
+			},
+			"media": {
+				"url": "http://lais.mora.edu.mx/imgs/eventos/Conversatorios2020.jpg"
+			},
+			"group": "Eventos",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2020,
+				"month": 9,
+				"day": 2
+			},
+			"end_date": {
+				"year": 2021,
+				"month": 7,
+				"day": 2
+			},
+			"text": {
+				"headline": "Charlas de Investigación sobre Documental",
+				"text": "Con especialistas internacionales integrantes de la Red de Investigación sobre Documentales"
+			},
+			"media": {
+				"url": "http://lais.mora.edu.mx/imgs/eventos/REDOC_Charlas_2020.jpg"
+			},
+			"group": "Eventos",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2020,
+				"month": 10,
+				"day": 1
+			},
+			"end_date": {
+				"year": 2020,
+				"month": 10,
+				"day": 29
+			},
+			"text": {
+				"headline": "13° Curso sobre Lenguaje Audiovisual e Investigación Social",
+				"text": "Impartido por María Aimaretti"
+			},
+			"media": {
+				"url": "http://lais.mora.edu.mx/imgs/eventos/1017_IECurso01-1020-13.jpg"
+			},
+			"group": "Cursos",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2020,
+				"month": 11,
+				"day": 19
+			},
+			"end_date": {
+				"year": 2020,
+				"month": 11,
+				"day": 26
+			},
+			"text": {
+				"headline": "Conferencia \"La Interdisciplina en Engels. Dialéctica materialista\"",
+				"text": "Impartidas por Sergio Guilli (Escuela Latinoamericana de Formación Hombre Nuevo Mujer Nueva) y David Fuente (Asociación Volver a Marx)"
+			},
+			"media": {
+				"url": "http://lais.mora.edu.mx/imgs/eventos/Cart-Engels.jpg"
+			},
+			"group": "Eventos",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2020,
+				"month": 11,
+				"day": 7
+			},
+			"end_date": {
+				"year": 2020,
+				"month": 11,
+				"day": 26
+			},
+			"text": {
+				"headline": "Editatón Virtual \"Mujeres documentalistas a la Wiki\"",
+				"text": "Para crear, mejorar y/o traducir la mayor cantidad de artículos de Wikipedia acerca de la trayectoria de mujeres documentalistas"
+			},
+			"media": {
+				"url": "http://lais.mora.edu.mx/imgs/eventos/Editaton%20Convocatoria.jpg"
+			},
+			"group": "Eventos",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2020
+			},
+			"text": {
+				"headline": "Métodos en Acción. Estudios sobre documental e investigación social",
+				"text": "Métodos en acción nace de repensar los vínculos entre el documental y la investigación, cómo se relacionan, condicionan y transforman entre sí, a partir de revisiones y reflexiones metodológicas sostenidas en un seminario sobre estos temas"
+			},
+			"media": {
+				"url": "http://lais.mora.edu.mx/imgs/publicaciones/Portada_Metodos.jpg"
+			},
+			"group": "Publicaciones",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background6.jpg"
+			}
+		},
+		{
+			"start_date": {
+				"year": 2020
+			},
+			"text": {
+				"headline": "Desaparición forzada y equipos de antropología forense",
+				"text": "Este documental presenta un diálogo donde confluyen las voces de antropólogos forenses, familiares, jueces y activistas de derechos humanos, en torno a su labor en los casos de desaparición forzada de presos y ejecutados en América Latina"
+			},
+			"media": {
+				"url": "http://lais.mora.edu.mx/imgs/publicaciones/Documental_DesaparicionForzada.jpg"
+			},
+			"group": "Documentales",
+			"background": {
+				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
 			}
 		}
 	],
