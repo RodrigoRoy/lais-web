@@ -35,7 +35,7 @@ angular.module('authService', [])
 		// eliminar el token
 		AuthToken.setToken();
 		// eliminar cache (evita mal inicio de sesión al hacer logout/login como otro usuario y sin recargar la página)
-		// source; http://stackoverflow.com/questions/17059569/how-to-refresh-invalidate-resource-cache-in-angularjs
+		// source; https://stackoverflow.com/questions/17059569/how-to-refresh-invalidate-resource-cache-in-angularjs
 		var $httpDefaultCache = $cacheFactory.get('$http');
 		$httpDefaultCache.remove('/api/usuarios/me');
 	};

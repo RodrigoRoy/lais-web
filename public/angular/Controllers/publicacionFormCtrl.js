@@ -30,7 +30,7 @@ angular.module('PublicacionFormCtrl',[]).controller('PublicacionFormController',
 			});
 	}
 	// Al seleccionar un autor se agrega a la lista de autores de la publicación.
-	// Detalles en: http://angular-ui.github.io/bootstrap/versioned-docs/1.0.3/#/typeahead
+	// Detalles en: https://angular-ui.github.io/bootstrap/versioned-docs/1.0.3/#/typeahead
 	// Nota: item === {Autor}
 	//		 model === "Apellido, Nombre"
 	$scope.onSelectAutor = function(item, model, label, event){
@@ -100,7 +100,7 @@ angular.module('PublicacionFormCtrl',[]).controller('PublicacionFormController',
 			});
 	};
 	// Agrega keywords del input a $scope.publicacion
-	// Esto se debe al formato de la biblioteca "ngTagsInput" (http://mbenford.github.io/ngTagsInput/documentation/api)
+	// Esto se debe al formato de la biblioteca "ngTagsInput" (https://mbenford.github.io/ngTagsInput/documentation/api)
 	$scope.updateKeywords = function(){
 		if($scope.keywords){
             $scope.publicacion.keywords = [];

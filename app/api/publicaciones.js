@@ -60,7 +60,7 @@ router.route('/')
                 if(err)
                     res.send(err);
                 // Populate después del operador aggregate (utilizando resultado del callback anterior)
-                // http://mongoosejs.com/docs/api.html#model_Model.populate
+                // https://mongoosejs.com/docs/api.html#model_Model.populate
                 Autor.populate(publicaciones, {path: "publicaciones.autor"}, function(err, populatedPublicaciones){
                     if(err)
                         res.send(err);

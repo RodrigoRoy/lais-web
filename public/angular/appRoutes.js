@@ -110,6 +110,11 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 			controller: 'ConvocatoriasController'
 		})
 
+		.when('/integrantes',{
+			templateUrl: 'angular/Views/pages/integrantes.html',
+			controller: 'IntegrantesController'
+		})
+
 		// RUTAS INVÁLIDAS (no descritas previamente)
 		.otherwise({
 			redirectTo: '/'

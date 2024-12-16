@@ -21,7 +21,7 @@ mongoose.Promise = global.Promise // Use native promise (avoid DeprecationWarnin
 mongoose.connect(config.db); // conectar a base de datos mongoDB
 
 // permite obtener datos de los parámetros del cuerpo/body (POST)
-// también permite poblar req.body correctamente (http://expressjs.com/en/api.html#req.body)
+// también permite poblar req.body correctamente (https://expressjs.com/en/api.html#req.body)
 app.use(bodyParser.json()); // parse application/json 
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json como json
 app.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-form-urlencoded

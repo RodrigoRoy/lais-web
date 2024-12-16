@@ -34,6 +34,7 @@ angular.module('laisApp', [
 	'ArchivosCtrl', //Carga toda la informacion de la Base de datos de los archivos
 	'ContactoCtrl', // Página de contacto
 	'ConvocatoriasCtrl', // Página de convocatorias
+	'IntegrantesCtrl', // Página de integrantes del laboratorio
 
 	'authService', // Servicio para la autentificación de usuarios
 	'LugarService', // Servicio para administrar llamadas a la base de datos de "lugares"

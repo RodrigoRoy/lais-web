@@ -1,6 +1,6 @@
 User-agent: *
 
-Disallow: http://lais.mora.edu.mx/admin/
-Disallow: http://lais.mora.edu.mx/archivos
+Disallow: https://lais.mora.edu.mx/admin/
+Disallow: https://lais.mora.edu.mx/archivos
 
-Sitemap: http://lais.mora.edu.mx/sitemap.xml
+Sitemap: https://lais.mora.edu.mx/sitemap.xml

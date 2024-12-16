@@ -68,7 +68,7 @@ angular.module('EventoFormCtrl', []).controller('EventoFormController', function
 
     // Abrir calendarios y hacer que el segundo actualize binding para fecha mínima en base a la primera seleccionada
     // https://github.com/angular-ui/bootstrap/issues/3188
-    // http://plnkr.co/edit/Ssa7ofSoCiolMqUnVWlq?p=preview
+    // https://plnkr.co/edit/Ssa7ofSoCiolMqUnVWlq?p=preview
     $scope.openDate = function($event){
         $event.preventDefault();
         $event.stopPropagation();

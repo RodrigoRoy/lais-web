@@ -192,12 +192,12 @@ Esto reeplaza a la imagen faltante*/
 }
 
 /* Ellipsis (.block-with-text)*/ 
-/* Source: http://hackingui.com/front-end/a-pure-css-solution-for-multiline-text-truncation/*/
+/* Source: https://hackingui.com/front-end/a-pure-css-solution-for-multiline-text-truncation/*/
 /* No funciona para este caso porque los títulos pueden ser cortos y CSS espera textos más largos*/
 
 /* Permite agregar ellipsis (puntos suspensivos) cuando el texto es muy largo */
-/* Comentario en: http://dev.mobify.com/blog/multiline-ellipsis-in-pure-css/*/
-/* Ejemplo y uso en: http://codepen.io/anon/pen/htbxA*/
+/* Comentario en: https://dev.mobify.com/blog/multiline-ellipsis-in-pure-css/*/
+/* Ejemplo y uso en: https://codepen.io/anon/pen/htbxA*/
 /* NOTA: No funciona en Firefox */
 .vertically-centered {
 	--verticalPadSize: 4px;

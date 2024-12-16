@@ -5,7 +5,7 @@
 			"text": "En esta linea del tiempo, se muestran los sucesos y trabajos más destacados donde el LAIS contribuyó a la investigación social con materiales audiovisuales."
 		},
 		"background": {
-			"url": "http://lais.mora.edu.mx/imgs/background4.jpg"
+			"url": "https://lais.mora.edu.mx/imgs/background4.jpg"
 		}
 	},
 	"events": [
@@ -18,11 +18,11 @@
 				"text": "Cima, una estación de ferrocarril ubicada en el Km C-62 de la línea que durante cien años facilitó el transpporte entre la Ciudad de México y el río Balsas hasta ser clausurada en junio de 1997, constituye el punto de partida y de llegada de este viaje que recorrimos a través de numerosas vivencias y estaciones de la mano de Salvador Núñez, ferrocarrilero en México durante cincuenta años. Su historia de vida, que inicia en los años treinta en el norte del país, es un reflejo de lo que los Ferrocarriles representaron durante los sesenta años que fueron Nacionales, de 1937 a 1997."
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/publicaciones/km62.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/publicaciones/km62.jpg"
 			},
 			"group": "Publicaciones",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background6.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background6.jpg"
 			}
 		},
 		{
@@ -34,11 +34,11 @@
 				"text": "Esta obra presenta diversas posturas teóricas y diferentes opciones metodológicas del trabajo con documentos visuales y audiovisuales buscando su construcción como fuentes de investigación. Pensamos que esto puede ser de gran utilidad para los procesos de enseñanza en este campo apenas en gestación, con opción a muy escasos textos de estas características publicados en español y sobre este tipo de estudios en el ámbito latinoamericano."
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/publicaciones/investigacion.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/publicaciones/investigacion.jpg"
 			},
 			"group": "Publicaciones",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background6.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background6.jpg"
 			}
 		},
 		{
@@ -50,11 +50,11 @@
 				"text": "Resultado del trabajo desarrollado por sus autores en el Seminario La Fotografía como Fuente de Investigación Social, que tuvo lugar en el Instituto Mora para promover la reflexión periódica sobre la incorporación de las imágenes en las investigaciones que llevábamos a cabo varios colegas desde diversas disciplinas."
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/publicaciones/investigaciones%20con.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/publicaciones/investigaciones%20con.jpg"
 			},
 			"group": "Publicaciones",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background6.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background6.jpg"
 			}
 		},
 		{
@@ -70,7 +70,7 @@
 			},
 			"group": "Publicaciones",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background6.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background6.jpg"
 			}
 		},
 
@@ -89,7 +89,7 @@
 			},
 			"group": "Documentales",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background5.jpg"
 			}
 		},
 		{
@@ -105,7 +105,7 @@
 			},
 			"group": "Documentales",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background5.jpg"
 			}
 		},
 		{
@@ -122,7 +122,7 @@
 			},
 			"group": "Documentales",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background5.jpg"
 			}
 		},
 		{
@@ -138,7 +138,7 @@
 			},
 			"group": "Documentales",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background5.jpg"
 			}
 		},
 		{
@@ -154,7 +154,7 @@
 			},
 			"group": "Documentales",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background5.jpg"
 			}
 		},
 		{
@@ -170,7 +170,7 @@
 			},
 			"group": "Documentales",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background5.jpg"
 			}
 		},
 		{
@@ -187,7 +187,7 @@
 			},
 			"group": "Documentales",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background5.jpg"
 			}
 		},
 		{
@@ -203,7 +203,7 @@
 			},
 			"group": "Documentales",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background5.jpg"
 			}
 		},
 		{
@@ -220,7 +220,7 @@
 			},
 			"group": "Documentales",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background5.jpg"
 			}
 		},
 		{
@@ -236,7 +236,7 @@
 			},
 			"group": "Documentales",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background5.jpg"
 			}
 		},
 		{
@@ -252,7 +252,7 @@
 			},
 			"group": "Documentales",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background5.jpg"
 			}
 		},
 		{
@@ -268,7 +268,7 @@
 			},
 			"group": "Documentales",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background5.jpg"
 			}
 		},
 		{
@@ -284,7 +284,7 @@
 			},
 			"group": "Documentales",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background5.jpg"
 			}
 		},
 		{
@@ -300,7 +300,7 @@
 			},
 			"group": "Documentales",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background5.jpg"
 			}
 		},
 		{
@@ -312,11 +312,11 @@
 				"text": "<strong>Las Familias en la Televisión</strong><br>En los estudios sobre las familias del México contemporáneo, sus diversidades y transformaciones, siempre aparecen los medios de comunicación y la televisión como un referente ineludible.La televisión comercial se concibe como una forma de ilustrar “realidades” y un “competidor desleal” de quienes cuidan y educan a niñas, niños y jóvenes. En respuesta a esa inquietud, Iniciativa Ciudadana y Desarrollo Social, INCIDE Social A.C. y el Laboratorio Audiovisual de Investigación Social del Instituto Mora nos preguntamos: ¿Qué representaciones sobre las familias difunden la televisión comercial abierta y de paga? Este material invita a que reflexionemos sobre como son representadas las familias, sus relaciones, sus integrantes, las tomas de decisión en su interior, los problemas que tienen y cómo se vinculan a sus contextos."
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/publicaciones/MXIM-AV-1-13-1.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/publicaciones/MXIM-AV-1-13-1.jpg"
 			},
 			"group": "Documentales",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background5.jpg"
 			}
 		},
 
@@ -338,11 +338,11 @@
 				"text": "Conferencias magistrales: Boris Kossoy, Universidad de Sao Paulo, Brasil, El reloj de Hiroshima: reflexiones sobre los diálogos y los silencios de las imágenes. Felix del Valle Gustaminza, Universidad Complutense, España, Dimensión documental de la fotografía. Philippe Dubois, Universidad de Paris III, Francia, L'image et l'épreuve du réel. Mesas redondas: Fotografía e historia. Fotografía e investigación urbana. Imagen, historia y representación. Procesos sociales y acervos gráficos. Memoria e imágenes. Análisis sobre registros recientes. Materiales fílmicos: investigación y conservación."
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/eventos/1er%20Congreso.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/eventos/1er%20Congreso.jpg"
 			},
 			"group": "Eventos",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -361,11 +361,11 @@
 				"text": "Impartido por Carlos Mendoza Aupetit"
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/eventos/Cartel_curso_Lenguaje_10.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/eventos/Cartel_curso_Lenguaje_10.jpg"
 			},
 			"group": "Cursos",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 
@@ -387,11 +387,11 @@
 				"text": "Impartido por Julieta Keldjian"
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/eventos/Lenguaje-Audiovisual.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/eventos/Lenguaje-Audiovisual.jpg"
 			},
 			"group": "Cursos",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -410,11 +410,11 @@
 				"text": "<strong>Movimiento de Documentalistas<br>Argentina</strong><br>Impartido por Miguel Mirra"
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/eventos/Mirra%20Difusi%C3%B3n%20Redes.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/eventos/Mirra%20Difusi%C3%B3n%20Redes.jpg"
 			},
 			"group": "Cursos",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -433,11 +433,11 @@
 				"text": "Impartido por Ana Mauad"
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/eventos/Curso%202014%207.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/eventos/Curso%202014%207.jpg"
 			},
 			"group": "Cursos",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -456,11 +456,11 @@
 				"text": "Impartido por Belkis Vega"
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/eventos/Curso%202013.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/eventos/Curso%202013.jpg"
 			},
 			"group": "Cursos",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -479,11 +479,11 @@
 				"text": "Impartido por Catarina Alves Costa"
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/eventos/Curso%202012%205.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/eventos/Curso%202012%205.jpg"
 			},
 			"group": "Cursos",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -502,11 +502,11 @@
 				"text": "<strong>La compilación audiovisual: una herramienta para la investigación, didáctica y divulgación históricas</strong><br>Impartido por Itzia Fernández Escareño"
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/eventos/Taller%20historia.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/eventos/Taller%20historia.jpg"
 			},
 			"group": "Cursos",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -525,11 +525,11 @@
 				"text": "<strong>Metodología de la representación en acervos fotográficos</strong><br>Impartido por Félix del Valle Gastaminza en colaboración con Antonio García Jiménez"
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/eventos/La%20doc%20fotog.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/eventos/La%20doc%20fotog.jpg"
 			},
 			"group": "Cursos",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -548,11 +548,11 @@
 				"text": "Impartido por Ilonka Csillag Pimstein, Paulina Bravo Castillo, Soledad Abarca de la Fuente y Roberto Aguirre Bello"
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/eventos/Taller%20conservacion.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/eventos/Taller%20conservacion.jpg"
 			},
 			"group": "Cursos",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -571,11 +571,11 @@
 				"text": "Proyecciones con participación de comentaristas y realizadores"
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/eventos/2017_IEPry02-0917.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/eventos/2017_IEPry02-0917.jpg"
 			},
 			"group": "Eventos",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -594,11 +594,11 @@
 				"text": "Experiencias diversas desde: Archivos públicos y privados, sociedad civil organizada, organización de festivales, centros universitarios y de investigación"
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/eventos/2017_IECol10-1017.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/eventos/2017_IECol10-1017.jpg"
 			},
 			"group": "Eventos",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -617,11 +617,11 @@
 				"text": "Acercar a investigadores y estudiantes a las posibilidades que abre el uso de fuentes audiovisuales en la investigación social"
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/eventos/Poster%20Taller%2016.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/eventos/Poster%20Taller%2016.jpg"
 			},
 			"group": "Cursos",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -640,11 +640,11 @@
 				"text": "En seguimiento al Taller de Manejo de Equipo Audiovisual para la Investigación Social, se ofrece esta segunda etapa de formación para dar continuidad a los proyectos de investigación social con fuentes audiovisuales"
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/eventos/Taller%20proyectos2018.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/eventos/Taller%20proyectos2018.jpg"
 			},
 			"group": "Cursos",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -663,11 +663,11 @@
 				"text": "Producidos en el marco de los Talleres de Proyectos de Investigación con Fuentes Aduiovisuales (2015-2017)"
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/eventos/1018_IEPry05-1018.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/eventos/1018_IEPry05-1018.jpg"
 			},
 			"group": "Eventos",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -686,11 +686,11 @@
 				"text": "Impartido por Héctor Veitía"
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/eventos/1018_IECrs02-1018.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/eventos/1018_IECrs02-1018.jpg"
 			},
 			"group": "Cursos",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -709,11 +709,11 @@
 				"text": "Acercar a investigadores y estudiantes a las posibilidades que abre el uso de fuentes audiovisuales en la investigación social"
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/eventos/Cart-%20XVII%20Taller%20de%20Manejo.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/eventos/Cart-%20XVII%20Taller%20de%20Manejo.jpg"
 			},
 			"group": "Cursos",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -732,11 +732,11 @@
 				"text": "Un Paisaje Fronterizo. Cruces e itinerarios en la línea México-Guatemala"
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/eventos/paisaje-fronterizo_600x928px.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/eventos/paisaje-fronterizo_600x928px.jpg"
 			},
 			"group": "Eventos",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -755,11 +755,11 @@
 				"text": "Desde los inicios de los registros documentales del siglo XX hasta las narrativas contemporáneas"
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/eventos/DocumentalEnElTiempo_Febrero.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/eventos/DocumentalEnElTiempo_Febrero.jpg"
 			},
 			"group": "Eventos",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -778,11 +778,11 @@
 				"text": "Impartido por Gregoria Rocha"
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/eventos/XII%20Curso%20Lenguaje.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/eventos/XII%20Curso%20Lenguaje.jpg"
 			},
 			"group": "Cursos",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -796,11 +796,11 @@
 				"text": "Las Fotografías como Fuentes de Investigación: Precisiones para el trabajo de campo y el archivo"
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/eventos/Taller%20las%20fotograf%C3%ADas.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/eventos/Taller%20las%20fotograf%C3%ADas.jpg"
 			},
 			"group": "Cursos",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -818,11 +818,11 @@
 				"text": "En seguimiento al Taller de Manejo de Equipo Audiovisual para la Investigación Social, se ofrece esta segunda etapa de formación para dar continuidad a los proyectos de investigación social con fuentes audiovisuales"
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/eventos/5o%20Taller%20proyectos.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/eventos/5o%20Taller%20proyectos.jpg"
 			},
 			"group": "Cursos",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -841,11 +841,11 @@
 				"text": "Sesiones de intercambio sobre investigaciones en curso acerca de documentales de diversos periodos y temáticas, para profundizar sobre todo en aspectos teóricos y metodológicos"
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/eventos/Conversatorios2020.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/eventos/Conversatorios2020.jpg"
 			},
 			"group": "Eventos",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -864,11 +864,11 @@
 				"text": "Con especialistas internacionales integrantes de la Red de Investigación sobre Documentales"
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/eventos/REDOC_Charlas_2020.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/eventos/REDOC_Charlas_2020.jpg"
 			},
 			"group": "Eventos",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -887,11 +887,11 @@
 				"text": "Impartido por María Aimaretti"
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/eventos/1017_IECurso01-1020-13.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/eventos/1017_IECurso01-1020-13.jpg"
 			},
 			"group": "Cursos",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -910,11 +910,11 @@
 				"text": "Impartidas por Sergio Guilli (Escuela Latinoamericana de Formación Hombre Nuevo Mujer Nueva) y David Fuente (Asociación Volver a Marx)"
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/eventos/Cart-Engels.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/eventos/Cart-Engels.jpg"
 			},
 			"group": "Eventos",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -933,11 +933,11 @@
 				"text": "Para crear, mejorar y/o traducir la mayor cantidad de artículos de Wikipedia acerca de la trayectoria de mujeres documentalistas"
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/eventos/Editaton%20Convocatoria.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/eventos/Editaton%20Convocatoria.jpg"
 			},
 			"group": "Eventos",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background7.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background7.jpg"
 			}
 		},
 		{
@@ -949,11 +949,11 @@
 				"text": "Métodos en acción nace de repensar los vínculos entre el documental y la investigación, cómo se relacionan, condicionan y transforman entre sí, a partir de revisiones y reflexiones metodológicas sostenidas en un seminario sobre estos temas"
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/publicaciones/Portada_Metodos.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/publicaciones/Portada_Metodos.jpg"
 			},
 			"group": "Publicaciones",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background6.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background6.jpg"
 			}
 		},
 		{
@@ -965,11 +965,11 @@
 				"text": "Este documental presenta un diálogo donde confluyen las voces de antropólogos forenses, familiares, jueces y activistas de derechos humanos, en torno a su labor en los casos de desaparición forzada de presos y ejecutados en América Latina"
 			},
 			"media": {
-				"url": "http://lais.mora.edu.mx/imgs/publicaciones/Documental_DesaparicionForzada.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/publicaciones/Documental_DesaparicionForzada.jpg"
 			},
 			"group": "Documentales",
 			"background": {
-				"url": "http://lais.mora.edu.mx/imgs/background5.jpg"
+				"url": "https://lais.mora.edu.mx/imgs/background5.jpg"
 			}
 		}
 	],
