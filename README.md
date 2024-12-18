@@ -8,7 +8,7 @@ El proyecto se basa en tecnología Javascript con *MEAN stack*: MongoDB, Express
 
 - [NodeJS](https://nodejs.org), NPM (Node Package Manager)
 - [MongoDB](https://www.mongodb.org/)
-- [Bower](http://bower.io/)
+- [Bower](https://bower.io/)
 
 Opcionalmente:
 
