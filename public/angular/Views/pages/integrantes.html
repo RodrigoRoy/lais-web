@@ -11,21 +11,27 @@
 	<div class="card grey lighten-2" ng-repeat="persona in personas" style="background-color: transparent !important; box-shadow: none;" >
 		<div class="card-content grey-text text-darken-4">
 			<div class="row text-center my-3">
+				<!-- Fotografía -->
 				<div class="col-xs-12 col-sm-6 col-lg-3">
 					<img src="imgs/integrantes/{{ persona.imagen }}" class="img-responsive img-rounded" >
 				</div>
 
+				<!-- Datos básicos -->
 				<div class="col-xs-12 col-sm-6 col-lg-3 mt-3">
+					<!-- Nombre -->
 					<p style="font-size: 1.5em; font-weight: bolder; color:#294f6d;">
 						{{ persona.nombre }}
 					</p>
+					<!-- Formación -->
 					<p class="mt-3 mb-3" style="font-weight: lighter;">
 						{{ persona.formacion }}
 					</p>
-					<a href="{{ persona.contacto }}" style="font-size: 1em; color: inherit; text-decoration: underline;">
+					<!-- Correo -->
+					<a href="{{ persona.contacto }}" class="my-link" style="font-size: 14px; color: inherit; font-weight: bolder;">
 						<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
 						{{ persona.contacto }}
 					</a>
+					<!-- Redes sociales -->
 					<!-- <div ng-repeat="contacto in persona.socialMedia">
 						<a href="{{ contacto.url }}" class="mx-2" style="font-size: 1em; color: inherit; text-decoration: underline;">
 							{{ contacto.text }}
@@ -33,14 +39,18 @@
 					</div> -->
 				</div>
 
+				<!-- Datos en extenso -->
 				<div class="col-xs-12 col-lg-6 mt-3" style="font-weight: normal; text-align: justify;">
+					<!-- Semblanza -->
 					<p style="line-height: 1.5;">
 						{{ persona.semblanza }}
 					</p>
+					<!-- Líneas de investigación -->
 					<p class="mt-3" style="font-weight: lighter; line-height: 1.5;">
 						Líneas de investigación: 
 						{{ persona.lineasInvestigacion }}
 					</p>
+					<!-- Producción -->
 					<p class="mt-3" style="font-weight: normal; line-height: 1.5;">
 						Producción relevante:
 						<ul class="list-unstyled">
