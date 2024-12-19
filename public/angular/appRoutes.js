@@ -115,6 +115,11 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 			controller: 'IntegrantesController'
 		})
 
+		.when('/postdoctoral',{
+			templateUrl: 'angular/Views/pages/postdoctoral.html',
+			controller: 'PostdoctoralController'
+		})
+
 		// RUTAS INVÁLIDAS (no descritas previamente)
 		.otherwise({
 			redirectTo: '/'
