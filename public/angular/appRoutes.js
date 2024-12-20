@@ -120,6 +120,11 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 			controller: 'PostdoctoralController'
 		})
 
+		.when('/estudiantes',{
+			templateUrl: 'angular/Views/pages/estudiantes.html',
+			controller: 'EstudiantesController'
+		})
+
 		// RUTAS INVÁLIDAS (no descritas previamente)
 		.otherwise({
 			redirectTo: '/'

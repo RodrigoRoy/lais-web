@@ -36,6 +36,7 @@ angular.module('laisApp', [
 	'ConvocatoriasCtrl', // Página de convocatorias
 	'IntegrantesCtrl', // Página de integrantes del laboratorio
 	'PostdoctoralCtrl', // Página de estancias postdoctorales
+	'EstudiantesCtrl', // Página de estudiantes
 
 	'authService', // Servicio para la autentificación de usuarios
 	'LugarService', // Servicio para administrar llamadas a la base de datos de "lugares"
