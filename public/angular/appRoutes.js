@@ -125,6 +125,11 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 			controller: 'EstudiantesController'
 		})
 
+		.when('/vinculacion',{
+			templateUrl: 'angular/Views/pages/vinculacion.html',
+			controller: 'VinculacionController'
+		})
+
 		// RUTAS INVÁLIDAS (no descritas previamente)
 		.otherwise({
 			redirectTo: '/'
