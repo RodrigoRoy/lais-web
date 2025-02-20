@@ -43,79 +43,85 @@
 	</head>
 
 	<body ng-app="laisApp" ng-controller="IndexController">
-	    <div class="container">
-		    <!-- Secciones de navegación -->
-		    <nav class="navbar navbar-default navbar-fixed-top" >
 
-		            <!-- Brand and toggle get grouped for better mobile display -->
-		            <div class="navbar-header" ng-cloak>
-		                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
-		                    <span class="sr-only">Toggle navigation</span>
-		                    <span class="icon-bar"></span>
-		                    <span class="icon-bar"></span>
-		                    <span class="icon-bar"></span>
-		                </button>
-		                <a class="navbar-brand brand-spacing hidden-xs" ng-click="openModal()" ng-show="!loggedIn">
-		                	<center>
-		                		<img src="imgs/lais_logo.png">
-		                	</center>
-		                </a>
-		                <a class="navbar-brand brand-spacing hidden-xs" href="/admin" ng-show="loggedIn">
-		                	<center>
-		                		<img src="imgs/lais_logo.png">
-		                	</center>
-		                </a>
-		                <a class="navbar-brand brand-spacing hidden-xs hidden-sm" href="https://www.institutomora.edu.mx/" target="_blank">
-		                	<center>
-		                		<img src="imgs/mora_logo.png">
-		                	</center>
-		                </a>
-		            </div>
+		<!-- Secciones de navegación -->
+		<nav class="navbar navbar-default navbar-fixed-top" >
+			<div class="container-fluid">
 
-		            <!-- Collect the nav links, forms, and other content for toggling -->
-		            <div class="collapse navbar-collapse" id="main-navbar" ng-cloak>
-		                <ul class="nav navbar-nav navbar-right">
-		                    <li class="active">
-		                    	<!-- $scope.isIndex se actualiza en cada cambio de URL. El atributo ng-clock evita que se carguen ambas opciones
-		                    	de manera prematura, debido a que 'scroll parallax' no funcion utilizando ng-if -->
-		                        <a class="page-scroll" ng-href="#info" ng-show="isIndex">Inicio</a>
-		                        <a class="page-scroll" href="index.html#info" ng-hide="isIndex">Inicio</a>
-		                    </li>
-		                    <li>
-		                    	<a class="page-scroll" ng-href="#trayectoria" ng-show="isIndex">Trayectoria</a>
-		                    	<a class="page-scroll" href="index.html#trayectoria" ng-hide="isIndex">Trayectoria</a>
-		                    </li>
-		                    <li>
-		                        <a class="page-scroll" ng-href="#recursos" ng-show="isIndex">Recursos en Línea</a>
-		                        <a class="page-scroll" href="index.html#recursos" ng-hide="isIndex">Recursos en Línea</a>
-		                    </li>
-		                    <li>
-		                        <!-- <a class="page-scroll" href="/publicacion" ng-click="setActive('Publicaciones')">Publicaciones</a> -->
-		                        <a class="page-scroll" ng-href="#publicaciones" ng-show="isIndex">Publicaciones</a>
-		                        <a class="page-scroll" href="index.html#publicaciones" ng-hide="isIndex">Publicaciones</a>
-		                    </li>
-		                    <li>
-		                    	<!-- <a class="page-scroll" href="/eventos" ng-click="setActive('Eventos')">Eventos</a> -->
-		                    	<a class="page-scroll" ng-href="#eventos" ng-show="isIndex">Eventos</a>
-		                        <a class="page-scroll" href="index.html#eventos" ng-hide="isIndex">Eventos</a>
-		                    </li>
-		                    <!-- <li class="dropdown">
-		                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Acervos <span class="caret"></span></a>
-		                        <ul class="dropdown-menu">
-		                        	<li>
-		                        		<a id="dropdown-label" href="">Audiovisual</a>
-		                        	</li>
-		                        	<li>
-		                        		<a id="dropdown-label" href="">Fotografico</a>
-		                        	</li>
-		                        </ul>
-		                    </li> -->
-		                </ul>
-		            </div>
-		            <!-- /.navbar-collapse -->
-		        </div>
-		    </nav>
-		</div>
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header" ng-cloak>
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand brand-spacing hidden-xs" ng-click="openModal()" ng-show="!loggedIn">
+						<center>
+							<img src="imgs/lais_logo.png">
+						</center>
+					</a>
+					<a class="navbar-brand brand-spacing hidden-xs" href="/admin" ng-show="loggedIn">
+						<center>
+							<img src="imgs/lais_logo.png">
+						</center>
+					</a>
+					<a class="navbar-brand brand-spacing hidden-xs hidden-sm" href="https://www.institutomora.edu.mx/" target="_blank">
+						<center>
+							<img src="imgs/mora_logo.png">
+						</center>
+					</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="main-navbar" ng-cloak>
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">LAIS<span class="caret"></span></a>
+							<ul class="dropdown-menu navbar-inverse">
+								<li><a id="dropdown-label" href="#">Quiénes somos</a></li>
+								<li><a id="dropdown-label" href="#">Qué hacemos</a></li>
+								<li><a id="dropdown-label" href="#">Investigaciones en curso</a></li>
+								<li><a id="dropdown-label" href="/estudiantes">Colaboradoras/es</a></li>
+								<li><a id="dropdown-label" href="/postdoctoral">Estancias postdoctorales</a></li>
+								<li><a id="dropdown-label" href="#">Contacto</a></li>
+							</ul>
+						</li>
+
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Educación<span class="caret"></span></a>
+							<ul class="dropdown-menu navbar-inverse">
+								<li><a id="dropdown-label" href="#">Talleres</a></li>
+								<li><a id="dropdown-label" href="#">Cursos de especialización</a></li>
+								<li><a id="dropdown-label" href="#">Cursos semestrales</a></li>
+							</ul>
+						</li>
+
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Recursos en línea<span class="caret"></span></a>
+							<ul class="dropdown-menu navbar-inverse">
+								<li><a id="dropdown-label" href="/publicacion?show=Libro">Libros</a></li>
+								<li><a id="dropdown-label" href="/publicacion?show=Artículo">Artículos</a></li>
+								<li><a id="dropdown-label" href="/publicacion?show=Documental">Documentales</a></li>
+								<li><a id="dropdown-label" href="/publicacion?show=Exposición">Exposiciones</a></li>
+								<li><a id="dropdown-label" href="#">Sitios web</a></li>
+								<li><a id="dropdown-label" href="#">Podcast</a></li>
+								<li><a id="dropdown-label" href="#">Tesis dirigidas</a></li>
+							</ul>
+						</li>
+
+						<li class="dropdown">
+							<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Actividades académicas<span class="caret"></span></a>
+							<ul class="dropdown-menu navbar-inverse">
+								<li><a id="dropdown-label" href="#">Seminarios</a></li>
+								<li><a id="dropdown-label" href="/eventos">Eventos</a></li>
+								<li><a id="dropdown-label" href="/vinculacion">Vinculación</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div> <!-- /.navbar-collapse -->
+			</div>
+		</nav>
 
     	<!-- Contenido dinámico de Angular -->
         <div ng-view></div>

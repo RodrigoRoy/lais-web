@@ -37,7 +37,10 @@ img{
 
 /*Secciones de las etiquestas de los dropdowns menu*/
 #dropdown-label{
-	color: #ccc;
+	color: #ccc !important;
+}
+#dropdown-label:hover{
+	color: #262626 !important;
 }
 
 .brand-spacing{
