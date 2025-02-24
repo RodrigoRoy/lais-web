@@ -1,123 +1,16 @@
 <div class="container my-container">
-    <div class="text-center mb-5">
-        <h2 class="color-title">
-            Estudiantes
-        </h2>
-
-        <p class="lead">
-            Cada años nos vinculamos con estudiantes de diversas universidades que colaboran en actividades de investigación, docencia y divulgación. Se aceptan prestadores/as de servicio social así como estudiantes para becas de formación y para dirección de tesis. Estas dos últimas a nivel licenciatura, maestría y doctorado.
-        </p>
-    </div>
-
-    <div class="text-center">
-        <h5>
-            Becas de formación
-        </h5>
-    
-        <p>
-            El objetivo es promover la formación de las y los jóvenes investigadores en el conocimiento y la práctica de las metodologías y las técnicas de investigación con imágenes.
-        </p>
-        <p ng-if="convocatoria.active">
-            <a href="{{convocatoria.url}}" class="my-link" style="font-size: 16px; color: inherit; font-weight: bolder;">
-                Convocatoria al programa de becas del Instituto Mora
-                <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
-            </a>
-        </p>
-    </div>
-
-    <div class="row my-3">
-        <div class="col-xs-12 col-sm-6" ng-repeat="persona in becas">
-            <div class="card" style="background-color: transparent !important; box-shadow: none;" >
-                <div class="card-content">
-                    <p class="mb-2" style="font-size: 1.15em; color:#294f6d; font-weight: bolder;">
-                        {{ persona.nombre }}
-                    </p>
-                    <p class="mb-2" style="font-weight: lighter;">
-                        {{ persona.adscripcion }}
-                    </p>
-                    <p>
-                        <span style="font-weight: bold;">
-                            Actividad principal
-                        </span>
-                        <br>
-                        <span style="font-weight: normal;">
-                            {{ persona.proyecto }}
-                        </span>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="text-center">
-        <h5>
-            Servicio social
-        </h5>
-    </div>
-
-    <div class="row my-3">
-        <div class="col-xs-12 col-sm-6" ng-repeat="persona in servicioSocial">
-            <div class="card" style="background-color: transparent !important; box-shadow: none;" >
-                <div class="card-content">
-                    <p class="mb-2" style="font-size: 1.15em; color:#294f6d; font-weight: bolder;">
-                        {{ persona.nombre }}
-                    </p>
-                    <p class="mb-2" style="font-weight: lighter;">
-                        {{ persona.adscripcion }}
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="text-center">
-        <h5>
-            Tesistas
-        </h5>
-    </div>
-
-    <div class="row my-3">
-        <div class="col-xs-12 col-md-6" ng-repeat="persona in tesistas">
-            <div class="card" style="background-color: transparent !important; box-shadow: none;" >
-                <div class="card-content">
-                    <p class="mb-2" style="font-size: 1.15em; color:#294f6d; font-weight: bolder;">
-                        {{ persona.nombre }}
-                    </p>
-                    <p class="mb-2" style="font-weight: lighter;">
-                        {{ persona.adscripcion }}
-                    </p>
-                    <p style="font-weight: normal;">
-                        {{ persona.tesis }}
-                    </p>
-                    <p style="font-weight: bold;">
-                        {{ persona.tipo }} - {{ persona.integrante }}, terminada en {{ persona.date }}
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
+	<div class="row">
+		<div class="col-xs-12 text-center">
+			<h2 class="color-title">
+				Investigaciones en curso
+			</h2>
+		</div>
+	</div>
 </div>
 
 <style>
 .my-link:hover {
 	text-decoration: underline;
-}
-
-/* Same height columns for Bootstrap 3
-https://stackoverflow.com/questions/19695784/how-can-i-make-bootstrap-columns-all-the-same-height */
-.row {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display:         flex;
-  flex-wrap: wrap;
-}
-.row > [class*='col-'] {
-  display: flex;
-  flex-direction: column;
 }
 
 /* Marging and padding classes */

@@ -120,14 +120,19 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 			controller: 'PostdoctoralController'
 		})
 
-		.when('/estudiantes',{
-			templateUrl: 'angular/Views/pages/estudiantes.html',
-			controller: 'EstudiantesController'
+		.when('/colaboradores',{
+			templateUrl: 'angular/Views/pages/colaboradores.html',
+			controller: 'ColaboradoresController'
 		})
 
 		.when('/vinculacion',{
 			templateUrl: 'angular/Views/pages/vinculacion.html',
 			controller: 'VinculacionController'
+		})
+
+		.when('/investigaciones',{
+			templateUrl: 'angular/Views/pages/investigaciones.html',
+			controller: 'InvestigacionesController'
 		})
 
 		// RUTAS INVÁLIDAS (no descritas previamente)
