@@ -135,6 +135,36 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 			controller: 'InvestigacionesController'
 		})
 
+		.when('/talleres',{
+			templateUrl: 'angular/Views/pages/talleres.html',
+			controller: 'TalleresController'
+		})
+
+		.when('/cursos',{
+			templateUrl: 'angular/Views/pages/cursos.html',
+			controller: 'CursosController'
+		})
+
+		.when('/cursosSemestrales',{
+			templateUrl: 'angular/Views/pages/cursosSemestrales.html',
+			controller: 'CursosSemestralesController'
+		})
+
+		.when('/sitios',{
+			templateUrl: 'angular/Views/pages/sitios.html',
+			controller: 'SitiosController'
+		})
+
+		.when('/podcast',{
+			templateUrl: 'angular/Views/pages/podcast.html',
+			controller: 'PodcastController'
+		})
+
+		.when('/seminarios',{
+			templateUrl: 'angular/Views/pages/seminarios.html',
+			controller: 'SeminariosController'
+		})
+
 		// RUTAS INVÁLIDAS (no descritas previamente)
 		.otherwise({
 			redirectTo: '/'

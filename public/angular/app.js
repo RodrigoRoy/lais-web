@@ -39,6 +39,12 @@ angular.module('laisApp', [
 	'ColaboradoresCtrl', // Página de estudiantes
 	'VinculacionCtrl', // Página de vinculación
 	'InvestigacionesCtrl', // Página de investigaciones en curso
+	'TalleresCtrl', // Página de talleres
+	'CursosCtrl', // Página de cursos
+	'CursosSemestralesCtrl', // Página de cursos semestrales
+	'SitiosCtrl', // Página de sitios
+	'PodcastCtrl', // Página de podcast
+	'SeminariosCtrl', // Página de seminarios
 
 	'authService', // Servicio para la autentificación de usuarios
 	'LugarService', // Servicio para administrar llamadas a la base de datos de "lugares"
