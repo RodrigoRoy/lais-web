@@ -6,6 +6,18 @@
 			</h2>
 		</div>
 	</div>
+
+	<div class="row" ng-repeat="sitio in sitios">
+		<div class="col-xs-12 col-sm-8">
+			<p><a href="{{sitio.url}}" target="_blank" class="my-link" style="color:#294f6d; font-size: 1.5em; font-weight: bolder;">{{sitio.title}}</a></p>
+			<p>{{sitio.text}}</p>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<a href="{{sitio.url}}" target="_blank">
+				<img src="imgs/{{sitio.img}}" class="img-responsive img-rounded">
+			</a>
+		</div>
+	</div>
 </div>
 
 <style>

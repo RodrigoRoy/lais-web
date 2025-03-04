@@ -1,51 +1,69 @@
 <div class="container my-container">
 	<div class="row">
-		<!-- <div class="col-xs-12 text-center">
-			<h2 class="color-title">
-				Talleres
-			</h2>
-		</div> -->
-
         <div class="col-xs-12 text-center">
-            <h3>Taller de manejo de equipo audiovisual para la investigación social</h3>
+            <h4 class="color-title">
+                Taller de manejo de equipo audiovisual para la investigación social
+            </h4>
         </div>
         
         <div class="col-xs-12">
-            <p>Taller impartido por integrantes del LAIS con el objetivo de conocer las posibilidades del uso de fuentes audiovisuales en la investigación, poniendo énfasis en la creación y procesamiento de este tipo de registros. Introducir a las y los asistentes el manejo de equipo audiovisual como herramienta para la investigación social y la difusión del conocimiento.</p>
+            <p>
+                Taller impartido por integrantes del LAIS con el objetivo de conocer las posibilidades del uso de fuentes audiovisuales en la investigación, poniendo énfasis en la creación y procesamiento de este tipo de registros. Introducir a las y los asistentes el manejo de equipo audiovisual como herramienta para la investigación social y la difusión del conocimiento.
+            </p>
 
-            <!-- <p></p> -->
-
-            <p>Modalidad: Presencial en las instalaciones del Instituto Mora (sede Poussin) en la Ciudad de México.</p>
+            <p>
+                <span style="font-weight: bold;">Modalidad</span>: 
+                Presencial en las instalaciones del Instituto Mora (sede Poussin) en la Ciudad de México.
+            </p>
     
-            <p>Duración: 25 horas (5 horas diarias durante 1 semana).</p>
+            <p>
+                <span style="font-weight: bold;">Duración</span>: 
+                25 horas (5 horas diarias durante 1 semana).
+            </p>
 
-            <p>Requisitos: Registro previo en línea, que incluye datos básicos, una carta de motivos y currículum vitae. Durantes las sesiones, puntualidad y llevar equipo audiovisual en caso de contar con alguno (cámara fotográfica, cámara de video, micrófonos, grabadoras, etc.)</p>
+            <p>
+                <span style="font-weight: bold;">Requisitos:</span> 
+                Registro previo en línea, que incluye datos básicos, una carta de motivos y currículum vitae. Durantes las sesiones, puntualidad y llevar equipo audiovisual en caso de contar con alguno (cámara fotográfica, cámara de video, micrófonos, grabadoras, etc.)
+            </p>
 
-            <p>Costo: Gratuito con cupo limitado.</p>
+            <p>
+                <span style="font-weight: bold;">Costo:</span> 
+                Gratuito con cupo limitado.
+            </p>
 
-            <p>Forma de trabajo: Exposiciones por parte de talleristas. Equipos de trabajo para ejercicios prácticos.</p>
+            <p>
+                <span style="font-weight: bold;">Forma de trabajo:</span> 
+                Exposiciones por parte de talleristas. Equipos de trabajo para ejercicios prácticos.
+            </p>
 
-            <p>Temario:</p>
-            <ul>
-                <li>Introducción a la investigación social con imágenes</li>
-                <li>Componentes de la cámara fotográfica</li>
-                <li>Técnicas de exposición fotográfica</li>
-                <li>Planos y composición fotográfica</li>
-                <li>Imagen digital</li>
-                <li>Audio, grabadoras y micrófonos</li>
-                <li>La cámara de video</li>
-                <li>Archivos digitales de video</li>
-                <li>Metodología para realización de entrevistas</li>
-                <li>Tipos de entrevista basada en las herramientas audiovisuales</li>
-                <li>Proyectos de investigación y fuentes audiovisuales</li>
-                <li>Reproducción de documentos</li>
-                <li>Trabajo con imágenes de archivo</li>
-                <li>Metodología de entrevista con imágenes</li>
-                <li>Trabajo de campo de continuidad e incursión</li>
-                <li>Registro de espacios en campo</li>
-                <li>Procesamiento de los registros en campo</li>
-                <li>Triangulación de fuentes</li>
+            <p>
+                <span style="font-weight: bold;">Temario:</span> 
+            </p>
+
+            <ul style="padding-left: 2em; font-size: 14px;">
+                <li style="list-style-type: disc;">Introducción a la investigación social con imágenes</li>
+                <li style="list-style-type: disc;">Componentes de la cámara fotográfica</li>
+                <li style="list-style-type: disc;">Técnicas de exposición fotográfica</li>
+                <li style="list-style-type: disc;">Planos y composición fotográfica</li>
+                <li style="list-style-type: disc;">Imagen digital</li>
+                <li style="list-style-type: disc;">Audio, grabadoras y micrófonos</li>
+                <li style="list-style-type: disc;">La cámara de video</li>
+                <li style="list-style-type: disc;">Archivos digitales de video</li>
+                <li style="list-style-type: disc;">Metodología para realización de entrevistas</li>
+                <li style="list-style-type: disc;">Tipos de entrevista basada en las herramientas audiovisuales</li>
+                <li style="list-style-type: disc;">Proyectos de investigación y fuentes audiovisuales</li>
+                <li style="list-style-type: disc;">Reproducción de documentos</li>
+                <li style="list-style-type: disc;">Trabajo con imágenes de archivo</li>
+                <li style="list-style-type: disc;">Metodología de entrevista con imágenes</li>
+                <li style="list-style-type: disc;">Trabajo de campo de continuidad e incursión</li>
+                <li style="list-style-type: disc;">Registro de espacios en campo</li>
+                <li style="list-style-type: disc;">Procesamiento de los registros en campo</li>
+                <li style="list-style-type: disc;">Triangulación de fuentes</li>
             </ul>
+        </div>
+
+        <div ng-repeat="photo in taller" class="col-xs-12 col-sm-4">
+            <img src="imgs/{{photo.img}}" class="img-responsive img-thumbnail mx-2 my-1" alt="{{photo.text}}">
         </div>
 	</div>
 </div>
