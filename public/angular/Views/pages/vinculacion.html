@@ -5,12 +5,12 @@
         </h2>
 
         <p class="lead mb-0">
-            Instancias con las que participamos, apoyamos y colaboramos recientemente.
+            Instancias con las que participamos, apoyamos y colaboramos de manera académica, investigación, divulgación y asesoramiento.
         </p>
     </div>
 
     <div class="row text-center">
-        <div class="col-xs-12 col-sm-6 mt-4" ng-repeat="institucion in instituciones">
+        <div class="col-xs-12 col-sm-6 col-md-4 mt-4" ng-repeat="institucion in instituciones">
             <div class="card my-2" style="background-color: transparent !important; box-shadow: none;" >
                 <div class="card-content">
                     <img src="imgs/vinculacion/{{ institucion.imagen }}" class="img-responsive img-rounded my-2" style="display: block; margin-left: auto; margin-right: auto; width: 200px;" >
@@ -19,9 +19,9 @@
                         {{ institucion.nombre }}
                     </a>
 
-                    <p style="font-weight: lighter; color: inherit">
+                    <!-- <p style="font-weight: lighter; color: inherit">
                         {{ institucion.relacion }}
-                    </p>
+                    </p> -->
                 </div>
             </div>
         </div>
