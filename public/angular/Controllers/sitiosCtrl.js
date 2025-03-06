@@ -10,19 +10,19 @@ angular.module('SitiosCtrl', []).controller('SitiosController', function ($scope
 		},
 		{
 			title: 'MetaDOC',
-			text: 'Sitio web que pone a disposición la catalogación de la colección de documentales del Laboratorio Audiovisual de Investigación Social del Instituto Mora, con la intención de impulsar el análisis e investigación sobre este tipo de documentos.',
+			text: 'Sitio web que pone a disposición la catalogación de la colección de documentales del Laboratorio Audiovisual de Investigación Social del Instituto Mora, con la intención de impulsar el análisis e investigación en diversidad de producciones de cine documental.',
 			url: 'https://lais.mora.edu.mx/metadoc',
 			img: 'metaDOC.png',
 		},
 		{
 			title: 'Mapeo de Laboratorios Audiovisuales en México',
-			text: 'Listado de espacios colectivos cuyo eje de trabajo es la investigación sobre lo audiovisual y con herramientas audiovisuales que estuvieron presentes en el Encuentro de Laboratorios Audiovisuales de Investigación en México (2022).',
+			text: 'Mapeo de espacios colectivos cuyo eje de trabajo es la investigación sobre lo audiovisual y con herramientas audiovisuales, ofreciendo una ponencia en video, imágenes, fotografías, contacto, vínculos a sus páginas y redes sociales.',
 			url: 'https://lais.mora.edu.mx/laboratorios',
 			img: 'Mapeo_laboratorios.png',
 		},
 		{
 			title: 'Diálogos documentales de Isla Tortuga al Abya Yala',
-			text: 'Sitio web que alberga la información del ciclo de charlas y proyecciones "Diálogos documentales de Isla Tortuga al Abya Yala", alrededor de tres ejes principales: lengua, matriarquía y territorio.',
+			text: 'Ciclo de charlas y proyecciones sobre la lucha y resistencia de los pueblos originarios en torno a problemáticas como la conservación del territorio, revitalización de la lengua y la participación de las mujeres.',
 			url: 'https://lais.mora.edu.mx/proyecciones',
 			img: 'Abya_Yala.png',
 		},
