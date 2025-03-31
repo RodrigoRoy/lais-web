@@ -165,6 +165,11 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 			controller: 'SeminariosController'
 		})
 
+		.when('/acerca',{
+			templateUrl: 'angular/Views/pages/about.html',
+			controller: 'AboutController'
+		})
+
 		// RUTAS INVÁLIDAS (no descritas previamente)
 		.otherwise({
 			redirectTo: '/'

@@ -45,6 +45,7 @@ angular.module('laisApp', [
 	'SitiosCtrl', // Página de sitios
 	'PodcastCtrl', // Página de podcast
 	'SeminariosCtrl', // Página de seminarios
+	'AboutCtrl', // Página acerca del LAIS
 
 	'authService', // Servicio para la autentificación de usuarios
 	'LugarService', // Servicio para administrar llamadas a la base de datos de "lugares"
