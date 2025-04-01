@@ -11,7 +11,7 @@ angular.module('SitiosCtrl', []).controller('SitiosController', function ($scope
 		{
 			title: 'MetaDOC',
 			text: 'Sitio web que pone a disposición la catalogación de la colección de documentales del Laboratorio Audiovisual de Investigación Social del Instituto Mora, con la intención de impulsar el análisis e investigación en diversidad de producciones de cine documental.',
-			url: 'https://lais.mora.edu.mx/metadoc',
+			url: 'http://lais.mora.edu.mx/metadoc',
 			img: 'metaDOC.png',
 		},
 		{
