@@ -81,6 +81,21 @@ angular.module('ColaboradoresCtrl', []).controller('ColaboradoresController', fu
         },
     ];
 
+    $scope.estancias = [
+        {
+            nombre: "Isabella Poppe",
+            adscripcion: "Universidad Federal de Rio de Janeiro (Doctorado en Historia)",
+            proyecto: "Mujeres y utopía en los documentales sobre la revolución sandinista nicaragüense",
+            date: "2024-2025",
+        },
+        {
+            nombre: "Begoña Martínez Rosado",
+            adscripcion: "Universidad de las Islas Baleares (Doctorado en Historia del Arte)",
+            proyecto: "La construcción narrativa y visual de la figura de Fray Junípero Serra en el contexto de las construcciones identitarias española y mallorquina",
+            date: "2025",
+        },
+    ];
+
     // ***** 2023 - 2024 *****
     // $scope.becas = [
     //     {

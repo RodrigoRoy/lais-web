@@ -37,6 +37,12 @@
 							{{ contacto.text }}
 						</a>
 					</div> -->
+					<div ng-repeat="contacto in persona.socialMedia">
+                        <img height="14" width="14" src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/{{contacto.icon}}.svg" />
+						<a href="{{ contacto.url }}" class="mr-2 ml-0" style="font-size: 1em; color: inherit; text-decoration: underline;">
+							{{ contacto.text }}
+						</a>
+					</div>
 				</div>
 
 				<!-- Datos en extenso -->

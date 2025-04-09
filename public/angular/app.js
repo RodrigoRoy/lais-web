@@ -37,7 +37,7 @@ angular.module('laisApp', [
 	'IntegrantesCtrl', // Página de integrantes del laboratorio
 	'PostdoctoralCtrl', // Página de estancias postdoctorales
 	'ColaboradoresCtrl', // Página de estudiantes
-	'VinculacionCtrl', // Página de vinculación
+	'EnlacesCtrl', // Página de vinculación
 	'InvestigacionesCtrl', // Página de investigaciones en curso
 	'TalleresCtrl', // Página de talleres
 	'CursosCtrl', // Página de cursos

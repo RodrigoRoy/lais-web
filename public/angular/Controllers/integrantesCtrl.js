@@ -10,12 +10,14 @@ angular.module('IntegrantesCtrl', []).controller('IntegrantesController', functi
 			lineasInvestigacion:"Historia social con imágenes, siglos XIX a XXI, antropología de lo visual, investigación audiovisual.",
 			formacion: "Comunicación, Historia, Antropología",
 			produccion: [
-				// { tipo: "Documental", text: "Km. C-62. Un nómada del riel", url: "publicacion/587ea0f2ce559cbb160701cf", date: '2000' },
 				{ tipo: "Libro", text: "Métodos en Acción. Estudios sobre documental e investigación social", url: "publicacion/603937d5d96f496022f87e8c", date: '2020' },
 				{ tipo: "Revista", text: "Dixit. Hacia un panorama del ámbito audiovisual documental latinoamericano", url: "publicacion/6397875a900ef057492019f8", date: '2022' },
 				{ tipo: "Libro", text: "Tejedores de Imágenes. Propuestas metodológicas de investigación y gestión del patrimonio fotográfico y audiovisual", url: "publicacion/61a17d63516d11448857b756", date: '2014' },
 			],
 			imagen: "Lourdes Roca.jpg",
+			socialMedia: [
+				{ icon: 'orcid', url: 'https://orcid.org/0000-0003-1215-1992', text: 'ORCID' },
+			]
 		},
 		{
 			nombre: "Felipe Morales Leal",
@@ -56,8 +58,8 @@ angular.module('IntegrantesCtrl', []).controller('IntegrantesController', functi
 			],
 			imagen: "Rodrigo Colín.jpg",
 			socialMedia: [
-				{ icon: 'bi:github', url: 'https://github.com/RodrigoRoy/', text: 'GitHub' },
-				// { icon: 'bi:twitter-x', url: 'https://x.com/R_RodrigoRoy', text: 'Twitter/X' },
+				{ icon: 'github', url: 'https://github.com/RodrigoRoy/', text: 'GitHub' },
+				// { icon: 'twitter-x', url: 'https://x.com/R_RodrigoRoy', text: 'Twitter/X' },
 			]
 		},
 	];

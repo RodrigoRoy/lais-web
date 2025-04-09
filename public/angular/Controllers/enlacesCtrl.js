@@ -1,6 +1,6 @@
 /*Controlador de la sección de vinculación */
 
-angular.module('VinculacionCtrl', []).controller('VinculacionController', function ($scope) {
+angular.module('EnlacesCtrl', []).controller('EnlacesController', function ($scope) {
     $scope.instituciones = [
         {
             nombre: "Redoc Investigación",

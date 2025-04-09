@@ -5,7 +5,7 @@
         </h2>
 
         <p class="lead">
-            Cada años nos vinculamos con estudiantes de diversas universidades que colaboran en actividades de investigación, docencia y divulgación. Se aceptan prestadores/as de servicio social así como estudiantes para becas de formación y para dirección de tesis. Estas dos últimas a nivel licenciatura, maestría y doctorado.
+            Cada año nos vinculamos con estudiantes de diversas universidades que colaboran en actividades de investigación, docencia y divulgación. Se aceptan prestadores/as de servicio social así como estudiantes para becas de formación y para dirección de tesis. Estas dos últimas a nivel licenciatura, maestría y doctorado.
         </p>
     </div>
 
@@ -102,6 +102,30 @@
                     </p>
                     <p style="font-weight: bold;">
                         {{ persona.tipo }} - {{ persona.integrante }}, terminada en {{ persona.date }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <h5>
+            Estancias
+        </h5>
+    </div>
+
+    <div class="row my-3">
+        <div class="col-xs-12 col-md-6" ng-repeat="persona in estancias">
+            <div class="card" style="background-color: transparent !important; box-shadow: none;" >
+                <div class="card-content">
+                    <p class="mb-2" style="font-size: 1.15em; color:#294f6d; font-weight: bolder;">
+                        {{ persona.nombre }}
+                    </p>
+                    <p class="mb-2" style="font-weight: lighter;">
+                        {{ persona.adscripcion }}
+                    </p>
+                    <p style="font-weight: normal;">
+                        {{ persona.proyecto }}
                     </p>
                 </div>
             </div>

@@ -125,9 +125,9 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 			controller: 'ColaboradoresController'
 		})
 
-		.when('/vinculacion',{
-			templateUrl: 'angular/Views/pages/vinculacion.html',
-			controller: 'VinculacionController'
+		.when('/enlaces',{
+			templateUrl: 'angular/Views/pages/enlaces.html',
+			controller: 'EnlacesController'
 		})
 
 		.when('/investigaciones',{
