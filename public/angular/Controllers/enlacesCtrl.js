@@ -10,21 +10,33 @@ angular.module('EnlacesCtrl', []).controller('EnlacesController', function ($sco
         },
         {
             nombre: "Filmoteca UNAM",
-            imagen: "Filmoteca UNAM.jpg", 
+            imagen: "Filmoteca UNAM.png", 
             url: "https://www.filmoteca.unam.mx/",
             relacion: "Colaboración de investigación",
         },
         {
             nombre: "Centro de Investigaciones y Estudios Superiores en Antropología Social (CIESAS)",
-            imagen: "CIESAS.jpg", 
+            imagen: "CIESAS.png", 
             url: "https://ciesas.edu.mx/",
             relacion: "Colaboración académica en seminario",
         },
         {
             nombre: "Canal 6 de Julio",
-            imagen: "Canal 6 de Julio.jpg", 
+            imagen: "Canal 6 de Julio.png", 
             url: "https://canal6dejulio.com/",
             relacion: "Colaboración académica en seminario",
+        },
+        {
+            nombre: "Laboratorio Nacional de Materiales Orales",
+            imagen: "LANMO.png", 
+            url: "https://lanmo.unam.mx/",
+            relacion: "",
+        },
+        {
+            nombre: "Asociación Argentina de Estudios sobre Cine y Audiovisual",
+            imagen: "Asaeca.png", 
+            url: "https://asaeca.org/",
+            relacion: "",
         },
         {
             nombre: "Universidad de La Ciénega del Estado de Michoacán de Ocampo (UCEMICH)",
@@ -34,7 +46,7 @@ angular.module('EnlacesCtrl', []).controller('EnlacesController', function ($sco
         },
         {
             nombre: "Centro de Fotografía de Montevideo",
-            imagen: "Centro de Fotografía de Montevideo.jpg", 
+            imagen: "Centro de Fotografía de Montevideo.png", 
             url: "https://cdf.montevideo.gub.uy/",
             relacion: "Colaboración académica",
         },
@@ -46,13 +58,13 @@ angular.module('EnlacesCtrl', []).controller('EnlacesController', function ($sco
         },
         {
             nombre: "Escuela Nacional de Artes Cinematográficas (ENAC) UNAM",
-            imagen: "ENAC UNAM.jpg", 
+            imagen: "ENAC.png", 
             url: "http://www.enac.unam.mx/",
             relacion: "Apoyo a la investigación",
         },
         {
             nombre: "Centro de Capacitación Cinematográfica, A.C.",
-            imagen: "Centro de Capacitación Cinematográfica.jpg", 
+            imagen: "Centro de Capacitación Cinematográfica.png", 
             url: "https://elccc.com.mx/ ",
             relacion: "Actividad de difusión académica",
         },
@@ -70,7 +82,7 @@ angular.module('EnlacesCtrl', []).controller('EnlacesController', function ($sco
         },
         {
             nombre: "Naranjas de Hiroshima",
-            imagen: "Naranjas de Hiroshima.jpg", 
+            imagen: "Naranjas de Hiroshima.png", 
             url: "https://www.naranjasdehiroshima.com/",
             relacion: "Divulgación audiovisual",
         },
