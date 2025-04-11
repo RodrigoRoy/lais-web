@@ -3,12 +3,6 @@
 angular.module('EnlacesCtrl', []).controller('EnlacesController', function ($scope) {
     $scope.instituciones = [
         {
-            nombre: "Redoc Investigación",
-            imagen: "Redoc.png", 
-            url: "https://redocinvestigacion.net/",
-            relacion: "Integrantes fundadores de la red",
-        },
-        {
             nombre: "Filmoteca UNAM",
             imagen: "Filmoteca UNAM.png", 
             url: "https://www.filmoteca.unam.mx/",
@@ -55,6 +49,12 @@ angular.module('EnlacesCtrl', []).controller('EnlacesController', function ($sco
             imagen: "Comité EUREKA.jpg", 
             url: "",
             relacion: "Asesoría en metodologías de investigación",
+        },
+        {
+            nombre: "Redoc Investigación",
+            imagen: "Redoc.png", 
+            url: "https://redocinvestigacion.net/",
+            relacion: "Integrantes fundadores de la red",
         },
         {
             nombre: "Escuela Nacional de Artes Cinematográficas (ENAC) UNAM",
