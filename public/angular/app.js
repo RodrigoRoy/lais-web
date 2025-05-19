@@ -44,6 +44,7 @@ angular.module('laisApp', [
 	'CursosSemestralesCtrl', // Página de cursos semestrales
 	'SitiosCtrl', // Página de sitios
 	'PodcastCtrl', // Página de podcast
+	'VideoCtrl', // Página de podcast
 	'SeminariosCtrl', // Página de seminarios
 	'AboutCtrl', // Página acerca del LAIS
 

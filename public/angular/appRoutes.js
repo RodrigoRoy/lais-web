@@ -160,6 +160,11 @@ angular.module('viewsRoutes', []).config(['$routeProvider', '$locationProvider',
 			controller: 'PodcastController'
 		})
 
+		.when('/video',{
+			templateUrl: 'angular/Views/pages/video.html',
+			controller: 'VideoController'
+		})
+
 		.when('/seminarios',{
 			templateUrl: 'angular/Views/pages/seminarios.html',
 			controller: 'SeminariosController'

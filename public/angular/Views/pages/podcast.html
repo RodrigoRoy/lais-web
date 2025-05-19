@@ -9,12 +9,12 @@
 		<div class="col-xs-12 col-sm-8 col-sm-offset-2 text-center">
 			<div class="card grey lighten-2" style="background-color: transparent !important; box-shadow: none;">
 				<div class="card-image">
-					<img src="imgs/Podcast_La_Isla_Audiovisual.jpg">
+					<img src="imgs/Podcast_La_Isla_Audiovisual.jpg" class="img-responsive" style="display: block; margin: auto; width: 50%;">
 				</div>
 				<div class="card-content">
 					<span class="card-title" style="color: #294f6d; font-weight: bold;">La Isla Audiovisual</span>
 					<p class="mb-3">Conversatorios y experiencias audiovisuales en torno a la investigación con fuentes audiovisuales para la investigación social. Producido por el Laboratorio Audiovisual de Investigación Social (LAIS)</p>
-					<a ng-repeat="site in sites" href="{{site.url}}" class="btn btn-primary btn-lg btn-block mb-2" role="button" style="background-color: {{site.background}}; color: {{site.color}}">
+					<a ng-repeat="site in sites" href="{{site.url}}" target="_blank" class="btn btn-primary btn-lg btn-block mb-2" role="button" style="background-color: {{site.background}}; color: {{site.color}}">
 						<img height="30" width="30" src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/{{site.icon}}.svg" />
 						{{site.title}}
 					</a>
