@@ -21,6 +21,6 @@
     "angular-ui-validate": "^1.2.2",
     "hover": "Hover#^2.1.1",
     "jquery.easing": "jquery-easing-original#^1.4.1",
-    "TimelineJS3": "https://github.com/NUKnightLab/TimelineJS3.git#^3.5.1"
+    "TimelineJS3": "^3.3.9"
   }
 }
