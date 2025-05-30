@@ -86,5 +86,11 @@ angular.module('EnlacesCtrl', []).controller('EnlacesController', function ($sco
             url: "https://www.naranjasdehiroshima.com/",
             relacion: "Divulgación audiovisual",
         },
+        {
+            nombre: "Estudio taller Selenium",
+            imagen: "Selenium.png", 
+            url: "https://www.facebook.com/EstudioTallerSelenium/",
+            relacion: "Asesoría técnica",
+        },
     ];
 });
