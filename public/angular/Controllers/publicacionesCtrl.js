@@ -1,6 +1,6 @@
 /* Formulario para registrar una publicación */
 
-angular.module('PublicacionesCtrl',[]).controller('PublicacionesController', function ($scope, $routeParams, $location, $uibModal, Publicacion, Autor){
+angular.module('PublicacionesCtrl',[]).controller('PublicacionesController', function ($scope, $routeParams, $location, $rootScope, $route, $uibModal, Publicacion, Autor){
 
 	// Variables
 	$scope.publicaciones = [];
@@ -173,4 +173,23 @@ angular.module('PublicacionesCtrl',[]).controller('PublicacionesController', fun
 
 	// INICIALIZACION:
 	$scope.getPublicaciones();
+
+	// Verificar cambios en la URL
+	// Contexto: La página /publicaciones cambia el URL query '?show=' para mostrar diferentes tipos de publicaciones
+	// pero cambiar únicamente URL query no recarga la vista/página. Por lo tanto, hay que hacerlo manualmente
+	// para actualizar el contenido cada vez que se selecciona otro tipo de publicación en navbar (menú general)
+	$rootScope.$on('$locationChangeStart', function(event, current, previous){
+		
+		// Verificar si son la misma ruta (/publicacion) pero con diferente URL (?show=Documental, ?show=Artículo)
+		const regEx = /publicacion\?show=(.+)$/
+		const currentUrlQuery = regEx.exec(current)
+		const previousUrlQuery = regEx.exec(previous)
+
+		// currentUrlQuery y previousUrlQuery contienen el URL query en [1]
+		// Referencia: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec
+
+		// Verificar si la ruta es para un tipo diferente de publicación
+		if(currentUrlQuery[1] && previousUrlQuery[1] && (currentUrlQuery[1] != previousUrlQuery[1]))
+			$route.reload() // Recargar ruta manualmente
+	})
 })
