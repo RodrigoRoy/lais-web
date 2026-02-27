@@ -9,6 +9,7 @@ var mongoose       = require('mongoose'); // para trabajar con la base de datos
 var bodyParser     = require('body-parser'); // obtener body-parser
 var methodOverride = require('method-override');
 var morgan         = require('morgan'); // usado para ver peticiones (requests)
+var helmet         = require('helmet'); // secure http response headers
 
 // CONFIGURACIÓN ===========================================
 
@@ -27,7 +28,9 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse applica
 app.use(bodyParser.urlencoded({ extended: true })); // parse application/x-www-form-urlencoded
 
 app.use(methodOverride('X-HTTP-Method-Override')); // sobreescribe con el encabezado X-HTTP-Method-Override en petición. Simula DELETE/PUT
+app.use(helmet()); // aplicación de encabezados seguros
 app.use(express.static(__dirname + '/public')); // establece ubicación de archivos estáticos. /public/img será /img para los usuarios
+
 
 // RUTAS ===================================================
 
