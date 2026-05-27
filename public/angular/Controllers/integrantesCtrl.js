@@ -35,7 +35,7 @@ angular.module('IntegrantesCtrl', []).controller('IntegrantesController', functi
 		{
 			nombre: "Lilia García",
 			contacto: "lgarciat@mora.edu.mx",
-			semblanza: "Lilia García Torres es integrante del LAIS desde 2021 y doctorante en Estudios Latinoamericanos en la Universidad Nacional Autónoma de México. Es corealizadora del documental Trinchera sonora. Voces y Miradas de Radio Venceremos (2017) y realizadora de Polinizadorxs. Resistencia en la Península de Yucatán (2022). En 2020 impulsó el Editatón “Mujeres documentalistas a la wiki”, y actualmente coordina la investigación “Mujeres Documentalistas en México (1970-1985)”.",
+			semblanza: "Lilia García Torres es integrante del LAIS desde 2021 y doctora en Estudios Latinoamericanos en la Universidad Nacional Autónoma de México. Co-realizadora del documental \"Trinchera sonora. Voces y Miradas de Radio Venceremos\" (2017) y realizadora de \"Polinizadorxs. Resistencia en la Península de Yucatán\" (2022). En 2020 impulsó el Editatón \“Mujeres documentalistas a la wiki” y actualmente coordina la investigación \“Mujeres Documentalistas en México (1970-1985)”. Sus líneas de investigación son la producción fotográfica y audiovisual de los grupos político militares y el cine hecho por mujeres.",
 			lineasInvestigacion:"Producción de imágenes hechas por grupos gueriilleros salvadoreños y documental hecho por mujeres.",
 			formacion: "Estudios latinoamericanos",
 			produccion: [
