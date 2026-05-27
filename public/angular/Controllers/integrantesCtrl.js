@@ -35,11 +35,11 @@ angular.module('IntegrantesCtrl', []).controller('IntegrantesController', functi
 		{
 			nombre: "Lilia García",
 			contacto: "lgarciat@mora.edu.mx",
-			semblanza: "Lilia García Torres es integrante del LAIS desde 2021 y doctora en Estudios Latinoamericanos en la Universidad Nacional Autónoma de México. Co-realizadora del documental \"Trinchera sonora. Voces y Miradas de Radio Venceremos\" (2017) y realizadora de \"Polinizadorxs. Resistencia en la Península de Yucatán\" (2022). En 2020 impulsó el Editatón \“Mujeres documentalistas a la wiki” y actualmente coordina la investigación \“Mujeres Documentalistas en México (1970-1985)”. Sus líneas de investigación son la producción fotográfica y audiovisual de los grupos político militares y el cine hecho por mujeres.",
-			lineasInvestigacion:"Producción de imágenes hechas por grupos gueriilleros salvadoreños y documental hecho por mujeres.",
+			semblanza: "Lilia García Torres es integrante del LAIS desde 2021 y doctora en Estudios Latinoamericanos en la Universidad Nacional Autónoma de México. Co-realizadora del documental \"Trinchera sonora. Voces y Miradas de Radio Venceremos\" (2017) y realizadora de \"Polinizadorxs. Resistencia en la Península de Yucatán\" (2022). En 2020 impulsó el Editatón \"Mujeres documentalistas a la wiki\" y actualmente coordina la investigación \“Mujeres Documentalistas en México (1970-1985)\”",
+			lineasInvestigacion:"Producción fotográfica y audiovisual de los grupos político militares y el cine hecho por mujeres.",
 			formacion: "Estudios latinoamericanos",
 			produccion: [
-				{ tipo: "Artículo", text: "Últimas pioneras del Súper 8: cine hecho por mujeres ikoots", url: "publicacion/6717ad97f6143d79cebdbc10", date: '2021' },
+				{ tipo: "Artículo", text: "Audiovisual de la guerrilla salvadoreña, una mirada sobre el intervencionismo estadunidense", url: "https://doi.org/10.18234/secuencia.v0i124.2509", date: '2026' },
 				{ tipo: "Capítulo de libro", text: "Mirar en clave ikoots. Lecturas etnográficas del Primer Taller de Cine Indígena", url: "publicacion/6717b43df6143d79cebdbc11", date: '2021' },
 				{ tipo: "Documental", text: "Trinchera sonora. Voces y miradas de Radio Venceremos", url: "publicacion/5dcd7f6781e95d5d3e014ba4", date: '2017' },
 			],
@@ -52,8 +52,8 @@ angular.module('IntegrantesCtrl', []).controller('IntegrantesController', functi
 			lineasInvestigacion:"Humanidades digitales, desarrollo de software libre para la investigación social con fuentes audiovisuales.",
 			formacion: "Ciencias de la computación",
 			produccion: [
-				{ tipo: "Sitio web", text: "metaDOC. Documentales e investigación", url: "metadoc/", date: '2016' },
-				{ tipo: "Sitio web", text: "Laboratorios audiovisuales de investigación en México", url: "laboratorios/", date: '2023' },
+				{ tipo: "Sitio web", text: "Catálogo Mujeres Documentalistas en México (1970-1985)", url: "https://lais.mora.edu.mx/mujeresdocumentalistas/", date: '2025' },
+				{ tipo: "Sitio web", text: "metaDOC. Documentales e investigación", url: "https://lais.mora.edu.mx/metadoc/", date: '2016' },
 				{ tipo: "Capítulo de libro", text: "Propuesta metodológica y de análisis computacional para identificar el proceso fotográfico en fotografías históricas del siglo XIX y XX", url: "publicacion/604858210f7a6715b57220aa", date: '2020' },
 			],
 			imagen: "Rodrigo Colín.jpg",
