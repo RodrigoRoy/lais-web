@@ -17,20 +17,20 @@ angular.module('PostdoctoralCtrl', []).controller('PostdoctoralController', func
 			],
 			imagen: "David Jurado.jpg",
 		},
-		{
-			nombre: "Manuel Almazán",
-			adscripcion: "Instituto Mora - Historia moderna y contemporanea",
-			lineasInvestigacion: "Historia gráfica, antropología audiovisual, migraciones internacionales.",
-			proyecto: "Los mareros, el desierto y la migra. Representaciones de la frontera en el cine documental, 1986-2019",
-			descripcion: "Esta investigación estudia las representaciones de las fronteras norte y sur de México a través de diferentes documentales. El objetivo principal es evidenciar el vínculo entre las políticas migratorias implementadas en territorio mexicano durante las últimas décadas y la producción y exhibición de documentales que tienen como tema principal las fronteras. Para esto se contempla la elaboración de un corpus documental a partir de la cartelera de diferentes festivales, la búsqueda en publicaciones especializadas y la experiencia del investigador como consumidor audiovisual. Asimismo, se contempla la elaboración de categorías analíticas que permitan abordar diferentes tipos de frontera de acuerdo a su ubicación, dinámica administrativa y efectos sobre los migrantes.",
-			semblanza: "Especialista en migración internacional (COLEF), doctor en historia (UG) y maestro en antropología social (COLSAN). Miembro fundador de la Red Abya Yala. Forma parte del Sistema Nacional de Investigadoras e Investigadores.",
-			contacto: "jmhernandez@mora.edu.mx",
-			socialMedia: [
-				{ icon: 'academia', url: 'https://independent.academia.edu/ManuelAlmazán', text: 'Academia.edu' },
-				{ icon: 'orcid', url: 'https://orcid.org/0000-0002-2557-3011', text: 'ORCID' },
-				{ icon: 'x', url: 'https://x.com/ManuelAlmazan17', text: 'Twitter/X' },
-			],
-			imagen: "Manuel Almazán.jpg",
-		},
+		// {
+		// 	nombre: "Manuel Almazán",
+		// 	adscripcion: "Instituto Mora - Historia moderna y contemporanea",
+		// 	lineasInvestigacion: "Historia gráfica, antropología audiovisual, migraciones internacionales.",
+		// 	proyecto: "Los mareros, el desierto y la migra. Representaciones de la frontera en el cine documental, 1986-2019",
+		// 	descripcion: "Esta investigación estudia las representaciones de las fronteras norte y sur de México a través de diferentes documentales. El objetivo principal es evidenciar el vínculo entre las políticas migratorias implementadas en territorio mexicano durante las últimas décadas y la producción y exhibición de documentales que tienen como tema principal las fronteras. Para esto se contempla la elaboración de un corpus documental a partir de la cartelera de diferentes festivales, la búsqueda en publicaciones especializadas y la experiencia del investigador como consumidor audiovisual. Asimismo, se contempla la elaboración de categorías analíticas que permitan abordar diferentes tipos de frontera de acuerdo a su ubicación, dinámica administrativa y efectos sobre los migrantes.",
+		// 	semblanza: "Especialista en migración internacional (COLEF), doctor en historia (UG) y maestro en antropología social (COLSAN). Miembro fundador de la Red Abya Yala. Forma parte del Sistema Nacional de Investigadoras e Investigadores.",
+		// 	contacto: "jmhernandez@mora.edu.mx",
+		// 	socialMedia: [
+		// 		{ icon: 'academia', url: 'https://independent.academia.edu/ManuelAlmazán', text: 'Academia.edu' },
+		// 		{ icon: 'orcid', url: 'https://orcid.org/0000-0002-2557-3011', text: 'ORCID' },
+		// 		{ icon: 'x', url: 'https://x.com/ManuelAlmazan17', text: 'Twitter/X' },
+		// 	],
+		// 	imagen: "Manuel Almazán.jpg",
+		// },
 	];
 });

@@ -47,7 +47,7 @@ angular.module('EnlacesCtrl', []).controller('EnlacesController', function ($sco
         {
             nombre: "Comité EUREKA!",
             imagen: "Comité EUREKA.jpg", 
-            url: "",
+            url: "https://es.wikipedia.org/wiki/Comit%C3%A9_%C2%A1Eureka!",
             relacion: "Asesoría en metodologías de investigación",
         },
         {

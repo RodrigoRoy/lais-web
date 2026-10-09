@@ -27,7 +27,7 @@ angular.module('IntegrantesCtrl', []).controller('IntegrantesController', functi
 			formacion: "Comunicación",
 			produccion: [
 				{ tipo: "Documental", text: "El Triángulo de Tacubaya. Historia de Cine Hipódromo Condesa", url: "publicacion/587f937cdf2e296b0fd8b028", date: '2005' },
-				{ tipo: "Capítulo de libro", text: "El método Ken Burns, el documental histórico y la serie La Guerra de Vietnam, en Métodos en Acción", url: "publicacion/603937d5d96f496022f87e8c", date: '2020' },
+				{ tipo: "Capítulo de libro", text: "El método Ken Burns, el documental histórico y la serie La Guerra de Vietnam, en Métodos en Acción", url: "publicacion/603937d5d96f496022f87e8c", date: '2020'},
 				{ tipo: "Artículo", text: "Las salas de cine antes de los palacios. La exhibición cinematográfica en la ciudad de México hacia finales de los años veinte", url: "publicacion/59d7fd02c59e4f661b5fd04d", date: '2013' },
 			],
 			imagen: "Felipe Morales.jpg",
@@ -39,7 +39,7 @@ angular.module('IntegrantesCtrl', []).controller('IntegrantesController', functi
 			lineasInvestigacion:"Producción fotográfica y audiovisual de los grupos político militares y el cine hecho por mujeres.",
 			formacion: "Estudios latinoamericanos",
 			produccion: [
-				{ tipo: "Artículo", text: "Audiovisual de la guerrilla salvadoreña, una mirada sobre el intervencionismo estadunidense", url: "https://doi.org/10.18234/secuencia.v0i124.2509", date: '2026' },
+				{ tipo: "Artículo", text: "Audiovisual de la guerrilla salvadoreña, una mirada sobre el intervencionismo estadunidense", url: "https://doi.org/10.18234/secuencia.v0i124.2509", date: '2026', blank: true },
 				{ tipo: "Capítulo de libro", text: "Mirar en clave ikoots. Lecturas etnográficas del Primer Taller de Cine Indígena", url: "publicacion/6717b43df6143d79cebdbc11", date: '2021' },
 				{ tipo: "Documental", text: "Trinchera sonora. Voces y miradas de Radio Venceremos", url: "publicacion/5dcd7f6781e95d5d3e014ba4", date: '2017' },
 			],
@@ -52,8 +52,8 @@ angular.module('IntegrantesCtrl', []).controller('IntegrantesController', functi
 			lineasInvestigacion:"Humanidades digitales, desarrollo de software libre para la investigación social con fuentes audiovisuales.",
 			formacion: "Ciencias de la computación",
 			produccion: [
-				{ tipo: "Sitio web", text: "Catálogo Mujeres Documentalistas en México (1970-1985)", url: "https://lais.mora.edu.mx/mujeresdocumentalistas/", date: '2025' },
-				{ tipo: "Sitio web", text: "metaDOC. Documentales e investigación", url: "https://lais.mora.edu.mx/metadoc/", date: '2016' },
+				{ tipo: "Sitio web", text: "Catálogo Mujeres Documentalistas en México (1970-1985)", url: "https://lais.mora.edu.mx/mujeresdocumentalistas/", date: '2025', blank: true },
+				{ tipo: "Sitio web", text: "metaDOC. Documentales e investigación", url: "https://lais.mora.edu.mx/metadoc/", date: '2016', blank: true },
 				{ tipo: "Capítulo de libro", text: "Propuesta metodológica y de análisis computacional para identificar el proceso fotográfico en fotografías históricas del siglo XIX y XX", url: "publicacion/604858210f7a6715b57220aa", date: '2020' },
 			],
 			imagen: "Rodrigo Colín.jpg",

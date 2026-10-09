@@ -25,7 +25,7 @@
 						{{ persona.formacion }}
 					</p>
 					<!-- Correo -->
-					<a href="{{ persona.contacto }}" class="my-link" style="font-size: 14px; color: inherit; font-weight: bolder;">
+					<a href="mailto:{{ persona.contacto }}" class="my-link" style="font-size: 14px; color: inherit; font-weight: bolder;">
 						<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
 						{{ persona.contacto }}
 					</a>
@@ -37,7 +37,7 @@
 					</div> -->
 					<div ng-repeat="contacto in persona.socialMedia">
                         <img height="14" width="14" src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/{{contacto.icon}}.svg" />
-						<a href="{{ contacto.url }}" class="mr-2 ml-0" style="font-size: 1em; color: inherit; text-decoration: underline;">
+						<a href="{{ contacto.url }}" target="_blank" class="mr-2 ml-0" style="font-size: 1em; color: inherit; text-decoration: underline;">
 							{{ contacto.text }}
 						</a>
 					</div>
@@ -60,7 +60,7 @@
 						<ul class="list-unstyled">
 							<li ng-repeat="producto in persona.produccion">
 								<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-								<a href="{{ producto.url }}" class="my-link" style="color: inherit; font-size: 14px;">
+								<a href="{{ producto.url }}" target="{{ producto.blank ? '_blank' : '_self' }}" class="my-link" style="color: inherit; font-size: 14px;">
 									{{ producto.text }} ({{ producto.date }})
 								</a>
 							</li>

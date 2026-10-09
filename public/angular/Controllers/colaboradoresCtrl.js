@@ -28,30 +28,51 @@ angular.module('ColaboradoresCtrl', []).controller('ColaboradoresController', fu
     ];
 
     $scope.servicioSocial = [
-        // {
-        //     nombre: "Martín Mort García",
-        //     adscripcion: "Facultad de Filosofía y Letras, UNAM (Licenciatura en Historia)",
-        //     proyecto: "Política mexicana en las décadas de 1980 y 1990",
-        //     actividad: "Organización de documentos y cine documental para investigación",
-        // },
-        // {
-        //     nombre: "Eder Samuel Berber Gutiérrez",
-        //     adscripcion: "Facultad de Ciencias, UNAM (Licenciatura en Ciencias de la Computación)",
-        //     proyecto: "Seguridad informática y el Internet de las Cosas",
-        //     actividad: "Desarrollo de sistemas para organización de registros audiovisuales",
-        // }
+        {
+            nombre: "Lilly Lizzete Aguilar Rosas",
+            adscripcion: "Facultad de Ciencias Políticas y Sociales, UNAM (Licenciatura en Ciencias Políticas)",
+            proyecto: "Reconfiguración del aparato sensorial en migrantes provenientes del sur del país que se han asentado en la Ciudad de México.",
+            actividad: "Investigación en archivo y documentación de materiales audiovisuales para investigación social.",
+        }
     ];
 
     $scope.tesistas = [
         {
-            nombre: "Aura Celeita Díaz",
+            nombre: "Mariana Ortiz Cortés",
             adscripcion: "Instituto Mora (Maestría en Estudios Regionales)",
-            tesis: "La Universidad Intercultural de los Pueblos, una apuesta por la cultura del buen vivir en el sur occidente colombiano",
-            date: "2024",
+            tesis: "Donde mueren los dioses: Patrimonialización, territorio y disputas en torno al traslado del Monolito de Coatlinchán al Museo Nacional de Antropología",
+            date: "2024-2026",
             concluida: true,
             integrante: "Lourdes Roca",
             tipo: "Dirección de tesis", 
         },
+        {
+            nombre: "Ana Ramírez Aparicio",
+            adscripcion: "Instituto Mora (Doctorado en Historia)",
+            tesis: "Posar para la modernidad: El retrato como estrategia de promoción social de las clases medias en la prensa ilustrada entre 1930 y 1950",
+            date: "2022-2026",
+            concluida: true,
+            integrante: "Lourdes Roca",
+            tipo: "Dirección de tesis", 
+        },
+        {
+            nombre: "Sergio Ortiz Romero",
+            adscripcion: "Instituto Mora (Doctorado en Historia)",
+            tesis: "Identidades, militancias y producción cultural de los colectivos documentalistas en México, 1968-1984",
+            date: "2024-2028",
+            concluida: false,
+            integrante: "Lourdes Roca",
+            tipo: "Dirección de tesis", 
+        },
+        // {
+        //     nombre: "Aura Celeita Díaz",
+        //     adscripcion: "Instituto Mora (Maestría en Estudios Regionales)",
+        //     tesis: "La Universidad Intercultural de los Pueblos, una apuesta por la cultura del buen vivir en el sur occidente colombiano",
+        //     date: "2024",
+        //     concluida: true,
+        //     integrante: "Lourdes Roca",
+        //     tipo: "Dirección de tesis", 
+        // },
         {
             nombre: "Itzel Martínez del Cañizo",
             adscripcion: "UNAM (Maestría en Historia del Arte)",

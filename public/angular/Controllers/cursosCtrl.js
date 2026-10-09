@@ -12,6 +12,7 @@ angular.module('CursosCtrl', []).controller('CursosController', function ($scope
 	];
 
 	$scope.cursos = [
+		{ nombre: 'Alfonso Gumucio Dagron', procedencia: 'Cinemateca Boliviana, Bolivia', fecha: '2026' },
 		{ nombre: 'Marcela Zamora', procedencia: 'Kino Glaz Films, El Salvador', fecha: '2025' },
 		{ nombre: 'Virna Molina', procedencia: 'Instituto de Arte Cinematográfico de Avellaneda, Argentina', fecha: '2024' },
 		{ nombre: 'Mariana X. Rivera y Josué Vergara', procedencia: 'Universidad Autónoma Metropolitana (Unidad Iztapalapa)', fecha: '2023' },
